@@ -6,12 +6,12 @@ const headingVariants = cva(
   {
     variants: {
       size: {
-        h1: 'text-4xl lg:text-5xl',
-        h2: 'text-3xl lg:text-4xl',
-        h3: 'text-2xl lg:text-3xl',
-        h4: 'text-xl lg:text-2xl',
-        h5: 'text-lg lg:text-xl',
-        h6: 'text-base lg:text-lg',
+        h1: 'text-4xl lg:text-6xl leading-tight lg:leading-tight',
+        h2: 'text-3xl lg:text-5xl leading-tight lg:leading-tight',
+        h3: 'text-2xl lg:text-4xl leading-snug lg:leading-snug',
+        h4: 'text-xl lg:text-3xl leading-snug lg:leading-snug',
+        h5: 'text-lg lg:text-2xl leading-normal lg:leading-normal',
+        h6: 'text-base lg:text-xl leading-normal lg:leading-normal',
       },
     },
     defaultVariants: {
@@ -25,12 +25,14 @@ const textVariants = cva(
   {
     variants: {
       size: {
-        sm: 'text-sm',
-        base: 'text-base',
-        lg: 'text-lg',
-        xl: 'text-xl',
+        sm: 'text-sm leading-relaxed',
+        base: 'text-base leading-relaxed',
+        lg: 'text-lg leading-relaxed',
+        xl: 'text-xl leading-relaxed',
+        '2xl': 'text-2xl leading-relaxed',
       },
       weight: {
+        light: 'font-light',
         normal: 'font-normal',
         medium: 'font-medium',
         semibold: 'font-semibold',
@@ -38,8 +40,10 @@ const textVariants = cva(
       },
       color: {
         default: 'text-foreground',
-        muted: 'text-secondary-600 dark:text-secondary-400',
+        muted: 'text-secondary-700 dark:text-secondary-300',
+        subtle: 'text-secondary-600 dark:text-secondary-400',
         accent: 'text-accent-600 dark:text-accent-400',
+        primary: 'text-primary-600 dark:text-primary-400',
       },
     },
     defaultVariants: {
