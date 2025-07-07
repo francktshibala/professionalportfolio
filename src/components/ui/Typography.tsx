@@ -57,7 +57,7 @@ export interface HeadingProps
 }
 
 export interface TextProps
-  extends HTMLAttributes<HTMLParagraphElement>,
+  extends Omit<HTMLAttributes<HTMLParagraphElement>, 'color'>,
     VariantProps<typeof textVariants> {
   as?: 'p' | 'span' | 'div';
 }
