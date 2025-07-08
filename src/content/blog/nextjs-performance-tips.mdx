@@ -1,0 +1,68 @@
+---
+title: "Next.js Performance Optimization Tips"
+description: "Learn essential techniques to optimize your Next.js application for better performance and user experience."
+date: "2024-01-20"
+author: "Franc"
+tags: ["nextjs", "performance", "optimization", "react"]
+category: "Development"
+published: true
+featured: false
+---
+
+# Next.js Performance Optimization Tips
+
+Performance is crucial for any modern web application. Here are some essential tips to optimize your Next.js application.
+
+## 1. Image Optimization
+
+Next.js provides built-in image optimization:
+
+```tsx
+import Image from 'next/image'
+
+export default function MyComponent() {
+  return (
+    <Image
+      src="/hero-image.jpg"
+      alt="Hero"
+      width={800}
+      height={600}
+      priority
+    />
+  )
+}
+```
+
+## 2. Dynamic Imports
+
+Use dynamic imports for code splitting:
+
+```tsx
+import dynamic from 'next/dynamic'
+
+const DynamicComponent = dynamic(() => import('../components/heavy-component'), {
+  loading: () => <p>Loading...</p>,
+})
+```
+
+## 3. Static Generation
+
+Leverage Static Site Generation (SSG) whenever possible:
+
+```tsx
+export async function getStaticProps() {
+  const data = await fetchData()
+  
+  return {
+    props: { data },
+    revalidate: 60 // ISR
+  }
+}
+```
+
+## Key Takeaways
+
+- Always optimize images with Next.js Image component
+- Use dynamic imports for code splitting
+- Leverage SSG and ISR for better performance
+- Monitor your bundle size regularly

@@ -37,6 +37,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-4u8c.vercel.app"),
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": "/blog/rss",
+    },
   },
   openGraph: {
     title: "Francisco - Senior Full-Stack Developer | React & TypeScript Expert",

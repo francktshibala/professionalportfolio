@@ -72,3 +72,11 @@ export const DESIGN_TOKENS = {
     '2xl': '1536px',
   },
 } as const;
+
+export const NAVIGATION_ITEMS = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+] as const;
