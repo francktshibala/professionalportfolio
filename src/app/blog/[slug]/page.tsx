@@ -3,6 +3,8 @@ import { BlogPostLayout } from '@/components/blog/BlogPostLayout';
 import { mdxComponents } from '@/components/mdx/MDXComponents';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
+import { BlogPostingSchema } from '@/components/seo/StructuredData';
+import { createMetadata } from '@/lib/metadata';
 
 interface BlogPostPageProps {
   params: {
@@ -26,23 +28,16 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     };
   }
 
-  return {
+  return createMetadata({
     title: post.title,
     description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-      tags: post.tags,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-    },
-  };
+    url: `/blog/${post.slug}`,
+    type: 'article',
+    publishedTime: post.date,
+    modifiedTime: post.date,
+    tags: post.tags,
+    author: post.author,
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -57,12 +52,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const mdxContent = <MDXRemote source={post.content as string} components={mdxComponents} />;
 
   return (
-    <BlogPostLayout
-      post={{
-        ...post,
-        content: mdxContent,
-      }}
-      relatedPosts={relatedPosts}
-    />
+    <>
+      <BlogPostingSchema
+        title={post.title}
+        description={post.description}
+        datePublished={post.date}
+        authorName={post.author}
+        url={`https://portfolio-4u8c.vercel.app/blog/${post.slug}`}
+        tags={post.tags}
+        readingTime={post.readingTime}
+      />
+      <BlogPostLayout
+        post={{
+          ...post,
+          content: mdxContent,
+        }}
+        relatedPosts={relatedPosts}
+      />
+    </>
   );
 }

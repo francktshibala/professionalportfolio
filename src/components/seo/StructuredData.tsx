@@ -1,5 +1,19 @@
 import Script from 'next/script';
 
+interface BlogPostingSchemaProps {
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  authorName: string;
+  authorUrl?: string;
+  url: string;
+  image?: string;
+  tags?: string[];
+  wordCount?: number;
+  readingTime?: string;
+}
+
 interface PersonSchemaProps {
   name: string;
   jobTitle: string;
@@ -30,6 +44,60 @@ interface WebsiteSchemaProps {
     target: string;
     "query-input": string;
   };
+}
+
+export function BlogPostingSchema({ 
+  title, 
+  description, 
+  datePublished, 
+  dateModified, 
+  authorName, 
+  authorUrl, 
+  url, 
+  image, 
+  tags, 
+  wordCount, 
+  readingTime 
+}: BlogPostingSchemaProps) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    datePublished,
+    dateModified: dateModified || datePublished,
+    author: {
+      "@type": "Person",
+      name: authorName,
+      url: authorUrl || "https://portfolio-4u8c.vercel.app"
+    },
+    publisher: {
+      "@type": "Person",
+      name: authorName,
+      url: authorUrl || "https://portfolio-4u8c.vercel.app"
+    },
+    url,
+    image,
+    keywords: tags?.join(", "),
+    wordCount,
+    timeRequired: readingTime,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url
+    },
+    articleSection: "Technology",
+    inLanguage: "en-US"
+  };
+
+  return (
+    <Script
+      id="blog-posting-schema"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
+    />
+  );
 }
 
 export function PersonSchema({ name, jobTitle, description, url, image, email, sameAs }: PersonSchemaProps) {
@@ -89,7 +157,7 @@ export function OrganizationSchema({ name, description, url, logo, foundingDate,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Remote",
-      addressCountry: "Global"
+      addressCountry: "US"
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -141,46 +209,26 @@ export function WebsiteSchema({ name, description, url, author, potentialAction 
 export function ProfessionalServiceSchema() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "Organization",
+    "@id": "https://portfolio-4u8c.vercel.app/#organization",
     name: "Francisco - Full-Stack Development Services",
     description: "Professional web development services specializing in React, TypeScript, and modern web technologies",
-    provider: {
+    url: "https://portfolio-4u8c.vercel.app",
+    founder: {
       "@type": "Person",
       name: "Francisco",
       jobTitle: "Senior Full-Stack Developer"
     },
-    areaServed: "Worldwide",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Web Development Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Full-Stack Web Development",
-            description: "Complete web application development using React, TypeScript, and Node.js"
-          }
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Frontend Development",
-            description: "Modern responsive web interfaces using React, Next.js, and Tailwind CSS"
-          }
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Backend Development",
-            description: "Scalable server-side applications using Node.js, PostgreSQL, and cloud technologies"
-          }
-        }
-      ]
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Remote",
+      addressCountry: "US"
     },
-    url: "https://portfolio-4u8c.vercel.app",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      url: "https://portfolio-4u8c.vercel.app/contact"
+    },
     sameAs: [
       "https://github.com/francisco",
       "https://linkedin.com/in/francisco"
