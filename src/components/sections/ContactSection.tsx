@@ -26,24 +26,40 @@ const contactInfo = [
 
 const socialLinks = [
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/francisco',
-    icon: '🐦',
+    name: 'Email',
+    url: 'mailto:francisco@example.com',
+    icon: '📧',
+    color: 'from-blue-500 to-blue-600'
   },
   {
     name: 'LinkedIn',
     url: 'https://linkedin.com/in/francisco',
     icon: '💼',
+    color: 'from-blue-600 to-blue-700'
   },
   {
     name: 'GitHub',
     url: 'https://github.com/francisco',
     icon: '💻',
+    color: 'from-gray-700 to-gray-800'
   },
   {
-    name: 'Email',
-    url: 'mailto:francisco@example.com',
-    icon: '📧',
+    name: 'WhatsApp',
+    url: 'https://wa.me/1234567890',
+    icon: '💬',
+    color: 'from-green-500 to-green-600'
+  },
+  {
+    name: 'Telegram',
+    url: 'https://t.me/francisco',
+    icon: '📱',
+    color: 'from-sky-500 to-sky-600'
+  },
+  {
+    name: 'Schedule Call',
+    url: 'https://calendly.com/francisco',
+    icon: '📅',
+    color: 'from-purple-500 to-purple-600'
   },
 ];
 
@@ -108,20 +124,38 @@ export function ContactSection() {
             <ContactForm />
             
             <Card className="p-8 bg-white/80 dark:bg-secondary-900/80 backdrop-blur-sm border-secondary-200 dark:border-secondary-700 hover:shadow-xl transition-all duration-300">
-              <Heading as="h3" className="text-xl font-bold mb-6 text-secondary-900 dark:text-secondary-100">Follow Me</Heading>
-              <div className="flex gap-4">
+              <Heading as="h3" className="text-xl font-bold mb-6 text-secondary-900 dark:text-secondary-100">Connect With Me</Heading>
+              <div className="grid grid-cols-3 gap-4">
                 {socialLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-14 h-14 bg-gradient-to-br from-secondary-100 to-secondary-200 dark:from-secondary-800 dark:to-secondary-700 rounded-2xl flex items-center justify-center hover:from-primary-500 hover:to-accent-500 hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                    className={`w-full aspect-square bg-gradient-to-br ${link.color || 'from-secondary-100 to-secondary-200 dark:from-secondary-800 dark:to-secondary-700'} rounded-2xl flex flex-col items-center justify-center hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-white group`}
                     title={link.name}
                   >
-                    <span className="text-xl">{link.icon}</span>
+                    <span className="text-2xl mb-1">{link.icon}</span>
+                    <span className="text-xs font-medium opacity-90 group-hover:opacity-100 transition-opacity">
+                      {link.name}
+                    </span>
                   </a>
                 ))}
+              </div>
+              <div className="mt-6 p-4 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950 rounded-lg border border-primary-200 dark:border-primary-800">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-sm font-semibold text-secondary-900 dark:text-secondary-100">
+                    Available for new projects
+                  </span>
+                </div>
+                <p className="text-sm text-secondary-600 dark:text-secondary-400">
+                  I typically respond within 24 hours. For urgent matters, WhatsApp or direct calls work best.
+                </p>
               </div>
             </Card>
           </div>

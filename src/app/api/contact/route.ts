@@ -10,7 +10,13 @@ if (process.env.RESEND_API_KEY) {
 interface ContactFormData {
   name: string;
   email: string;
+  company?: string;
+  phone?: string;
+  category: string;
+  budget?: string;
+  timeline?: string;
   message: string;
+  preferredContact: string;
 }
 
 const RATE_LIMIT_MAP = new Map();
@@ -64,10 +70,25 @@ function validateContactForm(data: unknown): { isValid: boolean; errors: string[
     }
   }
   
+  if (formData.phone && typeof formData.phone === 'string' && formData.phone.trim()) {
+    const phoneRegex = /^[+]?[(]?[0-9\s\-\(\)]{10,}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      errors.push('Invalid phone number format');
+    }
+  }
+  
+  if (!formData.category || typeof formData.category !== 'string') {
+    errors.push('Category is required');
+  }
+  
   if (!formData.message || typeof formData.message !== 'string' || formData.message.trim().length < 10) {
     errors.push('Message must be at least 10 characters long');
-  } else if (formData.message.trim().length > 1000) {
-    errors.push('Message must be less than 1000 characters');
+  } else if (formData.message.trim().length > 2000) {
+    errors.push('Message must be less than 2000 characters');
+  }
+  
+  if (!formData.preferredContact || typeof formData.preferredContact !== 'string') {
+    errors.push('Preferred contact method is required');
   }
   
   return { isValid: errors.length === 0, errors };
@@ -79,7 +100,7 @@ function containsSpam(data: ContactFormData): boolean {
     'bitcoin', 'cryptocurrency', 'investment opportunity', 'million dollars'
   ];
   
-  const content = `${data.name} ${data.email} ${data.message}`.toLowerCase();
+  const content = `${data.name} ${data.email} ${data.company || ''} ${data.message}`.toLowerCase();
   return spamKeywords.some(keyword => content.includes(keyword));
 }
 
@@ -108,7 +129,13 @@ export async function POST(request: NextRequest) {
     const formData: ContactFormData = {
       name: body.name.trim(),
       email: body.email.trim(),
-      message: body.message.trim()
+      company: body.company?.trim(),
+      phone: body.phone?.trim(),
+      category: body.category.trim(),
+      budget: body.budget?.trim(),
+      timeline: body.timeline?.trim(),
+      message: body.message.trim(),
+      preferredContact: body.preferredContact.trim()
     };
 
     // Basic spam detection
@@ -133,7 +160,7 @@ export async function POST(request: NextRequest) {
       await resend.emails.send({
         from: 'Contact Form <onboarding@resend.dev>', // You'll need to configure this with your domain
         to: ['francisco@example.com'], // Replace with your actual email
-        subject: `New Contact Form Message from ${formData.name}`,
+        subject: `New ${formData.category} inquiry from ${formData.name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #333; border-bottom: 2px solid #007acc; padding-bottom: 10px;">
@@ -144,6 +171,16 @@ export async function POST(request: NextRequest) {
               <h3 style="color: #555; margin-top: 0;">Contact Details</h3>
               <p><strong>Name:</strong> ${formData.name}</p>
               <p><strong>Email:</strong> ${formData.email}</p>
+              ${formData.company ? `<p><strong>Company:</strong> ${formData.company}</p>` : ''}
+              ${formData.phone ? `<p><strong>Phone:</strong> ${formData.phone}</p>` : ''}
+              <p><strong>Preferred Contact:</strong> ${formData.preferredContact}</p>
+            </div>
+            
+            <div style="background-color: #e8f5e8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #555; margin-top: 0;">Project Details</h3>
+              <p><strong>Category:</strong> ${formData.category}</p>
+              ${formData.budget ? `<p><strong>Budget:</strong> ${formData.budget}</p>` : ''}
+              ${formData.timeline ? `<p><strong>Timeline:</strong> ${formData.timeline}</p>` : ''}
             </div>
             
             <div style="background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
@@ -154,6 +191,7 @@ export async function POST(request: NextRequest) {
             <div style="margin-top: 20px; padding: 15px; background-color: #e3f2fd; border-radius: 8px;">
               <p style="margin: 0; font-size: 14px; color: #666;">
                 This message was sent from your portfolio contact form.
+                <br><strong>Preferred contact method:</strong> ${formData.preferredContact}
               </p>
             </div>
           </div>
