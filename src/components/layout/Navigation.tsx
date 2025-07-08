@@ -9,6 +9,7 @@ const navigationItems = [
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
   { name: 'Blog', href: '/blog' },
+  { name: 'Search', href: '/search' },
   { name: 'Contact', href: '/contact' },
 ];
 
