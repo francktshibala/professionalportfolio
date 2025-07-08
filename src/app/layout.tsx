@@ -86,6 +86,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <GoogleAnalytics />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+      >
         <PersonSchema 
           name="Francisco"
           jobTitle="Senior Full-Stack Developer"
@@ -111,11 +116,6 @@ export default function RootLayout({
           }}
         />
         <ProfessionalServiceSchema />
-        <GoogleAnalytics />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-      >
         <Header />
         <main className="flex-1">
           <PageTransition>
