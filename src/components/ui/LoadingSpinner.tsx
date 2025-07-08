@@ -25,6 +25,47 @@ export function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerPr
   );
 }
 
+export function LoadingDots({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex space-x-1 ${className}`}>
+      <MotionDiv 
+        className="w-2 h-2 bg-primary-600 rounded-full"
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 1, repeat: Infinity, delay: 0 }}
+      />
+      <MotionDiv 
+        className="w-2 h-2 bg-primary-600 rounded-full"
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
+      />
+      <MotionDiv 
+        className="w-2 h-2 bg-primary-600 rounded-full"
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
+      />
+    </div>
+  );
+}
+
+export function LoadingBar({ 
+  progress, 
+  className = ''
+}: { 
+  progress?: number; 
+  className?: string;
+}) {
+  return (
+    <div className={`w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 ${className}`}>
+      <MotionDiv
+        className="bg-primary-600 h-2 rounded-full"
+        initial={{ width: 0 }}
+        animate={{ width: progress ? `${progress}%` : '100%' }}
+        transition={{ duration: 0.5 }}
+      />
+    </div>
+  );
+}
+
 export function SkeletonCard() {
   return (
     <MotionDiv 
