@@ -9,8 +9,8 @@ import { PaginatedBlogPosts } from '@/types/blog';
 
 interface BlogClientPageProps {
   initialPosts: PaginatedBlogPosts;
-  tags: string[];
-  categories: string[];
+  tags: Array<{tag: string, count: number}>;
+  categories: Array<{category: string, count: number}>;
   currentPage: number;
   currentTag?: string;
   currentCategory?: string;

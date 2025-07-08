@@ -7,6 +7,9 @@ import { Card } from '@/components/ui/Card';
 import { MotionDiv } from '@/components/ui/MotionComponents';
 import { SocialShare } from './SocialShare';
 import { RelatedPosts } from './RelatedPosts';
+import { TableOfContents } from './TableOfContents';
+import { useBlogAnalytics } from '@/hooks/useBlogAnalytics';
+import { generateTableOfContents } from '@/lib/blog';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Tag, User } from 'lucide-react';
 
@@ -16,20 +19,32 @@ interface BlogPostLayoutProps {
 }
 
 export function BlogPostLayout({ post, relatedPosts }: BlogPostLayoutProps) {
+  const { trackInteraction } = useBlogAnalytics({
+    slug: post.slug,
+    title: post.title,
+    category: post.category,
+    tags: post.tags,
+    readingTime: post.readingTime,
+  });
+
+  const toc = generateTableOfContents(post.content);
+
   return (
     <Container>
-      <div className="max-w-4xl mx-auto">
-        <MotionDiv
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link href="/blog" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-8">
-            <ArrowLeft size={16} />
-            Back to Blog
-          </Link>
+      <div className="max-w-6xl mx-auto">
+        <div className="lg:flex lg:gap-8">
+          <div className="lg:w-3/4">
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link href="/blog" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-8">
+                <ArrowLeft size={16} />
+                Back to Blog
+              </Link>
 
-          <article className="prose prose-lg max-w-none">
+              <article className="prose prose-lg max-w-none">
             <header className="mb-8">
               <Typography variant="h1" className="mb-4">
                 {post.title}
@@ -100,13 +115,21 @@ export function BlogPostLayout({ post, relatedPosts }: BlogPostLayoutProps) {
               </div>
             </footer>
           </article>
-        </MotionDiv>
+            </MotionDiv>
 
-        {relatedPosts && relatedPosts.length > 0 && (
-          <div className="mt-16">
-            <RelatedPosts posts={relatedPosts} />
+            {relatedPosts && relatedPosts.length > 0 && (
+              <div className="mt-16">
+                <RelatedPosts posts={relatedPosts} />
+              </div>
+            )}
           </div>
-        )}
+
+          <div className="lg:w-1/4 mt-8 lg:mt-0">
+            <div className="sticky top-8 space-y-6">
+              <TableOfContents toc={toc} />
+            </div>
+          </div>
+        </div>
       </div>
     </Container>
   );

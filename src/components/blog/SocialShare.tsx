@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/Button';
 import { Typography } from '@/components/ui/Typography';
-import { Twitter, Linkedin, Facebook, Link as LinkIcon } from 'lucide-react';
+import { Twitter, Linkedin, Facebook, Link as LinkIcon, Mail, Printer, Bookmark } from 'lucide-react';
 import { useState } from 'react';
 
 interface SocialShareProps {
@@ -11,8 +11,9 @@ interface SocialShareProps {
   url: string;
 }
 
-export function SocialShare({ title, url }: SocialShareProps) {
+export function SocialShare({ title, description, url }: SocialShareProps) {
   const [copied, setCopied] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
   
   const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${url}` : url;
   
@@ -20,6 +21,7 @@ export function SocialShare({ title, url }: SocialShareProps) {
     twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(fullUrl)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`,
+    email: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`${description}\n\n${fullUrl}`)}`,
   };
 
   const handleCopyLink = async () => {
@@ -30,6 +32,26 @@ export function SocialShare({ title, url }: SocialShareProps) {
         setTimeout(() => setCopied(false), 2000);
       } catch (err) {
         console.error('Failed to copy link:', err);
+      }
+    }
+  };
+
+  const handlePrint = () => {
+    if (typeof window !== 'undefined') {
+      window.print();
+    }
+  };
+
+  const handleBookmark = () => {
+    setBookmarked(!bookmarked);
+    if (typeof window !== 'undefined') {
+      const bookmarks = JSON.parse(localStorage.getItem('bookmarked-posts') || '[]');
+      if (!bookmarked) {
+        bookmarks.push({ title, url, date: new Date().toISOString() });
+        localStorage.setItem('bookmarked-posts', JSON.stringify(bookmarks));
+      } else {
+        const filtered = bookmarks.filter((bookmark: any) => bookmark.url !== url);
+        localStorage.setItem('bookmarked-posts', JSON.stringify(filtered));
       }
     }
   };
@@ -71,11 +93,42 @@ export function SocialShare({ title, url }: SocialShareProps) {
         <Button
           variant="ghost"
           size="sm"
+          onClick={() => typeof window !== 'undefined' && window.open(shareUrls.email, '_blank')}
+          className="p-2"
+          title="Share via Email"
+        >
+          <Mail size={16} />
+        </Button>
+        
+        <Button
+          variant="ghost"
+          size="sm"
           onClick={handleCopyLink}
           className="p-2"
+          title="Copy Link"
         >
           <LinkIcon size={16} />
           {copied && <span className="ml-1 text-xs">Copied!</span>}
+        </Button>
+        
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handlePrint}
+          className="p-2"
+          title="Print"
+        >
+          <Printer size={16} />
+        </Button>
+        
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleBookmark}
+          className={`p-2 ${bookmarked ? 'text-yellow-500' : ''}`}
+          title={bookmarked ? 'Remove Bookmark' : 'Bookmark'}
+        >
+          <Bookmark size={16} fill={bookmarked ? 'currentColor' : 'none'} />
         </Button>
       </div>
     </div>

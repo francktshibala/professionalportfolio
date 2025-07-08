@@ -6,8 +6,8 @@ import { Card } from '@/components/ui/Card';
 import { Search, Filter, X } from 'lucide-react';
 
 interface BlogFiltersProps {
-  tags: string[];
-  categories: string[];
+  tags: Array<{tag: string, count: number}>;
+  categories: Array<{category: string, count: number}>;
   currentTag?: string;
   currentCategory?: string;
   currentSearch?: string;
@@ -93,14 +93,18 @@ export function BlogFilters({
         <div>
           <h4 className="font-medium mb-3">Categories</h4>
           <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
+            {categories.map(({ category, count }) => (
               <Button
                 key={category}
                 variant={currentCategory === category ? 'primary' : 'ghost'}
                 size="sm"
                 onClick={() => onCategoryChange(currentCategory === category ? undefined : category)}
+                className="flex items-center gap-1"
               >
-                {category}
+                <span>{category}</span>
+                <span className="text-xs bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5">
+                  {count}
+                </span>
               </Button>
             ))}
           </div>
@@ -109,14 +113,18 @@ export function BlogFilters({
         <div>
           <h4 className="font-medium mb-3">Tags</h4>
           <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
+            {tags.map(({ tag, count }) => (
               <Button
                 key={tag}
                 variant={currentTag === tag ? 'primary' : 'ghost'}
                 size="sm"
                 onClick={() => onTagChange(currentTag === tag ? undefined : tag)}
+                className="flex items-center gap-1"
               >
-                {tag}
+                <span>{tag}</span>
+                <span className="text-xs bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-0.5">
+                  {count}
+                </span>
               </Button>
             ))}
           </div>

@@ -47,7 +47,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const relatedPosts = await getRelatedPosts(post.slug, post.tags, 3);
+  const relatedPosts = await getRelatedPosts(post.slug, post.tags, post.category, 3);
 
   const mdxContent = <MDXRemote source={post.content as string} components={mdxComponents} />;
 

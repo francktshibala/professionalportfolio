@@ -1,7 +1,8 @@
 import { Container } from '@/components/ui/Container';
 import { Typography } from '@/components/ui/Typography';
 import { BlogClientPage } from '@/components/blog/BlogClientPage';
-import { getPaginatedBlogPosts, getAllTags, getAllCategories } from '@/lib/blog';
+import { AdvancedSearch } from '@/components/blog/AdvancedSearch';
+import { getPaginatedBlogPosts, getTagsWithCounts, getCategoriesWithCounts } from '@/lib/blog';
 
 interface BlogPageProps {
   searchParams: {
@@ -24,8 +25,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       category: currentCategory,
       search: currentSearch,
     }),
-    getAllTags(),
-    getAllCategories(),
+    getTagsWithCounts(),
+    getCategoriesWithCounts(),
   ]);
 
   return (
@@ -40,15 +41,23 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </Typography>
         </div>
 
-        <BlogClientPage
-          initialPosts={paginatedPosts}
-          tags={tags}
-          categories={categories}
-          currentPage={currentPage}
-          currentTag={currentTag}
-          currentCategory={currentCategory}
-          currentSearch={currentSearch}
-        />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <BlogClientPage
+              initialPosts={paginatedPosts}
+              tags={tags}
+              categories={categories}
+              currentPage={currentPage}
+              currentTag={currentTag}
+              currentCategory={currentCategory}
+              currentSearch={currentSearch}
+            />
+          </div>
+          
+          <div className="space-y-6">
+            <AdvancedSearch />
+          </div>
+        </div>
       </div>
     </Container>
   );
