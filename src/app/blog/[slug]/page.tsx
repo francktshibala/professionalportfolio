@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 import { BlogPostingSchema } from '@/components/seo/StructuredData';
 import { createMetadata } from '@/lib/metadata';
+import { generateTableOfContents } from '@/lib/toc';
 
 interface BlogPostPageProps {
   params: {
@@ -48,6 +49,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const relatedPosts = await getRelatedPosts(post.slug, post.tags, post.category, 3);
+  const toc = generateTableOfContents(post.content as string);
 
   const mdxContent = <MDXRemote source={post.content as string} components={mdxComponents} />;
 
@@ -68,6 +70,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           content: mdxContent,
         }}
         relatedPosts={relatedPosts}
+        toc={toc}
       />
     </>
   );

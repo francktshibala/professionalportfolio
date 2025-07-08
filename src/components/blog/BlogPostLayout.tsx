@@ -9,25 +9,23 @@ import { SocialShare } from './SocialShare';
 import { RelatedPosts } from './RelatedPosts';
 import { TableOfContents } from './TableOfContents';
 import { useBlogAnalytics } from '@/hooks/useBlogAnalytics';
-import { generateTableOfContents } from '@/lib/blog';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, Tag, User } from 'lucide-react';
 
 interface BlogPostLayoutProps {
   post: BlogPost;
   relatedPosts?: BlogPost[];
+  toc?: Array<{level: number, text: string, id: string}>;
 }
 
-export function BlogPostLayout({ post, relatedPosts }: BlogPostLayoutProps) {
-  const { trackInteraction } = useBlogAnalytics({
+export function BlogPostLayout({ post, relatedPosts, toc = [] }: BlogPostLayoutProps) {
+  useBlogAnalytics({
     slug: post.slug,
     title: post.title,
     category: post.category,
     tags: post.tags,
     readingTime: post.readingTime,
   });
-
-  const toc = generateTableOfContents(post.content);
 
   return (
     <Container>

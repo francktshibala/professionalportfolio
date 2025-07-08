@@ -16,6 +16,8 @@ export function useBlogAnalytics(data: BlogAnalyticsData) {
   const isReadingRef = useRef<boolean>(false);
 
   useEffect(() => {
+    const startTimeValue = startTime.current;
+    
     const trackPageView = () => {
       if (typeof window !== 'undefined' && window.gtag) {
         window.gtag('event', 'page_view', {
@@ -52,7 +54,7 @@ export function useBlogAnalytics(data: BlogAnalyticsData) {
 
     const trackReadingTime = () => {
       const currentTime = Date.now();
-      const timeOnPage = Math.round((currentTime - startTime.current) / 1000);
+      const timeOnPage = Math.round((currentTime - startTimeValue) / 1000);
       
       if (timeOnPage >= 30 && !isReadingRef.current) {
         isReadingRef.current = true;
@@ -60,7 +62,7 @@ export function useBlogAnalytics(data: BlogAnalyticsData) {
       }
     };
 
-    const trackEvent = (eventName: string, parameters: any = {}) => {
+    const trackEvent = (eventName: string, parameters: Record<string, unknown> = {}) => {
       if (typeof window !== 'undefined' && window.gtag) {
         window.gtag('event', eventName, {
           content_title: data.title,
@@ -72,7 +74,7 @@ export function useBlogAnalytics(data: BlogAnalyticsData) {
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        const timeOnPage = Math.round((Date.now() - startTime.current) / 1000);
+        const timeOnPage = Math.round((Date.now() - startTimeValue) / 1000);
         trackEvent('time_on_page', { duration: timeOnPage });
       }
     };
@@ -91,7 +93,7 @@ export function useBlogAnalytics(data: BlogAnalyticsData) {
       window.removeEventListener('scroll', scrollHandler);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       
-      const finalTime = Math.round((Date.now() - startTime.current) / 1000);
+      const finalTime = Math.round((Date.now() - startTimeValue) / 1000);
       trackEvent('session_end', { 
         duration: finalTime, 
         max_scroll: maxScrollRef.current 
@@ -99,7 +101,7 @@ export function useBlogAnalytics(data: BlogAnalyticsData) {
     };
   }, [data]);
 
-  const trackInteraction = (action: string, details?: any) => {
+  const trackInteraction = (action: string, details?: Record<string, unknown>) => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', action, {
         content_title: data.title,

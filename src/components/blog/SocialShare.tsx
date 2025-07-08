@@ -50,7 +50,7 @@ export function SocialShare({ title, description, url }: SocialShareProps) {
         bookmarks.push({ title, url, date: new Date().toISOString() });
         localStorage.setItem('bookmarked-posts', JSON.stringify(bookmarks));
       } else {
-        const filtered = bookmarks.filter((bookmark: any) => bookmark.url !== url);
+        const filtered = bookmarks.filter((bookmark: { url: string }) => bookmark.url !== url);
         localStorage.setItem('bookmarked-posts', JSON.stringify(filtered));
       }
     }

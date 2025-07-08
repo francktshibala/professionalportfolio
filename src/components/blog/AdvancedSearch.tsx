@@ -5,7 +5,6 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Typography } from '@/components/ui/Typography';
 import { Search, Loader2, X } from 'lucide-react';
-import { BlogPost } from '@/types/blog';
 import Link from 'next/link';
 
 interface SearchResult {

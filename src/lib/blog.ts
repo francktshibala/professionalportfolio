@@ -130,6 +130,7 @@ export async function getRelatedPosts(currentSlug: string, tags: string[], categ
     scoredPosts.push(...additionalPosts.map(post => ({ ...post, score: 0 })));
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return scoredPosts.map(({ score, ...post }) => post);
 }
 
@@ -217,7 +218,7 @@ export async function searchBlogContent(query: string): Promise<BlogPost[]> {
   const searchTerm = query.toLowerCase();
   
   return posts.filter(post => {
-    const contentMatch = post.content.toLowerCase().includes(searchTerm);
+    const contentMatch = typeof post.content === 'string' ? post.content.toLowerCase().includes(searchTerm) : false;
     const titleMatch = post.title.toLowerCase().includes(searchTerm);
     const descriptionMatch = post.description.toLowerCase().includes(searchTerm);
     const tagMatch = post.tags.some(tag => tag.toLowerCase().includes(searchTerm));
@@ -227,18 +228,3 @@ export async function searchBlogContent(query: string): Promise<BlogPost[]> {
   });
 }
 
-export function generateTableOfContents(content: string): Array<{level: number, text: string, id: string}> {
-  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
-  const toc: Array<{level: number, text: string, id: string}> = [];
-  let match;
-  
-  while ((match = headingRegex.exec(content)) !== null) {
-    const level = match[1].length;
-    const text = match[2].trim();
-    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    
-    toc.push({ level, text, id });
-  }
-  
-  return toc;
-}
