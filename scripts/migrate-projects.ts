@@ -67,11 +67,11 @@ async function migrateProjects() {
         authorId: user.id,
         
         // Store rich content as JSON
-        caseStudy: project.caseStudy || null,
-        metrics: project.metrics || null,
-        testimonial: project.testimonial || null,
-        images: project.images || null,
-        seo: project.seo || null,
+        caseStudy: project.caseStudy as any || null,
+        metrics: project.metrics as any || null,
+        testimonial: project.testimonial as any || null,
+        images: project.images as any || null,
+        seo: project.seo as any || null,
         
         categories: {
           connect: { id: category.id },
