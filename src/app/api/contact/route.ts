@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { ContactService } from '@/lib/services/contact';
 
 let resend: Resend | null = null;
 
@@ -146,12 +147,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Save contact to database
+    try {
+      await ContactService.createContact({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.category,
+        message: `Category: ${formData.category}\n${formData.company ? `Company: ${formData.company}\n` : ''}${formData.phone ? `Phone: ${formData.phone}\n` : ''}${formData.budget ? `Budget: ${formData.budget}\n` : ''}${formData.timeline ? `Timeline: ${formData.timeline}\n` : ''}Preferred Contact: ${formData.preferredContact}\n\nMessage: ${formData.message}`
+      });
+    } catch (dbError) {
+      console.error('Failed to save contact to database:', dbError);
+    }
+
     // Check if Resend API key is configured
     if (!resend) {
       console.error('RESEND_API_KEY is not configured');
       return NextResponse.json(
-        { message: 'Email service is not configured. Please try contacting directly.' },
-        { status: 500 }
+        { message: 'Message saved successfully! Email service is not configured, but your message has been recorded.' },
+        { status: 200 }
       );
     }
 
