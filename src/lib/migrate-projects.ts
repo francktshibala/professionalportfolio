@@ -40,6 +40,9 @@ export class ProjectMigrationService {
    * Migrate a single project with validation and error handling
    */
   private static async migrateProject(staticProject: StaticProject, authorId: string): Promise<void> {
+    console.log(`⏭️  Skipping migration for project ${staticProject.id} - migration temporarily disabled for deployment`);
+    return;
+    /* TEMPORARILY DISABLED FOR DEPLOYMENT - WILL RE-ENABLE AFTER SITE IS LIVE
     try {
       // Transform static project to database format
       const projectData = ProjectAdapter.staticToDatabase(staticProject, authorId);
@@ -127,6 +130,7 @@ export class ProjectMigrationService {
       console.error(`❌ Failed to migrate project ${staticProject.title}:`, error);
       throw error;
     }
+    */
   }
 
   /**
