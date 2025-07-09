@@ -15,6 +15,25 @@ export default function AdminLogin() {
     setError('')
 
     try {
+      // First, test the authentication mechanism
+      const testResponse = await fetch('/api/admin/auth/test', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ testKey: apiKey })
+      })
+
+      if (testResponse.ok) {
+        const testData = await testResponse.json()
+        console.log('Auth test result:', testData)
+        
+        if (!testData.data.envKeyExists) {
+          setError('Server configuration error: Admin API key not configured')
+          return
+        }
+      }
+
       // Test the API key by making a request to an admin endpoint
       const response = await fetch('/api/admin/contacts', {
         headers: {
@@ -27,7 +46,8 @@ export default function AdminLogin() {
         sessionStorage.setItem('adminApiKey', apiKey)
         router.push('/admin')
       } else {
-        setError('Invalid API key')
+        const errorData = await response.json()
+        setError(`Invalid API key: ${errorData.error || 'Authentication failed'}`)
       }
     } catch (err) {
       setError('Authentication failed')
