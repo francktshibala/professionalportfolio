@@ -48,7 +48,8 @@ export function validateRequired(fields: Record<string, unknown>, requiredFields
   const errors: string[] = []
   
   for (const field of requiredFields) {
-    if (!fields[field] || (typeof fields[field] === 'string' && fields[field].trim() === '')) {
+    const value = fields[field]
+    if (!value || (typeof value === 'string' && value.trim() === '')) {
       errors.push(`${field} is required`)
     }
   }
