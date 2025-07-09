@@ -41,7 +41,7 @@ export default function AdminAnalytics() {
   useEffect(() => {
     fetchAnalytics()
     fetchStats()
-  }, [timeRange])
+  }, [timeRange]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchAnalytics = async () => {
     try {
@@ -82,22 +82,22 @@ export default function AdminAnalytics() {
       setStats({
         projects: {
           total: projects.length,
-          published: projects.filter((p: any) => p.status === 'ACTIVE').length,
-          draft: projects.filter((p: any) => p.status === 'DRAFT').length
+          published: projects.filter((p: { status: string }) => p.status === 'ACTIVE').length,
+          draft: projects.filter((p: { status: string }) => p.status === 'DRAFT').length
         },
         posts: {
           total: posts.length,
-          published: posts.filter((p: any) => p.published).length,
-          draft: posts.filter((p: any) => !p.published).length
+          published: posts.filter((p: { published: boolean }) => p.published).length,
+          draft: posts.filter((p: { published: boolean }) => !p.published).length
         },
         skills: {
           total: skills.length,
-          featured: skills.filter((s: any) => s.featured).length
+          featured: skills.filter((s: { featured: boolean }) => s.featured).length
         },
         contacts: {
           total: contacts.length,
-          unread: contacts.filter((c: any) => c.status === 'UNREAD').length,
-          replied: contacts.filter((c: any) => c.status === 'REPLIED').length
+          unread: contacts.filter((c: { status: string }) => c.status === 'UNREAD').length,
+          replied: contacts.filter((c: { status: string }) => c.status === 'REPLIED').length
         }
       })
     } catch (error) {

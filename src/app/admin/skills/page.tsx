@@ -325,7 +325,7 @@ export default function AdminSkills() {
                       <label className="block text-sm font-medium text-gray-700">Category</label>
                       <select
                         value={formData.category}
-                        onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
+                        onChange={(e) => setFormData({ ...formData, category: e.target.value as 'FRONTEND' | 'BACKEND' | 'DATABASE' | 'DEVOPS' | 'MOBILE' | 'DESIGN' | 'OTHER' })}
                         className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
                       >
                         {categories.map(cat => (
@@ -337,7 +337,7 @@ export default function AdminSkills() {
                       <label className="block text-sm font-medium text-gray-700">Level</label>
                       <select
                         value={formData.level}
-                        onChange={(e) => setFormData({ ...formData, level: e.target.value as any })}
+                        onChange={(e) => setFormData({ ...formData, level: e.target.value as 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT' })}
                         className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
                       >
                         {levels.map(level => (

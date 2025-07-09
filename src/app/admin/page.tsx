@@ -63,7 +63,7 @@ export default function AdminDashboard() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Dashboard Overview</h1>
           <p className="mt-1 text-sm text-gray-600">
-            Welcome to your admin dashboard. Here's an overview of your content.
+            Welcome to your admin dashboard. Here&apos;s an overview of your content.
           </p>
         </div>
 
