@@ -54,7 +54,23 @@ export class ProjectMigrationService {
         await prisma.project.update({
           where: { slug: projectData.slug },
           data: {
-            ...projectData,
+            title: projectData.title,
+            description: projectData.description,
+            longDescription: projectData.longDescription,
+            image: projectData.image,
+            liveUrl: projectData.liveUrl,
+            githubUrl: projectData.githubUrl,
+            technologies: projectData.technologies,
+            featured: projectData.featured,
+            status: projectData.status,
+            startDate: projectData.startDate,
+            endDate: projectData.endDate,
+            authorId: projectData.authorId,
+            caseStudy: projectData.caseStudy as any,
+            metrics: projectData.metrics as any,
+            testimonial: projectData.testimonial as any,
+            images: projectData.images as any,
+            seo: projectData.seo as any,
             // Connect to category
             categories: {
               connectOrCreate: [{
@@ -72,7 +88,23 @@ export class ProjectMigrationService {
         console.log(`🆕 Creating new project: ${projectData.slug}`);
         await prisma.project.create({
           data: {
-            ...projectData,
+            title: projectData.title,
+            description: projectData.description,
+            longDescription: projectData.longDescription,
+            image: projectData.image,
+            liveUrl: projectData.liveUrl,
+            githubUrl: projectData.githubUrl,
+            technologies: projectData.technologies,
+            featured: projectData.featured,
+            status: projectData.status,
+            startDate: projectData.startDate,
+            endDate: projectData.endDate,
+            authorId: projectData.authorId,
+            caseStudy: projectData.caseStudy as any,
+            metrics: projectData.metrics as any,
+            testimonial: projectData.testimonial as any,
+            images: projectData.images as any,
+            seo: projectData.seo as any,
             // Connect to category
             categories: {
               connectOrCreate: [{
