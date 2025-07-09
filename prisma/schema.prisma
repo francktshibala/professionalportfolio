@@ -1,0 +1,177 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String?
+  content     String
+  published   Boolean  @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  readTime    Int?     @default(0)
+  tags        String[]
+  featured    Boolean  @default(false)
+  views       Int      @default(0)
+  likes       Int      @default(0)
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
+  categories  PostCategory[]
+
+  @@map("posts")
+  @@index([slug])
+  @@index([publishedAt])
+  @@index([featured])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  bio       String?
+  avatar    String?
+  website   String?
+  github    String?
+  twitter   String?
+  linkedin  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+  projects  Project[]
+
+  @@map("users")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String
+  longDescription String?
+  image       String?
+  liveUrl     String?
+  githubUrl   String?
+  technologies String[]
+  featured    Boolean  @default(false)
+  status      ProjectStatus @default(ACTIVE)
+  startDate   DateTime?
+  endDate     DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  views       Int      @default(0)
+  likes       Int      @default(0)
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
+  categories  ProjectCategory[]
+
+  @@map("projects")
+  @@index([slug])
+  @@index([featured])
+  @@index([status])
+}
+
+model Skill {
+  id          String      @id @default(cuid())
+  name        String      @unique
+  category    SkillCategory
+  level       SkillLevel
+  description String?
+  icon        String?
+  color       String?
+  order       Int         @default(0)
+  featured    Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("skills")
+  @@index([category])
+  @@index([featured])
+}
+
+model PostCategory {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  color     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+
+  @@map("post_categories")
+}
+
+model ProjectCategory {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  color     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  projects  Project[]
+
+  @@map("project_categories")
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  replied   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contacts")
+  @@index([replied])
+  @@index([createdAt])
+}
+
+model Analytics {
+  id        String   @id @default(cuid())
+  path      String
+  visits    Int      @default(1)
+  date      DateTime @default(now())
+  userAgent String?
+  referrer  String?
+  country   String?
+  city      String?
+
+  @@map("analytics")
+  @@index([path])
+  @@index([date])
+  @@unique([path, date])
+}
+
+enum ProjectStatus {
+  ACTIVE
+  ARCHIVED
+  DRAFT
+  MAINTENANCE
+}
+
+enum SkillCategory {
+  FRONTEND
+  BACKEND
+  DATABASE
+  DEVOPS
+  MOBILE
+  DESIGN
+  TESTING
+  OTHER
+}
+
+enum SkillLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
