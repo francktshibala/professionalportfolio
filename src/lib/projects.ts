@@ -1,4 +1,4 @@
-import { Project, Technology } from '@/types';
+import { StaticProject, Technology, StaticProjectStatus } from '@/types';
 
 export const technologies: Technology[] = [
   { name: 'Next.js 14', category: 'frontend', color: '#000000' },
@@ -20,7 +20,7 @@ export const technologies: Technology[] = [
   { name: 'Framer Motion', category: 'frontend', color: '#0055FF' },
 ];
 
-export const projects: Project[] = [
+export const projects: StaticProject[] = [
   {
     id: 'enterprise-ecommerce',
     title: 'Enterprise E-commerce Platform',
@@ -524,29 +524,29 @@ export const projects: Project[] = [
   }
 ];
 
-export function getProjectById(id: string): Project | undefined {
+export function getProjectById(id: string): StaticProject | undefined {
   return projects.find(project => project.id === id);
 }
 
-export function getFeaturedProjects(): Project[] {
+export function getFeaturedProjects(): StaticProject[] {
   return projects.filter(project => project.featured).sort((a, b) => a.priority - b.priority);
 }
 
-export function getProjectsByCategory(category: string): Project[] {
+export function getProjectsByCategory(category: string): StaticProject[] {
   return projects.filter(project => project.category === category);
 }
 
-export function getProjectsByTechnology(technology: string): Project[] {
+export function getProjectsByTechnology(technology: string): StaticProject[] {
   return projects.filter(project => 
     project.technologies.some(tech => tech.name.toLowerCase().includes(technology.toLowerCase()))
   );
 }
 
-export function getProjectsByYear(year: number): Project[] {
+export function getProjectsByYear(year: number): StaticProject[] {
   return projects.filter(project => project.year === year);
 }
 
-export function searchProjects(query: string): Project[] {
+export function searchProjects(query: string): StaticProject[] {
   const lowercaseQuery = query.toLowerCase();
   return projects.filter(project =>
     project.title.toLowerCase().includes(lowercaseQuery) ||

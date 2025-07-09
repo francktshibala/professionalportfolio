@@ -1,4 +1,5 @@
-export interface Project {
+// Static project interface (for lib/projects.ts)
+export interface StaticProject {
   id: string;
   title: string;
   description: string;
@@ -7,7 +8,7 @@ export interface Project {
   technologies: Technology[];
   tags: string[];
   year: number;
-  status: ProjectStatus;
+  status: StaticProjectStatus;
   featured: boolean;
   priority: number;
   
@@ -28,6 +29,34 @@ export interface Project {
   
   createdAt: string;
   updatedAt: string;
+}
+
+// Database project interface (matches Prisma schema exactly)
+export interface Project {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  longDescription: string | null;
+  image: string | null;
+  liveUrl: string | null;
+  githubUrl: string | null;
+  technologies: string[];
+  featured: boolean;
+  status: ProjectStatus;
+  startDate: Date | null;
+  endDate: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
+  views: number;
+  likes: number;
+  authorId: string;
+  categories?: ProjectCategory[];
+  author?: {
+    id: string;
+    name: string | null;
+    email: string;
+  };
 }
 
 export interface ProjectImage {
@@ -103,17 +132,25 @@ export type TechCategory =
   | 'devops' 
   | 'design';
 
-export type ProjectStatus = 
+// Static project status (for lib/projects.ts)
+export type StaticProjectStatus = 
   | 'completed' 
   | 'in-progress' 
   | 'maintenance' 
   | 'archived';
 
+// Database project status (matches Prisma schema)
+export type ProjectStatus = 
+  | 'ACTIVE' 
+  | 'ARCHIVED' 
+  | 'DRAFT' 
+  | 'MAINTENANCE';
+
 export interface ProjectFilters {
   categories: ProjectCategory[];
   technologies: string[];
   years: number[];
-  status: ProjectStatus[];
+  status: StaticProjectStatus[];
   search: string;
 }
 
