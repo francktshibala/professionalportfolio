@@ -78,7 +78,7 @@ export class ProjectAdapter {
       githubUrl: staticProject.githubUrl || null,
       technologies: staticProject.technologies.map(t => t.name),
       featured: staticProject.featured,
-      status: this.mapStaticStatus(staticProject.status),
+      status: this.mapStaticStatus(staticProject.status) as any,
       startDate: new Date(`${staticProject.year}-01-01`),
       endDate: staticProject.status === 'completed' ? new Date(`${staticProject.year}-12-31`) : null,
       authorId,
