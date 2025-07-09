@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAllBlogPosts } from '@/lib/blog';
 import { Project } from '@/types';
 import { BlogPost } from '@/types/blog';
-import { prisma } from '@/lib/prisma';
+import { db } from '@/lib/db';
 
 export async function GET(request: NextRequest) {
   try {
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
         };
       }
       
-      const projects = await prisma.project.findMany({
+      const projects = await db.project.findMany({
         where: whereClause,
         include: {
           categories: true,
