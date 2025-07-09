@@ -44,7 +44,7 @@ export function isAuthenticated(request: NextRequest): boolean {
 }
 
 // Input validation utilities
-export function validateRequired(fields: Record<string, any>, requiredFields: string[]): string[] {
+export function validateRequired(fields: Record<string, unknown>, requiredFields: string[]): string[] {
   const errors: string[] = []
   
   for (const field of requiredFields) {
@@ -78,7 +78,7 @@ export function createErrorResponse(message: string, status = 400) {
   )
 }
 
-export function createSuccessResponse(data: any, status = 200) {
+export function createSuccessResponse(data: unknown, status = 200) {
   return Response.json(
     { success: true, data },
     { status }

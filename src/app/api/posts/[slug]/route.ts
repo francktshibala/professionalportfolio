@@ -67,7 +67,7 @@ export async function PUT(
       )
     }
 
-    const updateData: any = {}
+    const updateData: Record<string, unknown> = {}
     if (title !== undefined) updateData.title = title
     if (slug !== undefined) updateData.slug = slug
     if (excerpt !== undefined) updateData.excerpt = excerpt

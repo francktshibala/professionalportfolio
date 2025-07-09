@@ -67,9 +67,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const clientIP = request.headers.get('x-forwarded-for') || 
-                     request.headers.get('x-real-ip') || 
-                     'unknown'
 
     await AnalyticsService.trackPageView({
       path,

@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { SkillService } from '@/lib/services/skills'
 import { SkillCategory } from '@prisma/client'
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const categories = await SkillService.getSkillCategories()
     

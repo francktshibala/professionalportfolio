@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ProjectService } from '@/lib/services/projects'
 import { db } from '@/lib/db'
-import { ProjectStatus } from '@prisma/client'
 
 export async function GET(
   request: NextRequest,
@@ -71,7 +70,7 @@ export async function PUT(
       )
     }
 
-    const updateData: any = {}
+    const updateData: Record<string, unknown> = {}
     if (title !== undefined) updateData.title = title
     if (slug !== undefined) updateData.slug = slug
     if (description !== undefined) updateData.description = description

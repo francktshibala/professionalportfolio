@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ProjectService } from '@/lib/services/projects'
-import { getRateLimitKey, isRateLimited, createErrorResponse, createSuccessResponse } from '@/lib/api-utils'
+import { getRateLimitKey, isRateLimited } from '@/lib/api-utils'
 
 export async function GET(request: NextRequest) {
   try {

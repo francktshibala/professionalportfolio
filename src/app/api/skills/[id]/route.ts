@@ -67,7 +67,7 @@ export async function PUT(
       )
     }
 
-    const updateData: any = {}
+    const updateData: Record<string, unknown> = {}
     if (name !== undefined) updateData.name = name
     if (category !== undefined) {
       if (!Object.values(SkillCategory).includes(category)) {
