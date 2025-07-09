@@ -2,9 +2,7 @@ import { notFound } from 'next/navigation';
 import { Container } from '@/components/ui/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import { Card } from '@/components/ui/Card';
-import { ProjectGallery } from '@/components/projects/ProjectGallery';
-import { Project } from '@/types';
-import { db } from '@/lib/db';
+import { getProjectById, projects } from '@/lib/projects';
 import Link from 'next/link';
 
 interface ProjectPageProps {
@@ -14,25 +12,13 @@ interface ProjectPageProps {
 }
 
 export async function generateStaticParams() {
-  const projects = await db.project.findMany({
-    select: { slug: true }
-  });
-  
   return projects.map((project) => ({
-    slug: project.slug,
+    slug: project.id,
   }));
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const project = await db.project.findUnique({
-    where: { slug: params.slug },
-    include: {
-      categories: true,
-      author: {
-        select: { name: true }
-      }
-    }
-  });
+  const project = getProjectById(params.slug);
   
   if (!project) {
     return {
@@ -41,30 +27,22 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   }
 
   return {
-    title: `${project.title} | Project Portfolio`,
-    description: project.description,
+    title: project.seo.metaTitle,
+    description: project.seo.metaDescription,
+    keywords: project.seo.keywords.join(', '),
     openGraph: {
-      title: project.title,
-      description: project.description,
-      images: project.image ? [{ url: project.image, alt: project.title }] : [],
+      title: project.seo.metaTitle,
+      description: project.seo.metaDescription,
+      images: project.images.filter(img => img.type === 'hero').map(img => ({
+        url: img.url,
+        alt: img.alt,
+      })),
     },
   };
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project = await db.project.findUnique({
-    where: { slug: params.slug },
-    include: {
-      categories: true,
-      author: {
-        select: {
-          id: true,
-          name: true,
-          email: true
-        }
-      }
-    }
-  });
+export default function ProjectPage({ params }: ProjectPageProps) {
+  const project = getProjectById(params.slug);
 
   if (!project) {
     notFound();
@@ -74,40 +52,33 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <Container className="py-12">
       {/* Header */}
       <div className="mb-12">
-        <Link 
-          href="/projects"
-          className="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 mb-6 group"
-        >
-          <svg className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Projects
-        </Link>
-        
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
-          <div>
+        <div className="flex items-start justify-between gap-8">
+          <div className="flex-1">
             <div className="flex items-center gap-4 mb-4">
-              <Heading size="h1" className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-                {project.title}
-              </Heading>
-              <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusStyles(project.status)}`}>
-                {project.status.replace('-', ' ')}
-              </span>
+              <Link
+                href="/projects"
+                className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+              >
+                ← Back to Projects
+              </Link>
               {project.featured && (
-                <span className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full text-xs font-semibold">
+                <span className="px-3 py-1 bg-accent-100 dark:bg-accent-900 text-accent-800 dark:text-accent-200 rounded-full text-sm font-medium">
                   Featured
                 </span>
               )}
             </div>
+            <Heading size="h1" className="mb-4 bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
+              {project.title}
+            </Heading>
             <Text className="text-xl text-secondary-700 dark:text-secondary-300 max-w-4xl">
               {project.description}
             </Text>
           </div>
           
           <div className="flex gap-3 flex-shrink-0">
-            {project.liveUrl && (
+            {project.demoUrl && (
               <a 
-                href={project.liveUrl} 
+                href={project.demoUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95 bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 shadow-md hover:shadow-lg h-10 px-4 py-2"
@@ -138,20 +109,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className="grid lg:grid-cols-3 gap-12">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-12">
-          {/* Project Description */}
+          {/* Project Overview */}
           <div className="space-y-6">
             <div>
               <Heading as="h2" className="text-2xl font-bold mb-4">
-                About This Project
+                Project Overview
               </Heading>
               <Text className="text-lg leading-relaxed">
-                {project.description}
+                {project.shortDescription}
               </Text>
-              {project.longDescription && (
-                <Text className="mt-4 leading-relaxed">
-                  {project.longDescription}
-                </Text>
-              )}
             </div>
 
             {/* Technologies */}
@@ -162,67 +128,65 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
                   <span
-                    key={tech}
+                    key={tech.name}
                     className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium"
                   >
-                    {tech}
+                    {tech.name}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Categories */}
-            {project.categories && project.categories.length > 0 && (
-              <div>
-                <Heading as="h3" className="text-xl font-semibold mb-3">
-                  Categories
-                </Heading>
-                <div className="flex flex-wrap gap-2">
-                  {project.categories.map((category) => (
-                    <span
-                      key={category.id}
-                      className="px-3 py-1 bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300 rounded-full text-sm font-medium"
-                    >
-                      {category.name}
-                    </span>
-                  ))}
-                </div>
+            {/* Tags */}
+            <div>
+              <Heading as="h3" className="text-xl font-semibold mb-3">
+                Tags
+              </Heading>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300 rounded-full text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            )}
+            </div>
           </div>
         </div>
 
         {/* Sidebar */}
         <div className="space-y-8">
-          {/* Project Stats */}
+          {/* Project Details */}
           <Card>
             <div className="space-y-4">
               <Heading as="h3" className="text-lg font-semibold">
-                Project Stats
+                Project Details
               </Heading>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-3">
                 <div>
                   <Text className="text-sm text-secondary-600 dark:text-secondary-400">
-                    Views
+                    Category
                   </Text>
-                  <Text className="text-xl font-bold">
-                    {project.views.toLocaleString()}
+                  <Text className="text-sm font-medium capitalize">
+                    {project.category.replace('-', ' ')}
                   </Text>
                 </div>
                 <div>
                   <Text className="text-sm text-secondary-600 dark:text-secondary-400">
-                    Likes
+                    Year
                   </Text>
-                  <Text className="text-xl font-bold">
-                    {project.likes.toLocaleString()}
+                  <Text className="text-sm font-medium">
+                    {project.year}
                   </Text>
                 </div>
                 <div>
                   <Text className="text-sm text-secondary-600 dark:text-secondary-400">
                     Status
                   </Text>
-                  <Text className="text-sm font-medium">
-                    {project.status}
+                  <Text className="text-sm font-medium capitalize">
+                    {project.status.replace('-', ' ')}
                   </Text>
                 </div>
                 <div>
@@ -237,336 +201,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </Card>
 
-          {/* Project Timeline */}
-          <Card>
-            <div className="space-y-4">
-              <Heading as="h3" className="text-lg font-semibold">
-                Timeline
-              </Heading>
-              <div className="space-y-2">
-                {project.startDate && (
-                  <div>
-                    <Text className="text-sm text-secondary-600 dark:text-secondary-400">
-                      Started
-                    </Text>
-                    <Text className="text-sm font-medium">
-                      {new Date(project.startDate).toLocaleDateString()}
-                    </Text>
-                  </div>
-                )}
-                {project.endDate && (
-                  <div>
-                    <Text className="text-sm text-secondary-600 dark:text-secondary-400">
-                      Completed
-                    </Text>
-                    <Text className="text-sm font-medium">
-                      {new Date(project.endDate).toLocaleDateString()}
-                    </Text>
-                  </div>
-                )}
-                <div>
-                  <Text className="text-sm text-secondary-600 dark:text-secondary-400">
-                    Last Updated
-                  </Text>
-                  <Text className="text-sm font-medium">
-                    {new Date(project.updatedAt).toLocaleDateString()}
-                  </Text>
+          {/* Key Metrics */}
+          {project.metrics && (
+            <Card>
+              <div className="space-y-4">
+                <Heading as="h3" className="text-lg font-semibold">
+                  Key Metrics
+                </Heading>
+                <div className="grid grid-cols-1 gap-3">
+                  {Object.entries(project.metrics).map(([key, value]) => (
+                    <div key={key}>
+                      <Text className="text-sm text-secondary-600 dark:text-secondary-400 capitalize">
+                        {key.replace(/([A-Z])/g, ' $1').trim()}
+                      </Text>
+                      <Text className="text-lg font-bold">
+                        {value}
+                      </Text>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          )}
         </div>
       </div>
     </Container>
   );
-}
-
-function CaseStudySection({ project }: { project: Project }) {
-  return (
-    <div className="space-y-8">
-      <Heading as="h2" className="text-3xl font-bold text-secondary-900 dark:text-secondary-100">
-        Case Study
-      </Heading>
-
-      {/* Problem */}
-      <div>
-        <Heading as="h3" className="text-xl font-semibold text-red-600 dark:text-red-400 mb-4 flex items-center">
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.664-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
-          </svg>
-          The Problem
-        </Heading>
-        <Text className="text-secondary-700 dark:text-secondary-300 leading-relaxed">
-          {project.caseStudy.problem}
-        </Text>
-      </div>
-
-      {/* Solution */}
-      <div>
-        <Heading as="h3" className="text-xl font-semibold text-green-600 dark:text-green-400 mb-4 flex items-center">
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          The Solution
-        </Heading>
-        <Text className="text-secondary-700 dark:text-secondary-300 leading-relaxed">
-          {project.caseStudy.solution}
-        </Text>
-      </div>
-
-      {/* Approach */}
-      <div>
-        <Heading as="h3" className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4 flex items-center">
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-          Our Approach
-        </Heading>
-        <ul className="space-y-3">
-          {project.caseStudy.approach.map((step, index) => (
-            <li key={index} className="flex items-start">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">
-                {index + 1}
-              </span>
-              <Text className="text-secondary-700 dark:text-secondary-300 leading-relaxed">
-                {step}
-              </Text>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Challenges */}
-      {project.caseStudy.challenges.length > 0 && (
-        <div>
-          <Heading as="h3" className="text-xl font-semibold text-orange-600 dark:text-orange-400 mb-4 flex items-center">
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-            Key Challenges
-          </Heading>
-          <div className="space-y-4">
-            {project.caseStudy.challenges.map((challenge, index) => (
-              <Card key={index} className="p-4 border-l-4 border-orange-500">
-                <Heading as="h4" className="font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
-                  {challenge.title}
-                </Heading>
-                <Text className="text-secondary-700 dark:text-secondary-300 mb-3">
-                  {challenge.description}
-                </Text>
-                <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
-                  <Text className="text-green-800 dark:text-green-300 font-medium">
-                    Solution: {challenge.solution}
-                  </Text>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Results */}
-      <div>
-        <Heading as="h3" className="text-xl font-semibold text-purple-600 dark:text-purple-400 mb-4 flex items-center">
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          Results & Impact
-        </Heading>
-        <div className="grid sm:grid-cols-2 gap-4 mb-6">
-          {project.caseStudy.results.map((result, index) => (
-            <div key={index} className="flex items-start bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950 p-4 rounded-lg">
-              <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <Text className="text-secondary-700 dark:text-secondary-300 leading-relaxed">
-                {result}
-              </Text>
-            </div>
-          ))}
-        </div>
-        <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 p-6 rounded-lg">
-          <Text className="text-purple-800 dark:text-purple-300 font-medium text-lg">
-            {project.caseStudy.impact}
-          </Text>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TechnologiesSection({ project }: { project: Project }) {
-  const techByCategory = project.technologies.reduce((acc, tech) => {
-    if (!acc[tech.category]) {
-      acc[tech.category] = [];
-    }
-    acc[tech.category].push(tech);
-    return acc;
-  }, {} as Record<string, typeof project.technologies>);
-
-  return (
-    <div>
-      <Heading as="h2" className="text-3xl font-bold text-secondary-900 dark:text-secondary-100 mb-8">
-        Technologies Used
-      </Heading>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Object.entries(techByCategory).map(([category, techs]) => (
-          <Card key={category} className="p-6">
-            <Heading as="h3" className="font-semibold text-secondary-900 dark:text-secondary-100 mb-4 capitalize">
-              {category.replace('-', ' ')}
-            </Heading>
-            <div className="space-y-3">
-              {techs.map((tech) => (
-                <div key={tech.name} className="flex items-center">
-                  <div
-                    className="w-4 h-4 rounded-sm mr-3"
-                    style={{ backgroundColor: tech.color }}
-                  />
-                  <Text className="text-secondary-700 dark:text-secondary-300">
-                    {tech.name}
-                  </Text>
-                </div>
-              ))}
-            </div>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function TestimonialSection({ testimonial }: { testimonial: Project['testimonial'] }) {
-  if (!testimonial) return null;
-
-  return (
-    <Card className="p-8 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950 border-primary-200 dark:border-primary-800">
-      <svg className="w-10 h-10 text-primary-600 dark:text-primary-400 mb-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-      </svg>
-      <Text className="text-lg text-secondary-800 dark:text-secondary-200 mb-6 italic leading-relaxed">
-        &ldquo;{testimonial.quote}&rdquo;
-      </Text>
-      <div className="flex items-center">
-        <div>
-          <Text className="font-semibold text-secondary-900 dark:text-secondary-100">
-            {testimonial.author}
-          </Text>
-          <Text className="text-sm text-secondary-600 dark:text-secondary-400">
-            {testimonial.position} at {testimonial.company}
-          </Text>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-function MetricsCard({ project }: { project: Project }) {
-  return (
-    <Card className="p-6">
-      <Heading as="h3" className="font-semibold text-secondary-900 dark:text-secondary-100 mb-4">
-        Key Metrics
-      </Heading>
-      <div className="space-y-4">
-        {Object.entries(project.metrics).map(([key, value]) => (
-          <div key={key} className="flex justify-between items-center">
-            <Text className="text-sm text-secondary-600 dark:text-secondary-400 capitalize">
-              {key.replace(/([A-Z])/g, ' $1').trim()}
-            </Text>
-            <Text className="font-semibold text-primary-600 dark:text-primary-400">
-              {value}
-            </Text>
-          </div>
-        ))}
-      </div>
-    </Card>
-  );
-}
-
-function ProjectDetailsCard({ project }: { project: Project }) {
-  return (
-    <Card className="p-6">
-      <Heading as="h3" className="font-semibold text-secondary-900 dark:text-secondary-100 mb-4">
-        Project Details
-      </Heading>
-      <div className="space-y-4">
-        <div>
-          <Text className="text-sm text-secondary-600 dark:text-secondary-400">Category</Text>
-          <Text className="font-medium text-secondary-900 dark:text-secondary-100 capitalize">
-            {project.category.replace('-', ' ')}
-          </Text>
-        </div>
-        <div>
-          <Text className="text-sm text-secondary-600 dark:text-secondary-400">Year</Text>
-          <Text className="font-medium text-secondary-900 dark:text-secondary-100">
-            {project.year}
-          </Text>
-        </div>
-        <div>
-          <Text className="text-sm text-secondary-600 dark:text-secondary-400">Timeline</Text>
-          <Text className="font-medium text-secondary-900 dark:text-secondary-100">
-            {project.caseStudy.timeline}
-          </Text>
-        </div>
-        {project.caseStudy.teamSize && (
-          <div>
-            <Text className="text-sm text-secondary-600 dark:text-secondary-400">Team Size</Text>
-            <Text className="font-medium text-secondary-900 dark:text-secondary-100">
-              {project.caseStudy.teamSize} {project.caseStudy.teamSize === 1 ? 'person' : 'people'}
-            </Text>
-          </div>
-        )}
-        <div>
-          <Text className="text-sm text-secondary-600 dark:text-secondary-400">My Role</Text>
-          <Text className="font-medium text-secondary-900 dark:text-secondary-100">
-            {project.caseStudy.role}
-          </Text>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-function RelatedProjects({ currentProject }: { currentProject: Project }) {
-  const relatedProjects = projects
-    .filter(p => p.id !== currentProject.id && p.category === currentProject.category)
-    .slice(0, 3);
-
-  if (relatedProjects.length === 0) return null;
-
-  return (
-    <Card className="p-6">
-      <Heading as="h3" className="font-semibold text-secondary-900 dark:text-secondary-100 mb-4">
-        Related Projects
-      </Heading>
-      <div className="space-y-4">
-        {relatedProjects.map((project) => (
-          <Link key={project.id} href={`/projects/${project.id}`} className="block group">
-            <div className="p-3 rounded-lg hover:bg-secondary-50 dark:hover:bg-secondary-800 transition-colors">
-              <Text className="font-medium text-secondary-900 dark:text-secondary-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                {project.title}
-              </Text>
-              <Text className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-                {project.shortDescription}
-              </Text>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </Card>
-  );
-}
-
-function getStatusStyles(status: string): string {
-  switch (status) {
-    case 'completed':
-      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
-    case 'in-progress':
-      return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
-    case 'maintenance':
-      return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
-    case 'archived':
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
-    default:
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
-  }
 }

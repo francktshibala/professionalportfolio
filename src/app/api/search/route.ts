@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { searchProjects } from '@/lib/projects';
 import { getAllBlogPosts } from '@/lib/blog';
-import { Project } from '@/types';
+import { StaticProject } from '@/types';
 import { BlogPost } from '@/types/blog';
-import { db } from '@/lib/db';
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,60 +17,27 @@ export async function GET(request: NextRequest) {
     }
 
     const searchTerm = query.toLowerCase();
-    const searchResults: { projects: Project[], blogPosts: BlogPost[] } = { projects: [], blogPosts: [] };
+    const searchResults: { projects: StaticProject[], blogPosts: BlogPost[] } = { projects: [], blogPosts: [] };
 
     // Search projects
     if (type === 'all' || type === 'projects') {
-      const whereClause: {
-        OR?: Array<{
-          title?: { contains: string; mode: 'insensitive' };
-          description?: { contains: string; mode: 'insensitive' };
-          longDescription?: { contains: string; mode: 'insensitive' };
-          technologies?: { hasSome: string[] };
-        }>;
-        technologies?: { hasSome: string[] };
-        categories?: {
-          some: {
-            name: { contains: string; mode: 'insensitive' };
-          };
-        };
-      } = {
-        OR: [
-          { title: { contains: query, mode: 'insensitive' } },
-          { description: { contains: query, mode: 'insensitive' } },
-          { longDescription: { contains: query, mode: 'insensitive' } },
-          { technologies: { hasSome: [query] } }
-        ]
-      };
+      let projects = searchProjects(query);
       
       // Filter by technology
       if (technology) {
-        whereClause.technologies = { hasSome: [technology] };
+        projects = projects.filter(project =>
+          project.technologies.some(tech => 
+            tech.name.toLowerCase().includes(technology.toLowerCase())
+          )
+        );
       }
       
       // Filter by category
       if (category) {
-        whereClause.categories = {
-          some: {
-            name: { contains: category, mode: 'insensitive' }
-          }
-        };
+        projects = projects.filter(project =>
+          project.category.toLowerCase().includes(category.toLowerCase())
+        );
       }
-      
-      const projects = await db.project.findMany({
-        where: whereClause,
-        include: {
-          categories: true,
-          author: {
-            select: {
-              id: true,
-              name: true,
-              email: true
-            }
-          }
-        },
-        orderBy: { updatedAt: 'desc' }
-      });
       
       searchResults.projects = projects;
     }
