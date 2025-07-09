@@ -53,11 +53,11 @@ export interface DatabaseProject {
   authorId: string;
   
   // Rich content as JSON fields
-  caseStudy: any;
-  metrics: any;
-  testimonial: any;
-  images: any;
-  seo: any;
+  caseStudy: unknown;
+  metrics: unknown;
+  testimonial: unknown;
+  images: unknown;
+  seo: unknown;
   
   categories?: ProjectCategory[];
   author?: {

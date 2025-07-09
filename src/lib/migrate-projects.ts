@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { projects } from '@/lib/projects';
 import { ProjectAdapter } from '@/lib/project-adapter';
+import { StaticProject } from '@/types';
 
 const prisma = new PrismaClient();
 
@@ -38,7 +39,7 @@ export class ProjectMigrationService {
   /**
    * Migrate a single project with validation and error handling
    */
-  private static async migrateProject(staticProject: any, authorId: string): Promise<void> {
+  private static async migrateProject(staticProject: StaticProject, authorId: string): Promise<void> {
     try {
       // Transform static project to database format
       const projectData = ProjectAdapter.staticToDatabase(staticProject, authorId);

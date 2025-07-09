@@ -1,4 +1,4 @@
-import { StaticProject, DatabaseProject, DisplayProject, Technology, ProjectMetrics, CaseStudy, Testimonial, ProjectImage } from '@/types';
+import { StaticProject, DatabaseProject, DisplayProject, CaseStudy } from '@/types';
 import { technologies } from '@/lib/projects';
 
 export class ProjectAdapter {
@@ -120,7 +120,7 @@ export class ProjectAdapter {
     };
   }
 
-  private static parseJsonField<T>(field: any, defaultValue: T): T {
+  private static parseJsonField<T>(field: unknown, defaultValue: T): T {
     if (field === null || field === undefined) return defaultValue;
     if (typeof field === 'string') {
       try {
@@ -132,7 +132,7 @@ export class ProjectAdapter {
     return field as T;
   }
 
-  private static mapDatabaseStatus(status: any): 'completed' | 'in-progress' | 'maintenance' | 'archived' {
+  private static mapDatabaseStatus(status: string): 'completed' | 'in-progress' | 'maintenance' | 'archived' {
     switch (status) {
       case 'ACTIVE': return 'in-progress';
       case 'ARCHIVED': return 'archived';
@@ -142,7 +142,7 @@ export class ProjectAdapter {
     }
   }
 
-  private static mapStaticStatus(status: 'completed' | 'in-progress' | 'maintenance' | 'archived'): any {
+  private static mapStaticStatus(status: 'completed' | 'in-progress' | 'maintenance' | 'archived'): string {
     switch (status) {
       case 'completed': return 'ACTIVE';
       case 'in-progress': return 'ACTIVE';
