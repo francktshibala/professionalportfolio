@@ -4,7 +4,7 @@ export interface StaticProject {
   title: string;
   description: string;
   shortDescription: string;
-  category: ProjectCategory;
+  category: ProjectCategoryType;
   technologies: Technology[];
   tags: string[];
   year: number;
@@ -112,7 +112,18 @@ export interface Testimonial {
   avatar?: string;
 }
 
-export type ProjectCategory = 
+// Database project category interface (matches Prisma schema)
+export interface ProjectCategory {
+  id: string;
+  name: string;
+  slug: string;
+  color: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Legacy string-based category type (for static data)
+export type ProjectCategoryType = 
   | 'web-app' 
   | 'mobile-app' 
   | 'e-commerce' 
