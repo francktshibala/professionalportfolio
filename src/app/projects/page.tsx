@@ -80,7 +80,7 @@ export default function ProjectsPage() {
           'MAINTENANCE': 'maintenance'
         };
         const mappedStatus = statusMap[project.status] || project.status;
-        if (!filters.status.includes(mappedStatus as any)) return false;
+        if (!filters.status.includes(mappedStatus)) return false;
       }
 
       // Search filter - updated for database structure

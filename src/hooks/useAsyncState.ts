@@ -76,6 +76,7 @@ export function useAsyncState<T>(
         }
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [asyncFunction, retryCount, retryDelay, ...deps]
   );
 
@@ -162,6 +163,7 @@ export function useAsyncCallback<T, Args extends unknown[]>(
         return null;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [asyncFunction, ...deps]
   );
 

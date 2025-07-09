@@ -1,4 +1,4 @@
-import { StaticProject, Technology, StaticProjectStatus } from '@/types';
+import { StaticProject, Technology } from '@/types';
 
 export const technologies: Technology[] = [
   { name: 'Next.js 14', category: 'frontend', color: '#000000' },
