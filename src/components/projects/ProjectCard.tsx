@@ -14,11 +14,8 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, showFullDescription = false }: ProjectCardProps) {
   const description = showFullDescription ? project.description : project.description;
-  const category = project.categories?.[0]?.name || 'web-app';
-  const displayStatus = project.status === 'ACTIVE' ? 'completed' : 
-                       project.status === 'ARCHIVED' ? 'archived' : 
-                       project.status === 'DRAFT' ? 'in-progress' : 
-                       project.status === 'MAINTENANCE' ? 'maintenance' : project.status;
+  const category = project.category || 'web-app';
+  const displayStatus = project.status;
   
   return (
     <MotionDiv variants={slideUpVariants}>
@@ -67,12 +64,12 @@ export function ProjectCard({ project, showFullDescription = false }: ProjectCar
           {/* Project Stats */}
           <div className="grid grid-cols-2 gap-3 mb-4 p-4 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950/50 dark:to-accent-950/50 rounded-lg">
             <div className="text-center">
-              <div className="text-lg font-bold text-primary-600 dark:text-primary-400">{project.views}</div>
-              <div className="text-xs text-secondary-600 dark:text-secondary-400">Views</div>
+              <div className="text-lg font-bold text-primary-600 dark:text-primary-400">{project.year}</div>
+              <div className="text-xs text-secondary-600 dark:text-secondary-400">Year</div>
             </div>
             <div className="text-center">
-              <div className="text-lg font-bold text-primary-600 dark:text-primary-400">{project.likes}</div>
-              <div className="text-xs text-secondary-600 dark:text-secondary-400">Likes</div>
+              <div className="text-lg font-bold text-primary-600 dark:text-primary-400">{project.priority}</div>
+              <div className="text-xs text-secondary-600 dark:text-secondary-400">Priority</div>
             </div>
           </div>
 
@@ -81,13 +78,13 @@ export function ProjectCard({ project, showFullDescription = false }: ProjectCar
             <div className="flex flex-wrap gap-2">
               {project.technologies.slice(0, 6).map((tech) => (
                 <span
-                  key={tech}
+                  key={tech.name}
                   className="px-3 py-1.5 bg-gradient-to-r from-primary-100 to-accent-100 dark:from-primary-900 dark:to-accent-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-semibold shadow-sm hover:shadow-md transition-shadow cursor-default"
                   style={{ 
-                    borderLeft: `3px solid #6366f1` 
+                    borderLeft: `3px solid ${tech.color || '#6366f1'}` 
                   }}
                 >
-                  {tech}
+                  {tech.name}
                 </span>
               ))}
               {project.technologies.length > 6 && (
@@ -115,9 +112,9 @@ export function ProjectCard({ project, showFullDescription = false }: ProjectCar
               </MotionA>
             </Link>
 
-            {project.liveUrl && (
+            {project.demoUrl && (
               <MotionA
-                href={project.liveUrl}
+                href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-secondary-100 active:bg-secondary-200 dark:hover:bg-secondary-800 dark:active:bg-secondary-700 h-10 px-4 py-2 border border-secondary-300 dark:border-secondary-700 text-secondary-700 dark:text-secondary-300 shadow-sm hover:shadow-md"
