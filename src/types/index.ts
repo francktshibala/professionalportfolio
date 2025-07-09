@@ -199,7 +199,7 @@ export type ProjectStatus =
   | 'MAINTENANCE';
 
 export interface ProjectFilters {
-  categories: ProjectCategory[];
+  categories: string[];
   technologies: string[];
   years: number[];
   status: StaticProjectStatus[];
