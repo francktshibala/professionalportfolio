@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { projects } from '@/lib/projects';
-import { ProjectAdapter } from '@/lib/project-adapter';
+// import { ProjectAdapter } from '@/lib/project-adapter'; // Temporarily disabled
 import { StaticProject } from '@/types';
 
 const prisma = new PrismaClient();
@@ -39,7 +39,7 @@ export class ProjectMigrationService {
   /**
    * Migrate a single project with validation and error handling
    */
-  private static async migrateProject(staticProject: StaticProject, authorId: string): Promise<void> {
+  private static async migrateProject(staticProject: StaticProject, _authorId: string): Promise<void> {
     console.log(`⏭️  Skipping migration for project ${staticProject.id} - migration temporarily disabled for deployment`);
     return;
     /* TEMPORARILY DISABLED FOR DEPLOYMENT - WILL RE-ENABLE AFTER SITE IS LIVE
