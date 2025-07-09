@@ -214,3 +214,6 @@ export interface GitHubStats {
   lastUpdate: string;
   openIssues: number;
 }
+
+// Type alias for backward compatibility
+export type Project = DisplayProject;
