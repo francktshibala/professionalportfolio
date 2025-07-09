@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { searchProjects } from '@/lib/projects';
 import { getAllBlogPosts } from '@/lib/blog';
 import { Project } from '@/types';
 import { BlogPost } from '@/types/blog';
+import { prisma } from '@/lib/prisma';
 
 export async function GET(request: NextRequest) {
   try {
@@ -21,23 +21,56 @@ export async function GET(request: NextRequest) {
 
     // Search projects
     if (type === 'all' || type === 'projects') {
-      let projects = searchProjects(query);
+      const whereClause: {
+        OR?: Array<{
+          title?: { contains: string; mode: 'insensitive' };
+          description?: { contains: string; mode: 'insensitive' };
+          longDescription?: { contains: string; mode: 'insensitive' };
+          technologies?: { hasSome: string[] };
+        }>;
+        technologies?: { hasSome: string[] };
+        categories?: {
+          some: {
+            name: { contains: string; mode: 'insensitive' };
+          };
+        };
+      } = {
+        OR: [
+          { title: { contains: query, mode: 'insensitive' } },
+          { description: { contains: query, mode: 'insensitive' } },
+          { longDescription: { contains: query, mode: 'insensitive' } },
+          { technologies: { hasSome: [query] } }
+        ]
+      };
       
       // Filter by technology
       if (technology) {
-        projects = projects.filter(project =>
-          project.technologies.some(tech => 
-            tech.name.toLowerCase().includes(technology.toLowerCase())
-          )
-        );
+        whereClause.technologies = { hasSome: [technology] };
       }
       
       // Filter by category
       if (category) {
-        projects = projects.filter(project =>
-          project.category.toLowerCase().includes(category.toLowerCase())
-        );
+        whereClause.categories = {
+          some: {
+            name: { contains: category, mode: 'insensitive' }
+          }
+        };
       }
+      
+      const projects = await prisma.project.findMany({
+        where: whereClause,
+        include: {
+          categories: true,
+          author: {
+            select: {
+              id: true,
+              name: true,
+              email: true
+            }
+          }
+        },
+        orderBy: { updatedAt: 'desc' }
+      });
       
       searchResults.projects = projects;
     }
