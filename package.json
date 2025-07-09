@@ -16,6 +16,7 @@
     "migrate:projects": "tsx scripts/migrate-projects.ts",
     "migrate:blog": "tsx scripts/migrate-blog-posts.ts",
     "migrate:all": "tsx scripts/migrate-all.ts",
+    "migrate:core": "tsx scripts/run-core-migration.ts",
     "backup": "tsx scripts/backup-database.ts",
     "postinstall": "prisma generate"
   },
