@@ -62,7 +62,7 @@ async function migrateBlogPosts() {
     }
 
     // Create post categories
-    for (const categoryName of categories) {
+    for (const categoryName of Array.from(categories)) {
       const slug = categoryName.toLowerCase().replace(/\s+/g, '-');
       await prisma.postCategory.upsert({
         where: { slug },

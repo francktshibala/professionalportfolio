@@ -5,9 +5,9 @@ import { join } from 'path';
 const prisma = new PrismaClient();
 
 interface BackupData {
-  projects: any[];
-  users: any[];
-  categories: any[];
+  projects: unknown[];
+  users: unknown[];
+  categories: unknown[];
   timestamp: string;
   version: string;
 }
