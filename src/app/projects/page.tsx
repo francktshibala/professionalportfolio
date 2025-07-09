@@ -1,17 +1,19 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import { MotionDiv, slideUpVariants, staggerContainer } from '@/components/ui/MotionComponents';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { ProjectFilters } from '@/components/projects/ProjectFilters';
-import { projects } from '@/lib/projects';
-import { ProjectFilters as ProjectFiltersType } from '@/types';
+import { Project, ProjectFilters as ProjectFiltersType } from '@/types';
 import { useInView } from '@/hooks/useInView';
 
 export default function ProjectsPage() {
   const { ref, inView } = useInView(0.1);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   const [filters, setFilters] = useState<ProjectFiltersType>({
     categories: [],
@@ -23,40 +25,72 @@ export default function ProjectsPage() {
 
   const [sortBy, setSortBy] = useState<'recent' | 'featured' | 'title'>('recent');
 
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/projects');
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects');
+        }
+        const result = await response.json();
+        setProjects(result.data || result);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load projects');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   const filteredProjects = useMemo(() => {
     const filtered = projects.filter((project) => {
-      // Category filter
-      if (filters.categories.length > 0 && !filters.categories.includes(project.category)) {
-        return false;
+      // Category filter - now uses categories array
+      if (filters.categories.length > 0) {
+        const hasMatchingCategory = filters.categories.some(filterCategory =>
+          project.categories?.some(projectCategory => 
+            projectCategory.name === filterCategory
+          )
+        );
+        if (!hasMatchingCategory) return false;
       }
 
-      // Technology filter
+      // Technology filter - now uses string array
       if (filters.technologies.length > 0) {
         const hasMatchingTech = filters.technologies.some(tech =>
-          project.technologies.some(projTech => projTech.name === tech)
+          project.technologies.includes(tech)
         );
         if (!hasMatchingTech) return false;
       }
 
-      // Year filter
-      if (filters.years.length > 0 && !filters.years.includes(project.year)) {
-        return false;
+      // Year filter - extract year from dates
+      if (filters.years.length > 0) {
+        const projectYear = new Date(project.createdAt).getFullYear();
+        if (!filters.years.includes(projectYear)) return false;
       }
 
-      // Status filter
-      if (filters.status.length > 0 && !filters.status.includes(project.status)) {
-        return false;
+      // Status filter - convert database status to static status for filtering
+      if (filters.status.length > 0) {
+        const statusMap = {
+          'ACTIVE': 'completed',
+          'ARCHIVED': 'archived',
+          'DRAFT': 'in-progress',
+          'MAINTENANCE': 'maintenance'
+        };
+        const mappedStatus = statusMap[project.status] || project.status;
+        if (!filters.status.includes(mappedStatus as any)) return false;
       }
 
-      // Search filter
+      // Search filter - updated for database structure
       if (filters.search) {
         const searchLower = filters.search.toLowerCase();
         const matchesSearch = 
           project.title.toLowerCase().includes(searchLower) ||
           project.description.toLowerCase().includes(searchLower) ||
-          project.shortDescription.toLowerCase().includes(searchLower) ||
-          project.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
-          project.technologies.some(tech => tech.name.toLowerCase().includes(searchLower));
+          (project.longDescription && project.longDescription.toLowerCase().includes(searchLower)) ||
+          project.technologies.some(tech => tech.toLowerCase().includes(searchLower));
         
         if (!matchesSearch) return false;
       }
@@ -70,7 +104,7 @@ export default function ProjectsPage() {
         return filtered.sort((a, b) => {
           if (a.featured && !b.featured) return -1;
           if (!a.featured && b.featured) return 1;
-          return a.priority - b.priority;
+          return 0;
         });
       case 'title':
         return filtered.sort((a, b) => a.title.localeCompare(b.title));
@@ -82,7 +116,7 @@ export default function ProjectsPage() {
           return dateB.getTime() - dateA.getTime();
         });
     }
-  }, [filters, sortBy]);
+  }, [projects, filters, sortBy]);
 
   return (
     <Container className="py-12">
@@ -139,8 +173,36 @@ export default function ProjectsPage() {
         </Text>
       </MotionDiv>
 
+      {/* Loading State */}
+      {loading && (
+        <MotionDiv
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={slideUpVariants}
+          className="text-center py-12"
+        >
+          <Text className="text-secondary-500 dark:text-secondary-400">
+            Loading projects...
+          </Text>
+        </MotionDiv>
+      )}
+
+      {/* Error State */}
+      {error && (
+        <MotionDiv
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={slideUpVariants}
+          className="text-center py-12"
+        >
+          <Text className="text-red-600 dark:text-red-400">
+            Error: {error}
+          </Text>
+        </MotionDiv>
+      )}
+
       {/* Projects Grid */}
-      {filteredProjects.length > 0 ? (
+      {!loading && !error && filteredProjects.length > 0 ? (
         <MotionDiv
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
@@ -155,7 +217,7 @@ export default function ProjectsPage() {
             />
           ))}
         </MotionDiv>
-      ) : (
+      ) : !loading && !error && (
         <MotionDiv
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
