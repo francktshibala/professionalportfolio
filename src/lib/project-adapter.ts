@@ -84,11 +84,11 @@ export class ProjectAdapter {
       authorId,
       
       // Store rich content as JSON
-      caseStudy: staticProject.caseStudy,
-      metrics: staticProject.metrics,
-      testimonial: staticProject.testimonial || null,
-      images: staticProject.images,
-      seo: staticProject.seo,
+      caseStudy: JSON.stringify(staticProject.caseStudy),
+      metrics: JSON.stringify(staticProject.metrics),
+      testimonial: staticProject.testimonial ? JSON.stringify(staticProject.testimonial) : null,
+      images: JSON.stringify(staticProject.images),
+      seo: JSON.stringify(staticProject.seo),
     };
   }
 
