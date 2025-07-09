@@ -15,7 +15,7 @@ interface Project {
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
-  metrics?: any;
+  metrics?: Record<string, string>;
   caseStudy?: {
     results?: string[];
   };

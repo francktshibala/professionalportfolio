@@ -78,7 +78,7 @@ export class ProjectAdapter {
       githubUrl: staticProject.githubUrl || null,
       technologies: staticProject.technologies.map(t => t.name),
       featured: staticProject.featured,
-      status: this.mapStaticStatus(staticProject.status) as any,
+      status: this.mapStaticStatus(staticProject.status),
       startDate: new Date(`${staticProject.year}-01-01`),
       endDate: staticProject.status === 'completed' ? new Date(`${staticProject.year}-12-31`) : null,
       authorId,
@@ -142,7 +142,7 @@ export class ProjectAdapter {
     }
   }
 
-  private static mapStaticStatus(status: 'completed' | 'in-progress' | 'maintenance' | 'archived'): string {
+  private static mapStaticStatus(status: 'completed' | 'in-progress' | 'maintenance' | 'archived'): 'ACTIVE' | 'ARCHIVED' | 'DRAFT' | 'MAINTENANCE' {
     switch (status) {
       case 'completed': return 'ACTIVE';
       case 'in-progress': return 'ACTIVE';
