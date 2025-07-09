@@ -3,8 +3,8 @@ import { Container } from '@/components/ui/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import { Card } from '@/components/ui/Card';
 import { ProjectGallery } from '@/components/projects/ProjectGallery';
-import { getProjectById, projects } from '@/lib/projects';
 import { Project } from '@/types';
+import { db } from '@/lib/db';
 import Link from 'next/link';
 
 interface ProjectPageProps {
@@ -14,13 +14,25 @@ interface ProjectPageProps {
 }
 
 export async function generateStaticParams() {
+  const projects = await db.project.findMany({
+    select: { slug: true }
+  });
+  
   return projects.map((project) => ({
-    slug: project.id,
+    slug: project.slug,
   }));
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const project = getProjectById(params.slug);
+  const project = await db.project.findUnique({
+    where: { slug: params.slug },
+    include: {
+      categories: true,
+      author: {
+        select: { name: true }
+      }
+    }
+  });
   
   if (!project) {
     return {
@@ -29,22 +41,30 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   }
 
   return {
-    title: project.seo.metaTitle,
-    description: project.seo.metaDescription,
-    keywords: project.seo.keywords.join(', '),
+    title: `${project.title} | Project Portfolio`,
+    description: project.description,
     openGraph: {
-      title: project.seo.metaTitle,
-      description: project.seo.metaDescription,
-      images: project.images.filter(img => img.type === 'hero').map(img => ({
-        url: img.url,
-        alt: img.alt,
-      })),
+      title: project.title,
+      description: project.description,
+      images: project.image ? [{ url: project.image, alt: project.title }] : [],
     },
   };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectById(params.slug);
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const project = await db.project.findUnique({
+    where: { slug: params.slug },
+    include: {
+      categories: true,
+      author: {
+        select: {
+          id: true,
+          name: true,
+          email: true
+        }
+      }
+    }
+  });
 
   if (!project) {
     notFound();
@@ -85,9 +105,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
           
           <div className="flex gap-3 flex-shrink-0">
-            {project.demoUrl && (
+            {project.liveUrl && (
               <a 
-                href={project.demoUrl} 
+                href={project.liveUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95 bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 shadow-md hover:shadow-lg h-10 px-4 py-2"
@@ -118,31 +138,143 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <div className="grid lg:grid-cols-3 gap-12">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-12">
-          {/* Project Gallery */}
-          <ProjectGallery images={project.images} />
+          {/* Project Description */}
+          <div className="space-y-6">
+            <div>
+              <Heading as="h2" className="text-2xl font-bold mb-4">
+                About This Project
+              </Heading>
+              <Text className="text-lg leading-relaxed">
+                {project.description}
+              </Text>
+              {project.longDescription && (
+                <Text className="mt-4 leading-relaxed">
+                  {project.longDescription}
+                </Text>
+              )}
+            </div>
 
-          {/* Case Study */}
-          <CaseStudySection project={project} />
+            {/* Technologies */}
+            <div>
+              <Heading as="h3" className="text-xl font-semibold mb-3">
+                Technologies Used
+              </Heading>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-          {/* Technologies */}
-          <TechnologiesSection project={project} />
-
-          {/* Testimonial */}
-          {project.testimonial && (
-            <TestimonialSection testimonial={project.testimonial} />
-          )}
+            {/* Categories */}
+            {project.categories && project.categories.length > 0 && (
+              <div>
+                <Heading as="h3" className="text-xl font-semibold mb-3">
+                  Categories
+                </Heading>
+                <div className="flex flex-wrap gap-2">
+                  {project.categories.map((category) => (
+                    <span
+                      key={category.id}
+                      className="px-3 py-1 bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300 rounded-full text-sm font-medium"
+                    >
+                      {category.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Sidebar */}
         <div className="space-y-8">
-          {/* Key Metrics */}
-          <MetricsCard project={project} />
+          {/* Project Stats */}
+          <Card>
+            <div className="space-y-4">
+              <Heading as="h3" className="text-lg font-semibold">
+                Project Stats
+              </Heading>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                    Views
+                  </Text>
+                  <Text className="text-xl font-bold">
+                    {project.views.toLocaleString()}
+                  </Text>
+                </div>
+                <div>
+                  <Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                    Likes
+                  </Text>
+                  <Text className="text-xl font-bold">
+                    {project.likes.toLocaleString()}
+                  </Text>
+                </div>
+                <div>
+                  <Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                    Status
+                  </Text>
+                  <Text className="text-sm font-medium">
+                    {project.status}
+                  </Text>
+                </div>
+                <div>
+                  <Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                    Featured
+                  </Text>
+                  <Text className="text-sm font-medium">
+                    {project.featured ? 'Yes' : 'No'}
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </Card>
 
-          {/* Project Details */}
-          <ProjectDetailsCard project={project} />
-
-          {/* Related Projects */}
-          <RelatedProjects currentProject={project} />
+          {/* Project Timeline */}
+          <Card>
+            <div className="space-y-4">
+              <Heading as="h3" className="text-lg font-semibold">
+                Timeline
+              </Heading>
+              <div className="space-y-2">
+                {project.startDate && (
+                  <div>
+                    <Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                      Started
+                    </Text>
+                    <Text className="text-sm font-medium">
+                      {new Date(project.startDate).toLocaleDateString()}
+                    </Text>
+                  </div>
+                )}
+                {project.endDate && (
+                  <div>
+                    <Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                      Completed
+                    </Text>
+                    <Text className="text-sm font-medium">
+                      {new Date(project.endDate).toLocaleDateString()}
+                    </Text>
+                  </div>
+                )}
+                <div>
+                  <Text className="text-sm text-secondary-600 dark:text-secondary-400">
+                    Last Updated
+                  </Text>
+                  <Text className="text-sm font-medium">
+                    {new Date(project.updatedAt).toLocaleDateString()}
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
     </Container>
