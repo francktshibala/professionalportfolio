@@ -271,4 +271,4 @@ export function ProjectFilters({ filters, onFiltersChange, totalProjects, filter
       )}
     </Card>
   );
-}
+}// Force deployment refresh
