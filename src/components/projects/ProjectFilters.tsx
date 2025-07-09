@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ProjectFilters as ProjectFiltersType, ProjectCategory, ProjectStatus } from '@/types';
+import { ProjectFilters as ProjectFiltersType, StaticProjectStatus } from '@/types';
 import { technologies } from '@/lib/projects';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -14,7 +14,7 @@ interface ProjectFiltersProps {
   filteredCount: number;
 }
 
-const categories: { value: ProjectCategory; label: string }[] = [
+const categories: { value: string; label: string }[] = [
   { value: 'web-app', label: 'Web Apps' },
   { value: 'mobile-app', label: 'Mobile Apps' },
   { value: 'e-commerce', label: 'E-commerce' },
@@ -25,7 +25,7 @@ const categories: { value: ProjectCategory; label: string }[] = [
   { value: 'open-source', label: 'Open Source' },
 ];
 
-const statuses: { value: ProjectStatus; label: string }[] = [
+const statuses: { value: StaticProjectStatus; label: string }[] = [
   { value: 'completed', label: 'Completed' },
   { value: 'in-progress', label: 'In Progress' },
   { value: 'maintenance', label: 'Maintenance' },
@@ -46,7 +46,7 @@ export function ProjectFilters({ filters, onFiltersChange, totalProjects, filter
     return () => clearTimeout(debounceTimer);
   }, [searchInput, filters, onFiltersChange]);
 
-  const toggleCategory = (category: ProjectCategory) => {
+  const toggleCategory = (category: string) => {
     const newCategories = filters.categories.includes(category)
       ? filters.categories.filter(c => c !== category)
       : [...filters.categories, category];
