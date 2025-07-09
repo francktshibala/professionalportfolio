@@ -5,42 +5,20 @@ import { Container } from '@/components/ui/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import { MotionDiv, slideUpVariants, staggerContainer } from '@/components/ui/MotionComponents';
 import { useInView } from '@/hooks/useInView';
+import { useEffect, useState } from 'react';
 
-const skillCategories = [
-  {
-    title: 'Frontend',
-    skills: [
-      { name: 'React', level: 'Expert' },
-      { name: 'TypeScript', level: 'Expert' },
-      { name: 'Next.js', level: 'Advanced' },
-      { name: 'Tailwind CSS', level: 'Advanced' },
-      { name: 'JavaScript', level: 'Expert' },
-      { name: 'HTML/CSS', level: 'Expert' },
-    ],
-  },
-  {
-    title: 'Backend',
-    skills: [
-      { name: 'Node.js', level: 'Advanced' },
-      { name: 'Python', level: 'Intermediate' },
-      { name: 'PostgreSQL', level: 'Advanced' },
-      { name: 'MongoDB', level: 'Intermediate' },
-      { name: 'REST APIs', level: 'Advanced' },
-      { name: 'GraphQL', level: 'Intermediate' },
-    ],
-  },
-  {
-    title: 'Tools & DevOps',
-    skills: [
-      { name: 'Git', level: 'Expert' },
-      { name: 'Docker', level: 'Intermediate' },
-      { name: 'AWS', level: 'Intermediate' },
-      { name: 'Vercel', level: 'Advanced' },
-      { name: 'Jest', level: 'Advanced' },
-      { name: 'Cypress', level: 'Intermediate' },
-    ],
-  },
-];
+interface Skill {
+  id: string;
+  name: string;
+  level: string;
+  category: string;
+  featured: boolean;
+}
+
+interface SkillCategory {
+  title: string;
+  skills: Skill[];
+}
 
 function SkillBadge({ skill }: { skill: { name: string; level: string } }) {
   const levelColors = {
@@ -66,6 +44,83 @@ function SkillBadge({ skill }: { skill: { name: string; level: string } }) {
 
 export function SkillsGrid() {
   const { ref, inView } = useInView(0.2);
+  const [skillCategories, setSkillCategories] = useState<SkillCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchSkills() {
+      try {
+        const response = await fetch('/api/skills');
+        if (response.ok) {
+          const skills: Skill[] = await response.json();
+          
+          // Group skills by category
+          const categoryMap = new Map<string, Skill[]>();
+          skills.forEach(skill => {
+            const categoryTitle = getCategoryTitle(skill.category);
+            if (!categoryMap.has(categoryTitle)) {
+              categoryMap.set(categoryTitle, []);
+            }
+            categoryMap.get(categoryTitle)!.push(skill);
+          });
+          
+          // Convert to array and sort skills by name
+          const categories: SkillCategory[] = Array.from(categoryMap.entries()).map(([title, skills]) => ({
+            title,
+            skills: skills.sort((a, b) => a.name.localeCompare(b.name))
+          }));
+          
+          // Sort categories by predefined order
+          const categoryOrder = ['Frontend', 'Backend', 'Tools & DevOps', 'Database', 'Design', 'Testing'];
+          categories.sort((a, b) => {
+            const aIndex = categoryOrder.indexOf(a.title);
+            const bIndex = categoryOrder.indexOf(b.title);
+            return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+          });
+          
+          setSkillCategories(categories);
+        }
+      } catch (error) {
+        console.error('Failed to fetch skills:', error);
+        // Fallback to show empty state or error message
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchSkills();
+  }, []);
+
+  function getCategoryTitle(category: string): string {
+    const categoryTitles: Record<string, string> = {
+      'FRONTEND': 'Frontend',
+      'BACKEND': 'Backend', 
+      'DEVOPS': 'Tools & DevOps',
+      'DATABASE': 'Database',
+      'DESIGN': 'Design',
+      'TESTING': 'Testing',
+      'MOBILE': 'Mobile',
+      'OTHER': 'Other'
+    };
+    return categoryTitles[category] || category;
+  }
+
+  if (loading) {
+    return (
+      <section id="skills" className="py-24 bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900 dark:to-primary-950">
+        <Container>
+          <div className="text-center mb-16">
+            <Heading as="h2" className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
+              Skills & Technologies
+            </Heading>
+            <Text className="text-xl text-secondary-700 dark:text-secondary-300 max-w-3xl mx-auto leading-relaxed">
+              Loading skills...
+            </Text>
+          </div>
+        </Container>
+      </section>
+    );
+  }
 
   return (
     <section id="skills" className="py-24 bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900 dark:to-primary-950">

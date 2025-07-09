@@ -5,80 +5,24 @@ import { Container } from '@/components/ui/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import { MotionDiv, MotionA, slideUpVariants, staggerContainer, buttonHoverVariants } from '@/components/ui/MotionComponents';
 import { useInView } from '@/hooks/useInView';
+import { useEffect, useState } from 'react';
 
-const featuredProjects = [
-  {
-    id: 1,
-    title: 'Enterprise E-commerce Platform',
-    description: 'Transformed a struggling retail business with a modern e-commerce solution that increased online sales by 340% in 6 months. Built with enterprise-grade architecture handling 10,000+ concurrent users and processing $2M+ monthly transactions.',
-    image: '/api/placeholder/400/250',
-    technologies: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Redis', 'Stripe', 'AWS'],
-    liveUrl: '#',
-    githubUrl: '#',
-    problem: 'Legacy PHP platform with 8-second load times, 65% cart abandonment rate, and frequent crashes during peak traffic',
-    solution: 'Modern microservices architecture with advanced caching, optimized database queries, and progressive web app features',
-    results: [
-      '340% increase in online sales',
-      '85% reduction in page load times (8s → 1.2s)',
-      '45% decrease in cart abandonment',
-      '99.9% uptime during Black Friday peak'
-    ],
-    metrics: {
-      users: '10,000+',
-      transactions: '$2M+/month',
-      performance: '1.2s load time',
-      uptime: '99.9%'
-    }
-  },
-  {
-    id: 2,
-    title: 'Real-time Collaboration Suite',
-    description: 'Developed a comprehensive project management platform that revolutionized team productivity for 50+ companies. Features real-time collaboration, advanced analytics, and seamless integrations with 20+ popular tools.',
-    image: '/api/placeholder/400/250',
-    technologies: ['React 18', 'Node.js', 'MongoDB', 'Socket.io', 'Docker', 'Kubernetes'],
-    liveUrl: '#',
-    githubUrl: '#',
-    problem: 'Teams using 5+ disconnected tools, losing 2.5 hours daily to context switching and manual updates',
-    solution: 'Unified platform with real-time sync, drag-and-drop workflows, automated notifications, and comprehensive integrations',
-    results: [
-      '60% improvement in team productivity',
-      '80% reduction in meeting time',
-      '50+ companies onboarded',
-      '95% user satisfaction rating'
-    ],
-    metrics: {
-      users: '2,500+',
-      companies: '50+',
-      productivity: '+60%',
-      satisfaction: '95%'
-    }
-  },
-  {
-    id: 3,
-    title: 'AI-Powered Weather Intelligence',
-    description: 'Created an advanced weather analytics platform serving 100,000+ users with ML-powered forecasting that is 25% more accurate than traditional models. Used by agricultural businesses to optimize crop yields and reduce losses.',
-    image: '/api/placeholder/400/250',
-    technologies: ['React', 'TypeScript', 'Python', 'TensorFlow', 'Chart.js', 'OpenWeather API'],
-    liveUrl: '#',
-    githubUrl: '#',
-    problem: 'Agricultural businesses losing $50,000+ annually due to inaccurate weather predictions and manual crop management',
-    solution: 'ML-powered forecasting with hyperlocal predictions, automated alerts, and data-driven recommendations',
-    results: [
-      '25% more accurate predictions',
-      '40% reduction in crop losses',
-      '100,000+ active users',
-      '$2M+ in prevented losses'
-    ],
-    metrics: {
-      users: '100,000+',
-      accuracy: '+25%',
-      savings: '$2M+',
-      coverage: '50 countries'
-    }
-  },
-];
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image?: string;
+  technologies: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  metrics?: any;
+  caseStudy?: {
+    results?: string[];
+  };
+  featured: boolean;
+}
 
-function ProjectCard({ project }: { project: typeof featuredProjects[0] }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <MotionDiv variants={slideUpVariants}>
       <Card className="overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700">
@@ -103,27 +47,31 @@ function ProjectCard({ project }: { project: typeof featuredProjects[0] }) {
           </Text>
           
           {/* Key Metrics */}
-          <div className="grid grid-cols-2 gap-3 mb-4 p-3 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950/50 dark:to-accent-950/50 rounded-lg">
-            {Object.entries(project.metrics).map(([key, value]) => (
-              <div key={key} className="text-center">
-                <div className="text-lg font-bold text-primary-600 dark:text-primary-400">{value}</div>
-                <div className="text-xs text-secondary-600 dark:text-secondary-400 capitalize">{key}</div>
-              </div>
-            ))}
-          </div>
-          
-          {/* Key Results */}
-          <div className="mb-4">
-            <Text className="text-sm font-semibold text-secondary-900 dark:text-secondary-100 mb-2">Key Results:</Text>
-            <div className="space-y-1">
-              {project.results.slice(0, 2).map((result, index) => (
-                <div key={index} className="flex items-center text-sm text-secondary-700 dark:text-secondary-300">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
-                  {result}
+          {project.metrics && (
+            <div className="grid grid-cols-2 gap-3 mb-4 p-3 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950/50 dark:to-accent-950/50 rounded-lg">
+              {Object.entries(project.metrics).map(([key, value]) => (
+                <div key={key} className="text-center">
+                  <div className="text-lg font-bold text-primary-600 dark:text-primary-400">{value}</div>
+                  <div className="text-xs text-secondary-600 dark:text-secondary-400 capitalize">{key}</div>
                 </div>
               ))}
             </div>
-          </div>
+          )}
+          
+          {/* Key Results */}
+          {project.caseStudy?.results && (
+            <div className="mb-4">
+              <Text className="text-sm font-semibold text-secondary-900 dark:text-secondary-100 mb-2">Key Results:</Text>
+              <div className="space-y-1">
+                {project.caseStudy.results.slice(0, 2).map((result, index) => (
+                  <div key={index} className="flex items-center text-sm text-secondary-700 dark:text-secondary-300">
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
+                    {result}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           
           <div className="flex flex-wrap gap-2 mb-4">
             {project.technologies.map((tech) => (
@@ -137,34 +85,38 @@ function ProjectCard({ project }: { project: typeof featuredProjects[0] }) {
           </div>
           
           <div className="flex gap-3">
-            <MotionA 
-              href={project.liveUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 active:from-primary-800 active:to-primary-900 shadow-lg hover:shadow-xl h-10 px-4 py-2"
-              variants={buttonHoverVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              Live Demo
-            </MotionA>
-            <MotionA 
-              href={project.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-secondary-100 active:bg-secondary-200 dark:hover:bg-secondary-800 dark:active:bg-secondary-700 h-10 px-4 py-2 border border-secondary-300 dark:border-secondary-700 text-secondary-700 dark:text-secondary-300 shadow-sm hover:shadow-md"
-              variants={buttonHoverVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              GitHub
-            </MotionA>
+            {project.liveUrl && (
+              <MotionA 
+                href={project.liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 active:from-primary-800 active:to-primary-900 shadow-lg hover:shadow-xl h-10 px-4 py-2"
+                variants={buttonHoverVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                Live Demo
+              </MotionA>
+            )}
+            {project.githubUrl && (
+              <MotionA 
+                href={project.githubUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-secondary-100 active:bg-secondary-200 dark:hover:bg-secondary-800 dark:active:bg-secondary-700 h-10 px-4 py-2 border border-secondary-300 dark:border-secondary-700 text-secondary-700 dark:text-secondary-300 shadow-sm hover:shadow-md"
+                variants={buttonHoverVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+              </MotionA>
+            )}
           </div>
         </div>
       </Card>
@@ -174,6 +126,43 @@ function ProjectCard({ project }: { project: typeof featuredProjects[0] }) {
 
 export function FeaturedProjects() {
   const { ref, inView } = useInView(0.2);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const response = await fetch('/api/projects/featured');
+        if (response.ok) {
+          const data = await response.json();
+          setProjects(data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch featured projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="projects" className="py-24 bg-white dark:bg-secondary-950">
+        <Container>
+          <div className="text-center mb-16">
+            <Heading as="h2" className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
+              Featured Projects
+            </Heading>
+            <Text className="text-xl text-secondary-700 dark:text-secondary-300 max-w-3xl mx-auto leading-relaxed">
+              Loading featured projects...
+            </Text>
+          </div>
+        </Container>
+      </section>
+    );
+  }
 
   return (
     <section id="projects" className="py-24 bg-white dark:bg-secondary-950">
@@ -202,7 +191,7 @@ export function FeaturedProjects() {
           animate={inView ? "visible" : "hidden"}
           variants={staggerContainer}
         >
-          {featuredProjects.map((project) => (
+          {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </MotionDiv>
