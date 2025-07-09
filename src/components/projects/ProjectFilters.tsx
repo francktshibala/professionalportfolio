@@ -67,7 +67,7 @@ export function ProjectFilters({ filters, onFiltersChange, totalProjects, filter
     onFiltersChange({ ...filters, years: newYears });
   };
 
-  const toggleStatus = (status: ProjectStatus) => {
+  const toggleStatus = (status: StaticProjectStatus) => {
     const newStatus = filters.status.includes(status)
       ? filters.status.filter(s => s !== status)
       : [...filters.status, status];
