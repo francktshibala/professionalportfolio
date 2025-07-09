@@ -1,4 +1,73 @@
-// Static project interface (for lib/projects.ts)
+// Unified display interface for components (what components expect)
+export interface DisplayProject {
+  id: string;
+  title: string;
+  description: string;
+  shortDescription: string;
+  category: string;
+  technologies: Technology[];
+  tags: string[];
+  year: number;
+  status: 'completed' | 'in-progress' | 'maintenance' | 'archived';
+  featured: boolean;
+  priority: number;
+  
+  images: ProjectImage[];
+  demoUrl?: string;
+  githubUrl?: string;
+  caseStudyUrl?: string;
+  
+  caseStudy: CaseStudy;
+  metrics: ProjectMetrics;
+  testimonial?: Testimonial;
+  
+  seo: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string[];
+  };
+  
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Database project interface (matches Prisma schema exactly)
+export interface DatabaseProject {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  longDescription: string | null;
+  image: string | null;
+  liveUrl: string | null;
+  githubUrl: string | null;
+  technologies: string[];
+  featured: boolean;
+  status: ProjectStatus;
+  startDate: Date | null;
+  endDate: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
+  views: number;
+  likes: number;
+  authorId: string;
+  
+  // Rich content as JSON fields
+  caseStudy: any;
+  metrics: any;
+  testimonial: any;
+  images: any;
+  seo: any;
+  
+  categories?: ProjectCategory[];
+  author?: {
+    id: string;
+    name: string | null;
+    email: string;
+  };
+}
+
+// Legacy static project interface (for migration)
 export interface StaticProject {
   id: string;
   title: string;
@@ -29,34 +98,6 @@ export interface StaticProject {
   
   createdAt: string;
   updatedAt: string;
-}
-
-// Database project interface (matches Prisma schema exactly)
-export interface Project {
-  id: string;
-  title: string;
-  slug: string;
-  description: string;
-  longDescription: string | null;
-  image: string | null;
-  liveUrl: string | null;
-  githubUrl: string | null;
-  technologies: string[];
-  featured: boolean;
-  status: ProjectStatus;
-  startDate: Date | null;
-  endDate: Date | null;
-  createdAt: Date;
-  updatedAt: Date;
-  views: number;
-  likes: number;
-  authorId: string;
-  categories?: ProjectCategory[];
-  author?: {
-    id: string;
-    name: string | null;
-    email: string;
-  };
 }
 
 export interface ProjectImage {

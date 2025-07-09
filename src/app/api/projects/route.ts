@@ -1,31 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ProjectService } from '@/lib/services/projects'
-import { db } from '@/lib/db'
-import { ProjectStatus } from '@prisma/client'
+import { ProjectService } from '@/lib/project-service'
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const featured = searchParams.get('featured')
-    const status = searchParams.get('status') as ProjectStatus
     const limit = searchParams.get('limit')
-    const skip = searchParams.get('skip')
     const category = searchParams.get('category')
     const technology = searchParams.get('technology')
+    const search = searchParams.get('search')
 
     let projects
 
-    if (category) {
-      projects = await ProjectService.getProjectsByCategory(category, limit ? parseInt(limit) : undefined)
+    if (search) {
+      projects = await ProjectService.searchProjects(search)
+    } else if (category) {
+      projects = await ProjectService.getProjectsByCategory(category)
     } else if (technology) {
-      projects = await ProjectService.getProjectsByTechnology(technology, limit ? parseInt(limit) : undefined)
+      projects = await ProjectService.getProjectsByTechnology(technology)
+    } else if (featured === 'true') {
+      projects = await ProjectService.getFeaturedProjects()
     } else {
-      projects = await ProjectService.getAllProjects({
-        featured: featured === 'true',
-        status,
-        limit: limit ? parseInt(limit) : undefined,
-        skip: skip ? parseInt(skip) : undefined
-      })
+      projects = await ProjectService.getProjects()
+    }
+
+    // Apply limit if specified
+    if (limit) {
+      const limitNum = parseInt(limit)
+      projects = projects.slice(0, limitNum)
     }
 
     return NextResponse.json({

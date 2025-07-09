@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { searchProjects } from '@/lib/projects';
+import { ProjectService } from '@/lib/project-service';
 import { getAllBlogPosts } from '@/lib/blog';
-import { StaticProject } from '@/types';
+import { DisplayProject } from '@/types';
 import { BlogPost } from '@/types/blog';
 
 export async function GET(request: NextRequest) {
@@ -17,11 +17,11 @@ export async function GET(request: NextRequest) {
     }
 
     const searchTerm = query.toLowerCase();
-    const searchResults: { projects: StaticProject[], blogPosts: BlogPost[] } = { projects: [], blogPosts: [] };
+    const searchResults: { projects: DisplayProject[], blogPosts: BlogPost[] } = { projects: [], blogPosts: [] };
 
     // Search projects
     if (type === 'all' || type === 'projects') {
-      let projects = searchProjects(query);
+      let projects = await ProjectService.searchProjects(query);
       
       // Filter by technology
       if (technology) {

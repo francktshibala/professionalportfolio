@@ -70,6 +70,14 @@ model Project {
   likes       Int      @default(0)
   author      User     @relation(fields: [authorId], references: [id])
   authorId    String
+  
+  // Rich content as JSON fields
+  caseStudy   Json?
+  metrics     Json?
+  testimonial Json?
+  images      Json?
+  seo         Json?
+  
   categories  ProjectCategory[]
 
   @@map("projects")

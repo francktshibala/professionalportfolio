@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation';
 import { Container } from '@/components/ui/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import { Card } from '@/components/ui/Card';
-import { getProjectById, projects } from '@/lib/projects';
+import { ProjectService } from '@/lib/project-service';
+import { projects } from '@/lib/projects';
 import Link from 'next/link';
 
 interface ProjectPageProps {
@@ -18,7 +19,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const project = getProjectById(params.slug);
+  const project = await ProjectService.getProjectById(params.slug);
   
   if (!project) {
     return {
@@ -41,8 +42,8 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectById(params.slug);
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const project = await ProjectService.getProjectById(params.slug);
 
   if (!project) {
     notFound();

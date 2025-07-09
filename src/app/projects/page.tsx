@@ -6,12 +6,12 @@ import { Heading, Text } from '@/components/ui/Typography';
 import { MotionDiv, slideUpVariants, staggerContainer } from '@/components/ui/MotionComponents';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { ProjectFilters } from '@/components/projects/ProjectFilters';
-import { Project, ProjectFilters as ProjectFiltersType } from '@/types';
+import { DisplayProject, ProjectFilters as ProjectFiltersType } from '@/types';
 import { useInView } from '@/hooks/useInView';
 
 export default function ProjectsPage() {
   const { ref, inView } = useInView(0.1);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<DisplayProject[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
@@ -47,50 +47,38 @@ export default function ProjectsPage() {
 
   const filteredProjects = useMemo(() => {
     const filtered = projects.filter((project) => {
-      // Category filter - now uses categories array
+      // Category filter
       if (filters.categories.length > 0) {
-        const hasMatchingCategory = filters.categories.some(filterCategory =>
-          project.categories?.some(projectCategory => 
-            projectCategory.name === filterCategory
-          )
-        );
-        if (!hasMatchingCategory) return false;
+        if (!filters.categories.includes(project.category)) return false;
       }
 
-      // Technology filter - now uses string array
+      // Technology filter
       if (filters.technologies.length > 0) {
         const hasMatchingTech = filters.technologies.some(tech =>
-          project.technologies.includes(tech)
+          project.technologies.some(projectTech => projectTech.name === tech)
         );
         if (!hasMatchingTech) return false;
       }
 
-      // Year filter - extract year from dates
+      // Year filter
       if (filters.years.length > 0) {
-        const projectYear = new Date(project.createdAt).getFullYear();
-        if (!filters.years.includes(projectYear)) return false;
+        if (!filters.years.includes(project.year)) return false;
       }
 
-      // Status filter - convert database status to static status for filtering
+      // Status filter
       if (filters.status.length > 0) {
-        const statusMap = {
-          'ACTIVE': 'completed',
-          'ARCHIVED': 'archived',
-          'DRAFT': 'in-progress',
-          'MAINTENANCE': 'maintenance'
-        };
-        const mappedStatus = statusMap[project.status] || project.status;
-        if (!filters.status.includes(mappedStatus)) return false;
+        if (!filters.status.includes(project.status)) return false;
       }
 
-      // Search filter - updated for database structure
+      // Search filter
       if (filters.search) {
         const searchLower = filters.search.toLowerCase();
         const matchesSearch = 
           project.title.toLowerCase().includes(searchLower) ||
           project.description.toLowerCase().includes(searchLower) ||
-          (project.longDescription && project.longDescription.toLowerCase().includes(searchLower)) ||
-          project.technologies.some(tech => tech.toLowerCase().includes(searchLower));
+          project.shortDescription.toLowerCase().includes(searchLower) ||
+          project.technologies.some(tech => tech.name.toLowerCase().includes(searchLower)) ||
+          project.tags.some(tag => tag.toLowerCase().includes(searchLower));
         
         if (!matchesSearch) return false;
       }
