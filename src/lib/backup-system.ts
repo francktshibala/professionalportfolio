@@ -6,7 +6,12 @@ const prisma = new PrismaClient();
 
 interface BackupData {
   projects: unknown[];
-  users: unknown[];
+  users: Array<{
+    id: string;
+    email: string;
+    name?: string;
+    bio?: string;
+  }>;
   categories: unknown[];
   timestamp: string;
   version: string;
