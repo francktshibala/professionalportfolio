@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ProjectService as LegacyProjectService } from '@/lib/project-service'
 import { ProjectService } from '@/lib/services/projects'
 
 export async function GET(request: NextRequest) {
@@ -9,7 +8,6 @@ export async function GET(request: NextRequest) {
     const limit = searchParams.get('limit')
     const category = searchParams.get('category')
     const technology = searchParams.get('technology')
-    const search = searchParams.get('search')
 
     let projects
 
