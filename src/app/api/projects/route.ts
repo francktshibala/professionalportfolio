@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ProjectService } from '@/lib/services/projects'
+import { db } from '@/lib/db'
 
 export async function GET(request: NextRequest) {
   try {
@@ -66,9 +67,9 @@ export async function POST(request: NextRequest) {
       authorId
     } = body
 
-    if (!title || !slug || !description || !authorId) {
+    if (!title || !slug || !description) {
       return NextResponse.json(
-        { success: false, error: 'Missing required fields: title, slug, description, authorId' },
+        { success: false, error: 'Missing required fields: title, slug, description' },
         { status: 400 }
       )
     }
@@ -78,6 +79,26 @@ export async function POST(request: NextRequest) {
         { success: false, error: 'Technologies must be an array' },
         { status: 400 }
       )
+    }
+
+    // Get or create default user if no authorId provided
+    let finalAuthorId = authorId
+    if (!finalAuthorId) {
+      let defaultUser = await db.user.findUnique({
+        where: { email: 'admin@portfolio.com' }
+      })
+
+      if (!defaultUser) {
+        defaultUser = await db.user.create({
+          data: {
+            email: 'admin@portfolio.com',
+            name: 'Portfolio Admin',
+            bio: 'Portfolio administrator and content manager',
+            website: 'https://portfolio-4u8c.vercel.app'
+          }
+        })
+      }
+      finalAuthorId = defaultUser.id
     }
 
     const project = await ProjectService.createProject({
@@ -93,7 +114,7 @@ export async function POST(request: NextRequest) {
       status: status || 'DRAFT',
       startDate,
       endDate,
-      authorId
+      authorId: finalAuthorId
     })
 
     return NextResponse.json({
