@@ -94,24 +94,20 @@ export async function POST(request: NextRequest) {
     let finalAuthorId = authorId
     if (!finalAuthorId) {
       console.log('No authorId provided, getting/creating default user')
-      let defaultUser = await db.user.findUnique({
-        where: { email: 'admin@portfolio.com' }
+      
+      // Use upsert to handle the user creation atomically
+      const defaultUser = await db.user.upsert({
+        where: { email: 'admin@portfolio.com' },
+        update: {}, // No updates needed if user exists
+        create: {
+          email: 'admin@portfolio.com',
+          name: 'Portfolio Admin',
+          bio: 'Portfolio administrator and content manager',
+          website: 'https://portfolio-4u8c.vercel.app'
+        }
       })
-
-      if (!defaultUser) {
-        console.log('Creating default user')
-        defaultUser = await db.user.create({
-          data: {
-            email: 'admin@portfolio.com',
-            name: 'Portfolio Admin',
-            bio: 'Portfolio administrator and content manager',
-            website: 'https://portfolio-4u8c.vercel.app'
-          }
-        })
-        console.log('Default user created:', defaultUser.id)
-      } else {
-        console.log('Using existing default user:', defaultUser.id)
-      }
+      
+      console.log('Default user ready:', defaultUser.id)
       finalAuthorId = defaultUser.id
     }
 
