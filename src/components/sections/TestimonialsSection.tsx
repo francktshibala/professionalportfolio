@@ -13,7 +13,7 @@ const testimonials = [
     role: 'CTO at TechStartup Inc',
     company: 'TechStartup Inc',
     image: '/api/placeholder/80/80',
-    quote: 'Franck delivered exceptional results on our e-commerce platform. His attention to detail and technical expertise helped us achieve a 340% increase in sales. Highly recommended!',
+    quote: 'Francisco delivered exceptional results on our e-commerce platform. His attention to detail and technical expertise helped us achieve a 340% increase in sales. Highly recommended!',
     rating: 5,
     project: 'E-commerce Platform'
   },
@@ -23,7 +23,7 @@ const testimonials = [
     role: 'Product Manager at InnovateCorp',
     company: 'InnovateCorp',
     image: '/api/placeholder/80/80',
-    quote: 'Working with Franck was a game-changer for our team productivity platform. His real-time collaboration features reduced our meeting time by 80% and improved overall workflow efficiency.',
+    quote: 'Working with Francisco was a game-changer for our team productivity platform. His real-time collaboration features reduced our meeting time by 80% and improved overall workflow efficiency.',
     rating: 5,
     project: 'Team Collaboration Suite'
   },
@@ -33,7 +33,7 @@ const testimonials = [
     role: 'Founder at AgriTech Solutions',
     company: 'AgriTech Solutions',
     image: '/api/placeholder/80/80',
-    quote: 'Franck&apos;s AI-powered weather platform has been instrumental in helping our agricultural clients reduce crop losses by 40%. His technical skills and understanding of our industry needs were outstanding.',
+    quote: 'Francisco&apos;s AI-powered weather platform has been instrumental in helping our agricultural clients reduce crop losses by 40%. His technical skills and understanding of our industry needs were outstanding.',
     rating: 5,
     project: 'Weather Intelligence Platform'
   },
@@ -43,7 +43,7 @@ const testimonials = [
     role: 'Engineering Director at ScaleUp',
     company: 'ScaleUp',
     image: '/api/placeholder/80/80',
-    quote: 'Franck&apos;s code quality is exceptional. He delivered a complex microservices architecture that handles our 10,000+ concurrent users flawlessly. Professional, reliable, and highly skilled.',
+    quote: 'Francisco&apos;s code quality is exceptional. He delivered a complex microservices architecture that handles our 10,000+ concurrent users flawlessly. Professional, reliable, and highly skilled.',
     rating: 5,
     project: 'Microservices Architecture'
   }
