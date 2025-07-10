@@ -22,14 +22,14 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Francisco - Senior Full-Stack Developer | React & TypeScript Expert",
-    template: "%s | Francisco - Full-Stack Developer"
+    default: "Franck - Senior Full-Stack Developer | React & TypeScript Expert",
+    template: "%s | Franck - Full-Stack Developer"
   },
   description: "Senior Full-Stack Developer with 5+ years experience building scalable web applications. Specializing in React, TypeScript, Next.js, and modern web technologies. Available for freelance projects and full-time opportunities.",
   keywords: ["Full-Stack Developer", "React Developer", "TypeScript", "Next.js", "Web Development", "Frontend", "Backend", "JavaScript", "Node.js", "PostgreSQL", "Tailwind CSS", "AWS", "Docker", "Kubernetes"],
-  authors: [{ name: "Francisco", url: "https://portfolio-4u8c.vercel.app" }],
-  creator: "Francisco",
-  publisher: "Francisco",
+  authors: [{ name: "Franck", url: "https://portfolio-4u8c.vercel.app" }],
+  creator: "Franck",
+  publisher: "Franck",
   formatDetection: {
     email: false,
     address: false,
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Francisco - Senior Full-Stack Developer | React & TypeScript Expert",
+    title: "Franck - Senior Full-Stack Developer | React & TypeScript Expert",
     description: "Senior Full-Stack Developer with 5+ years experience building scalable web applications. Specializing in React, TypeScript, Next.js, and modern web technologies.",
     url: "https://portfolio-4u8c.vercel.app",
-    siteName: "Francisco Portfolio",
+    siteName: "Franck Portfolio",
     locale: "en_US",
     type: "website",
     images: [
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Francisco - Senior Full-Stack Developer | React & TypeScript Expert",
+    title: "Franck - Senior Full-Stack Developer | React & TypeScript Expert",
     description: "Senior Full-Stack Developer with 5+ years experience building scalable web applications. Specializing in React, TypeScript, Next.js, and modern web technologies.",
     images: ["/og-image.jpg"],
   },
