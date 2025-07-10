@@ -8,9 +8,16 @@ interface BackupData {
   projects: unknown[];
   users: Array<{
     id: string;
+    createdAt: Date;
+    updatedAt: Date;
     email: string;
-    name?: string;
-    bio?: string;
+    name: string | null;
+    bio: string | null;
+    avatar: string | null;
+    website: string | null;
+    github: string | null;
+    twitter: string | null;
+    linkedin: string | null;
   }>;
   categories: unknown[];
   timestamp: string;
