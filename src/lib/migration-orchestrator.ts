@@ -1,4 +1,4 @@
-// import { CoreMigrationService } from './core-migration'; // Temporarily disabled  
+import { CoreMigrationService } from './core-migration';
 // import { BackupSystem } from './backup-system'; // Temporarily disabled
 
 export class MigrationOrchestrator {
@@ -17,9 +17,9 @@ export class MigrationOrchestrator {
       //   throw new Error('Backup validation failed. Migration aborted.');
       // }
       
-      // Step 3: Perform core migration (temporarily disabled)
-      console.log('📋 Step 3: Skipping core migration (temporarily disabled)...');
-      // await CoreMigrationService.migrate();
+      // Step 3: Perform core migration
+      console.log('📋 Step 3: Performing core migration...');
+      await CoreMigrationService.migrate();
       
       // Step 4: Verify migration success
       console.log('📋 Step 4: Verifying migration...');
