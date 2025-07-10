@@ -119,4 +119,68 @@ export class ProjectService {
       data: { likes: { increment: 1 } }
     })
   }
+
+  static async createProject(data: {
+    title: string
+    slug: string
+    description: string
+    longDescription?: string
+    image?: string
+    liveUrl?: string
+    githubUrl?: string
+    technologies: string[]
+    featured?: boolean
+    status: ProjectStatus
+    startDate?: string
+    endDate?: string
+    authorId: string
+  }): Promise<Project> {
+    return await db.project.create({
+      data: {
+        title: data.title,
+        slug: data.slug,
+        description: data.description,
+        longDescription: data.longDescription,
+        image: data.image,
+        liveUrl: data.liveUrl,
+        githubUrl: data.githubUrl,
+        technologies: data.technologies,
+        featured: data.featured || false,
+        status: data.status,
+        startDate: data.startDate ? new Date(data.startDate) : null,
+        endDate: data.endDate ? new Date(data.endDate) : null,
+        authorId: data.authorId
+      }
+    })
+  }
+
+  static async updateProject(slug: string, data: {
+    title?: string
+    slug?: string
+    description?: string
+    longDescription?: string
+    image?: string
+    liveUrl?: string
+    githubUrl?: string
+    technologies?: string[]
+    featured?: boolean
+    status?: ProjectStatus
+    startDate?: string
+    endDate?: string
+  }): Promise<Project> {
+    return await db.project.update({
+      where: { slug },
+      data: {
+        ...data,
+        startDate: data.startDate ? new Date(data.startDate) : undefined,
+        endDate: data.endDate ? new Date(data.endDate) : undefined
+      }
+    })
+  }
+
+  static async deleteProject(slug: string): Promise<void> {
+    await db.project.delete({
+      where: { slug }
+    })
+  }
 }
