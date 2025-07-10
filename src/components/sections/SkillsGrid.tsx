@@ -79,8 +79,8 @@ function getStaticSkills(): SkillCategory[] {
 
 export function SkillsGrid() {
   const { ref, inView } = useInView(0.2);
-  const [skillCategories, setSkillCategories] = useState<SkillCategory[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [skillCategories, setSkillCategories] = useState<SkillCategory[]>(getStaticSkills());
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchSkills() {
@@ -92,6 +92,7 @@ export function SkillsGrid() {
           
           // If no skills, use static fallback
           if (!skills || !Array.isArray(skills) || skills.length === 0) {
+            console.log('No skills found, using static fallback');
             setSkillCategories(getStaticSkills());
             return;
           }

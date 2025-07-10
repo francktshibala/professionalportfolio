@@ -164,8 +164,8 @@ function getStaticProjects(): Project[] {
 
 export function FeaturedProjects() {
   const { ref, inView } = useInView(0.2);
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [projects, setProjects] = useState<Project[]>(getStaticProjects());
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -177,16 +177,19 @@ export function FeaturedProjects() {
           
           // If no projects, use static fallback
           if (!projects || !Array.isArray(projects) || projects.length === 0) {
+            console.log('No projects found, using static fallback');
             setProjects(getStaticProjects());
             return;
           }
           
           setProjects(projects);
         } else {
+          console.log('Projects API request failed, using static fallback');
           setProjects(getStaticProjects());
         }
       } catch (error) {
         console.error('Failed to fetch featured projects:', error);
+        console.log('Projects API error, using static fallback');
         setProjects(getStaticProjects());
       } finally {
         setLoading(false);
