@@ -261,16 +261,16 @@ export default function AdminProjects() {
                       <div>❤ {project.likes}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <div className="flex space-x-4">
+                      <div className="flex space-x-2">
                         <button
                           onClick={() => handleEdit(project)}
-                          className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors font-medium"
+                          className="text-blue-600 hover:text-blue-900 font-medium"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(project.slug)}
-                          className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-colors font-medium"
+                          className="text-red-600 hover:text-red-900 font-medium"
                         >
                           Delete
                         </button>
