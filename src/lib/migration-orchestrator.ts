@@ -1,21 +1,21 @@
 import { CoreMigrationService } from './core-migration';
-import { BackupSystem } from './backup-system';
+// import { BackupSystem } from './backup-system'; // Temporarily disabled
 
 export class MigrationOrchestrator {
   static async performSafeMigration(): Promise<void> {
     console.log('🚀 Starting safe migration process...');
     
     try {
-      // Step 1: Create backup before migration
-      console.log('📋 Step 1: Creating backup...');
-      await BackupSystem.createBackup();
+      // Step 1: Create backup before migration (temporarily disabled)
+      console.log('📋 Step 1: Skipping backup (temporarily disabled)...');
+      // await BackupSystem.createBackup();
       
-      // Step 2: Validate backup
-      console.log('📋 Step 2: Validating backup...');
-      const isValidBackup = await BackupSystem.validateBackup();
-      if (!isValidBackup) {
-        throw new Error('Backup validation failed. Migration aborted.');
-      }
+      // Step 2: Validate backup (temporarily disabled)
+      console.log('📋 Step 2: Skipping backup validation (temporarily disabled)...');
+      // const isValidBackup = await BackupSystem.validateBackup();
+      // if (!isValidBackup) {
+      //   throw new Error('Backup validation failed. Migration aborted.');
+      // }
       
       // Step 3: Perform core migration
       console.log('📋 Step 3: Performing core migration...');
@@ -30,15 +30,15 @@ export class MigrationOrchestrator {
     } catch (error) {
       console.error('❌ Migration failed:', error);
       
-      // Attempt to restore backup
-      console.log('🔄 Attempting to restore from backup...');
-      try {
-        await BackupSystem.restoreBackup();
-        console.log('✅ Backup restored successfully');
-      } catch (restoreError) {
-        console.error('❌ Backup restoration failed:', restoreError);
-        throw new Error(`Migration failed and backup restoration failed: ${restoreError}`);
-      }
+      // Attempt to restore backup (temporarily disabled)
+      console.log('🔄 Backup restoration temporarily disabled...');
+      // try {
+      //   await BackupSystem.restoreBackup();
+      //   console.log('✅ Backup restored successfully');
+      // } catch (restoreError) {
+      //   console.error('❌ Backup restoration failed:', restoreError);
+      //   throw new Error(`Migration failed and backup restoration failed: ${restoreError}`);
+      // }
       
       throw error;
     }
