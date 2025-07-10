@@ -24,7 +24,7 @@ export function HeroSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
                 >
-                  Francisco
+                  Franck
                 </MotionSpan>
               </Heading>
             </MotionDiv>

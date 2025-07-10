@@ -25,7 +25,7 @@ export function createMetadata({
   publishedTime,
   modifiedTime,
   tags,
-  author = 'Francisco',
+  author = 'Franck',
   noIndex = false,
 }: PageMetadata): Metadata {
   const fullUrl = `${baseUrl}${url}`;
@@ -46,7 +46,7 @@ export function createMetadata({
       title,
       description,
       url: fullUrl,
-      siteName: 'Francisco Portfolio',
+      siteName: 'Franck Portfolio',
       locale: 'en_US',
       type: type === 'article' ? 'article' : 'website',
       images: [
@@ -69,8 +69,8 @@ export function createMetadata({
       title,
       description,
       images: [fullImageUrl],
-      creator: '@francisco',
-      site: '@francisco',
+      creator: '@franck',
+      site: '@franck',
     },
     robots: {
       index: !noIndex,
