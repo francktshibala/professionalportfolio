@@ -87,8 +87,8 @@ export default function AdminProjects() {
         ...formData,
         technologies: formData.technologies.split(',').map(t => t.trim()).filter(Boolean),
         startDate: formData.startDate || null,
-        endDate: formData.endDate || null,
-        authorId: 'cm5iw5nqf0000nruwcg8u0x7e' // Default author ID
+        endDate: formData.endDate || null
+        // Remove hardcoded authorId - let API handle user creation
       }
 
       const url = editingProject ? `/api/projects/${editingProject.slug}` : '/api/projects'
