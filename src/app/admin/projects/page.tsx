@@ -260,19 +260,27 @@ export default function AdminProjects() {
                       <div>👁 {project.views}</div>
                       <div>❤ {project.likes}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <div className="flex space-x-2">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium bg-gray-50">
+                      <div className="flex space-x-3">
                         <button
-                          onClick={() => handleEdit(project)}
-                          className="text-blue-600 hover:text-blue-900 font-medium underline"
+                          onClick={() => {
+                            console.log('Edit clicked for project:', project.title)
+                            handleEdit(project)
+                          }}
+                          className="inline-block px-3 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full hover:bg-blue-600"
+                          style={{ minWidth: '60px' }}
                         >
-                          ✏️ Edit
+                          EDIT
                         </button>
                         <button
-                          onClick={() => handleDelete(project.slug)}
-                          className="text-red-600 hover:text-red-900 font-medium underline"
+                          onClick={() => {
+                            console.log('Delete clicked for project:', project.slug)
+                            handleDelete(project.slug)
+                          }}
+                          className="inline-block px-3 py-1 text-xs font-semibold text-white bg-red-500 rounded-full hover:bg-red-600"
+                          style={{ minWidth: '70px' }}
                         >
-                          🗑️ Delete
+                          DELETE
                         </button>
                       </div>
                     </td>
