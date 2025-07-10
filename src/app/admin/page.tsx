@@ -126,6 +126,46 @@ export default function AdminDashboard() {
                   <span className="text-sm font-medium text-gray-900">View Contacts</span>
                 </div>
               </a>
+              
+              <button
+                onClick={async () => {
+                  const apiKey = sessionStorage.getItem('adminApiKey')
+                  if (!apiKey) return
+                  
+                  try {
+                    const response = await fetch('/api/admin/backup', {
+                      headers: { 'x-api-key': apiKey }
+                    })
+                    const data = await response.json()
+                    
+                    if (data.success) {
+                      const blob = new Blob([JSON.stringify(data.backup, null, 2)], {
+                        type: 'application/json'
+                      })
+                      const url = URL.createObjectURL(blob)
+                      const a = document.createElement('a')
+                      a.href = url
+                      a.download = `portfolio-backup-${new Date().toISOString().split('T')[0]}.json`
+                      document.body.appendChild(a)
+                      a.click()
+                      document.body.removeChild(a)
+                      URL.revokeObjectURL(url)
+                      alert('Backup downloaded successfully!')
+                    } else {
+                      alert('Failed to create backup')
+                    }
+                  } catch (error) {
+                    console.error('Backup error:', error)
+                    alert('Failed to create backup')
+                  }
+                }}
+                className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 border border-gray-300 rounded-lg hover:bg-gray-50 w-full text-left"
+              >
+                <div className="flex items-center space-x-3">
+                  <span className="text-2xl">💾</span>
+                  <span className="text-sm font-medium text-gray-900">Download Backup</span>
+                </div>
+              </button>
             </div>
           </div>
         </div>
