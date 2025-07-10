@@ -124,6 +124,44 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+function getStaticProjects(): Project[] {
+  return [
+    {
+      id: '1',
+      title: 'E-commerce Platform',
+      description: 'A modern e-commerce platform with real-time inventory, payment processing, and admin dashboard.',
+      technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: true,
+      metrics: { users: '10K+', conversion: '3.2%' },
+      caseStudy: { results: ['Increased conversion by 40%', 'Reduced load time by 60%'] }
+    },
+    {
+      id: '2', 
+      title: 'Collaboration Suite',
+      description: 'Real-time collaboration platform with video calls, document sharing, and project management.',
+      technologies: ['Next.js', 'WebRTC', 'Socket.io', 'MongoDB'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: true,
+      metrics: { teams: '500+', uptime: '99.9%' },
+      caseStudy: { results: ['Improved team productivity by 35%', 'Zero downtime deployment'] }
+    },
+    {
+      id: '3',
+      title: 'Analytics Dashboard',
+      description: 'Comprehensive analytics dashboard with real-time data visualization and reporting.',
+      technologies: ['React', 'D3.js', 'Python', 'Redis'],
+      liveUrl: '#',
+      githubUrl: '#',
+      featured: true,
+      metrics: { queries: '1M+', latency: '<100ms' },
+      caseStudy: { results: ['Processed 1M+ queries/day', 'Sub-100ms response time'] }
+    }
+  ];
+}
+
 export function FeaturedProjects() {
   const { ref, inView } = useInView(0.2);
   const [projects, setProjects] = useState<Project[]>([]);
@@ -134,11 +172,22 @@ export function FeaturedProjects() {
       try {
         const response = await fetch('/api/projects/featured');
         if (response.ok) {
-          const data = await response.json();
-          setProjects(data);
+          const result = await response.json();
+          const projects = result.data || result || [];
+          
+          // If no projects, use static fallback
+          if (!projects || !Array.isArray(projects) || projects.length === 0) {
+            setProjects(getStaticProjects());
+            return;
+          }
+          
+          setProjects(projects);
+        } else {
+          setProjects(getStaticProjects());
         }
       } catch (error) {
         console.error('Failed to fetch featured projects:', error);
+        setProjects(getStaticProjects());
       } finally {
         setLoading(false);
       }

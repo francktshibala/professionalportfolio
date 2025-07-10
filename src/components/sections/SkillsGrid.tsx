@@ -42,6 +42,41 @@ function SkillBadge({ skill }: { skill: { name: string; level: string } }) {
   );
 }
 
+function getStaticSkills(): SkillCategory[] {
+  return [
+    {
+      title: 'Frontend',
+      skills: [
+        { id: '1', name: 'React', level: 'Expert', category: 'FRONTEND', featured: true },
+        { id: '2', name: 'TypeScript', level: 'Expert', category: 'FRONTEND', featured: true },
+        { id: '3', name: 'Next.js', level: 'Expert', category: 'FRONTEND', featured: true },
+        { id: '4', name: 'Tailwind CSS', level: 'Advanced', category: 'FRONTEND', featured: true },
+        { id: '5', name: 'JavaScript', level: 'Expert', category: 'FRONTEND', featured: true },
+        { id: '6', name: 'HTML5', level: 'Expert', category: 'FRONTEND', featured: false },
+      ]
+    },
+    {
+      title: 'Backend',
+      skills: [
+        { id: '7', name: 'Node.js', level: 'Advanced', category: 'BACKEND', featured: true },
+        { id: '8', name: 'Python', level: 'Advanced', category: 'BACKEND', featured: true },
+        { id: '9', name: 'PostgreSQL', level: 'Advanced', category: 'BACKEND', featured: true },
+        { id: '10', name: 'Prisma', level: 'Advanced', category: 'BACKEND', featured: true },
+        { id: '11', name: 'REST APIs', level: 'Expert', category: 'BACKEND', featured: true },
+      ]
+    },
+    {
+      title: 'Tools & DevOps',
+      skills: [
+        { id: '12', name: 'Git', level: 'Expert', category: 'DEVOPS', featured: true },
+        { id: '13', name: 'Docker', level: 'Intermediate', category: 'DEVOPS', featured: true },
+        { id: '14', name: 'AWS', level: 'Intermediate', category: 'DEVOPS', featured: true },
+        { id: '15', name: 'Vercel', level: 'Advanced', category: 'DEVOPS', featured: true },
+      ]
+    }
+  ];
+}
+
 export function SkillsGrid() {
   const { ref, inView } = useInView(0.2);
   const [skillCategories, setSkillCategories] = useState<SkillCategory[]>([]);
@@ -52,7 +87,14 @@ export function SkillsGrid() {
       try {
         const response = await fetch('/api/skills');
         if (response.ok) {
-          const skills: Skill[] = await response.json();
+          const result = await response.json();
+          const skills: Skill[] = result.data || result || [];
+          
+          // If no skills, use static fallback
+          if (!skills || !Array.isArray(skills) || skills.length === 0) {
+            setSkillCategories(getStaticSkills());
+            return;
+          }
           
           // Group skills by category
           const categoryMap = new Map<string, Skill[]>();
@@ -82,7 +124,8 @@ export function SkillsGrid() {
         }
       } catch (error) {
         console.error('Failed to fetch skills:', error);
-        // Fallback to show empty state or error message
+        // Fallback to static skills
+        setSkillCategories(getStaticSkills());
       } finally {
         setLoading(false);
       }
