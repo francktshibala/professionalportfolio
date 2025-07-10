@@ -264,13 +264,13 @@ export default function AdminProjects() {
                       <div className="flex space-x-2">
                         <button
                           onClick={() => handleEdit(project)}
-                          className="text-blue-600 hover:text-blue-900 font-medium underline"
+                          className="bg-blue-600 text-white px-2 py-1 rounded-md hover:bg-blue-700 text-xs"
                         >
                           ✏️ Edit
                         </button>
                         <button
                           onClick={() => handleDelete(project.slug)}
-                          className="text-red-600 hover:text-red-900 font-medium underline"
+                          className="bg-red-600 text-white px-2 py-1 rounded-md hover:bg-red-700 text-xs"
                         >
                           🗑️ Delete
                         </button>
