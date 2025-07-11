@@ -211,12 +211,12 @@ export function ProfessionalServiceSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": "https://portfolio-4u8c.vercel.app/#organization",
-    name: "Francisco - Full-Stack Development Services",
+    name: "Franck - Full-Stack Development Services",
     description: "Professional web development services specializing in React, TypeScript, and modern web technologies",
     url: "https://portfolio-4u8c.vercel.app",
     founder: {
       "@type": "Person",
-      name: "Francisco",
+      name: "Franck",
       jobTitle: "Senior Full-Stack Developer"
     },
     address: {

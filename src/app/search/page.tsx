@@ -6,14 +6,14 @@ import { SearchContent } from './SearchContent';
 
 export const metadata: Metadata = {
   title: 'Search',
-  description: 'Search projects, blog posts, and skills on Francisco\'s portfolio',
+  description: 'Search projects, blog posts, and skills on Franck\'s portfolio',
   openGraph: {
-    title: 'Search | Francisco - Full-Stack Developer',
-    description: 'Search projects, blog posts, and skills on Francisco\'s portfolio',
+    title: 'Search | Franck - Full-Stack Developer',
+    description: 'Search projects, blog posts, and skills on Franck\'s portfolio',
   },
   twitter: {
-    title: 'Search | Francisco - Full-Stack Developer',
-    description: 'Search projects, blog posts, and skills on Francisco\'s portfolio',
+    title: 'Search | Franck - Full-Stack Developer',
+    description: 'Search projects, blog posts, and skills on Franck\'s portfolio',
   },
 };
 

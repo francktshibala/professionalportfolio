@@ -62,7 +62,7 @@ export function AboutContent() {
           {/* Hero Section */}
           <MotionDiv className="text-center mb-20" variants={slideUpVariants}>
             <Heading as="h1" className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              About Francisco
+              About Franck
             </Heading>
             <Text className="text-xl text-secondary-700 dark:text-secondary-300 max-w-4xl mx-auto leading-relaxed">
               Passionate full-stack developer with 5+ years of experience building scalable web applications 

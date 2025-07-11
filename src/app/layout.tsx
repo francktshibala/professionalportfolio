@@ -22,14 +22,14 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Francisco - Senior Full-Stack Developer | React & TypeScript Expert",
-    template: "%s | Francisco - Full-Stack Developer"
+    default: "Franck - Senior Full-Stack Developer | React & TypeScript Expert",
+    template: "%s | Franck - Full-Stack Developer"
   },
   description: "Senior Full-Stack Developer with 5+ years experience building scalable web applications. Specializing in React, TypeScript, Next.js, and modern web technologies. Available for freelance projects and full-time opportunities.",
   keywords: ["Full-Stack Developer", "React Developer", "TypeScript", "Next.js", "Web Development", "Frontend", "Backend", "JavaScript", "Node.js", "PostgreSQL", "Tailwind CSS", "AWS", "Docker", "Kubernetes"],
   authors: [{ name: "Francisco", url: "https://portfolio-4u8c.vercel.app" }],
-  creator: "Francisco",
-  publisher: "Francisco",
+  creator: "Franck",
+  publisher: "Franck",
   formatDetection: {
     email: false,
     address: false,
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Francisco - Senior Full-Stack Developer | React & TypeScript Expert",
+    title: "Franck - Senior Full-Stack Developer | React & TypeScript Expert",
     description: "Senior Full-Stack Developer with 5+ years experience building scalable web applications. Specializing in React, TypeScript, Next.js, and modern web technologies.",
     url: "https://portfolio-4u8c.vercel.app",
-    siteName: "Francisco Portfolio",
+    siteName: "Franck Portfolio",
     locale: "en_US",
     type: "website",
     images: [
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Francisco - Senior Full-Stack Developer Portfolio",
+        alt: "Franck - Senior Full-Stack Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Francisco - Senior Full-Stack Developer | React & TypeScript Expert",
+    title: "Franck - Senior Full-Stack Developer | React & TypeScript Expert",
     description: "Senior Full-Stack Developer with 5+ years experience building scalable web applications. Specializing in React, TypeScript, Next.js, and modern web technologies.",
     images: ["/og-image.jpg"],
   },
@@ -92,23 +92,23 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <PersonSchema 
-          name="Francisco"
+          name="Franck"
           jobTitle="Senior Full-Stack Developer"
           description="Senior Full-Stack Developer with 5+ years experience building scalable web applications. Specializing in React, TypeScript, Next.js, and modern web technologies."
           url="https://portfolio-4u8c.vercel.app"
-          image="https://portfolio-4u8c.vercel.app/francisco.jpg"
-          email="francisco@example.com"
+          image="https://portfolio-4u8c.vercel.app/franck.jpg"
+          email="franck@example.com"
           sameAs={[
-            "https://github.com/francisco",
-            "https://linkedin.com/in/francisco",
-            "https://twitter.com/francisco"
+            "https://github.com/franck",
+            "https://linkedin.com/in/franck",
+            "https://twitter.com/franck"
           ]}
         />
         <WebsiteSchema 
-          name="Francisco Portfolio"
+          name="Franck Portfolio"
           description="Professional portfolio showcasing full-stack development expertise"
           url="https://portfolio-4u8c.vercel.app"
-          author="Francisco"
+          author="Franck"
           potentialAction={{
             "@type": "SearchAction",
             target: "https://portfolio-4u8c.vercel.app/search?q={search_term_string}",
