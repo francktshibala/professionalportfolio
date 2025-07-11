@@ -1,16 +1,18 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import { MotionDiv, slideUpVariants, staggerContainer } from '@/components/ui/MotionComponents';
 import { useInView } from '@/hooks/useInView';
+import { type Testimonial } from '@/types/testimonial';
 
-const testimonials = [
+// Static testimonials (fallback data)
+const staticTestimonials = [
   {
-    id: 1,
-    name: 'Sarah Johnson',
-    role: 'CTO at TechStartup Inc',
+    author: 'Sarah Johnson',
+    position: 'CTO at TechStartup Inc',
     company: 'TechStartup Inc',
     image: '/api/placeholder/80/80',
     quote: 'Francisco delivered exceptional results on our e-commerce platform. His attention to detail and technical expertise helped us achieve a 340% increase in sales. Highly recommended!',
@@ -18,9 +20,8 @@ const testimonials = [
     project: 'E-commerce Platform'
   },
   {
-    id: 2,
-    name: 'Michael Chen',
-    role: 'Product Manager at InnovateCorp',
+    author: 'Michael Chen',
+    position: 'Product Manager at InnovateCorp',
     company: 'InnovateCorp',
     image: '/api/placeholder/80/80',
     quote: 'Working with Francisco was a game-changer for our team productivity platform. His real-time collaboration features reduced our meeting time by 80% and improved overall workflow efficiency.',
@@ -28,22 +29,20 @@ const testimonials = [
     project: 'Team Collaboration Suite'
   },
   {
-    id: 3,
-    name: 'Emma Rodriguez',
-    role: 'Founder at AgriTech Solutions',
+    author: 'Emma Rodriguez',
+    position: 'Founder at AgriTech Solutions',
     company: 'AgriTech Solutions',
     image: '/api/placeholder/80/80',
-    quote: 'Francisco&apos;s AI-powered weather platform has been instrumental in helping our agricultural clients reduce crop losses by 40%. His technical skills and understanding of our industry needs were outstanding.',
+    quote: 'Francisco\'s AI-powered weather platform has been instrumental in helping our agricultural clients reduce crop losses by 40%. His technical skills and understanding of our industry needs were outstanding.',
     rating: 5,
     project: 'Weather Intelligence Platform'
   },
   {
-    id: 4,
-    name: 'David Thompson',
-    role: 'Engineering Director at ScaleUp',
+    author: 'David Thompson',
+    position: 'Engineering Director at ScaleUp',
     company: 'ScaleUp',
     image: '/api/placeholder/80/80',
-    quote: 'Francisco&apos;s code quality is exceptional. He delivered a complex microservices architecture that handles our 10,000+ concurrent users flawlessly. Professional, reliable, and highly skilled.',
+    quote: 'Francisco\'s code quality is exceptional. He delivered a complex microservices architecture that handles our 10,000+ concurrent users flawlessly. Professional, reliable, and highly skilled.',
     rating: 5,
     project: 'Microservices Architecture'
   }
@@ -56,7 +55,18 @@ const stats = [
   { value: '30+', label: 'Happy Clients' }
 ];
 
-function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
+interface DisplayTestimonial {
+  id?: string;
+  name: string;
+  role: string;
+  company?: string;
+  image?: string;
+  quote: string;
+  rating: number;
+  project?: string;
+}
+
+function TestimonialCard({ testimonial }: { testimonial: DisplayTestimonial }) {
   return (
     <MotionDiv variants={slideUpVariants}>
       <Card className="p-6 bg-white dark:bg-secondary-900 border-secondary-200 dark:border-secondary-700 hover:shadow-xl transition-all duration-300 h-full">
@@ -93,9 +103,11 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
           &ldquo;{testimonial.quote}&rdquo;
         </blockquote>
         
-        <div className="text-sm text-accent-600 dark:text-accent-400 font-medium">
-          Project: {testimonial.project}
-        </div>
+        {testimonial.project && (
+          <div className="text-sm text-accent-600 dark:text-accent-400 font-medium">
+            Project: {testimonial.project}
+          </div>
+        )}
       </Card>
     </MotionDiv>
   );
@@ -103,6 +115,58 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
 
 export function TestimonialsSection() {
   const { ref, inView } = useInView(0.2);
+  const [testimonials, setTestimonials] = useState<DisplayTestimonial[]>([]);
+  const [_loading, setLoading] = useState(false);
+
+  // Initialize with static testimonials for immediate display
+  useEffect(() => {
+    // Convert static testimonials to display format
+    const displayTestimonials = staticTestimonials.map((testimonial, index) => ({
+      id: `static-${index}`,
+      name: testimonial.author,
+      role: testimonial.position,
+      company: testimonial.company,
+      image: testimonial.image,
+      quote: testimonial.quote,
+      rating: testimonial.rating || 5,
+      project: testimonial.project
+    }));
+    
+    setTestimonials(displayTestimonials);
+    
+    // Try to load dynamic testimonials
+    loadDynamicTestimonials();
+  }, []);
+
+  const loadDynamicTestimonials = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/testimonials?featured=true');
+      const data = await response.json();
+      
+      if (data.success && data.data && Array.isArray(data.data) && data.data.length > 0) {
+        // Convert database testimonials to display format
+        const dynamicTestimonials = data.data.map((testimonial: Testimonial) => ({
+          id: testimonial.id,
+          name: testimonial.name,
+          role: testimonial.role,
+          company: testimonial.company || undefined,
+          image: testimonial.image || undefined,
+          quote: testimonial.content,
+          rating: testimonial.rating || 5,
+          project: undefined // Projects not linked to testimonials yet
+        }));
+        
+        setTestimonials(dynamicTestimonials);
+      }
+      // If no dynamic testimonials, keep static ones
+    } catch (error) {
+      console.log('Using static testimonials (dynamic load failed):', error);
+      // Keep static testimonials on error
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="py-24 bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900 dark:to-primary-950">
@@ -153,8 +217,8 @@ export function TestimonialsSection() {
           animate={inView ? "visible" : "hidden"}
           variants={staggerContainer}
         >
-          {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={testimonial.id || `testimonial-${index}`} testimonial={testimonial} />
           ))}
         </MotionDiv>
       </Container>
