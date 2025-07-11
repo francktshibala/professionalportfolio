@@ -212,6 +212,9 @@ export default function AdminProjects() {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Project
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -220,14 +223,27 @@ export default function AdminProjects() {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Stats
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {projects.map((project) => (
                   <tr key={project.id}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => handleEdit(project)}
+                          className="bg-blue-600 text-white px-2 py-1 rounded-md hover:bg-blue-700 text-xs"
+                        >
+                          ✏️ Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(project.slug)}
+                          className="bg-red-600 text-white px-2 py-1 rounded-md hover:bg-red-700 text-xs"
+                        >
+                          🗑️ Delete
+                        </button>
+                      </div>
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div>
@@ -259,22 +275,6 @@ export default function AdminProjects() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       <div>👁 {project.views}</div>
                       <div>❤ {project.likes}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <div className="flex space-x-2">
-                        <button
-                          onClick={() => handleEdit(project)}
-                          className="bg-blue-600 text-white px-2 py-1 rounded-md hover:bg-blue-700 text-xs"
-                        >
-                          ✏️ Edit
-                        </button>
-                        <button
-                          onClick={() => handleDelete(project.slug)}
-                          className="bg-red-600 text-white px-2 py-1 rounded-md hover:bg-red-700 text-xs"
-                        >
-                          🗑️ Delete
-                        </button>
-                      </div>
                     </td>
                   </tr>
                 ))}
