@@ -7,6 +7,7 @@ interface DashboardStats {
   projects: number
   posts: number
   skills: number
+  testimonials: number
   contacts: number
 }
 
@@ -20,17 +21,19 @@ export default function AdminDashboard() {
         const apiKey = sessionStorage.getItem('adminApiKey')
         if (!apiKey) return
 
-        const [projectsRes, postsRes, skillsRes, contactsRes] = await Promise.all([
+        const [projectsRes, postsRes, skillsRes, testimonialsRes, contactsRes] = await Promise.all([
           fetch('/api/projects'),
           fetch('/api/posts'),
           fetch('/api/skills'),
+          fetch('/api/admin/testimonials', { headers: { 'x-api-key': apiKey } }),
           fetch('/api/admin/contacts', { headers: { 'x-api-key': apiKey } })
         ])
 
-        const [projects, posts, skills, contacts] = await Promise.all([
+        const [projects, posts, skills, testimonials, contacts] = await Promise.all([
           projectsRes.json(),
           postsRes.json(),
           skillsRes.json(),
+          testimonialsRes.json(),
           contactsRes.json()
         ])
 
@@ -38,6 +41,7 @@ export default function AdminDashboard() {
           projects: projects.data?.length || 0,
           posts: posts.data?.length || 0,
           skills: skills.data?.length || 0,
+          testimonials: testimonials.data?.length || 0,
           contacts: contacts.data?.length || 0
         })
       } catch (error) {
@@ -54,6 +58,7 @@ export default function AdminDashboard() {
     { name: 'Projects', value: stats?.projects || 0, icon: '🚀', color: 'bg-blue-500' },
     { name: 'Blog Posts', value: stats?.posts || 0, icon: '📝', color: 'bg-green-500' },
     { name: 'Skills', value: stats?.skills || 0, icon: '⚡', color: 'bg-purple-500' },
+    { name: 'Testimonials', value: stats?.testimonials || 0, icon: '💬', color: 'bg-pink-500' },
     { name: 'Contacts', value: stats?.contacts || 0, icon: '📧', color: 'bg-orange-500' }
   ]
 

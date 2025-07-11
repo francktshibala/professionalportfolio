@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Projects', href: '/admin/projects', icon: '🚀' },
   { name: 'Blog Posts', href: '/admin/posts', icon: '📝' },
   { name: 'Skills', href: '/admin/skills', icon: '⚡' },
+  { name: 'Testimonials', href: '/admin/testimonials', icon: '💬' },
   { name: 'Contacts', href: '/admin/contacts', icon: '📧' },
   { name: 'Analytics', href: '/admin/analytics', icon: '📈' }
 ]
