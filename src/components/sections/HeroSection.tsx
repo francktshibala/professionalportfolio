@@ -75,13 +75,13 @@ export function HeroSection() {
               >
                 <div className="w-72 h-72 rounded-full overflow-hidden shadow-inner ring-4 ring-white/50 dark:ring-secondary-700/50 relative">
                   {/* Gradient background behind image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-primary-600 to-accent-600 dark:from-primary-700 dark:via-primary-800 dark:to-accent-700"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-primary-600 to-accent-600 dark:from-primary-400 dark:via-accent-500 dark:to-accent-400"></div>
                   <Image
                     src="/franck.jpg"
                     alt="Franck - Senior Full-Stack Developer"
                     width={288}
                     height={288}
-                    className="w-full h-full object-cover object-top relative z-10 mix-blend-multiply dark:mix-blend-normal"
+                    className="w-full h-full object-cover object-top relative z-10 mix-blend-multiply dark:mix-blend-soft-light"
                     priority
                   />
                 </div>
