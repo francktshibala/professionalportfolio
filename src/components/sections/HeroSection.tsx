@@ -75,17 +75,15 @@ export function HeroSection() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <div className="w-72 h-72 rounded-full bg-gradient-to-br from-white to-secondary-50 dark:from-secondary-800 dark:to-secondary-900 flex items-center justify-center shadow-inner">
-                  <div className="w-64 h-64 rounded-full overflow-hidden shadow-2xl ring-4 ring-white/50 dark:ring-secondary-700/50">
-                    <Image
-                      src="/franck.jpg"
-                      alt="Franck - Senior Full-Stack Developer"
-                      width={256}
-                      height={256}
-                      className="w-full h-full object-cover"
-                      priority
-                    />
-                  </div>
+                <div className="w-72 h-72 rounded-full overflow-hidden shadow-inner ring-4 ring-white/50 dark:ring-secondary-700/50">
+                  <Image
+                    src="/franck.jpg"
+                    alt="Franck - Senior Full-Stack Developer"
+                    width={288}
+                    height={288}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
                 </div>
               </MotionDiv>
               <MotionDiv 
