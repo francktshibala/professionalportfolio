@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/ui/PageTransition";
 import { PersonSchema, WebsiteSchema, ProfessionalServiceSchema } from "@/components/seo/StructuredData";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
