@@ -34,10 +34,19 @@ export default function AboutPage() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
-          padding: 80px 60px;
+          justify-content: flex-start;
+          padding: 60px 60px 40px 60px;
           color: white;
           text-align: center;
+          min-height: 100vh;
+        }
+        
+        .profile-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 80px;
+          margin-bottom: 40px;
         }
         
         .profile-image {
@@ -51,11 +60,19 @@ export default function AboutPage() {
           font-size: 80px;
           font-weight: bold;
           color: white;
-          margin-bottom: 40px;
+          margin-bottom: 30px;
           box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-          border: 6px solid rgba(255,255,255,0.2);
+          border: 4px solid #3b82f6;
           overflow: hidden;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
+          position: relative;
+        }
+        
+        .profile-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center top;
         }
         
         .profile-image:hover {
@@ -75,6 +92,52 @@ export default function AboutPage() {
           opacity: 0.95;
           font-weight: 300;
           letter-spacing: 0.5px;
+          margin-bottom: 40px;
+        }
+        
+        .left-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          width: 100%;
+          max-width: 280px;
+        }
+        
+        .left-btn {
+          padding: 14px 28px;
+          border-radius: 30px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          border: none;
+          cursor: pointer;
+          text-align: center;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .left-btn-primary {
+          background: #3b82f6;
+          color: white;
+        }
+        
+        .left-btn-primary:hover {
+          background: #2563eb;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .left-btn-secondary {
+          background: transparent;
+          color: white;
+          border: 2px solid #3b82f6;
+        }
+        
+        .left-btn-secondary:hover {
+          background: #3b82f6;
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(59, 130, 246, 0.3);
         }
         
         .right-section {
@@ -184,17 +247,27 @@ export default function AboutPage() {
 
       <div className="main-container">
         <div className="left-section">
-          <div className="profile-image">
-            <Image 
-              src="/franck.jpg" 
-              alt="Franck Tshibala" 
-              width={200}
-              height={200}
-              className="w-full h-full object-cover"
-            />
+          <div className="profile-section">
+            <div className="profile-image">
+              <Image 
+                src="/franck.jpg" 
+                alt="Franck Tshibala" 
+                width={200}
+                height={200}
+              />
+            </div>
+            <div className="name">Franck Tshibala</div>
+            <div className="title">Founder of BookBridge</div>
           </div>
-          <div className="name">Franck Tshibala</div>
-          <div className="title">Founder of BookBridge</div>
+          
+          <div className="left-buttons">
+            <a href="https://bookbridge-six.vercel.app/" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-primary">
+              Try BookBridge
+            </a>
+            <a href="mailto:franck1tshibala@gmail.com" className="left-btn left-btn-secondary">
+              Contact Me
+            </a>
+          </div>
         </div>
         
         <div className="right-section">
@@ -224,14 +297,6 @@ export default function AboutPage() {
             Whether you&apos;re an investor, educator, developer, or simply someone who believes in democratizing education, I welcome your support of any kind. Every connection, piece of feedback, or helping hand brings us closer to making quality education accessible to everyone, everywhere.
           </p>
           
-          <div className="button-container">
-            <a href="https://bookbridge-six.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-              Try BookBridge
-            </a>
-            <a href="mailto:franck1tshibala@gmail.com" className="btn btn-secondary">
-              Contact Me
-            </a>
-          </div>
         </div>
       </div>
     </div>

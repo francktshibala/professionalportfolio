@@ -116,13 +116,11 @@ export default function RootLayout({
           }}
         />
         <ProfessionalServiceSchema />
-        <Header />
         <main className="flex-1">
           <PageTransition>
             {children}
           </PageTransition>
         </main>
-        <Footer />
       </body>
     </html>
   );
