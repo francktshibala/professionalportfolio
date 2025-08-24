@@ -262,7 +262,7 @@ export default function AboutPage() {
           
           <div className="left-buttons">
             <a href="https://bookbridge-six.vercel.app/" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-primary">
-              Try BookBridge
+              Explore BookBridge
             </a>
             <a href="mailto:franck1tshibala@gmail.com" className="left-btn left-btn-secondary">
               Contact Me
