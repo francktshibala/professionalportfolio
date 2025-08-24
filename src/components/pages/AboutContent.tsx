@@ -61,12 +61,19 @@ export function AboutContent() {
         >
           {/* Hero Section */}
           <MotionDiv className="text-center mb-20" variants={slideUpVariants}>
+            <div className="mb-8">
+              <img 
+                src="/franck.jpg" 
+                alt="François - BookBridge Founder" 
+                className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-primary-200 dark:border-primary-700"
+              />
+            </div>
             <Heading as="h1" className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
               Meet François
             </Heading>
             <Text className="text-xl text-secondary-700 dark:text-secondary-300 max-w-4xl mx-auto leading-relaxed">
               Founder of BookBridge - democratizing reading for 1.5 billion ESL students worldwide through AI. 
-              From growing up without books in Congo to building "Netflix for books" accessible to everyone, 
+              From growing up without books in Congo to building &ldquo;Netflix for books&rdquo; accessible to everyone, 
               regardless of income, location, or education level.
             </Text>
           </MotionDiv>
@@ -89,20 +96,20 @@ export function AboutContent() {
             <div className="max-w-4xl mx-auto">
               <Card className="p-8 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950/20 dark:to-accent-950/20 border-primary-200 dark:border-primary-700">
                 <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed mb-6">
-                  I grew up in the Democratic Republic of Congo, where public libraries simply don't exist. As a child, 
-                  I had no books to read and didn't even know how to approach reading one. It wasn't until I arrived 
+                  I grew up in the Democratic Republic of Congo, where public libraries simply don&apos;t exist. As a child, 
+                  I had no books to read and didn&apos;t even know how to approach reading one. It wasn&apos;t until I arrived 
                   in America in 2019 that I experienced my first public library - free books, free WiFi, open to everyone. 
                   That moment changed everything.
                 </Text>
                 <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed mb-6">
                   Back in Congo, I witnessed something powerful: people who could read and had access to books consistently 
-                  escaped poverty while others remained trapped. That's when I knew I had to build public libraries back home 
+                  escaped poverty while others remained trapped. That&apos;s when I knew I had to build public libraries back home 
                   to give people the same opportunity. But physical libraries are expensive and reach limited people.
                 </Text>
                 <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed">
-                  When AI emerged, I realized I'd found the key to scaling my mission globally. As a software development student, 
-                  I've spent the last two months applying everything I'm learning to build BookBridge - a digital solution 
-                  that can reach anyone, anywhere. We've created what could become "Netflix for books" - but unlike Netflix, 
+                  When AI emerged, I realized I&apos;d found the key to scaling my mission globally. As a software development student, 
+                  I&apos;ve spent the last two months applying everything I&apos;m learning to build BookBridge - a digital solution 
+                  that can reach anyone, anywhere. We&apos;ve created what could become &ldquo;Netflix for books&rdquo; - but unlike Netflix, 
                   everyone gets access regardless of income, location, or education level.
                 </Text>
               </Card>
@@ -195,8 +202,8 @@ export function AboutContent() {
                 Ready to Change the World Together?
               </Heading>
               <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed mb-8 max-w-2xl mx-auto">
-                Join me in democratizing reading for 1.5 billion ESL students worldwide. Whether you're an investor, 
-                partner, or just want to learn more about BookBridge, I'd love to connect.
+                Join me in democratizing reading for 1.5 billion ESL students worldwide. Whether you&apos;re an investor, 
+                partner, or just want to learn more about BookBridge, I&apos;d love to connect.
               </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
