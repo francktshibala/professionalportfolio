@@ -51,6 +51,13 @@ export default function AboutPage() {
           position: relative;
           z-index: 2;
           overflow: hidden;
+          border: 4px solid rgba(255,255,255,0.2);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .featured-photo:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 35px 70px rgba(0,0,0,0.4);
         }
         
         .photo-info {
@@ -161,7 +168,7 @@ export default function AboutPage() {
             />
           </div>
           <div className="photo-info">
-            <h2>François</h2>
+            <h2>Franck Tshibala</h2>
             <p>Founder of BookBridge</p>
           </div>
         </div>
