@@ -9,27 +9,27 @@ import { useInView } from '@/hooks/useInView';
 const achievements = [
   {
     year: '2024',
-    title: 'Senior Full-Stack Developer',
-    company: 'Tech Innovation Labs',
-    description: 'Leading development of enterprise-scale applications serving 100,000+ users. Architected microservices infrastructure reducing system downtime by 99.5%.'
+    title: 'BookBridge MVP Launch',
+    company: 'BookBridge AI',
+    description: 'Built working MVP in 2 months serving ESL students globally. AI-powered reading platform simplifying complex books to any level (A1-C2). Created "Netflix for books" with accessibility for all income levels.'
   },
   {
     year: '2023',
-    title: 'Technical Lead',
-    company: 'Digital Solutions Corp',
-    description: 'Spearheaded team of 8 developers delivering $2M+ revenue projects. Implemented CI/CD pipelines reducing deployment time by 85%.'
+    title: 'Software Development Student',
+    company: 'Applied Learning',
+    description: 'Intensive software development program focusing on modern web technologies. Applied everything learned to build BookBridge - turning classroom knowledge into real-world impact.'
   },
   {
-    year: '2022',
-    title: 'Full-Stack Developer',
-    company: 'StartupTech Inc',
-    description: 'Built scalable web applications from MVP to enterprise. Optimized performance achieving 95+ Lighthouse scores across all applications.'
+    year: '2019',
+    title: 'Arrived in America',
+    company: 'New Beginning',
+    description: 'First experience with public libraries - free books, free WiFi, open to everyone. This moment changed everything and sparked the vision for democratizing reading access globally.'
   },
   {
-    year: '2021',
-    title: 'Frontend Developer',
-    company: 'Creative Digital Agency',
-    description: 'Developed responsive web solutions for Fortune 500 clients. Improved user engagement by 60% through innovative UI/UX implementations.'
+    year: 'Childhood',
+    title: 'Growing Up in Congo',
+    company: 'Life Experience',
+    description: 'Witnessed how access to books determined who escaped poverty and who remained trapped. No public libraries existed - this inequality became the foundation for BookBridge mission.'
   }
 ];
 
@@ -41,10 +41,10 @@ const skills = [
 ];
 
 const stats = [
-  { label: 'Years Experience', value: '5+' },
-  { label: 'Projects Delivered', value: '50+' },
-  { label: 'Happy Clients', value: '30+' },
-  { label: 'Code Commits', value: '2,000+' }
+  { label: 'ESL Students Worldwide', value: '1.5B' },
+  { label: 'Months to MVP', value: '2' },
+  { label: 'Reading Levels Supported', value: 'A1-C2' },
+  { label: 'Countries Reachable', value: 'All' }
 ];
 
 export function AboutContent() {
@@ -62,12 +62,12 @@ export function AboutContent() {
           {/* Hero Section */}
           <MotionDiv className="text-center mb-20" variants={slideUpVariants}>
             <Heading as="h1" className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              About Franck
+              Meet François
             </Heading>
             <Text className="text-xl text-secondary-700 dark:text-secondary-300 max-w-4xl mx-auto leading-relaxed">
-              Passionate full-stack developer with 5+ years of experience building scalable web applications 
-              that solve real-world problems. I specialize in modern React ecosystems, TypeScript, and 
-              cloud-native architectures that deliver exceptional user experiences.
+              Founder of BookBridge - democratizing reading for 1.5 billion ESL students worldwide through AI. 
+              From growing up without books in Congo to building "Netflix for books" accessible to everyone, 
+              regardless of income, location, or education level.
             </Text>
           </MotionDiv>
 
@@ -89,18 +89,21 @@ export function AboutContent() {
             <div className="max-w-4xl mx-auto">
               <Card className="p-8 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950/20 dark:to-accent-950/20 border-primary-200 dark:border-primary-700">
                 <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed mb-6">
-                  My passion for technology started in university where I discovered the power of code to solve complex problems. 
-                  What began as curiosity about how websites work evolved into a deep expertise in modern web development.
+                  I grew up in the Democratic Republic of Congo, where public libraries simply don't exist. As a child, 
+                  I had no books to read and didn't even know how to approach reading one. It wasn't until I arrived 
+                  in America in 2019 that I experienced my first public library - free books, free WiFi, open to everyone. 
+                  That moment changed everything.
                 </Text>
                 <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed mb-6">
-                  Over the past 5 years, I&apos;ve had the privilege of working with startups, agencies, and enterprise companies, 
-                  building everything from MVP prototypes to large-scale applications serving hundreds of thousands of users. 
-                  Each project taught me something new about scalability, user experience, and the importance of clean, maintainable code.
+                  Back in Congo, I witnessed something powerful: people who could read and had access to books consistently 
+                  escaped poverty while others remained trapped. That's when I knew I had to build public libraries back home 
+                  to give people the same opportunity. But physical libraries are expensive and reach limited people.
                 </Text>
                 <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed">
-                  Today, I focus on helping businesses leverage modern web technologies to create exceptional digital experiences. 
-                  Whether it&apos;s optimizing performance, implementing complex features, or architecting scalable systems, 
-                  I&apos;m passionate about delivering solutions that make a real impact.
+                  When AI emerged, I realized I'd found the key to scaling my mission globally. As a software development student, 
+                  I've spent the last two months applying everything I'm learning to build BookBridge - a digital solution 
+                  that can reach anyone, anywhere. We've created what could become "Netflix for books" - but unlike Netflix, 
+                  everyone gets access regardless of income, location, or education level.
                 </Text>
               </Card>
             </div>
@@ -168,18 +171,47 @@ export function AboutContent() {
             </div>
           </MotionDiv>
 
-          {/* Personal Touch */}
-          <MotionDiv className="text-center" variants={slideUpVariants}>
+          {/* The Vision */}
+          <MotionDiv className="text-center mb-20" variants={slideUpVariants}>
             <Card className="p-8 bg-gradient-to-br from-secondary-50 to-primary-50 dark:from-secondary-900/50 dark:to-primary-950/20 border-secondary-200 dark:border-secondary-700">
               <Heading as="h2" className="text-2xl font-bold mb-6 text-secondary-900 dark:text-secondary-100">
-                Beyond Code
+                The Vision
               </Heading>
-              <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed max-w-3xl mx-auto">
-                When I&apos;m not coding, you&apos;ll find me exploring new technologies, contributing to open-source projects, 
-                or sharing knowledge through technical writing. I believe in continuous learning and staying at the 
-                forefront of web development trends. I&apos;m also passionate about mentoring junior developers and 
-                helping them grow in their careers.
+              <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed max-w-3xl mx-auto mb-6">
+                My vision for the next 2-3 years: partner with ESL schools globally, expand our book catalog with modern titles, 
+                and reach individuals in every country who want to improve their reading skills at prices they can afford.
               </Text>
+              <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed max-w-3xl mx-auto">
+                I'm seeking investors who share this vision and can provide not just funding, but mentorship, connections, 
+                and expertise to help us democratize reading for the 1.5 billion people worldwide who need it most.
+              </Text>
+            </Card>
+          </MotionDiv>
+
+          {/* Call to Action */}
+          <MotionDiv className="text-center" variants={slideUpVariants}>
+            <Card className="p-8 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950/20 dark:to-accent-950/20 border-primary-200 dark:border-primary-700">
+              <Heading as="h2" className="text-2xl font-bold mb-6 text-secondary-900 dark:text-secondary-100">
+                Ready to Change the World Together?
+              </Heading>
+              <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed mb-8 max-w-2xl mx-auto">
+                Join me in democratizing reading for 1.5 billion ESL students worldwide. Whether you're an investor, 
+                partner, or just want to learn more about BookBridge, I'd love to connect.
+              </Text>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="mailto:francois@bookbridge.app" 
+                  className="inline-flex items-center justify-center px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                >
+                  Contact for Investment
+                </a>
+                <a 
+                  href="/contact" 
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold rounded-lg transition-colors duration-200"
+                >
+                  Get in Touch
+                </a>
+              </div>
             </Card>
           </MotionDiv>
         </MotionSection>
