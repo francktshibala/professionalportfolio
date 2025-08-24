@@ -155,11 +155,11 @@ export default function AboutPage() {
           <h1 className="content-heading">My Journey</h1>
           
           <p className="content-paragraph">
-            I grew up in the Democratic Republic of Congo, where public libraries simply don't exist. As a child, I had no books to read and didn't even know how to approach reading one.
+            I grew up in the Democratic Republic of Congo, where public libraries simply don&apos;t exist. As a child, I had no books to read and didn&apos;t even know how to approach reading one.
           </p>
           
           <p className="content-paragraph">
-            It wasn't until I arrived in America in 2019 that I experienced my first public library - free books, free WiFi, open to everyone. That moment changed everything.
+            It wasn&apos;t until I arrived in America in 2019 that I experienced my first public library - free books, free WiFi, open to everyone. That moment changed everything.
           </p>
           
           <p className="content-paragraph">
@@ -167,7 +167,7 @@ export default function AboutPage() {
           </p>
           
           <p className="content-paragraph">
-            BookBridge is now a working MVP focused on ESL students, with AI-powered features that simplify complex books to any reading level (A1 to C2). In just two months, we've created what could become "Netflix for books" - but unlike Netflix, everyone gets access regardless of income, location, or education level.
+            BookBridge is now a working MVP focused on ESL students, with AI-powered features that simplify complex books to any reading level (A1 to C2). In just two months, we&apos;ve created what could become &ldquo;Netflix for books&rdquo; - but unlike Netflix, everyone gets access regardless of income, location, or education level.
           </p>
           
           <p className="content-paragraph">
@@ -175,7 +175,7 @@ export default function AboutPage() {
           </p>
           
           <p className="content-paragraph">
-            Whether you're an investor, educator, developer, or simply someone who believes in democratizing education, I welcome your support of any kind. Every connection, piece of feedback, or helping hand brings us closer to making quality education accessible to everyone, everywhere.
+            Whether you&apos;re an investor, educator, developer, or simply someone who believes in democratizing education, I welcome your support of any kind. Every connection, piece of feedback, or helping hand brings us closer to making quality education accessible to everyone, everywhere.
           </p>
           
           <div className="button-container">
