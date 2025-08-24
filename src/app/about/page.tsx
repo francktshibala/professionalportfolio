@@ -264,8 +264,8 @@ export default function AboutPage() {
             <a href="https://bookbridge-six.vercel.app/" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-primary">
               Explore BookBridge
             </a>
-            <a href="mailto:franck1tshibala@gmail.com" className="left-btn left-btn-secondary">
-              Contact Me
+            <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-secondary">
+              Connect on LinkedIn
             </a>
           </div>
         </div>
