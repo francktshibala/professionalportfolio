@@ -5,6 +5,7 @@ import { Heading, Text } from '@/components/ui/Typography';
 import { Card } from '@/components/ui/Card';
 import { MotionDiv, MotionSection, slideUpVariants, staggerContainer } from '@/components/ui/MotionComponents';
 import { useInView } from '@/hooks/useInView';
+import Image from 'next/image';
 
 const achievements = [
   {
@@ -62,9 +63,11 @@ export function AboutContent() {
           {/* Hero Section */}
           <MotionDiv className="text-center mb-20" variants={slideUpVariants}>
             <div className="mb-8">
-              <img 
+              <Image 
                 src="/franck.jpg" 
                 alt="François - BookBridge Founder" 
+                width={128}
+                height={128}
                 className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-primary-200 dark:border-primary-700"
               />
             </div>
@@ -189,7 +192,7 @@ export function AboutContent() {
                 and reach individuals in every country who want to improve their reading skills at prices they can afford.
               </Text>
               <Text className="text-lg text-secondary-700 dark:text-secondary-300 leading-relaxed max-w-3xl mx-auto">
-                I'm seeking investors who share this vision and can provide not just funding, but mentorship, connections, 
+                I&apos;m seeking investors who share this vision and can provide not just funding, but mentorship, connections, 
                 and expertise to help us democratize reading for the 1.5 billion people worldwide who need it most.
               </Text>
             </Card>
