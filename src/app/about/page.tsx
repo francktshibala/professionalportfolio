@@ -15,12 +15,18 @@ export default function AboutPage() {
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.6;
+          background: #f8fafc;
+          margin: 0;
+          padding: 20px;
         }
         
         .main-container {
           display: grid;
           grid-template-columns: 1fr 1fr;
           min-height: 100vh;
+          max-width: 1400px;
+          margin: 0 auto;
+          box-shadow: 0 0 40px rgba(0,0,0,0.1);
         }
         
         .left-section {
@@ -29,76 +35,87 @@ export default function AboutPage() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 60px 40px;
+          padding: 80px 60px;
           color: white;
           text-align: center;
         }
         
         .profile-image {
-          width: 160px;
-          height: 160px;
+          width: 200px;
+          height: 200px;
           background: #fbbf24;
-          border-radius: 16px;
+          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 80px;
           font-weight: bold;
           color: white;
-          margin-bottom: 30px;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+          margin-bottom: 40px;
+          box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+          border: 6px solid rgba(255,255,255,0.2);
+          overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-image:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
         
         .name {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
           font-weight: bold;
-          margin-bottom: 8px;
+          margin-bottom: 12px;
+          text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         
         .title {
-          font-size: 1.1rem;
-          opacity: 0.9;
-          font-weight: normal;
+          font-size: 1.2rem;
+          opacity: 0.95;
+          font-weight: 300;
+          letter-spacing: 0.5px;
         }
         
         .right-section {
           background: white;
-          padding: 60px 50px;
+          padding: 80px 60px;
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
         
         .content-heading {
-          font-size: 2rem;
+          font-size: 2.5rem;
           color: #1a1a1a;
-          margin-bottom: 30px;
+          margin-bottom: 40px;
           font-weight: bold;
         }
         
         .content-paragraph {
-          font-size: 1rem;
+          font-size: 1.1rem;
           color: #4a4a4a;
-          line-height: 1.6;
-          margin-bottom: 20px;
+          line-height: 1.7;
+          margin-bottom: 24px;
         }
         
         .button-container {
           display: flex;
-          gap: 15px;
-          margin-top: 30px;
+          gap: 20px;
+          margin-top: 40px;
         }
         
         .btn {
-          padding: 12px 24px;
-          border-radius: 25px;
+          padding: 14px 32px;
+          border-radius: 30px;
           text-decoration: none;
           font-weight: 600;
-          font-size: 0.95rem;
+          font-size: 1rem;
           transition: all 0.3s ease;
           border: none;
           cursor: pointer;
           text-align: center;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         .btn-primary {
@@ -108,6 +125,8 @@ export default function AboutPage() {
         
         .btn-primary:hover {
           background: #2563eb;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(59, 130, 246, 0.3);
         }
         
         .btn-secondary {
@@ -119,11 +138,38 @@ export default function AboutPage() {
         .btn-secondary:hover {
           background: #3b82f6;
           color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(59, 130, 246, 0.2);
         }
         
         @media (max-width: 768px) {
+          body {
+            padding: 10px;
+          }
+          
           .main-container {
             grid-template-columns: 1fr;
+          }
+          
+          .left-section {
+            padding: 60px 40px;
+          }
+          
+          .right-section {
+            padding: 60px 40px;
+          }
+          
+          .profile-image {
+            width: 180px;
+            height: 180px;
+          }
+          
+          .name {
+            font-size: 2.2rem;
+          }
+          
+          .content-heading {
+            font-size: 2.2rem;
           }
           
           .button-container {
@@ -142,9 +188,9 @@ export default function AboutPage() {
             <Image 
               src="/franck.jpg" 
               alt="Franck Tshibala" 
-              width={160}
-              height={160}
-              className="w-full h-full object-cover rounded-2xl"
+              width={200}
+              height={200}
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="name">Franck Tshibala</div>
