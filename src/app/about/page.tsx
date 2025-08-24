@@ -274,15 +274,15 @@ export default function AboutPage() {
           <h1 className="content-heading">My Journey</h1>
           
           <p className="content-paragraph">
-            I grew up in the Democratic Republic of Congo, where public libraries simply don&apos;t exist. As a child, I had no books to read and didn&apos;t even know how to approach reading one.
+            I grew up in the Democratic Republic of Congo, where public libraries simply don&apos;t exist. As a child, I had no books to read and didn&apos;t even know how to approach reading one. It wasn&apos;t until I arrived in America in 2019 that I experienced my first public library - free books, free WiFi, open to everyone. That moment changed everything.
           </p>
           
           <p className="content-paragraph">
-            It wasn&apos;t until I arrived in America in 2019 that I experienced my first public library - free books, free WiFi, open to everyone. That moment changed everything.
+            Back in Congo, I witnessed something powerful: people who could read and had access to books consistently escaped poverty while others remained trapped. That&apos;s when I knew I had to build public libraries back home to give people the same opportunity.
           </p>
           
           <p className="content-paragraph">
-            Back in Congo, I witnessed something powerful: people who could read and had access to books consistently escaped poverty while others remained trapped.
+            But physical libraries are expensive and reach limited people. When AI emerged, I realized I&apos;d found the key to scaling my mission globally. As a software development student, I&apos;ve spent the last two months applying everything I&apos;m learning to build BookBridge - a digital solution that can reach anyone, anywhere.
           </p>
           
           <p className="content-paragraph">
@@ -291,6 +291,10 @@ export default function AboutPage() {
           
           <p className="content-paragraph">
             My vision for the next 2-3 years: partner with ESL schools globally, expand our book catalog with modern titles, and reach individuals in every country who want to improve their reading skills at prices they can afford.
+          </p>
+          
+          <p className="content-paragraph">
+            I&apos;m seeking investors who share this vision and can provide not just funding, but mentorship, connections, and expertise to help us democratize reading for the 1.5 billion people worldwide who need it most.
           </p>
           
           <p className="content-paragraph">
