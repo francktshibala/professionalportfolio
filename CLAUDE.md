@@ -9,6 +9,39 @@
 - **Deployed:** Task 5C completed - Full CMS admin dashboard ready
 - **Status:** Complete content management system operational
 
+## IMPORTANT: About Page Architecture
+
+### Current About Page Setup (As of 2025-08-31)
+The portfolio has TWO different About page implementations:
+
+1. **ACTIVE About Page**: `/src/app/about/page.tsx`
+   - This is the CURRENTLY DISPLAYED page at https://portfolio-4u8c.vercel.app/about
+   - Shows "Franck Tshibala" as the name
+   - Uses inline styles with a two-column layout (blue left, white right)
+   - Has 4 buttons in the left section: Explore BookBridge, Connect on LinkedIn, Donate Now, Ways to Help
+   - Self-contained component with all styles in the same file
+
+2. **INACTIVE/Legacy About Page**: `/src/components/pages/AboutContent.tsx`
+   - This appears to be an older or alternative implementation
+   - Shows "François" as the name
+   - Uses the main app's component system (Container, Typography, Card, etc.)
+   - Not currently displayed on the live site
+   - Part of the component-based architecture but not actively used
+
+### Key Differences:
+- The active page uses "Franck Tshibala" while the inactive uses "François"
+- Different styling approaches (inline vs component-based)
+- Different button placements (left sidebar vs bottom CTA section)
+
+### When Making Changes:
+- **To update the live About page**: Edit `/src/app/about/page.tsx`
+- **Ignore**: `/src/components/pages/AboutContent.tsx` unless specifically needed
+
+### Support Needs Page:
+- Created at `/src/app/support-needs/page.tsx`
+- Component at `/src/components/pages/SupportNeedsContent.tsx`
+- Accessible via the "Ways to Help" button on the About page
+
 ## Tech Stack
 - Next.js 14.2.8 (pinned versions) ✅
 - TypeScript 5.3.3 (strict mode) ✅
