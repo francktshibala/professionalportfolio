@@ -227,13 +227,13 @@ export function AboutContent() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3 bg-accent-600 hover:bg-accent-700 text-white font-semibold rounded-lg transition-colors duration-200"
                 >
-                  Make Your Donation
+                  Donate Now
                 </a>
                 <a 
                   href="/support-needs" 
                   className="inline-flex items-center justify-center px-8 py-3 border-2 border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white font-semibold rounded-lg transition-colors duration-200"
                 >
-                  Support Needs
+                  Ways to Help
                 </a>
               </div>
             </Card>
