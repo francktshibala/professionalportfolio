@@ -261,7 +261,7 @@ export default function AboutPage() {
           </div>
           
           <div className="left-buttons">
-            <a href="https://bookbridge-six.vercel.app/" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-primary">
+            <a href="https://bookbridge-mkd7.onrender.com" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-primary">
               Explore BookBridge
             </a>
             <a href="https://www.linkedin.com/in/francois-tshibala-556486233/" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-secondary">
