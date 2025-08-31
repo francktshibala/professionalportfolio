@@ -286,15 +286,15 @@ export function SupportNeedsContent() {
                   Make Your Donation
                 </a>
                 <a 
-                  href="mailto:francois@bookbridge.app" 
+                  href="https://www.linkedin.com/in/francois-tshibala-556486233/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold rounded-lg transition-colors duration-200"
                 >
                   Contact Us
                 </a>
                 <a 
-                  href="https://bookbridge.app" 
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/about" 
                   className="inline-flex items-center justify-center px-8 py-3 border-2 border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white font-semibold rounded-lg transition-colors duration-200"
                 >
                   Learn More
