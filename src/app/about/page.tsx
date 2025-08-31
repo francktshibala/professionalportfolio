@@ -267,6 +267,12 @@ export default function AboutPage() {
             <a href="https://www.linkedin.com/in/francois-tshibala-556486233/" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-secondary">
               Connect on LinkedIn
             </a>
+            <a href="https://donorbox.org/bookbridge-make-books-accessible-to-everyone-regardless-of-their-their-situation" target="_blank" rel="noopener noreferrer" className="left-btn left-btn-primary">
+              Donate Now
+            </a>
+            <a href="/support-needs" className="left-btn left-btn-secondary">
+              Ways to Help
+            </a>
           </div>
         </div>
         
