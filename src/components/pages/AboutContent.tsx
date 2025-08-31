@@ -208,7 +208,7 @@ export function AboutContent() {
                 Join me in democratizing reading for 1.5 billion ESL students worldwide. Whether you&apos;re an investor, 
                 partner, or just want to learn more about BookBridge, I&apos;d love to connect.
               </Text>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
                 <a 
                   href="mailto:francois@bookbridge.app" 
                   className="inline-flex items-center justify-center px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
@@ -220,6 +220,20 @@ export function AboutContent() {
                   className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold rounded-lg transition-colors duration-200"
                 >
                   Get in Touch
+                </a>
+                <a 
+                  href="https://donorbox.org/bookbridge-make-books-accessible-to-everyone-regardless-of-their-their-situation" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-accent-600 hover:bg-accent-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                >
+                  Make Your Donation
+                </a>
+                <a 
+                  href="/support-needs" 
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white font-semibold rounded-lg transition-colors duration-200"
+                >
+                  Support Needs
                 </a>
               </div>
             </Card>
