@@ -1,4 +1,14 @@
+# BookBridge Professional Portfolio
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Recent Accomplishments
+
+✅ **Stripe Donation System Activated** (September 17, 2025)
+- Successfully configured Stripe live mode for real donation processing
+- Connected Donorbox platform with Stripe payment processing
+- Set up automatic weekly payouts to bank account
+- Donation system now fully operational at [portfolio-4u8c.vercel.app](https://portfolio-4u8c.vercel.app)
 
 ## Getting Started
 
