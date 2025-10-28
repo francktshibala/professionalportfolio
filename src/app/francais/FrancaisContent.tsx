@@ -78,6 +78,26 @@ export default function FrancaisContent() {
               }}>
                 J&apos;ai créé BookBridge pour que tous les francophones puissent apprendre l&apos;anglais en lisant de vrais livres adaptés à leur niveau.
               </p>
+
+              {/* Read Full Story Button */}
+              <div className="mt-6 text-center">
+                <a
+                  href="/about"
+                  className="inline-block px-6 py-3 transition-all duration-300 hover:-translate-y-0.5"
+                  style={{
+                    backgroundColor: 'transparent',
+                    color: 'var(--accent-primary)',
+                    border: '2px solid rgba(0, 33, 71, 0.3)',
+                    borderRadius: '6px',
+                    fontFamily: "'Source Serif Pro', serif",
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    fontSize: '0.95rem'
+                  }}
+                >
+                  Lire l&apos;histoire complète →
+                </a>
+              </div>
             </div>
           </div>
         </div>
