@@ -69,10 +69,14 @@
 - Buttons: Bronze primary, outlined Bronze secondary, 8px border-radius, subtle lift effects
 - All 9 phases completed and deployed
 
-### Support Needs Page:
-- Created at `/src/app/support-needs/page.tsx`
-- Component at `/src/components/pages/SupportNeedsContent.tsx`
-- Accessible via the "Ways to Help" button on the About page
+### Support Needs Page (REDESIGNED 2025-10-28):
+- **File:** `/src/app/support-needs/page.tsx`
+- **Live URL:** https://portfolio-4u8c.vercel.app/support-needs
+- **Design:** Neo-Classic academic library aesthetic (matching About pages)
+- **Colors:** Oxford blue (#002147), Bronze (#CD7F32), parchment (#F4F1EB)
+- **Typography:** Playfair Display (headings) + Source Serif Pro (body)
+- **Features:** Support needs breakdown, how to help categories, CTA buttons
+- **Accessible via:** "Ways to Help" button on About page
 
 ## FRENCH PAGES FOR FRANCOPHONE AUDIENCE
 
