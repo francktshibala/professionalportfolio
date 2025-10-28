@@ -60,6 +60,16 @@
 - **To update the live English About page:** Edit `/src/app/about/page.tsx`
 - **Do NOT edit:** `/src/components/pages/AboutContent.tsx`
 
+### Planned Redesign:
+📋 **Neo-Classic Redesign Plan:** `/ENGLISH_ABOUT_REDESIGN_PLAN.md`
+- Transform English About page to match French pages aesthetic
+- Change from modern tech to academic library design
+- Apply Neo-Classic color palette (Oxford blue, Bronze, parchment)
+- Replace sans-serif with serif typography (Playfair Display + Source Serif Pro)
+- Update buttons from modern rounded to elegant academic style
+- 9 phases documented with detailed specifications
+- Ready for implementation
+
 ### Support Needs Page:
 - Created at `/src/app/support-needs/page.tsx`
 - Component at `/src/components/pages/SupportNeedsContent.tsx`
