@@ -2,10 +2,27 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Container } from '@/components/ui/Container';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Navigation } from './Navigation';
 import { MobileMenu } from './MobileMenu';
+
+const LanguageToggle = () => {
+  const pathname = usePathname();
+  const isFrench = pathname === '/francais';
+
+  return (
+    <Link
+      href={isFrench ? '/' : '/francais'}
+      className="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-accent transition-colors text-sm font-medium"
+      aria-label={isFrench ? 'Switch to English' : 'Basculer en français'}
+    >
+      <span className="text-lg">{isFrench ? '🇬🇧' : '🇫🇷'}</span>
+      <span>{isFrench ? 'EN' : 'FR'}</span>
+    </Link>
+  );
+};
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,11 +40,13 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Navigation />
+            <LanguageToggle />
             <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
+            <LanguageToggle />
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
