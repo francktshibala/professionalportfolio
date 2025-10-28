@@ -283,7 +283,7 @@ export default function FrancaisContent() {
                 boxShadow: '0 2px 8px var(--shadow-soft)'
               }}
             >
-              Essayer BookBridge Gratuitement
+              Accéder à l&apos;App ici
             </a>
 
             {/* Secondary CTA - Watch Demo */}
