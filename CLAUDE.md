@@ -4,40 +4,61 @@
 ## Active Micro-Task: 5D - Data Migration - READY TO START ⏳
 
 ## LIVE DEPLOYMENT
-- **Live URL:** https://portfolio-4u8c.vercel.app/
-- **French Landing Page:** https://portfolio-4u8c.vercel.app/francais
-- **French About Page:** https://portfolio-4u8c.vercel.app/francais/about
+
+### English Pages
+- **Homepage:** https://portfolio-4u8c.vercel.app/
+- **About Page (Franck's Story):** https://portfolio-4u8c.vercel.app/about
+- **Support Needs:** https://portfolio-4u8c.vercel.app/support-needs
 - **Admin Dashboard:** https://portfolio-4u8c.vercel.app/admin
-- **Deployed:** Task 5C completed - Full CMS admin dashboard ready
-- **Status:** Complete content management system operational
 
-## IMPORTANT: About Page Architecture
+### French Pages (For Francophone Audience)
+- **French Homepage:** https://portfolio-4u8c.vercel.app/francais
+- **French About Page:** https://portfolio-4u8c.vercel.app/francais/about
 
-### Current About Page Setup (As of 2025-08-31)
-The portfolio has TWO different About page implementations:
+**Deployment Status:**
+- Task 5C completed - Full CMS admin dashboard ready
+- Complete content management system operational
+- French pages with Neo-Classic academic design deployed
 
-1. **ACTIVE About Page**: `/src/app/about/page.tsx`
-   - This is the CURRENTLY DISPLAYED page at https://portfolio-4u8c.vercel.app/about
-   - Shows "Franck Tshibala" as the name
-   - Uses inline styles with a two-column layout (blue left, white right)
-   - Has 4 buttons in the left section: Explore BookBridge, Connect on LinkedIn, Donate Now, Ways to Help
-   - Self-contained component with all styles in the same file
+## ABOUT PAGE ARCHITECTURE
 
-2. **INACTIVE/Legacy About Page**: `/src/components/pages/AboutContent.tsx`
-   - This appears to be an older or alternative implementation
-   - Shows "François" as the name
-   - Uses the main app's component system (Container, Typography, Card, etc.)
-   - Not currently displayed on the live site
-   - Part of the component-based architecture but not actively used
+### English About Page (Primary)
+**File:** `/src/app/about/page.tsx`
+**Live URL:** https://portfolio-4u8c.vercel.app/about
 
-### Key Differences:
-- The active page uses "Franck Tshibala" while the inactive uses "François"
-- Different styling approaches (inline vs component-based)
-- Different button placements (left sidebar vs bottom CTA section)
+**Design:**
+- Two-column layout: Blue sidebar (left, #2a5298) + White content area (right)
+- Profile photo: `/franck.jpg` (200x200px circular)
+- Name: "Franck Tshibala"
+- Title: "Founder of BookBridge"
+
+**Sidebar Buttons (4):**
+1. "Explore BookBridge" → https://bookbridge.app/ (Primary - Blue)
+2. "Connect on LinkedIn" → LinkedIn profile (Secondary - Outlined)
+3. "Donate Now" → Donorbox link (Primary - Blue)
+4. "Ways to Help" → /support-needs (Secondary - Outlined)
+
+**Content:**
+- Heading: "My Journey"
+- 7 paragraphs detailing Franck's story from Congo to BookBridge
+- Topics: Growing up without libraries, discovering US libraries in 2019, witnessing reading's impact on escaping poverty, building BookBridge with AI, MVP for ESL students, 2-3 year vision, seeking investors
+
+**Style:**
+- Modern tech aesthetic
+- Blue gradients and sans-serif fonts
+- Rounded buttons with hover effects
+- Mobile-responsive (stacks vertically on mobile)
+
+### Legacy About Component (INACTIVE)
+**File:** `/src/components/pages/AboutContent.tsx`
+- Not currently used in production
+- Shows "François" instead of "Franck Tshibala"
+- Component-based architecture (uses Container, Typography, Card components)
+- **Do NOT edit** unless specifically migrating features
 
 ### When Making Changes:
-- **To update the live About page**: Edit `/src/app/about/page.tsx`
-- **Ignore**: `/src/components/pages/AboutContent.tsx` unless specifically needed
+- **To update the live English About page:** Edit `/src/app/about/page.tsx`
+- **Do NOT edit:** `/src/components/pages/AboutContent.tsx`
 
 ### Support Needs Page:
 - Created at `/src/app/support-needs/page.tsx`

@@ -2,13 +2,31 @@
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Live Pages
+
+### English Pages
+- **Homepage:** [portfolio-4u8c.vercel.app](https://portfolio-4u8c.vercel.app)
+- **About Page (Franck's Story):** [portfolio-4u8c.vercel.app/about](https://portfolio-4u8c.vercel.app/about)
+- **Support Needs:** [portfolio-4u8c.vercel.app/support-needs](https://portfolio-4u8c.vercel.app/support-needs)
+- **Admin Dashboard:** [portfolio-4u8c.vercel.app/admin](https://portfolio-4u8c.vercel.app/admin)
+
+### French Pages (For Francophone Audience)
+- **French Homepage:** [portfolio-4u8c.vercel.app/francais](https://portfolio-4u8c.vercel.app/francais)
+- **French About Page:** [portfolio-4u8c.vercel.app/francais/about](https://portfolio-4u8c.vercel.app/francais/about)
+
 ## Recent Accomplishments
+
+✅ **French Language Pages Added** (October 28, 2025)
+- Created complete French landing page for francophone audience (Congo, Ivory Coast, France, etc.)
+- Built separate French About page with full story translation
+- Implemented Neo-Classic academic library design (Oxford blue, Bronze, serif fonts)
+- Added language toggle in navigation (🇫🇷 FR ⇄ 🇬🇧 EN)
 
 ✅ **Stripe Donation System Activated** (September 17, 2025)
 - Successfully configured Stripe live mode for real donation processing
 - Connected Donorbox platform with Stripe payment processing
 - Set up automatic weekly payouts to bank account
-- Donation system now fully operational at [portfolio-4u8c.vercel.app](https://portfolio-4u8c.vercel.app)
+- Donation system now fully operational
 
 ## Getting Started
 
