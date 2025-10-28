@@ -5,6 +5,8 @@
 
 ## LIVE DEPLOYMENT
 - **Live URL:** https://portfolio-4u8c.vercel.app/
+- **French Landing Page:** https://portfolio-4u8c.vercel.app/francais
+- **French About Page:** https://portfolio-4u8c.vercel.app/francais/about
 - **Admin Dashboard:** https://portfolio-4u8c.vercel.app/admin
 - **Deployed:** Task 5C completed - Full CMS admin dashboard ready
 - **Status:** Complete content management system operational
@@ -41,6 +43,57 @@ The portfolio has TWO different About page implementations:
 - Created at `/src/app/support-needs/page.tsx`
 - Component at `/src/components/pages/SupportNeedsContent.tsx`
 - Accessible via the "Ways to Help" button on the About page
+
+## FRENCH PAGES FOR FRANCOPHONE AUDIENCE
+
+### French Landing Page Architecture (Created 2025-10-28)
+The portfolio has dedicated French pages for BookBridge's francophone audience:
+
+1. **French Homepage**: `/src/app/francais/page.tsx` + `/src/app/francais/FrancaisContent.tsx`
+   - Live at: https://portfolio-4u8c.vercel.app/francais
+   - Server Component (page.tsx) exports metadata for SEO
+   - Client Component (FrancaisContent.tsx) contains all UI with styled-jsx
+   - Neo-Classic academic design (Oxford blue, Bronze, parchment colors)
+   - Serif typography (Playfair Display for headings, Source Serif Pro for body)
+   - Sections: Hero, Mon Histoire, Comment ça marche, CTAs, Pour qui, Contact
+   - CTAs: "Accéder à l'Application ici" → https://bookbridge.app/
+   - YouTube demo: https://www.youtube.com/watch?v=671_mDB5tBk&list=PL7CrnyOZbVAbRhdqTkGJwekhkFkLuD7gu
+   - Contact: Email + WhatsApp (+18177709866)
+
+2. **French About Page**: `/src/app/francais/about/page.tsx`
+   - Live at: https://portfolio-4u8c.vercel.app/francais/about
+   - Complete French translation of Franck's full story
+   - Two-column layout: Oxford blue sidebar (left) + white content (right)
+   - French button labels: "Explorer BookBridge", "Connecter sur LinkedIn", "Faire un Don", "Façons d'Aider"
+   - Accessible from French homepage via "Lire l'histoire complète →" button
+
+### Language Toggle:
+- Added in `/src/components/layout/Header.tsx`
+- Shows 🇫🇷 FR on English pages, 🇬🇧 EN on French pages
+- Toggles between `/` (home) and `/francais` (French homepage)
+- Available in both desktop and mobile navigation
+
+### Design System (Neo-Classic Academic):
+- **Colors:**
+  - `--bg-primary`: #F4F1EB (warm parchment)
+  - `--bg-secondary`: #FFFFFF (clean white)
+  - `--text-primary`: #2C1810 (rich brown)
+  - `--text-secondary`: #5D4E37 (medium brown)
+  - `--text-accent`: #002147 (Oxford blue)
+  - `--accent-primary`: #002147 (Oxford blue)
+  - `--accent-secondary`: #CD7F32 (Bronze)
+- **Fonts:** Playfair Display (headings), Source Serif Pro (body)
+- **Aesthetic:** Academic library feel, not modern tech startup
+
+### SEO Optimization:
+- French keywords: apprendre anglais, livres anglais, francophones, ESL, lecture anglais, BookBridge
+- OpenGraph tags with French locale (fr_FR)
+- hreflang tags for language alternates (en/fr)
+- Canonical URLs properly set
+
+### Documentation:
+- Full implementation plan: `/FRANCAIS_PAGE_PLAN.md`
+- 10 phases documented with success criteria
 
 ## Tech Stack
 - Next.js 14.2.8 (pinned versions) ✅
