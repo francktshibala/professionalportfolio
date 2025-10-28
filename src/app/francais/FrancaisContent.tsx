@@ -268,7 +268,7 @@ export default function FrancaisContent() {
 
             {/* Secondary CTA - Watch Demo */}
             <a
-              href="https://www.youtube.com/watch?v=dnVxPVGx-i0"
+              href="https://www.youtube.com/watch?v=671_mDB5tBk&list=PL7CrnyOZbVAbRhdqTkGJwekhkFkLuD7gu"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto text-lg px-8 py-4 transition-all duration-300 hover:-translate-y-0.5"
