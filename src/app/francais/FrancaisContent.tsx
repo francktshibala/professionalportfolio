@@ -82,7 +82,7 @@ export default function FrancaisContent() {
               {/* Read Full Story Button */}
               <div className="mt-6 text-center">
                 <a
-                  href="/about"
+                  href="/francais/about"
                   className="inline-block px-6 py-3 transition-all duration-300 hover:-translate-y-0.5"
                   style={{
                     backgroundColor: 'transparent',
