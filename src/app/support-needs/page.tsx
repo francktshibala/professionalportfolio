@@ -1,7 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
-
 interface NeedItem {
   title: string;
   cost: string;
