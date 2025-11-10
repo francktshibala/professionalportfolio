@@ -109,6 +109,7 @@ export default function PitchDeckPage() {
           align-items: center;
           justify-content: center;
           padding: 40px;
+          animation: fadeInSlide 0.8s ease-in-out;
         }
 
         .slide h1 {
@@ -222,6 +223,17 @@ export default function PitchDeckPage() {
           }
           60% {
             transform: translateX(-50%) translateY(-5px);
+          }
+        }
+
+        @keyframes fadeInSlide {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
 
