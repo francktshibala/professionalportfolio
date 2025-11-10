@@ -618,6 +618,332 @@ export default function PitchDeckPage() {
           font-size: 18px;
         }
 
+        /* Slide 9: Market Opportunity Styles */
+        .slide-market {
+          background: var(--bg-secondary);
+        }
+
+        .market-container {
+          max-width: 1100px;
+          text-align: center;
+        }
+
+        .market-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 50px;
+        }
+
+        .market-circles {
+          position: relative;
+          height: 400px;
+          margin-bottom: 40px;
+        }
+
+        .market-circle {
+          position: absolute;
+          border: 3px solid var(--accent-secondary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          background: rgba(205, 127, 50, 0.05);
+        }
+
+        .market-circle.outer {
+          width: 400px;
+          height: 400px;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 0;
+        }
+
+        .market-circle.middle {
+          width: 280px;
+          height: 280px;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 60px;
+          background: rgba(205, 127, 50, 0.1);
+        }
+
+        .market-circle.inner {
+          width: 160px;
+          height: 160px;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 120px;
+          background: rgba(205, 127, 50, 0.2);
+        }
+
+        .market-circle-label {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 14px;
+          color: var(--text-secondary);
+          margin-bottom: 5px;
+        }
+
+        .market-circle-value {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 24px;
+          color: var(--text-accent);
+          font-weight: 700;
+        }
+
+        .market-size {
+          padding: 25px;
+          background: var(--bg-primary);
+          border-radius: 12px;
+          margin-top: 20px;
+        }
+
+        .market-size h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 32px;
+          color: var(--accent-secondary);
+          margin-bottom: 10px;
+        }
+
+        .market-size p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+          color: var(--text-secondary);
+        }
+
+        /* Slide 10: Go-to-Market Styles */
+        .slide-gtm {
+          background: var(--bg-primary);
+        }
+
+        .gtm-container {
+          max-width: 1100px;
+        }
+
+        .gtm-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .timeline {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+
+        .timeline-phase {
+          padding: 30px;
+          background: var(--bg-secondary);
+          border-radius: 12px;
+          box-shadow: 0 4px 12px var(--shadow-soft);
+          border-top: 4px solid var(--accent-secondary);
+        }
+
+        .timeline-phase h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 24px;
+          color: var(--accent-primary);
+          margin-bottom: 10px;
+        }
+
+        .timeline-phase .phase-duration {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 14px;
+          color: var(--accent-secondary);
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        .timeline-phase ul {
+          list-style: none;
+          padding: 0;
+          text-align: left;
+        }
+
+        .timeline-phase li {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          margin-bottom: 12px;
+          padding-left: 20px;
+          position: relative;
+        }
+
+        .timeline-phase li:before {
+          content: "→";
+          position: absolute;
+          left: 0;
+          color: var(--accent-secondary);
+        }
+
+        /* Slide 11: The Ask Styles */
+        .slide-ask {
+          background: var(--bg-secondary);
+        }
+
+        .ask-container {
+          max-width: 1100px;
+        }
+
+        .ask-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .ask-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+
+        .funding-section, .milestones-section {
+          padding: 30px;
+          background: var(--bg-primary);
+          border-radius: 12px;
+          box-shadow: 0 4px 12px var(--shadow-soft);
+        }
+
+        .funding-section h3, .milestones-section h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 28px;
+          color: var(--accent-primary);
+          margin-bottom: 25px;
+        }
+
+        .funding-amount {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 36px;
+          color: var(--accent-secondary);
+          font-weight: 700;
+          margin-bottom: 30px;
+        }
+
+        .use-of-funds {
+          list-style: none;
+          padding: 0;
+        }
+
+        .use-of-funds li {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          margin-bottom: 15px;
+          padding-left: 25px;
+          position: relative;
+        }
+
+        .use-of-funds li:before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: var(--accent-secondary);
+          font-size: 20px;
+        }
+
+        .milestones-list {
+          list-style: none;
+          padding: 0;
+        }
+
+        .milestones-list li {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+          color: var(--text-primary);
+          margin-bottom: 15px;
+          padding-left: 25px;
+          position: relative;
+        }
+
+        .milestones-list li:before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: var(--accent-secondary);
+          font-weight: bold;
+        }
+
+        /* Slide 12: Why Now + Closing Styles */
+        .slide-closing {
+          background: linear-gradient(135deg, var(--accent-primary) 0%, #003366 100%);
+        }
+
+        .closing-container {
+          text-align: center;
+          max-width: 900px;
+          color: var(--bg-primary);
+        }
+
+        .closing-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--bg-primary);
+          margin-bottom: 40px;
+        }
+
+        .why-now-list {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 50px;
+          text-align: left;
+        }
+
+        .why-now-list li {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 20px;
+          color: var(--bg-primary);
+          margin-bottom: 20px;
+          padding-left: 35px;
+          position: relative;
+        }
+
+        .why-now-list li:before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: var(--accent-secondary);
+          font-weight: bold;
+          font-size: 24px;
+        }
+
+        .vision-statement {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 26px;
+          line-height: 1.6;
+          margin: 50px 0;
+          padding: 30px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          font-style: italic;
+        }
+
+        .closing-cta {
+          margin-top: 40px;
+        }
+
+        .closing-cta h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 32px;
+          margin-bottom: 20px;
+        }
+
+        .closing-contact {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 20px;
+          margin-bottom: 30px;
+        }
+
+        .closing-contact a {
+          color: var(--accent-secondary);
+          text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
           .cover-title {
             font-size: 40px;
@@ -689,6 +1015,55 @@ export default function PitchDeckPage() {
           .revenue-streams {
             grid-template-columns: 1fr;
             gap: 20px;
+          }
+          .market-container h2 {
+            font-size: 36px;
+          }
+          .market-circles {
+            height: auto;
+            position: relative;
+          }
+          .market-circle {
+            position: relative !important;
+            transform: none !important;
+            left: auto !important;
+            top: auto !important;
+            margin: 20px auto;
+          }
+          .market-circle.outer {
+            width: 280px;
+            height: 280px;
+          }
+          .market-circle.middle {
+            width: 220px;
+            height: 220px;
+          }
+          .market-circle.inner {
+            width: 160px;
+            height: 160px;
+          }
+          .gtm-container h2 {
+            font-size: 36px;
+          }
+          .timeline {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          .ask-container h2 {
+            font-size: 36px;
+          }
+          .ask-content {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+          .closing-container h2 {
+            font-size: 36px;
+          }
+          .vision-statement {
+            font-size: 20px;
+          }
+          .why-now-list li {
+            font-size: 18px;
           }
         }
       `}</style>
@@ -974,10 +1349,149 @@ export default function PitchDeckPage() {
           </div>
         </div>
 
-        {/* Temporary placeholder for remaining slides */}
-        <div className="slide" style={{ background: 'var(--bg-primary)' }}>
-          <div>
-            <h1>Slides 9-12 coming next...</h1>
+        {/* Slide 9: Market Opportunity */}
+        <div className="slide slide-market">
+          <div className="market-container">
+            <h2>The Opportunity</h2>
+
+            <div className="market-circles">
+              <div className="market-circle outer">
+                <div className="market-circle-label">Total Addressable Market</div>
+                <div className="market-circle-value">1.5B ESL learners globally</div>
+              </div>
+
+              <div className="market-circle middle">
+                <div className="market-circle-label">Serviceable Market</div>
+                <div className="market-circle-value">500M institutional</div>
+              </div>
+
+              <div className="market-circle inner">
+                <div className="market-circle-label">Target Year 1</div>
+                <div className="market-circle-value">10K-50K users</div>
+              </div>
+            </div>
+
+            <div className="market-size">
+              <h3>Market Size: $75B+</h3>
+              <p>Based on average $50/year spent on reading resources</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 10: Go-to-Market Strategy */}
+        <div className="slide slide-gtm">
+          <div className="gtm-container">
+            <h2>Scaling Strategy</h2>
+
+            <div className="timeline">
+              <div className="timeline-phase">
+                <h3>Phase 1</h3>
+                <div className="phase-duration">Now - 6 months</div>
+                <ul>
+                  <li>Partner with ESL programs</li>
+                  <li>Prove effectiveness with real data</li>
+                  <li>Target: 10-20 paid contracts</li>
+                </ul>
+              </div>
+
+              <div className="timeline-phase">
+                <h3>Phase 2</h3>
+                <div className="phase-duration">6-12 months</div>
+                <ul>
+                  <li>Hire teacher-marketers (commission-based)</li>
+                  <li>Scale to 50-100 schools across US</li>
+                  <li>International: Philippines, Mexico, Latin America</li>
+                </ul>
+              </div>
+
+              <div className="timeline-phase">
+                <h3>Phase 3</h3>
+                <div className="phase-duration">Year 2+</div>
+                <ul>
+                  <li>Launch individual subscriptions</li>
+                  <li>Government partnerships</li>
+                  <li>Major EdTech platform integrations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 11: The Ask */}
+        <div className="slide slide-ask">
+          <div className="ask-container">
+            <h2>Investment Opportunity</h2>
+
+            <div className="ask-content">
+              <div className="funding-section">
+                <h3>Seeking:</h3>
+                <div className="funding-amount">$50K-$100K Pre-Seed Funding</div>
+
+                <h4 style={{ fontFamily: 'Playfair Display', fontSize: '20px', color: 'var(--text-accent)', marginBottom: '15px' }}>Use of Funds:</h4>
+                <ul className="use-of-funds">
+                  <li><strong>40%</strong> Developer hire (scale infrastructure, add features)</li>
+                  <li><strong>30%</strong> Book catalog expansion (modern books, partnerships)</li>
+                  <li><strong>20%</strong> Marketing (teacher-marketers, materials)</li>
+                  <li><strong>10%</strong> Operations (hosting, legal, admin)</li>
+                </ul>
+              </div>
+
+              <div className="milestones-section">
+                <h3>12-Month Milestones:</h3>
+                <ul className="milestones-list">
+                  <li>50K+ active users</li>
+                  <li>20+ paid institutional contracts</li>
+                  <li>$200K+ annual revenue</li>
+                  <li>Proof of concept for Series A</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 12: Why Now + Closing */}
+        <div className="slide slide-closing">
+          <div className="closing-container">
+            <h2>Why Now?</h2>
+
+            <ul className="why-now-list">
+              <li>AI technology makes personalized learning accessible at scale</li>
+              <li>Post-pandemic: schools embracing EdTech solutions</li>
+              <li>Global migration: ESL demand growing</li>
+              <li>We have institutional validation ready to scale</li>
+            </ul>
+
+            <div className="vision-statement">
+              &quot;Every ESL learner worldwide should have access to books they can understand - regardless of income, location, or background.&quot;
+            </div>
+
+            <div className="closing-cta">
+              <h3>Let&apos;s Make This Happen</h3>
+
+              <div className="closing-contact">
+                <div>Franck Tshibala</div>
+                <a href="mailto:bookbridgegap@gmail.com">bookbridgegap@gmail.com</a>
+              </div>
+
+              <div className="cover-buttons">
+                <a
+                  href="https://www.youtube.com/watch?v=671_mDB5tBk&list=PL7CrnyOZbVAbRhdqTkGJwekhkFkLuD7gu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
+                  Watch Demo
+                </a>
+                <a
+                  href="https://bookbridge.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                >
+                  Try BookBridge
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
