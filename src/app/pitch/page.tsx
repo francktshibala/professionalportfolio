@@ -1674,6 +1674,35 @@ export default function PitchDeckPage() {
           />
         ))}
       </div>
+
+      {/* Final hard overrides to ensure production wins on Vercel */}
+      <style jsx global>{`
+        /* Critical slides + elements */
+        .pitch-deck .cover-title { font-size: 96px !important; line-height: 1.1 !important; }
+
+        /* Slide 2: The Challenge */
+        .pitch-deck .problem-content h2 { font-size: 56px !important; font-weight: 700 !important; }
+        .pitch-deck .problem-content ul { font-size: 40px !important; line-height: 1.8 !important; font-weight: 700 !important; }
+        .pitch-deck .problem-content li { margin-bottom: 25px !important; }
+
+        /* Stats */
+        .pitch-deck .stat-number { font-size: 48px !important; font-weight: 700 !important; }
+
+        /* Slide 10: Scaling Strategy */
+        .pitch-deck .gtm-container h2 { font-size: 56px !important; font-weight: 700 !important; }
+        .pitch-deck .timeline-phase h3 { font-size: 42px !important; font-weight: 700 !important; }
+        .pitch-deck .timeline-phase .phase-duration { font-size: 20px !important; font-weight: 700 !important; }
+        .pitch-deck .timeline-phase ul { font-size: 36px !important; line-height: 1.8 !important; font-weight: 700 !important; }
+        .pitch-deck .timeline-phase li { margin-bottom: 25px !important; }
+
+        /* Slide 11: Investment Opportunity */
+        .pitch-deck .ask-container h2 { font-size: 56px !important; font-weight: 700 !important; }
+        .pitch-deck .funding-amount { font-size: 64px !important; font-weight: 700 !important; }
+        .pitch-deck .use-of-funds,
+        .pitch-deck .milestones-list { font-size: 32px !important; line-height: 1.8 !important; font-weight: 700 !important; }
+        .pitch-deck .use-of-funds li,
+        .pitch-deck .milestones-list li { margin-bottom: 25px !important; }
+      `}</style>
     </div>
   );
 }

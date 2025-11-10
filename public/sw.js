@@ -1,5 +1,5 @@
-const CACHE_NAME = 'portfolio-cache-v1';
-const RUNTIME_CACHE = 'runtime-cache-v1';
+const CACHE_NAME = 'portfolio-cache-v2';
+const RUNTIME_CACHE = 'runtime-cache-v2';
 
 const STATIC_ASSETS = [
   '/',
