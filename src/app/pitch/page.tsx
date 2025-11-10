@@ -1273,11 +1273,11 @@ export default function PitchDeckPage() {
         <div className="slide slide-problem">
           <div className="problem-container">
             <div className="problem-content">
-              <h2 style={{ fontSize: '48px', fontWeight: 'bold' }}>The Challenge</h2>
-              <ul style={{ fontSize: '32px', lineHeight: '1.8', fontWeight: '600' }}>
-                <li style={{ marginBottom: '30px' }}>1.5 billion people worldwide are learning English</li>
-                <li style={{ marginBottom: '30px' }}>Most can&apos;t afford tutors ($50-100/hour) or graded readers ($10-20/book)</li>
-                <li style={{ marginBottom: '30px' }}>They want to read real books but the content is too difficult</li>
+              <h2 style={{ fontSize: '56px', fontWeight: 'bold' }}>The Challenge</h2>
+              <ul style={{ fontSize: '40px', lineHeight: '1.8', fontWeight: '700' }}>
+                <li style={{ marginBottom: '35px' }}>1.5 billion people worldwide are learning English</li>
+                <li style={{ marginBottom: '35px' }}>Most can&apos;t afford tutors ($50-100/hour) or graded readers ($10-20/book)</li>
+                <li style={{ marginBottom: '35px' }}>They want to read real books but the content is too difficult</li>
                 <li>Current solutions are fragmented - dictionary apps, audio apps, and simplification tools are all separate</li>
               </ul>
             </div>
@@ -1548,35 +1548,35 @@ export default function PitchDeckPage() {
         {/* Slide 10: Go-to-Market Strategy */}
         <div className="slide slide-gtm">
           <div className="gtm-container">
-            <h2 style={{ fontSize: '48px', fontWeight: 'bold' }}>Scaling Strategy</h2>
+            <h2 style={{ fontSize: '56px', fontWeight: 'bold' }}>Scaling Strategy</h2>
 
             <div className="timeline">
               <div className="timeline-phase">
-                <h3 style={{ fontSize: '36px', fontWeight: 'bold' }}>Phase 1</h3>
-                <div className="phase-duration" style={{ fontSize: '18px', fontWeight: '600' }}>Now - 6 months</div>
-                <ul style={{ fontSize: '28px', lineHeight: '1.8', fontWeight: '600' }}>
-                  <li style={{ marginBottom: '20px' }}>Partner with ESL programs</li>
-                  <li style={{ marginBottom: '20px' }}>Prove effectiveness with real data</li>
+                <h3 style={{ fontSize: '42px', fontWeight: 'bold' }}>Phase 1</h3>
+                <div className="phase-duration" style={{ fontSize: '20px', fontWeight: '700' }}>Now - 6 months</div>
+                <ul style={{ fontSize: '36px', lineHeight: '1.8', fontWeight: '700' }}>
+                  <li style={{ marginBottom: '25px' }}>Partner with ESL programs</li>
+                  <li style={{ marginBottom: '25px' }}>Prove effectiveness with real data</li>
                   <li>Target: 10-20 paid contracts</li>
                 </ul>
               </div>
 
               <div className="timeline-phase">
-                <h3 style={{ fontSize: '36px', fontWeight: 'bold' }}>Phase 2</h3>
-                <div className="phase-duration" style={{ fontSize: '18px', fontWeight: '600' }}>6-12 months</div>
-                <ul style={{ fontSize: '28px', lineHeight: '1.8', fontWeight: '600' }}>
-                  <li style={{ marginBottom: '20px' }}>Hire teacher-marketers (commission-based)</li>
-                  <li style={{ marginBottom: '20px' }}>Scale to 50-100 schools across US</li>
+                <h3 style={{ fontSize: '42px', fontWeight: 'bold' }}>Phase 2</h3>
+                <div className="phase-duration" style={{ fontSize: '20px', fontWeight: '700' }}>6-12 months</div>
+                <ul style={{ fontSize: '36px', lineHeight: '1.8', fontWeight: '700' }}>
+                  <li style={{ marginBottom: '25px' }}>Hire teacher-marketers (commission-based)</li>
+                  <li style={{ marginBottom: '25px' }}>Scale to 50-100 schools across US</li>
                   <li>International: Philippines, Mexico, Latin America</li>
                 </ul>
               </div>
 
               <div className="timeline-phase">
-                <h3 style={{ fontSize: '36px', fontWeight: 'bold' }}>Phase 3</h3>
-                <div className="phase-duration" style={{ fontSize: '18px', fontWeight: '600' }}>Year 2+</div>
-                <ul style={{ fontSize: '28px', lineHeight: '1.8', fontWeight: '600' }}>
-                  <li style={{ marginBottom: '20px' }}>Launch individual subscriptions</li>
-                  <li style={{ marginBottom: '20px' }}>Government partnerships</li>
+                <h3 style={{ fontSize: '42px', fontWeight: 'bold' }}>Phase 3</h3>
+                <div className="phase-duration" style={{ fontSize: '20px', fontWeight: '700' }}>Year 2+</div>
+                <ul style={{ fontSize: '36px', lineHeight: '1.8', fontWeight: '700' }}>
+                  <li style={{ marginBottom: '25px' }}>Launch individual subscriptions</li>
+                  <li style={{ marginBottom: '25px' }}>Government partnerships</li>
                   <li>Major EdTech platform integrations</li>
                 </ul>
               </div>
@@ -1587,28 +1587,28 @@ export default function PitchDeckPage() {
         {/* Slide 11: The Ask */}
         <div className="slide slide-ask">
           <div className="ask-container">
-            <h2 style={{ fontSize: '48px', fontWeight: 'bold' }}>Investment Opportunity</h2>
+            <h2 style={{ fontSize: '56px', fontWeight: 'bold' }}>Investment Opportunity</h2>
 
             <div className="ask-content">
               <div className="funding-section">
-                <h3 style={{ fontSize: '38px', fontWeight: 'bold' }}>Seeking:</h3>
-                <div className="funding-amount" style={{ fontSize: '52px', fontWeight: 'bold' }}>$50K-$100K Pre-Seed Funding</div>
+                <h3 style={{ fontSize: '44px', fontWeight: 'bold' }}>Seeking:</h3>
+                <div className="funding-amount" style={{ fontSize: '64px', fontWeight: 'bold' }}>$50K-$100K Pre-Seed Funding</div>
 
-                <h4 style={{ fontFamily: 'Playfair Display', fontSize: '28px', color: 'var(--text-accent)', marginBottom: '20px', fontWeight: 'bold' }}>Use of Funds:</h4>
-                <ul className="use-of-funds" style={{ fontSize: '26px', lineHeight: '1.8', fontWeight: '600' }}>
-                  <li style={{ marginBottom: '22px' }}><strong>40%</strong> Developer hire (scale infrastructure, add features)</li>
-                  <li style={{ marginBottom: '22px' }}><strong>30%</strong> Book catalog expansion (modern books, partnerships)</li>
-                  <li style={{ marginBottom: '22px' }}><strong>20%</strong> Marketing (teacher-marketers, materials)</li>
+                <h4 style={{ fontFamily: 'Playfair Display', fontSize: '32px', color: 'var(--text-accent)', marginBottom: '20px', fontWeight: 'bold' }}>Use of Funds:</h4>
+                <ul className="use-of-funds" style={{ fontSize: '32px', lineHeight: '1.8', fontWeight: '700' }}>
+                  <li style={{ marginBottom: '25px' }}><strong>40%</strong> Developer hire (scale infrastructure, add features)</li>
+                  <li style={{ marginBottom: '25px' }}><strong>30%</strong> Book catalog expansion (modern books, partnerships)</li>
+                  <li style={{ marginBottom: '25px' }}><strong>20%</strong> Marketing (teacher-marketers, materials)</li>
                   <li><strong>10%</strong> Operations (hosting, legal, admin)</li>
                 </ul>
               </div>
 
               <div className="milestones-section">
-                <h3 style={{ fontSize: '38px', fontWeight: 'bold' }}>12-Month Milestones:</h3>
-                <ul className="milestones-list" style={{ fontSize: '26px', lineHeight: '1.8', fontWeight: '600' }}>
-                  <li style={{ marginBottom: '22px' }}>50K+ active users</li>
-                  <li style={{ marginBottom: '22px' }}>20+ paid institutional contracts</li>
-                  <li style={{ marginBottom: '22px' }}>$200K+ annual revenue</li>
+                <h3 style={{ fontSize: '44px', fontWeight: 'bold' }}>12-Month Milestones:</h3>
+                <ul className="milestones-list" style={{ fontSize: '32px', lineHeight: '1.8', fontWeight: '700' }}>
+                  <li style={{ marginBottom: '25px' }}>50K+ active users</li>
+                  <li style={{ marginBottom: '25px' }}>20+ paid institutional contracts</li>
+                  <li style={{ marginBottom: '25px' }}>$200K+ annual revenue</li>
                   <li>Proof of concept for Series A</li>
                 </ul>
               </div>
