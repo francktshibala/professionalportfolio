@@ -1273,7 +1273,7 @@ export default function PitchDeckPage() {
         <div className="slide slide-problem">
           <div className="problem-container">
             <div className="problem-content">
-              <h2 style={{ fontSize: '56px', fontWeight: 'bold' }}>The Challenge</h2>
+              <h2 style={{ fontSize: '56px', fontWeight: 'bold' }}>What Problem Are We Solving?</h2>
               <ul style={{ fontSize: '40px', lineHeight: '1.8', fontWeight: '700' }}>
                 <li style={{ marginBottom: '35px' }}>1.5 billion people worldwide are learning English</li>
                 <li style={{ marginBottom: '35px' }}>Most can&apos;t afford tutors ($50-100/hour) or graded readers ($10-20/book)</li>
@@ -1400,7 +1400,7 @@ export default function PitchDeckPage() {
         {/* Slide 6: Competitive Advantage */}
         <div className="slide slide-competitive">
           <div className="competitive-container">
-            <h2 style={{ fontSize: '40px' }}>The Competitive Advantage</h2>
+            <h2 style={{ fontSize: '40px' }}>What Makes Us Different?</h2>
 
             <table className="comparison-table" style={{ fontSize: '20px' }}>
               <thead>
@@ -1492,7 +1492,7 @@ export default function PitchDeckPage() {
         {/* Slide 8: Business Model */}
         <div className="slide slide-business">
           <div className="business-container">
-            <h2 style={{ fontSize: '40px' }}>Revenue Streams</h2>
+            <h2 style={{ fontSize: '40px' }}>How Do We Make Money?</h2>
 
             <div className="revenue-streams">
               <div className="revenue-card">
@@ -1529,7 +1529,7 @@ export default function PitchDeckPage() {
         {/* Slide 9: Market Opportunity */}
         <div className="slide slide-market">
           <div className="market-container">
-            <h2 style={{ fontSize: '40px' }}>The Opportunity</h2>
+            <h2 style={{ fontSize: '40px' }}>How Big Is This Opportunity?</h2>
 
             <div className="market-cards">
               <div className="market-card">
@@ -1597,7 +1597,7 @@ export default function PitchDeckPage() {
         {/* Slide 11: The Ask */}
         <div className="slide slide-ask">
           <div className="ask-container">
-            <h2 style={{ fontSize: '56px', fontWeight: 'bold' }}>Investment Opportunity</h2>
+            <h2 style={{ fontSize: '56px', fontWeight: 'bold' }}>What Are We Asking For?</h2>
 
             <div className="ask-content">
               <div className="funding-section">
