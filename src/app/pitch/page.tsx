@@ -21,6 +21,34 @@ export default function PitchDeckPage() {
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      switch (e.key) {
+        case 'ArrowDown':
+        case 'PageDown':
+          e.preventDefault();
+          if (currentSlide < 11) scrollToSlide(currentSlide + 1);
+          break;
+        case 'ArrowUp':
+        case 'PageUp':
+          e.preventDefault();
+          if (currentSlide > 0) scrollToSlide(currentSlide - 1);
+          break;
+        case 'Home':
+          e.preventDefault();
+          scrollToSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          scrollToSlide(11);
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentSlide]);
+
   const scrollToSlide = (slideIndex: number) => {
     const container = slideContainerRef.current;
     if (!container) return;
