@@ -233,6 +233,129 @@ export default function PitchDeckPage() {
           color: var(--accent-primary);
         }
 
+        /* Slide 3: Founder's Story Styles */
+        .slide-story {
+          background-image: url('/franck.jpg');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+        }
+
+        .slide-story::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(0, 33, 71, 0.9) 0%, rgba(0, 33, 71, 0.8) 100%);
+        }
+
+        .story-content {
+          position: relative;
+          z-index: 1;
+          text-align: center;
+          max-width: 900px;
+          color: var(--bg-primary);
+        }
+
+        .story-content h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--bg-primary);
+          margin-bottom: 40px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .story-content p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 20px;
+          line-height: 1.8;
+          margin-bottom: 25px;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Slide 4: The Solution Styles */
+        .slide-solution {
+          background: var(--bg-primary);
+        }
+
+        .solution-container {
+          text-align: center;
+          max-width: 1200px;
+        }
+
+        .solution-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 54px;
+          color: var(--text-accent);
+          margin-bottom: 20px;
+        }
+
+        .solution-subtitle {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 22px;
+          color: var(--text-secondary);
+          margin-bottom: 50px;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .how-it-works {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 32px;
+          color: var(--text-accent);
+          margin-bottom: 40px;
+        }
+
+        .solution-steps {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+          margin-bottom: 50px;
+        }
+
+        .solution-step {
+          padding: 30px;
+          background: var(--bg-secondary);
+          border-radius: 12px;
+          box-shadow: 0 4px 12px var(--shadow-soft);
+        }
+
+        .solution-step-icon {
+          font-size: 48px;
+          margin-bottom: 20px;
+        }
+
+        .solution-step h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 22px;
+          color: var(--text-accent);
+          margin-bottom: 15px;
+        }
+
+        .solution-step p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          line-height: 1.6;
+        }
+
+        .app-preview {
+          margin-top: 40px;
+          padding: 20px;
+          background: var(--bg-secondary);
+          border-radius: 12px;
+          box-shadow: 0 4px 12px var(--shadow-soft);
+        }
+
+        .app-preview img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+
         @media (max-width: 768px) {
           .cover-title {
             font-size: 40px;
@@ -253,6 +376,25 @@ export default function PitchDeckPage() {
           }
           .problem-content li {
             font-size: 18px;
+          }
+          .story-content h2 {
+            font-size: 36px;
+          }
+          .story-content p {
+            font-size: 18px;
+          }
+          .solution-container h2 {
+            font-size: 40px;
+          }
+          .solution-subtitle {
+            font-size: 18px;
+          }
+          .how-it-works {
+            font-size: 26px;
+          }
+          .solution-steps {
+            grid-template-columns: 1fr;
+            gap: 20px;
           }
         }
       `}</style>
@@ -311,11 +453,64 @@ export default function PitchDeckPage() {
           </div>
         </div>
 
-        {/* Test Slide 3 */}
+        {/* Slide 3: Founder's Story */}
+        <div className="slide slide-story">
+          <div className="story-content">
+            <h2>My Journey</h2>
+            <p>
+              I grew up in the Democratic Republic of Congo without access to books or libraries.
+            </p>
+            <p>
+              When I discovered American libraries in 2019, it changed my life.
+            </p>
+            <p>
+              Now as a Church employee and BYU-Idaho software development student, I&apos;m building the solution I needed.
+            </p>
+          </div>
+        </div>
+
+        {/* Slide 4: The Solution */}
+        <div className="slide slide-solution">
+          <div className="solution-container">
+            <h2>BookBridge</h2>
+            <p className="solution-subtitle">
+              AI-powered reading platform that makes any book accessible at any level
+            </p>
+
+            <h3 className="how-it-works">How It Works</h3>
+
+            <div className="solution-steps">
+              <div className="solution-step">
+                <div className="solution-step-icon">📖</div>
+                <h3>1. Choose Your Book</h3>
+                <p>Select from our growing library</p>
+              </div>
+
+              <div className="solution-step">
+                <div className="solution-step-icon">✨</div>
+                <h3>2. AI Adjusts to Your Level</h3>
+                <p>Text simplifies from beginner to advanced</p>
+              </div>
+
+              <div className="solution-step">
+                <div className="solution-step-icon">🎧</div>
+                <h3>3. Read with Support</h3>
+                <p>Audio narration + instant dictionary</p>
+              </div>
+            </div>
+
+            <div className="app-preview">
+              <p style={{ marginBottom: '15px', fontFamily: 'Source Serif Pro', color: 'var(--text-secondary)' }}>
+                Try it now: <a href="https://bookbridge.app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-primary)', textDecoration: 'underline' }}>bookbridge.app</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Temporary placeholder for remaining slides */}
         <div className="slide" style={{ background: 'var(--bg-secondary)' }}>
           <div>
-            <h1>Test Slide 3</h1>
-            <p>Foundation ready for actual pitch deck content</p>
+            <h1>More slides coming soon...</h1>
           </div>
         </div>
       </div>
