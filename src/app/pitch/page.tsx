@@ -75,7 +75,7 @@ export default function PitchDeckPage() {
 
         .cover-content {
           text-align: center;
-          color: var(--bg-primary);
+          color: #FFFFFF;
         }
 
         .cover-title {
@@ -106,7 +106,7 @@ export default function PitchDeckPage() {
         .cover-role {
           font-family: 'Source Serif Pro', Georgia, serif;
           font-size: 20px;
-          color: var(--accent-secondary);
+          color: #FFFFFF;
           margin-bottom: 10px;
         }
 
