@@ -83,7 +83,7 @@ export default function PitchDeckPage() {
           font-size: 80px;
           font-weight: 700;
           margin-bottom: 30px;
-          color: #FFFFFF;
+          color: #FFFFFF !important;
         }
 
         .cover-subtitle {
@@ -92,7 +92,7 @@ export default function PitchDeckPage() {
           margin-bottom: 50px;
           max-width: 800px;
           line-height: 1.6;
-          color: #FFFFFF;
+          color: #FFFFFF !important;
         }
 
         .cover-name {
@@ -100,13 +100,13 @@ export default function PitchDeckPage() {
           font-size: 24px;
           margin-top: 40px;
           margin-bottom: 5px;
-          color: #FFFFFF;
+          color: #FFFFFF !important;
         }
 
         .cover-role {
           font-family: 'Source Serif Pro', Georgia, serif;
           font-size: 20px;
-          color: #FFFFFF;
+          color: #FFFFFF !important;
           margin-bottom: 10px;
         }
 
