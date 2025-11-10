@@ -1,6 +1,37 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
+
 export default function PitchDeckPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = slideContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollPosition = container.scrollTop;
+      const slideHeight = window.innerHeight;
+      const slide = Math.round(scrollPosition / slideHeight);
+      setCurrentSlide(slide);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSlide = (slideIndex: number) => {
+    const container = slideContainerRef.current;
+    if (!container) return;
+
+    const slideHeight = window.innerHeight;
+    container.scrollTo({
+      top: slideIndex * slideHeight,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className="pitch-deck">
       <style jsx global>{`
@@ -164,6 +195,39 @@ export default function PitchDeckPage() {
           60% {
             transform: translateX(-50%) translateY(-5px);
           }
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+          position: fixed;
+          right: 40px;
+          top: 50%;
+          transform: translateY(-50%);
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          z-index: 1000;
+        }
+
+        .nav-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.3);
+          border: 2px solid rgba(255, 255, 255, 0.5);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover {
+          background: rgba(255, 255, 255, 0.6);
+          transform: scale(1.2);
+        }
+
+        .nav-dot.active {
+          background: var(--accent-secondary);
+          border-color: var(--accent-secondary);
+          transform: scale(1.3);
         }
 
         .btn-primary {
@@ -1073,10 +1137,18 @@ export default function PitchDeckPage() {
           .why-now-list li {
             font-size: 18px;
           }
+          .nav-dots {
+            right: 20px;
+            gap: 12px;
+          }
+          .nav-dot {
+            width: 10px;
+            height: 10px;
+          }
         }
       `}</style>
 
-      <div className="slide-container">
+      <div className="slide-container" ref={slideContainerRef}>
         {/* Slide 1: Title/Cover */}
         <div className="slide slide-cover" style={{ position: 'relative' }}>
           <div className="cover-content">
@@ -1508,6 +1580,18 @@ export default function PitchDeckPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Navigation Dots */}
+      <div className="nav-dots">
+        {[...Array(12)].map((_, index) => (
+          <div
+            key={index}
+            className={`nav-dot ${currentSlide === index ? 'active' : ''}`}
+            onClick={() => scrollToSlide(index)}
+            title={`Slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
