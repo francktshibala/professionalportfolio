@@ -65,6 +65,11 @@ export default function PitchDeckPage() {
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Serif+Pro:wght@400;600&display=swap');
 
+        /* Force 16px base for consistent REM calculations */
+        html {
+          font-size: 16px !important;
+        }
+
         :root {
           --bg-primary: #F4F1EB;
           --bg-secondary: #FFFFFF;
@@ -112,25 +117,26 @@ export default function PitchDeckPage() {
           animation: fadeInSlide 0.8s ease-in-out;
         }
 
-        .slide h1 {
+        /* High specificity with fluid responsive sizing */
+        .pitch-deck .slide h1 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 3rem;
+          font-size: clamp(2rem, 3rem + 1vw, 3.5rem) !important;
           color: var(--text-accent);
           margin-bottom: 30px;
           line-height: 1.3;
         }
 
-        .slide h2 {
+        .pitch-deck .slide h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 2rem;
+          font-size: clamp(1.5rem, 2rem + 0.5vw, 2.25rem) !important;
           color: var(--text-accent);
           margin-bottom: 25px;
           line-height: 1.4;
         }
 
-        .slide p {
+        .pitch-deck .slide p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 1.25rem;
+          font-size: clamp(1rem, 1.25rem + 0.2vw, 1.4rem) !important;
           color: var(--text-primary);
           max-width: 900px;
           text-align: center;
@@ -148,34 +154,34 @@ export default function PitchDeckPage() {
           color: #FFFFFF;
         }
 
-        .cover-title {
+        .pitch-deck .cover-title {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 96px;
+          font-size: clamp(3rem, 5rem + 2vw, 6rem) !important;
           font-weight: 700;
           margin-bottom: 30px;
           color: #FFFFFF !important;
         }
 
-        .cover-subtitle {
+        .pitch-deck .cover-subtitle {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 32px;
+          font-size: clamp(1.25rem, 1.75rem + 0.5vw, 2rem) !important;
           margin-bottom: 50px;
           max-width: 800px;
           line-height: 1.6;
           color: #FFFFFF !important;
         }
 
-        .cover-name {
+        .pitch-deck .cover-name {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 28px;
+          font-size: clamp(1.25rem, 1.5rem + 0.3vw, 1.75rem) !important;
           margin-top: 40px;
           margin-bottom: 5px;
           color: #FFFFFF !important;
         }
 
-        .cover-role {
+        .pitch-deck .cover-role {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 24px;
+          font-size: clamp(1.125rem, 1.375rem + 0.2vw, 1.5rem) !important;
           color: #FFFFFF !important;
           margin-bottom: 10px;
         }
@@ -283,13 +289,13 @@ export default function PitchDeckPage() {
           box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
         }
 
-        .btn-primary {
+        .pitch-deck .btn-primary {
           background: var(--accent-secondary);
           color: var(--bg-primary);
           border: none;
           border-radius: 8px;
           padding: 16px 36px;
-          font-size: 1.25rem;
+          font-size: clamp(1.125rem, 1.375rem + 0.2vw, 1.5rem) !important;
           font-family: 'Source Serif Pro', Georgia, serif;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -298,19 +304,19 @@ export default function PitchDeckPage() {
           font-weight: 600;
         }
 
-        .btn-primary:hover {
+        .pitch-deck .btn-primary:hover {
           background: #B8722D;
           transform: translateY(-2px);
           box-shadow: 0 4px 12px rgba(205, 127, 50, 0.3);
         }
 
-        .btn-secondary {
+        .pitch-deck .btn-secondary {
           background: transparent;
           color: var(--bg-primary);
           border: 2px solid var(--accent-secondary);
           border-radius: 8px;
           padding: 16px 36px;
-          font-size: 1.25rem;
+          font-size: clamp(1.125rem, 1.375rem + 0.2vw, 1.5rem) !important;
           font-family: 'Source Serif Pro', Georgia, serif;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -698,17 +704,17 @@ export default function PitchDeckPage() {
           text-align: center;
         }
 
-        .stat-number {
+        .pitch-deck .stat-number {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 2rem;
+          font-size: clamp(2rem, 2.5rem + 0.5vw, 3rem) !important;
           color: var(--accent-secondary);
           font-weight: 700;
           margin-bottom: 8px;
         }
 
-        .stat-label {
+        .pitch-deck .stat-label {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 1.125rem;
+          font-size: clamp(1rem, 1.25rem + 0.2vw, 1.4rem) !important;
           color: var(--text-secondary);
           line-height: 1.6;
         }
