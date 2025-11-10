@@ -114,17 +114,27 @@ export default function PitchDeckPage() {
 
         .slide h1 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 64px;
+          font-size: 3rem;
           color: var(--text-accent);
-          margin-bottom: 20px;
+          margin-bottom: 30px;
+          line-height: 1.3;
+        }
+
+        .slide h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 2rem;
+          color: var(--text-accent);
+          margin-bottom: 25px;
+          line-height: 1.4;
         }
 
         .slide p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 26px;
+          font-size: 1.25rem;
           color: var(--text-primary);
           max-width: 900px;
           text-align: center;
+          line-height: 1.7;
         }
 
         /* Slide 1: Title/Cover Styles */
@@ -279,12 +289,13 @@ export default function PitchDeckPage() {
           border: none;
           border-radius: 8px;
           padding: 16px 36px;
-          font-size: 22px;
+          font-size: 1.25rem;
           font-family: 'Source Serif Pro', Georgia, serif;
           cursor: pointer;
           transition: all 0.3s ease;
           text-decoration: none;
           display: inline-block;
+          font-weight: 600;
         }
 
         .btn-primary:hover {
@@ -299,12 +310,13 @@ export default function PitchDeckPage() {
           border: 2px solid var(--accent-secondary);
           border-radius: 8px;
           padding: 16px 36px;
-          font-size: 22px;
+          font-size: 1.25rem;
           font-family: 'Source Serif Pro', Georgia, serif;
           cursor: pointer;
           transition: all 0.3s ease;
           text-decoration: none;
           display: inline-block;
+          font-weight: 600;
         }
 
         .btn-secondary:hover {
@@ -350,7 +362,7 @@ export default function PitchDeckPage() {
 
         .problem-content li {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 22px;
+          font-size: 1.125rem;
           color: var(--text-primary);
           margin-bottom: 20px;
           padding-left: 30px;
@@ -488,9 +500,9 @@ export default function PitchDeckPage() {
 
         .solution-step p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           color: var(--text-primary);
-          line-height: 1.6;
+          line-height: 1.7;
         }
 
         .app-preview {
@@ -557,9 +569,9 @@ export default function PitchDeckPage() {
 
         .feature-card p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           color: var(--text-primary);
-          line-height: 1.6;
+          line-height: 1.7;
         }
 
         /* Slide 6: Competitive Advantage Styles */
@@ -688,15 +700,17 @@ export default function PitchDeckPage() {
 
         .stat-number {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 2rem;
           color: var(--accent-secondary);
           font-weight: 700;
+          margin-bottom: 8px;
         }
 
         .stat-label {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           color: var(--text-secondary);
+          line-height: 1.6;
         }
 
         /* Slide 8: Business Model Styles */
@@ -1074,21 +1088,36 @@ export default function PitchDeckPage() {
         }
 
         @media (max-width: 768px) {
+          .slide h1 {
+            font-size: 2rem;
+          }
+          .slide h2 {
+            font-size: 1.5rem;
+          }
+          .slide p {
+            font-size: 1rem;
+          }
           .cover-title {
-            font-size: 56px;
+            font-size: 2.5rem;
           }
           .cover-subtitle {
-            font-size: 26px;
+            font-size: 1.25rem;
           }
           .cover-name {
-            font-size: 24px;
+            font-size: 1.125rem;
           }
           .cover-role {
-            font-size: 22px;
+            font-size: 1rem;
           }
           .btn-primary, .btn-secondary {
-            font-size: 18px;
+            font-size: 1.125rem;
             padding: 14px 28px;
+          }
+          .stat-number {
+            font-size: 1.75rem;
+          }
+          .stat-label {
+            font-size: 1rem;
           }
           .problem-container {
             grid-template-columns: 1fr;
