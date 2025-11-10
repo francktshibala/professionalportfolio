@@ -54,16 +54,16 @@ export default function PitchDeckPage() {
 
         .slide h1 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 20px;
         }
 
         .slide p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 20px;
+          font-size: 22px;
           color: var(--text-primary);
-          max-width: 800px;
+          max-width: 900px;
           text-align: center;
         }
 
@@ -80,42 +80,45 @@ export default function PitchDeckPage() {
 
         .cover-title {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 64px;
+          font-size: 80px;
           font-weight: 700;
           margin-bottom: 30px;
-          color: var(--bg-primary);
+          color: #FFFFFF;
         }
 
         .cover-subtitle {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 24px;
+          font-size: 28px;
           margin-bottom: 50px;
-          max-width: 700px;
+          max-width: 800px;
           line-height: 1.6;
+          color: #FFFFFF;
         }
 
         .cover-name {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 20px;
+          font-size: 24px;
           margin-top: 40px;
           margin-bottom: 5px;
+          color: #FFFFFF;
         }
 
         .cover-role {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 18px;
+          font-size: 20px;
           color: var(--accent-secondary);
           margin-bottom: 10px;
         }
 
         .cover-email {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 16px;
+          font-size: 18px;
           margin-bottom: 40px;
+          color: #FFFFFF;
         }
 
         .cover-email a {
-          color: var(--bg-primary);
+          color: #FFFFFF;
           text-decoration: underline;
         }
 
@@ -228,7 +231,7 @@ export default function PitchDeckPage() {
 
         .problem-content h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 30px;
         }
@@ -240,12 +243,12 @@ export default function PitchDeckPage() {
 
         .problem-content li {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 20px;
+          font-size: 22px;
           color: var(--text-primary);
           margin-bottom: 20px;
           padding-left: 30px;
           position: relative;
-          line-height: 1.6;
+          line-height: 1.7;
         }
 
         .problem-content li:before {
@@ -298,17 +301,18 @@ export default function PitchDeckPage() {
 
         .story-content h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
-          color: var(--bg-primary);
+          font-size: 56px;
+          color: #FFFFFF;
           margin-bottom: 40px;
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .story-content p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 20px;
-          line-height: 1.8;
-          margin-bottom: 25px;
+          font-size: 26px;
+          line-height: 2.0;
+          margin-bottom: 30px;
+          color: #FFFFFF;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
@@ -324,24 +328,24 @@ export default function PitchDeckPage() {
 
         .solution-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 54px;
+          font-size: 60px;
           color: var(--text-accent);
           margin-bottom: 20px;
         }
 
         .solution-subtitle {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 22px;
+          font-size: 26px;
           color: var(--text-secondary);
           margin-bottom: 50px;
-          max-width: 800px;
+          max-width: 900px;
           margin-left: auto;
           margin-right: auto;
         }
 
         .how-it-works {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 32px;
+          font-size: 36px;
           color: var(--text-accent);
           margin-bottom: 40px;
         }
@@ -367,14 +371,14 @@ export default function PitchDeckPage() {
 
         .solution-step h3 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 22px;
+          font-size: 24px;
           color: var(--text-accent);
           margin-bottom: 15px;
         }
 
         .solution-step p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 16px;
+          font-size: 18px;
           color: var(--text-primary);
           line-height: 1.6;
         }
@@ -404,7 +408,7 @@ export default function PitchDeckPage() {
 
         .features-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 50px;
           text-align: center;
@@ -436,14 +440,14 @@ export default function PitchDeckPage() {
 
         .feature-card h3 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 22px;
+          font-size: 24px;
           color: var(--text-accent);
           margin-bottom: 10px;
         }
 
         .feature-card p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 16px;
+          font-size: 18px;
           color: var(--text-primary);
           line-height: 1.6;
         }
@@ -459,7 +463,7 @@ export default function PitchDeckPage() {
 
         .competitive-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 40px;
           text-align: center;
@@ -522,7 +526,7 @@ export default function PitchDeckPage() {
 
         .traction-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 40px;
           text-align: center;
@@ -596,7 +600,7 @@ export default function PitchDeckPage() {
 
         .business-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 50px;
           text-align: center;
@@ -661,92 +665,67 @@ export default function PitchDeckPage() {
         }
 
         .market-container {
-          max-width: 1100px;
+          max-width: 900px;
           text-align: center;
         }
 
         .market-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 50px;
         }
 
-        .market-circles {
-          position: relative;
-          height: 400px;
+        .market-cards {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
           margin-bottom: 40px;
         }
 
-        .market-circle {
-          position: absolute;
-          border: 3px solid var(--accent-secondary);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          background: rgba(205, 127, 50, 0.05);
+        .market-card {
+          padding: 30px 40px;
+          background: var(--bg-primary);
+          border-left: 5px solid var(--accent-secondary);
+          border-radius: 8px;
+          box-shadow: 0 4px 12px var(--shadow-soft);
+          text-align: left;
         }
 
-        .market-circle.outer {
-          width: 400px;
-          height: 400px;
-          left: 50%;
-          transform: translateX(-50%);
-          top: 0;
-        }
-
-        .market-circle.middle {
-          width: 280px;
-          height: 280px;
-          left: 50%;
-          transform: translateX(-50%);
-          top: 60px;
-          background: rgba(205, 127, 50, 0.1);
-        }
-
-        .market-circle.inner {
-          width: 160px;
-          height: 160px;
-          left: 50%;
-          transform: translateX(-50%);
-          top: 120px;
-          background: rgba(205, 127, 50, 0.2);
-        }
-
-        .market-circle-label {
+        .market-card-label {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 14px;
+          font-size: 18px;
           color: var(--text-secondary);
-          margin-bottom: 5px;
+          margin-bottom: 10px;
+          font-weight: 600;
         }
 
-        .market-circle-value {
+        .market-card-value {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 24px;
+          font-size: 36px;
           color: var(--text-accent);
           font-weight: 700;
         }
 
         .market-size {
-          padding: 25px;
-          background: var(--bg-primary);
+          padding: 30px;
+          background: var(--accent-secondary);
+          color: var(--bg-primary);
           border-radius: 12px;
           margin-top: 20px;
         }
 
         .market-size h3 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 32px;
-          color: var(--accent-secondary);
+          font-size: 40px;
+          color: var(--bg-primary);
           margin-bottom: 10px;
         }
 
         .market-size p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 18px;
-          color: var(--text-secondary);
+          font-size: 20px;
+          color: var(--bg-primary);
         }
 
         /* Slide 10: Go-to-Market Styles */
@@ -760,7 +739,7 @@ export default function PitchDeckPage() {
 
         .gtm-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 50px;
           text-align: center;
@@ -828,7 +807,7 @@ export default function PitchDeckPage() {
 
         .ask-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
+          font-size: 56px;
           color: var(--text-accent);
           margin-bottom: 50px;
           text-align: center;
@@ -919,8 +898,8 @@ export default function PitchDeckPage() {
 
         .closing-container h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 48px;
-          color: var(--bg-primary);
+          font-size: 56px;
+          color: #FFFFFF;
           margin-bottom: 40px;
         }
 
@@ -933,8 +912,8 @@ export default function PitchDeckPage() {
 
         .why-now-list li {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 20px;
-          color: var(--bg-primary);
+          font-size: 24px;
+          color: #FFFFFF;
           margin-bottom: 20px;
           padding-left: 35px;
           position: relative;
@@ -951,13 +930,14 @@ export default function PitchDeckPage() {
 
         .vision-statement {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 26px;
-          line-height: 1.6;
+          font-size: 30px;
+          line-height: 1.7;
           margin: 50px 0;
           padding: 30px;
           background: rgba(255, 255, 255, 0.1);
           border-radius: 12px;
           font-style: italic;
+          color: #FFFFFF;
         }
 
         .closing-cta {
@@ -966,14 +946,16 @@ export default function PitchDeckPage() {
 
         .closing-cta h3 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 32px;
+          font-size: 36px;
           margin-bottom: 20px;
+          color: #FFFFFF;
         }
 
         .closing-contact {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 20px;
+          font-size: 22px;
           margin-bottom: 30px;
+          color: #FFFFFF;
         }
 
         .closing-contact a {
@@ -983,9 +965,15 @@ export default function PitchDeckPage() {
 
         @media (max-width: 768px) {
           .cover-title {
-            font-size: 40px;
+            font-size: 48px;
           }
           .cover-subtitle {
+            font-size: 22px;
+          }
+          .cover-name {
+            font-size: 20px;
+          }
+          .cover-role {
             font-size: 18px;
           }
           .btn-primary, .btn-secondary {
@@ -1003,10 +991,10 @@ export default function PitchDeckPage() {
             font-size: 18px;
           }
           .story-content h2 {
-            font-size: 36px;
+            font-size: 44px;
           }
           .story-content p {
-            font-size: 18px;
+            font-size: 22px;
           }
           .solution-container h2 {
             font-size: 40px;
@@ -1054,30 +1042,13 @@ export default function PitchDeckPage() {
             gap: 20px;
           }
           .market-container h2 {
-            font-size: 36px;
+            font-size: 44px;
           }
-          .market-circles {
-            height: auto;
-            position: relative;
+          .market-card-value {
+            font-size: 28px;
           }
-          .market-circle {
-            position: relative !important;
-            transform: none !important;
-            left: auto !important;
-            top: auto !important;
-            margin: 20px auto;
-          }
-          .market-circle.outer {
-            width: 280px;
-            height: 280px;
-          }
-          .market-circle.middle {
-            width: 220px;
-            height: 220px;
-          }
-          .market-circle.inner {
-            width: 160px;
-            height: 160px;
+          .market-size h3 {
+            font-size: 32px;
           }
           .gtm-container h2 {
             font-size: 36px;
@@ -1397,20 +1368,20 @@ export default function PitchDeckPage() {
           <div className="market-container">
             <h2>The Opportunity</h2>
 
-            <div className="market-circles">
-              <div className="market-circle outer">
-                <div className="market-circle-label">Total Addressable Market</div>
-                <div className="market-circle-value">1.5B ESL learners globally</div>
+            <div className="market-cards">
+              <div className="market-card">
+                <div className="market-card-label">Total Addressable Market</div>
+                <div className="market-card-value">1.5 Billion ESL Learners Globally</div>
               </div>
 
-              <div className="market-circle middle">
-                <div className="market-circle-label">Serviceable Market</div>
-                <div className="market-circle-value">500M institutional</div>
+              <div className="market-card">
+                <div className="market-card-label">Serviceable Addressable Market</div>
+                <div className="market-card-value">500M Institutional Learners</div>
               </div>
 
-              <div className="market-circle inner">
-                <div className="market-circle-label">Target Year 1</div>
-                <div className="market-circle-value">10K-50K users</div>
+              <div className="market-card">
+                <div className="market-card-label">Target Year 1</div>
+                <div className="market-card-value">10K-50K Users</div>
               </div>
             </div>
 
