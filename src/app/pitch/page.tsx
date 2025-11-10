@@ -1233,7 +1233,7 @@ export default function PitchDeckPage() {
         {/* Slide 1: Title/Cover */}
         <div className="slide slide-cover" style={{ position: 'relative' }}>
           <div className="cover-content">
-            <h1 className="cover-title">BookBridge</h1>
+            <h1 className="cover-title" style={{ fontSize: '96px', lineHeight: 1.1 }}>BookBridge</h1>
             <p className="cover-subtitle">Democratizing Reading for 1.5 Billion ESL Learners</p>
 
             <p className="cover-name">Franck Tshibala</p>
@@ -1273,11 +1273,11 @@ export default function PitchDeckPage() {
         <div className="slide slide-problem">
           <div className="problem-container">
             <div className="problem-content">
-              <h2>The Challenge</h2>
-              <ul>
-                <li>1.5 billion people worldwide are learning English</li>
-                <li>Most can&apos;t afford tutors ($50-100/hour) or graded readers ($10-20/book)</li>
-                <li>They want to read real books but the content is too difficult</li>
+              <h2 style={{ fontSize: '48px', fontWeight: 'bold' }}>The Challenge</h2>
+              <ul style={{ fontSize: '32px', lineHeight: '1.8', fontWeight: '600' }}>
+                <li style={{ marginBottom: '30px' }}>1.5 billion people worldwide are learning English</li>
+                <li style={{ marginBottom: '30px' }}>Most can&apos;t afford tutors ($50-100/hour) or graded readers ($10-20/book)</li>
+                <li style={{ marginBottom: '30px' }}>They want to read real books but the content is too difficult</li>
                 <li>Current solutions are fragmented - dictionary apps, audio apps, and simplification tools are all separate</li>
               </ul>
             </div>
@@ -1292,14 +1292,14 @@ export default function PitchDeckPage() {
         {/* Slide 3: Founder's Story */}
         <div className="slide slide-story">
           <div className="story-content">
-            <h2>My Journey</h2>
-            <p>
+            <h2 style={{ fontSize: '40px', color: '#FFFFFF' }}>My Journey</h2>
+            <p style={{ color: '#FFFFFF' }}>
               I grew up in the Democratic Republic of Congo without access to books or libraries.
             </p>
-            <p>
+            <p style={{ color: '#FFFFFF' }}>
               When I discovered American libraries in 2019, it changed my life.
             </p>
-            <p>
+            <p style={{ color: '#FFFFFF' }}>
               Now as a Church employee and BYU-Idaho software development student, I&apos;m building the solution I needed.
             </p>
           </div>
@@ -1308,30 +1308,30 @@ export default function PitchDeckPage() {
         {/* Slide 4: The Solution */}
         <div className="slide slide-solution">
           <div className="solution-container">
-            <h2>BookBridge</h2>
-            <p className="solution-subtitle">
+            <h2 style={{ fontSize: '40px' }}>BookBridge</h2>
+            <p className="solution-subtitle" style={{ fontSize: '28px' }}>
               AI-powered reading platform that makes any book accessible at any level
             </p>
 
-            <h3 className="how-it-works">How It Works</h3>
+            <h3 className="how-it-works" style={{ fontSize: '36px' }}>How It Works</h3>
 
             <div className="solution-steps">
               <div className="solution-step">
                 <div className="solution-step-icon">📖</div>
-                <h3>1. Choose Your Book</h3>
-                <p>Select from our growing library</p>
+                <h3 style={{ fontSize: '26px' }}>1. Choose Your Book</h3>
+                <p style={{ fontSize: '20px' }}>Select from our growing library</p>
               </div>
 
               <div className="solution-step">
                 <div className="solution-step-icon">✨</div>
-                <h3>2. AI Adjusts to Your Level</h3>
-                <p>Text simplifies from beginner to advanced</p>
+                <h3 style={{ fontSize: '26px' }}>2. AI Adjusts to Your Level</h3>
+                <p style={{ fontSize: '20px' }}>Text simplifies from beginner to advanced</p>
               </div>
 
               <div className="solution-step">
                 <div className="solution-step-icon">🎧</div>
-                <h3>3. Read with Support</h3>
-                <p>Audio narration + instant dictionary</p>
+                <h3 style={{ fontSize: '26px' }}>3. Read with Support</h3>
+                <p style={{ fontSize: '20px' }}>Audio narration + instant dictionary</p>
               </div>
             </div>
 
@@ -1346,42 +1346,42 @@ export default function PitchDeckPage() {
         {/* Slide 5: Key Features */}
         <div className="slide slide-features">
           <div className="features-container">
-            <h2>What Makes BookBridge Complete</h2>
+            <h2 style={{ fontSize: '40px' }}>What Makes BookBridge Complete</h2>
             <div className="features-grid">
               <div className="feature-card">
                 <div className="feature-icon">📝</div>
-                <h3>Text Simplification</h3>
-                <p>6 CEFR levels (A1 Beginner to C2 Advanced)</p>
+                <h3 style={{ fontSize: '26px' }}>Text Simplification</h3>
+                <p style={{ fontSize: '20px' }}>6 CEFR levels (A1 Beginner to C2 Advanced)</p>
               </div>
 
               <div className="feature-card">
                 <div className="feature-icon">🎧</div>
-                <h3>Audio Narration</h3>
-                <p>Learn proper pronunciation while reading</p>
+                <h3 style={{ fontSize: '26px' }}>Audio Narration</h3>
+                <p style={{ fontSize: '20px' }}>Learn proper pronunciation while reading</p>
               </div>
 
               <div className="feature-card">
                 <div className="feature-icon">📖</div>
-                <h3>Integrated Dictionary</h3>
-                <p>Simple definitions with examples</p>
+                <h3 style={{ fontSize: '26px' }}>Integrated Dictionary</h3>
+                <p style={{ fontSize: '20px' }}>Simple definitions with examples</p>
               </div>
 
               <div className="feature-card">
                 <div className="feature-icon">📚</div>
-                <h3>Growing Library</h3>
-                <p>28+ classic books, expanding to modern titles</p>
+                <h3 style={{ fontSize: '26px' }}>Growing Library</h3>
+                <p style={{ fontSize: '20px' }}>28+ classic books, expanding to modern titles</p>
               </div>
 
               <div className="feature-card">
                 <div className="feature-icon">📊</div>
-                <h3>Progress Tracking</h3>
-                <p>Students see their improvement over time</p>
+                <h3 style={{ fontSize: '26px' }}>Progress Tracking</h3>
+                <p style={{ fontSize: '20px' }}>Students see their improvement over time</p>
               </div>
 
               <div className="feature-card">
                 <div className="feature-icon">✨</div>
-                <h3>AI-Powered</h3>
-                <p>Adaptive learning personalized to each reader</p>
+                <h3 style={{ fontSize: '26px' }}>AI-Powered</h3>
+                <p style={{ fontSize: '20px' }}>Adaptive learning personalized to each reader</p>
               </div>
             </div>
           </div>
@@ -1390,46 +1390,46 @@ export default function PitchDeckPage() {
         {/* Slide 6: Competitive Advantage */}
         <div className="slide slide-competitive">
           <div className="competitive-container">
-            <h2>The Competitive Advantage</h2>
+            <h2 style={{ fontSize: '40px' }}>The Competitive Advantage</h2>
 
-            <table className="comparison-table">
+            <table className="comparison-table" style={{ fontSize: '20px' }}>
               <thead>
                 <tr>
-                  <th>Feature</th>
-                  <th>Competitors</th>
-                  <th className="highlight">BookBridge</th>
+                  <th style={{ fontSize: '24px' }}>Feature</th>
+                  <th style={{ fontSize: '24px' }}>Competitors</th>
+                  <th className="highlight" style={{ fontSize: '24px' }}>BookBridge</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Simplified books</td>
-                  <td>Some</td>
-                  <td className="highlight">✓</td>
+                  <td style={{ fontSize: '20px' }}>Simplified books</td>
+                  <td style={{ fontSize: '20px' }}>Some</td>
+                  <td className="highlight" style={{ fontSize: '20px' }}>✓</td>
                 </tr>
                 <tr>
-                  <td>Audio sync</td>
-                  <td>Some</td>
-                  <td className="highlight">✓</td>
+                  <td style={{ fontSize: '20px' }}>Audio sync</td>
+                  <td style={{ fontSize: '20px' }}>Some</td>
+                  <td className="highlight" style={{ fontSize: '20px' }}>✓</td>
                 </tr>
                 <tr>
-                  <td>Instant dictionary</td>
-                  <td>Rare</td>
-                  <td className="highlight">✓</td>
+                  <td style={{ fontSize: '20px' }}>Instant dictionary</td>
+                  <td style={{ fontSize: '20px' }}>Rare</td>
+                  <td className="highlight" style={{ fontSize: '20px' }}>✓</td>
                 </tr>
                 <tr>
-                  <td>Full-length books</td>
-                  <td>Some</td>
-                  <td className="highlight">✓</td>
+                  <td style={{ fontSize: '20px' }}>Full-length books</td>
+                  <td style={{ fontSize: '20px' }}>Some</td>
+                  <td className="highlight" style={{ fontSize: '20px' }}>✓</td>
                 </tr>
                 <tr>
-                  <td><strong>ALL-IN-ONE</strong></td>
-                  <td>None</td>
-                  <td className="highlight"><strong>✓</strong></td>
+                  <td style={{ fontSize: '20px' }}><strong>ALL-IN-ONE</strong></td>
+                  <td style={{ fontSize: '20px' }}>None</td>
+                  <td className="highlight" style={{ fontSize: '20px' }}><strong>✓</strong></td>
                 </tr>
               </tbody>
             </table>
 
-            <div className="competitive-callout">
+            <div className="competitive-callout" style={{ fontSize: '22px' }}>
               BookBridge is the only platform that integrates everything an ESL learner needs in one place.
             </div>
           </div>
@@ -1438,41 +1438,41 @@ export default function PitchDeckPage() {
         {/* Slide 7: Early Traction */}
         <div className="slide slide-traction">
           <div className="traction-container">
-            <h2>Institutional Interest</h2>
+            <h2 style={{ fontSize: '40px' }}>Institutional Interest</h2>
 
             <div className="traction-grid">
               <div className="traction-card">
-                <h3>INX Academy (San Diego)</h3>
-                <p>Currently piloting with students</p>
-                <p><strong>Expanding school-wide December 2025</strong></p>
+                <h3 style={{ fontSize: '24px' }}>INX Academy (San Diego)</h3>
+                <p style={{ fontSize: '18px' }}>Currently piloting with students</p>
+                <p style={{ fontSize: '18px' }}><strong>Expanding school-wide December 2025</strong></p>
               </div>
 
               <div className="traction-card">
-                <h3>BYU English Language Center</h3>
-                <p>Exploring pilot for January 2026</p>
-                <p><em>&quot;This is how reading technology should be used&quot;</em> - Teacher coordinator</p>
+                <h3 style={{ fontSize: '24px' }}>BYU English Language Center</h3>
+                <p style={{ fontSize: '18px' }}>Exploring pilot for January 2026</p>
+                <p style={{ fontSize: '18px' }}><em>&quot;This is how reading technology should be used&quot;</em> - Teacher coordinator</p>
               </div>
 
               <div className="traction-card">
-                <h3>LDS Church Literacy Services</h3>
-                <p>Discussing global deployment</p>
-                <p><strong>Across 150+ countries</strong></p>
+                <h3 style={{ fontSize: '24px' }}>LDS Church Literacy Services</h3>
+                <p style={{ fontSize: '18px' }}>Discussing global deployment</p>
+                <p style={{ fontSize: '18px' }}><strong>Across 150+ countries</strong></p>
               </div>
 
               <div className="traction-card">
-                <h3>Salt Lake Community College</h3>
-                <p>Meeting scheduled December</p>
-                <p>January 2026 pilot planned</p>
+                <h3 style={{ fontSize: '24px' }}>Salt Lake Community College</h3>
+                <p style={{ fontSize: '18px' }}>Meeting scheduled December</p>
+                <p style={{ fontSize: '18px' }}>January 2026 pilot planned</p>
               </div>
             </div>
 
             <div className="traction-stats">
               <div className="stat">
-                <div className="stat-number">59</div>
+                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>59</div>
                 <div className="stat-label">Active Users</div>
               </div>
               <div className="stat">
-                <div className="stat-number">43</div>
+                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>43</div>
                 <div className="stat-label">Cities</div>
               </div>
             </div>
@@ -1482,35 +1482,35 @@ export default function PitchDeckPage() {
         {/* Slide 8: Business Model */}
         <div className="slide slide-business">
           <div className="business-container">
-            <h2>Revenue Streams</h2>
+            <h2 style={{ fontSize: '40px' }}>Revenue Streams</h2>
 
             <div className="revenue-streams">
               <div className="revenue-card">
                 <div className="revenue-icon">🏢</div>
-                <h3>B2B Institutional</h3>
+                <h3 style={{ fontSize: '24px' }}>B2B Institutional</h3>
                 <div className="label">(Primary)</div>
-                <p>Schools and churches pay $10-50/student/year</p>
-                <p><strong>Example:</strong> 1,000 students × $30/year = $30K contract</p>
+                <p style={{ fontSize: '18px' }}>Schools and churches pay $10-50/student/year</p>
+                <p style={{ fontSize: '18px' }}><strong>Example:</strong> 1,000 students × $30/year = $30K contract</p>
               </div>
 
               <div className="revenue-card">
                 <div className="revenue-icon">👤</div>
-                <h3>B2C Consumer</h3>
+                <h3 style={{ fontSize: '24px' }}>B2C Consumer</h3>
                 <div className="label">(Secondary)</div>
-                <p>Individual subscriptions</p>
-                <p>$5-10/month</p>
+                <p style={{ fontSize: '18px' }}>Individual subscriptions</p>
+                <p style={{ fontSize: '18px' }}>$5-10/month</p>
               </div>
 
               <div className="revenue-card">
                 <div className="revenue-icon">🤝</div>
-                <h3>Partnerships</h3>
+                <h3 style={{ fontSize: '24px' }}>Partnerships</h3>
                 <div className="label">(Future)</div>
-                <p>White-label for EdTech platforms</p>
-                <p>Revenue sharing agreements</p>
+                <p style={{ fontSize: '18px' }}>White-label for EdTech platforms</p>
+                <p style={{ fontSize: '18px' }}>Revenue sharing agreements</p>
               </div>
             </div>
 
-            <div className="strategy-note">
+            <div className="strategy-note" style={{ fontSize: '20px' }}>
               Current Strategy: Free pilots → convert to paid contracts
             </div>
           </div>
@@ -1519,28 +1519,28 @@ export default function PitchDeckPage() {
         {/* Slide 9: Market Opportunity */}
         <div className="slide slide-market">
           <div className="market-container">
-            <h2>The Opportunity</h2>
+            <h2 style={{ fontSize: '40px' }}>The Opportunity</h2>
 
             <div className="market-cards">
               <div className="market-card">
-                <div className="market-card-label">Total Addressable Market</div>
-                <div className="market-card-value">1.5 Billion ESL Learners Globally</div>
+                <div className="market-card-label" style={{ fontSize: '20px' }}>Total Addressable Market</div>
+                <div className="market-card-value" style={{ fontSize: '38px' }}>1.5 Billion ESL Learners Globally</div>
               </div>
 
               <div className="market-card">
-                <div className="market-card-label">Serviceable Addressable Market</div>
-                <div className="market-card-value">500M Institutional Learners</div>
+                <div className="market-card-label" style={{ fontSize: '20px' }}>Serviceable Addressable Market</div>
+                <div className="market-card-value" style={{ fontSize: '38px' }}>500M Institutional Learners</div>
               </div>
 
               <div className="market-card">
-                <div className="market-card-label">Target Year 1</div>
-                <div className="market-card-value">10K-50K Users</div>
+                <div className="market-card-label" style={{ fontSize: '20px' }}>Target Year 1</div>
+                <div className="market-card-value" style={{ fontSize: '38px' }}>10K-50K Users</div>
               </div>
             </div>
 
             <div className="market-size">
-              <h3>Market Size: $75B+</h3>
-              <p>Based on average $50/year spent on reading resources</p>
+              <h3 style={{ fontSize: '42px' }}>Market Size: $75B+</h3>
+              <p style={{ fontSize: '22px' }}>Based on average $50/year spent on reading resources</p>
             </div>
           </div>
         </div>
@@ -1548,35 +1548,35 @@ export default function PitchDeckPage() {
         {/* Slide 10: Go-to-Market Strategy */}
         <div className="slide slide-gtm">
           <div className="gtm-container">
-            <h2>Scaling Strategy</h2>
+            <h2 style={{ fontSize: '48px', fontWeight: 'bold' }}>Scaling Strategy</h2>
 
             <div className="timeline">
               <div className="timeline-phase">
-                <h3>Phase 1</h3>
-                <div className="phase-duration">Now - 6 months</div>
-                <ul>
-                  <li>Partner with ESL programs</li>
-                  <li>Prove effectiveness with real data</li>
+                <h3 style={{ fontSize: '36px', fontWeight: 'bold' }}>Phase 1</h3>
+                <div className="phase-duration" style={{ fontSize: '18px', fontWeight: '600' }}>Now - 6 months</div>
+                <ul style={{ fontSize: '28px', lineHeight: '1.8', fontWeight: '600' }}>
+                  <li style={{ marginBottom: '20px' }}>Partner with ESL programs</li>
+                  <li style={{ marginBottom: '20px' }}>Prove effectiveness with real data</li>
                   <li>Target: 10-20 paid contracts</li>
                 </ul>
               </div>
 
               <div className="timeline-phase">
-                <h3>Phase 2</h3>
-                <div className="phase-duration">6-12 months</div>
-                <ul>
-                  <li>Hire teacher-marketers (commission-based)</li>
-                  <li>Scale to 50-100 schools across US</li>
+                <h3 style={{ fontSize: '36px', fontWeight: 'bold' }}>Phase 2</h3>
+                <div className="phase-duration" style={{ fontSize: '18px', fontWeight: '600' }}>6-12 months</div>
+                <ul style={{ fontSize: '28px', lineHeight: '1.8', fontWeight: '600' }}>
+                  <li style={{ marginBottom: '20px' }}>Hire teacher-marketers (commission-based)</li>
+                  <li style={{ marginBottom: '20px' }}>Scale to 50-100 schools across US</li>
                   <li>International: Philippines, Mexico, Latin America</li>
                 </ul>
               </div>
 
               <div className="timeline-phase">
-                <h3>Phase 3</h3>
-                <div className="phase-duration">Year 2+</div>
-                <ul>
-                  <li>Launch individual subscriptions</li>
-                  <li>Government partnerships</li>
+                <h3 style={{ fontSize: '36px', fontWeight: 'bold' }}>Phase 3</h3>
+                <div className="phase-duration" style={{ fontSize: '18px', fontWeight: '600' }}>Year 2+</div>
+                <ul style={{ fontSize: '28px', lineHeight: '1.8', fontWeight: '600' }}>
+                  <li style={{ marginBottom: '20px' }}>Launch individual subscriptions</li>
+                  <li style={{ marginBottom: '20px' }}>Government partnerships</li>
                   <li>Major EdTech platform integrations</li>
                 </ul>
               </div>
@@ -1587,28 +1587,28 @@ export default function PitchDeckPage() {
         {/* Slide 11: The Ask */}
         <div className="slide slide-ask">
           <div className="ask-container">
-            <h2>Investment Opportunity</h2>
+            <h2 style={{ fontSize: '48px', fontWeight: 'bold' }}>Investment Opportunity</h2>
 
             <div className="ask-content">
               <div className="funding-section">
-                <h3>Seeking:</h3>
-                <div className="funding-amount">$50K-$100K Pre-Seed Funding</div>
+                <h3 style={{ fontSize: '38px', fontWeight: 'bold' }}>Seeking:</h3>
+                <div className="funding-amount" style={{ fontSize: '52px', fontWeight: 'bold' }}>$50K-$100K Pre-Seed Funding</div>
 
-                <h4 style={{ fontFamily: 'Playfair Display', fontSize: '20px', color: 'var(--text-accent)', marginBottom: '15px' }}>Use of Funds:</h4>
-                <ul className="use-of-funds">
-                  <li><strong>40%</strong> Developer hire (scale infrastructure, add features)</li>
-                  <li><strong>30%</strong> Book catalog expansion (modern books, partnerships)</li>
-                  <li><strong>20%</strong> Marketing (teacher-marketers, materials)</li>
+                <h4 style={{ fontFamily: 'Playfair Display', fontSize: '28px', color: 'var(--text-accent)', marginBottom: '20px', fontWeight: 'bold' }}>Use of Funds:</h4>
+                <ul className="use-of-funds" style={{ fontSize: '26px', lineHeight: '1.8', fontWeight: '600' }}>
+                  <li style={{ marginBottom: '22px' }}><strong>40%</strong> Developer hire (scale infrastructure, add features)</li>
+                  <li style={{ marginBottom: '22px' }}><strong>30%</strong> Book catalog expansion (modern books, partnerships)</li>
+                  <li style={{ marginBottom: '22px' }}><strong>20%</strong> Marketing (teacher-marketers, materials)</li>
                   <li><strong>10%</strong> Operations (hosting, legal, admin)</li>
                 </ul>
               </div>
 
               <div className="milestones-section">
-                <h3>12-Month Milestones:</h3>
-                <ul className="milestones-list">
-                  <li>50K+ active users</li>
-                  <li>20+ paid institutional contracts</li>
-                  <li>$200K+ annual revenue</li>
+                <h3 style={{ fontSize: '38px', fontWeight: 'bold' }}>12-Month Milestones:</h3>
+                <ul className="milestones-list" style={{ fontSize: '26px', lineHeight: '1.8', fontWeight: '600' }}>
+                  <li style={{ marginBottom: '22px' }}>50K+ active users</li>
+                  <li style={{ marginBottom: '22px' }}>20+ paid institutional contracts</li>
+                  <li style={{ marginBottom: '22px' }}>$200K+ annual revenue</li>
                   <li>Proof of concept for Series A</li>
                 </ul>
               </div>
@@ -1619,7 +1619,7 @@ export default function PitchDeckPage() {
         {/* Slide 12: Why Now + Closing */}
         <div className="slide slide-closing">
           <div className="closing-container">
-            <h2>Why Now?</h2>
+            <h2 style={{ fontSize: '40px', color: '#FFFFFF' }}>Why Now?</h2>
 
             <ul className="why-now-list">
               <li>AI technology makes personalized learning accessible at scale</li>
