@@ -126,6 +126,43 @@ export default function PitchDeckPage() {
           flex-wrap: wrap;
         }
 
+        /* Scroll indicator */
+        .scroll-indicator {
+          position: absolute;
+          bottom: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          animation: bounce 2s infinite;
+        }
+
+        .scroll-text {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 14px;
+          color: var(--bg-primary);
+          opacity: 0.8;
+        }
+
+        .scroll-arrow {
+          font-size: 24px;
+          color: var(--accent-secondary);
+        }
+
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) translateY(0);
+          }
+          40% {
+            transform: translateX(-50%) translateY(-10px);
+          }
+          60% {
+            transform: translateX(-50%) translateY(-5px);
+          }
+        }
+
         .btn-primary {
           background: var(--accent-secondary);
           color: var(--bg-primary);
@@ -1070,7 +1107,7 @@ export default function PitchDeckPage() {
 
       <div className="slide-container">
         {/* Slide 1: Title/Cover */}
-        <div className="slide slide-cover">
+        <div className="slide slide-cover" style={{ position: 'relative' }}>
           <div className="cover-content">
             <h1 className="cover-title">BookBridge</h1>
             <p className="cover-subtitle">Democratizing Reading for 1.5 Billion ESL Learners</p>
@@ -1099,6 +1136,12 @@ export default function PitchDeckPage() {
                 Try BookBridge
               </a>
             </div>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="scroll-indicator">
+            <div className="scroll-text">Scroll down to see full pitch deck</div>
+            <div className="scroll-arrow">↓</div>
           </div>
         </div>
 
