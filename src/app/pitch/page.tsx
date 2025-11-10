@@ -34,11 +34,64 @@ export default function PitchDeckPage() {
           height: 100vh;
           overflow: hidden;
         }
+
+        .slide-container {
+          scroll-snap-type: y mandatory;
+          overflow-y: scroll;
+          height: 100vh;
+          scroll-behavior: smooth;
+        }
+
+        .slide {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+        }
+
+        .slide h1 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 20px;
+        }
+
+        .slide p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 20px;
+          color: var(--text-primary);
+          max-width: 800px;
+          text-align: center;
+        }
       `}</style>
 
-      <div>
-        <h1>BookBridge Investor Pitch Deck</h1>
-        <p>Loading...</p>
+      <div className="slide-container">
+        {/* Test Slide 1 */}
+        <div className="slide" style={{ background: 'var(--accent-primary)' }}>
+          <div>
+            <h1 style={{ color: 'var(--bg-primary)' }}>Test Slide 1</h1>
+            <p style={{ color: 'var(--bg-primary)' }}>Scroll down to test scroll-snap functionality</p>
+          </div>
+        </div>
+
+        {/* Test Slide 2 */}
+        <div className="slide" style={{ background: 'var(--bg-primary)' }}>
+          <div>
+            <h1>Test Slide 2</h1>
+            <p>Scroll-snap working - Each slide takes full viewport</p>
+          </div>
+        </div>
+
+        {/* Test Slide 3 */}
+        <div className="slide" style={{ background: 'var(--bg-secondary)' }}>
+          <div>
+            <h1>Test Slide 3</h1>
+            <p>Foundation ready for actual pitch deck content</p>
+          </div>
+        </div>
       </div>
     </div>
   );
