@@ -1302,6 +1302,16 @@ export default function PitchDeckPage() {
             <p style={{ color: '#FFFFFF' }}>
               Now as a Church employee and BYU-Idaho software development student, I&apos;m building the solution I needed.
             </p>
+
+            <div style={{ marginTop: '40px', textAlign: 'center' }}>
+              <a
+                href="https://portfolio-4u8c.vercel.app/about"
+                className="btn-primary"
+                style={{ display: 'inline-block' }}
+              >
+                Read My Full Story →
+              </a>
+            </div>
           </div>
         </div>
 
