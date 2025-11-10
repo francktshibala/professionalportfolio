@@ -114,14 +114,14 @@ export default function PitchDeckPage() {
 
         .slide h1 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 56px;
+          font-size: 64px;
           color: var(--text-accent);
           margin-bottom: 20px;
         }
 
         .slide p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 22px;
+          font-size: 26px;
           color: var(--text-primary);
           max-width: 900px;
           text-align: center;
@@ -140,7 +140,7 @@ export default function PitchDeckPage() {
 
         .cover-title {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 80px;
+          font-size: 96px;
           font-weight: 700;
           margin-bottom: 30px;
           color: #FFFFFF !important;
@@ -148,7 +148,7 @@ export default function PitchDeckPage() {
 
         .cover-subtitle {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 28px;
+          font-size: 32px;
           margin-bottom: 50px;
           max-width: 800px;
           line-height: 1.6;
@@ -157,7 +157,7 @@ export default function PitchDeckPage() {
 
         .cover-name {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 24px;
+          font-size: 28px;
           margin-top: 40px;
           margin-bottom: 5px;
           color: #FFFFFF !important;
@@ -165,14 +165,14 @@ export default function PitchDeckPage() {
 
         .cover-role {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 20px;
+          font-size: 24px;
           color: #FFFFFF !important;
           margin-bottom: 10px;
         }
 
         .cover-email {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 18px;
+          font-size: 22px;
           margin-bottom: 40px;
           color: #FFFFFF;
         }
@@ -275,8 +275,8 @@ export default function PitchDeckPage() {
           color: var(--bg-primary);
           border: none;
           border-radius: 8px;
-          padding: 14px 32px;
-          font-size: 18px;
+          padding: 16px 36px;
+          font-size: 22px;
           font-family: 'Source Serif Pro', Georgia, serif;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -295,8 +295,8 @@ export default function PitchDeckPage() {
           color: var(--bg-primary);
           border: 2px solid var(--accent-secondary);
           border-radius: 8px;
-          padding: 14px 32px;
-          font-size: 18px;
+          padding: 16px 36px;
+          font-size: 22px;
           font-family: 'Source Serif Pro', Georgia, serif;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -382,6 +382,9 @@ export default function PitchDeckPage() {
           background-image: url('/franck.jpg');
           background-size: cover;
           background-position: center;
+          background-repeat: no-repeat;
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
           position: relative;
         }
 
@@ -405,7 +408,7 @@ export default function PitchDeckPage() {
 
         .story-content h2 {
           font-family: 'Playfair Display', Georgia, serif;
-          font-size: 56px;
+          font-size: 64px;
           color: #FFFFFF;
           margin-bottom: 40px;
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -413,7 +416,7 @@ export default function PitchDeckPage() {
 
         .story-content p {
           font-family: 'Source Serif Pro', Georgia, serif;
-          font-size: 26px;
+          font-size: 30px;
           line-height: 2.0;
           margin-bottom: 30px;
           color: #FFFFFF;
@@ -1069,66 +1072,66 @@ export default function PitchDeckPage() {
 
         @media (max-width: 768px) {
           .cover-title {
-            font-size: 48px;
+            font-size: 56px;
           }
           .cover-subtitle {
-            font-size: 22px;
+            font-size: 26px;
           }
           .cover-name {
-            font-size: 20px;
+            font-size: 24px;
           }
           .cover-role {
-            font-size: 18px;
+            font-size: 22px;
           }
           .btn-primary, .btn-secondary {
-            font-size: 16px;
-            padding: 12px 24px;
+            font-size: 18px;
+            padding: 14px 28px;
           }
           .problem-container {
             grid-template-columns: 1fr;
             gap: 30px;
           }
           .problem-content h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .problem-content li {
-            font-size: 18px;
-          }
-          .story-content h2 {
-            font-size: 44px;
-          }
-          .story-content p {
             font-size: 22px;
           }
+          .story-content h2 {
+            font-size: 52px;
+          }
+          .story-content p {
+            font-size: 26px;
+          }
           .solution-container h2 {
-            font-size: 40px;
+            font-size: 48px;
           }
           .solution-subtitle {
-            font-size: 18px;
+            font-size: 22px;
           }
           .how-it-works {
-            font-size: 26px;
+            font-size: 30px;
           }
           .solution-steps {
             grid-template-columns: 1fr;
             gap: 20px;
           }
           .features-container h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .features-grid {
             grid-template-columns: 1fr;
             gap: 20px;
           }
           .competitive-container h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .comparison-table th, .comparison-table td {
-            font-size: 14px;
+            font-size: 16px;
             padding: 12px;
           }
           .traction-container h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .traction-grid {
             grid-template-columns: 1fr;
@@ -1139,43 +1142,43 @@ export default function PitchDeckPage() {
             gap: 20px;
           }
           .business-container h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .revenue-streams {
             grid-template-columns: 1fr;
             gap: 20px;
           }
           .market-container h2 {
-            font-size: 44px;
+            font-size: 52px;
           }
           .market-card-value {
-            font-size: 28px;
-          }
-          .market-size h3 {
             font-size: 32px;
           }
+          .market-size h3 {
+            font-size: 38px;
+          }
           .gtm-container h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .timeline {
             grid-template-columns: 1fr;
             gap: 20px;
           }
           .ask-container h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .ask-content {
             grid-template-columns: 1fr;
             gap: 30px;
           }
           .closing-container h2 {
-            font-size: 36px;
+            font-size: 42px;
           }
           .vision-statement {
-            font-size: 20px;
+            font-size: 24px;
           }
           .why-now-list li {
-            font-size: 18px;
+            font-size: 22px;
           }
           .nav-dots {
             right: 20px;
