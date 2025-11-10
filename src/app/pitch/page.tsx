@@ -253,21 +253,24 @@ export default function PitchDeckPage() {
           width: 12px;
           height: 12px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.3);
-          border: 2px solid rgba(255, 255, 255, 0.5);
+          background: rgba(0, 33, 71, 0.4);
+          border: 2px solid rgba(0, 33, 71, 0.6);
           cursor: pointer;
           transition: all 0.3s ease;
+          box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
         }
 
         .nav-dot:hover {
-          background: rgba(255, 255, 255, 0.6);
+          background: rgba(0, 33, 71, 0.7);
           transform: scale(1.2);
+          box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
         }
 
         .nav-dot.active {
           background: var(--accent-secondary);
           border-color: var(--accent-secondary);
           transform: scale(1.3);
+          box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
         }
 
         .btn-primary {
@@ -381,7 +384,7 @@ export default function PitchDeckPage() {
         .slide-story {
           background-image: url('/franck.jpg');
           background-size: cover;
-          background-position: center;
+          background-position: center 20%;
           background-repeat: no-repeat;
           image-rendering: -webkit-optimize-contrast;
           image-rendering: crisp-edges;
@@ -395,7 +398,7 @@ export default function PitchDeckPage() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, rgba(0, 33, 71, 0.9) 0%, rgba(0, 33, 71, 0.8) 100%);
+          background: linear-gradient(135deg, rgba(0, 33, 71, 0.65) 0%, rgba(0, 33, 71, 0.7) 100%);
         }
 
         .story-content {
