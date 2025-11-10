@@ -356,6 +356,268 @@ export default function PitchDeckPage() {
           border-radius: 8px;
         }
 
+        /* Slide 5: Key Features Styles */
+        .slide-features {
+          background: var(--bg-secondary);
+        }
+
+        .features-container {
+          max-width: 1200px;
+        }
+
+        .features-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+        }
+
+        .feature-card {
+          padding: 30px;
+          background: var(--bg-primary);
+          border: 2px solid var(--accent-secondary);
+          border-radius: 12px;
+          box-shadow: 0 4px 12px var(--shadow-soft);
+          transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+          transform: translateY(-5px);
+        }
+
+        .feature-icon {
+          font-size: 36px;
+          margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 22px;
+          color: var(--text-accent);
+          margin-bottom: 10px;
+        }
+
+        .feature-card p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          line-height: 1.6;
+        }
+
+        /* Slide 6: Competitive Advantage Styles */
+        .slide-competitive {
+          background: var(--bg-primary);
+        }
+
+        .competitive-container {
+          max-width: 1100px;
+        }
+
+        .competitive-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 40px;
+          text-align: center;
+        }
+
+        .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 30px;
+          background: var(--bg-secondary);
+          border-radius: 12px;
+          overflow: hidden;
+        }
+
+        .comparison-table th {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 20px;
+          padding: 20px;
+          background: var(--accent-primary);
+          color: var(--bg-primary);
+          text-align: left;
+        }
+
+        .comparison-table td {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+          padding: 18px 20px;
+          border-bottom: 1px solid var(--border-light);
+          color: var(--text-primary);
+        }
+
+        .comparison-table tr:last-child td {
+          border-bottom: none;
+        }
+
+        .comparison-table .highlight {
+          background: rgba(205, 127, 50, 0.1);
+          font-weight: 600;
+        }
+
+        .competitive-callout {
+          padding: 25px;
+          background: var(--accent-secondary);
+          color: var(--bg-primary);
+          border-radius: 12px;
+          text-align: center;
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 20px;
+          line-height: 1.6;
+        }
+
+        /* Slide 7: Early Traction Styles */
+        .slide-traction {
+          background: var(--bg-secondary);
+        }
+
+        .traction-container {
+          max-width: 1100px;
+        }
+
+        .traction-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 40px;
+          text-align: center;
+        }
+
+        .traction-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px;
+          margin-bottom: 30px;
+        }
+
+        .traction-card {
+          padding: 25px;
+          background: var(--bg-primary);
+          border-left: 4px solid var(--accent-secondary);
+          border-radius: 8px;
+          box-shadow: 0 2px 8px var(--shadow-soft);
+        }
+
+        .traction-card h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 22px;
+          color: var(--accent-primary);
+          margin-bottom: 12px;
+        }
+
+        .traction-card p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          line-height: 1.6;
+          margin-bottom: 8px;
+        }
+
+        .traction-stats {
+          display: flex;
+          justify-content: center;
+          gap: 60px;
+          margin-top: 30px;
+          padding: 25px;
+          background: var(--bg-primary);
+          border-radius: 12px;
+        }
+
+        .stat {
+          text-align: center;
+        }
+
+        .stat-number {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--accent-secondary);
+          font-weight: 700;
+        }
+
+        .stat-label {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+          color: var(--text-secondary);
+        }
+
+        /* Slide 8: Business Model Styles */
+        .slide-business {
+          background: var(--bg-secondary);
+        }
+
+        .business-container {
+          max-width: 1100px;
+        }
+
+        .business-container h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .revenue-streams {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          margin-bottom: 30px;
+        }
+
+        .revenue-card {
+          padding: 30px;
+          background: var(--bg-primary);
+          border-radius: 12px;
+          box-shadow: 0 4px 12px var(--shadow-soft);
+          text-align: center;
+        }
+
+        .revenue-icon {
+          font-size: 48px;
+          margin-bottom: 20px;
+        }
+
+        .revenue-card h3 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 22px;
+          color: var(--text-accent);
+          margin-bottom: 15px;
+        }
+
+        .revenue-card .label {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 14px;
+          color: var(--accent-secondary);
+          font-weight: 600;
+          margin-bottom: 15px;
+        }
+
+        .revenue-card p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          line-height: 1.6;
+          margin-bottom: 10px;
+        }
+
+        .strategy-note {
+          padding: 20px;
+          background: var(--accent-secondary);
+          color: var(--bg-primary);
+          border-radius: 12px;
+          text-align: center;
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+        }
+
         @media (max-width: 768px) {
           .cover-title {
             font-size: 40px;
@@ -393,6 +655,38 @@ export default function PitchDeckPage() {
             font-size: 26px;
           }
           .solution-steps {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          .features-container h2 {
+            font-size: 36px;
+          }
+          .features-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          .competitive-container h2 {
+            font-size: 36px;
+          }
+          .comparison-table th, .comparison-table td {
+            font-size: 14px;
+            padding: 12px;
+          }
+          .traction-container h2 {
+            font-size: 36px;
+          }
+          .traction-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          .traction-stats {
+            flex-direction: column;
+            gap: 20px;
+          }
+          .business-container h2 {
+            font-size: 36px;
+          }
+          .revenue-streams {
             grid-template-columns: 1fr;
             gap: 20px;
           }
@@ -507,10 +801,183 @@ export default function PitchDeckPage() {
           </div>
         </div>
 
+        {/* Slide 5: Key Features */}
+        <div className="slide slide-features">
+          <div className="features-container">
+            <h2>What Makes BookBridge Complete</h2>
+            <div className="features-grid">
+              <div className="feature-card">
+                <div className="feature-icon">📝</div>
+                <h3>Text Simplification</h3>
+                <p>6 CEFR levels (A1 Beginner to C2 Advanced)</p>
+              </div>
+
+              <div className="feature-card">
+                <div className="feature-icon">🎧</div>
+                <h3>Audio Narration</h3>
+                <p>Learn proper pronunciation while reading</p>
+              </div>
+
+              <div className="feature-card">
+                <div className="feature-icon">📖</div>
+                <h3>Integrated Dictionary</h3>
+                <p>Simple definitions with examples</p>
+              </div>
+
+              <div className="feature-card">
+                <div className="feature-icon">📚</div>
+                <h3>Growing Library</h3>
+                <p>28+ classic books, expanding to modern titles</p>
+              </div>
+
+              <div className="feature-card">
+                <div className="feature-icon">📊</div>
+                <h3>Progress Tracking</h3>
+                <p>Students see their improvement over time</p>
+              </div>
+
+              <div className="feature-card">
+                <div className="feature-icon">✨</div>
+                <h3>AI-Powered</h3>
+                <p>Adaptive learning personalized to each reader</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 6: Competitive Advantage */}
+        <div className="slide slide-competitive">
+          <div className="competitive-container">
+            <h2>The Competitive Advantage</h2>
+
+            <table className="comparison-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Competitors</th>
+                  <th className="highlight">BookBridge</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Simplified books</td>
+                  <td>Some</td>
+                  <td className="highlight">✓</td>
+                </tr>
+                <tr>
+                  <td>Audio sync</td>
+                  <td>Some</td>
+                  <td className="highlight">✓</td>
+                </tr>
+                <tr>
+                  <td>Instant dictionary</td>
+                  <td>Rare</td>
+                  <td className="highlight">✓</td>
+                </tr>
+                <tr>
+                  <td>Full-length books</td>
+                  <td>Some</td>
+                  <td className="highlight">✓</td>
+                </tr>
+                <tr>
+                  <td><strong>ALL-IN-ONE</strong></td>
+                  <td>None</td>
+                  <td className="highlight"><strong>✓</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className="competitive-callout">
+              BookBridge is the only platform that integrates everything an ESL learner needs in one place.
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 7: Early Traction */}
+        <div className="slide slide-traction">
+          <div className="traction-container">
+            <h2>Institutional Interest</h2>
+
+            <div className="traction-grid">
+              <div className="traction-card">
+                <h3>INX Academy (San Diego)</h3>
+                <p>Currently piloting with students</p>
+                <p><strong>Expanding school-wide December 2025</strong></p>
+              </div>
+
+              <div className="traction-card">
+                <h3>BYU English Language Center</h3>
+                <p>Exploring pilot for January 2026</p>
+                <p><em>&quot;This is how reading technology should be used&quot;</em> - Teacher coordinator</p>
+              </div>
+
+              <div className="traction-card">
+                <h3>LDS Church Literacy Services</h3>
+                <p>Discussing global deployment</p>
+                <p><strong>Across 150+ countries</strong></p>
+              </div>
+
+              <div className="traction-card">
+                <h3>Salt Lake Community College</h3>
+                <p>Meeting scheduled December</p>
+                <p>January 2026 pilot planned</p>
+              </div>
+            </div>
+
+            <div className="traction-stats">
+              <div className="stat">
+                <div className="stat-number">59</div>
+                <div className="stat-label">Active Users</div>
+              </div>
+              <div className="stat">
+                <div className="stat-number">43</div>
+                <div className="stat-label">Cities</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 8: Business Model */}
+        <div className="slide slide-business">
+          <div className="business-container">
+            <h2>Revenue Streams</h2>
+
+            <div className="revenue-streams">
+              <div className="revenue-card">
+                <div className="revenue-icon">🏢</div>
+                <h3>B2B Institutional</h3>
+                <div className="label">(Primary)</div>
+                <p>Schools and churches pay $10-50/student/year</p>
+                <p><strong>Example:</strong> 1,000 students × $30/year = $30K contract</p>
+              </div>
+
+              <div className="revenue-card">
+                <div className="revenue-icon">👤</div>
+                <h3>B2C Consumer</h3>
+                <div className="label">(Secondary)</div>
+                <p>Individual subscriptions</p>
+                <p>$5-10/month</p>
+              </div>
+
+              <div className="revenue-card">
+                <div className="revenue-icon">🤝</div>
+                <h3>Partnerships</h3>
+                <div className="label">(Future)</div>
+                <p>White-label for EdTech platforms</p>
+                <p>Revenue sharing agreements</p>
+              </div>
+            </div>
+
+            <div className="strategy-note">
+              Current Strategy: Free pilots → convert to paid contracts
+            </div>
+          </div>
+        </div>
+
         {/* Temporary placeholder for remaining slides */}
-        <div className="slide" style={{ background: 'var(--bg-secondary)' }}>
+        <div className="slide" style={{ background: 'var(--bg-primary)' }}>
           <div>
-            <h1>More slides coming soon...</h1>
+            <h1>Slides 9-12 coming next...</h1>
           </div>
         </div>
       </div>
