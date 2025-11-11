@@ -845,6 +845,129 @@ export default function PitchDeckPage() {
           line-height: 1.6;
         }
 
+        /* Slide 7.5: Classroom Impact Styles */
+        .slide-classroom {
+          background: var(--bg-primary);
+          padding: 60px 40px;
+        }
+
+        .classroom-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .classroom-header {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .classroom-header h2 {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 48px;
+          color: var(--text-accent);
+          margin-bottom: 15px;
+        }
+
+        .classroom-header p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 20px;
+          color: var(--text-secondary);
+        }
+
+        .classroom-main {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 50px;
+          margin-bottom: 40px;
+        }
+
+        .classroom-photos {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+        }
+
+        .classroom-photo-wrapper {
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          aspect-ratio: 4/3;
+        }
+
+        .classroom-photo {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .classroom-testimonial {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 40px;
+          background: var(--bg-secondary);
+          border-left: 6px solid var(--accent-secondary);
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .classroom-testimonial blockquote {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 28px;
+          line-height: 1.5;
+          color: var(--text-accent);
+          margin-bottom: 25px;
+          font-style: italic;
+        }
+
+        .classroom-testimonial cite {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+          color: var(--accent-secondary);
+          font-style: normal;
+          font-weight: 600;
+        }
+
+        .classroom-footer {
+          text-align: center;
+          padding: 30px;
+          background: var(--bg-secondary);
+          border-radius: 12px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .classroom-footer p {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+          color: var(--text-primary);
+          font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+          .classroom-main {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .slide-classroom {
+            padding: 40px 20px;
+          }
+
+          .classroom-header h2 {
+            font-size: 36px !important;
+          }
+
+          .classroom-header p {
+            font-size: 18px !important;
+          }
+
+          .classroom-testimonial blockquote {
+            font-size: 22px !important;
+          }
+        }
+
         /* Slide 8: Business Model Styles */
         .slide-business {
           background: var(--bg-secondary);
@@ -1701,6 +1824,69 @@ export default function PitchDeckPage() {
                 <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>43</div>
                 <div className="stat-label">Cities</div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 7.5: Classroom Impact - Real Students Using BookBridge */}
+        <div className="slide slide-classroom">
+          <div className="classroom-container">
+            {/* Header */}
+            <div className="classroom-header">
+              <h2 style={{ fontSize: '48px', fontWeight: 'bold' }}>
+                Real Students, Real Impact
+              </h2>
+              <p style={{ fontSize: '20px' }}>
+                BookBridge in Action: INX Academy, San Diego
+              </p>
+            </div>
+
+            {/* Main Content: Photos + Testimonial */}
+            <div className="classroom-main">
+              {/* Photo Grid */}
+              <div className="classroom-photos">
+                <div className="classroom-photo-wrapper">
+                  <img
+                    src="/classroom/inx-academy-1.jpg"
+                    alt="Student using BookBridge at INX Academy"
+                    className="classroom-photo"
+                  />
+                </div>
+                <div className="classroom-photo-wrapper">
+                  <img
+                    src="/classroom/inx-academy-2.jpg"
+                    alt="Students learning with BookBridge"
+                    className="classroom-photo"
+                  />
+                </div>
+                <div className="classroom-photo-wrapper">
+                  <img
+                    src="/classroom/inx-academy-3.jpg"
+                    alt="BookBridge classroom session"
+                    className="classroom-photo"
+                  />
+                </div>
+                <div className="classroom-photo-wrapper">
+                  <img
+                    src="/classroom/inx-academy-4.jpg"
+                    alt="Adult ESL students using BookBridge"
+                    className="classroom-photo"
+                  />
+                </div>
+              </div>
+
+              {/* Testimonial Card */}
+              <div className="classroom-testimonial">
+                <blockquote>
+                  &quot;Great app, helps me learn English faster.&quot;
+                </blockquote>
+                <cite>— Adult ESL Student, INX Academy</cite>
+              </div>
+            </div>
+
+            {/* Footer Stats */}
+            <div className="classroom-footer">
+              <p>25+ students actively providing feedback to improve the product</p>
             </div>
           </div>
         </div>
