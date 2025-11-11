@@ -341,6 +341,38 @@ export default function PitchDeckPage() {
           }
         }
 
+        /* Video Section Styles */
+        .slide-video {
+          background: var(--bg-primary);
+          padding: 80px 40px;
+        }
+
+        .video-container-wrapper {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .video-embed-container {
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          height: 0;
+          overflow: hidden;
+          background: #000;
+          border-radius: 12px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide-video {
+            padding: 60px 20px;
+          }
+
+          .video-container-wrapper h2 {
+            font-size: 32px !important;
+          }
+        }
+
         /* Slide 2: The Problem Styles */
         .slide-problem {
           background: var(--bg-secondary);
@@ -1266,6 +1298,37 @@ export default function PitchDeckPage() {
           <div className="scroll-indicator">
             <div className="scroll-text">Scroll down to see full pitch deck</div>
             <div className="scroll-arrow">↓</div>
+          </div>
+        </div>
+
+        {/* Video Section: 7-Minute Pitch Summary */}
+        <div className="slide slide-video">
+          <div className="video-container-wrapper">
+            <h2 style={{ fontSize: '48px', fontWeight: 'bold', textAlign: 'center', marginBottom: '40px', color: 'var(--text-accent)' }}>
+              Watch the Full Pitch (7 Minutes)
+            </h2>
+            <div className="video-embed-container">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/AhpqweL-Vnk"
+                title="BookBridge Pitch Deck - 7 Minute Summary"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '12px'
+                }}
+              ></iframe>
+            </div>
+            <p style={{ textAlign: 'center', marginTop: '30px', fontSize: '18px', color: 'var(--text-secondary)' }}>
+              Or scroll down to explore the detailed deck →
+            </p>
           </div>
         </div>
 
