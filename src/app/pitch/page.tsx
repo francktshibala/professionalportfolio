@@ -946,6 +946,11 @@ export default function PitchDeckPage() {
           font-weight: 600;
         }
 
+        .classroom-ratings-section {
+          margin-bottom: 40px;
+          padding: 0 20px;
+        }
+
         .classroom-footer {
           text-align: center;
           padding: 30px;
@@ -1943,6 +1948,20 @@ export default function PitchDeckPage() {
                   </blockquote>
                   <cite>— ESL Student</cite>
                 </div>
+              </div>
+            </div>
+
+            {/* Ratings Screenshot Section */}
+            <div className="classroom-ratings-section">
+              <h3 style={{ fontSize: '22px', fontWeight: '600', marginBottom: '20px', textAlign: 'center', color: 'var(--text-accent)', fontFamily: 'Playfair Display, Georgia, serif' }}>
+                Real-Time Student Ratings & Engagement
+              </h3>
+              <div style={{ maxWidth: '900px', margin: '0 auto', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)', background: 'white' }}>
+                <img
+                  src="/classroom/rating.png"
+                  alt="Student NPS ratings showing active engagement"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
               </div>
             </div>
 
