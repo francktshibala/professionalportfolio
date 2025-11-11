@@ -4,22 +4,43 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function PitchDeckPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const slideContainerRef = useRef<HTMLDivElement>(null);
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+      setIsMobile(mobile);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const container = slideContainerRef.current;
-    if (!container) return;
+    if (!container || isMobile) return; // Disable scroll tracking on mobile
 
+    let scrollTimeout: NodeJS.Timeout;
     const handleScroll = () => {
-      const scrollPosition = container.scrollTop;
-      const slideHeight = window.innerHeight;
-      const slide = Math.round(scrollPosition / slideHeight);
-      setCurrentSlide(slide);
+      // Throttle scroll event
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollPosition = container.scrollTop;
+        const slideHeight = window.innerHeight;
+        const slide = Math.round(scrollPosition / slideHeight);
+        setCurrentSlide(slide);
+      }, 100);
     };
 
-    container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, []);
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -56,7 +77,7 @@ export default function PitchDeckPage() {
     const slideHeight = window.innerHeight;
     container.scrollTo({
       top: slideIndex * slideHeight,
-      behavior: 'smooth'
+      behavior: isMobile ? 'auto' : 'smooth' // Disable smooth scroll on mobile
     });
   };
 
@@ -100,10 +121,24 @@ export default function PitchDeckPage() {
         }
 
         .slide-container {
-          scroll-snap-type: y mandatory;
+          scroll-snap-type: y proximity;
           overflow-y: scroll;
           height: 100vh;
           scroll-behavior: smooth;
+          overscroll-behavior: contain;
+          -webkit-overflow-scrolling: touch;
+          touch-action: pan-y;
+        }
+
+        /* Disable smooth scroll and snap stop on mobile */
+        @media (max-width: 768px) {
+          .slide-container {
+            scroll-behavior: auto;
+          }
+
+          .slide {
+            scroll-snap-stop: normal;
+          }
         }
 
         .slide {
