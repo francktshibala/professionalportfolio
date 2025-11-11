@@ -845,20 +845,20 @@ export default function PitchDeckPage() {
           line-height: 1.6;
         }
 
-        /* Slide 7.5: Classroom Impact Styles */
+        /* Slide 7.5: Classroom Impact Styles - Redesigned */
         .slide-classroom {
           background: var(--bg-primary);
           padding: 60px 40px;
         }
 
         .classroom-container {
-          max-width: 1200px;
+          max-width: 1400px;
           margin: 0 auto;
         }
 
         .classroom-header {
           text-align: center;
-          margin-bottom: 50px;
+          margin-bottom: 40px;
         }
 
         .classroom-header h2 {
@@ -874,17 +874,16 @@ export default function PitchDeckPage() {
           color: var(--text-secondary);
         }
 
-        .classroom-main {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 50px;
+        .classroom-photos-section {
           margin-bottom: 40px;
         }
 
         .classroom-photos {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 15px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         .classroom-photo-wrapper {
@@ -900,29 +899,48 @@ export default function PitchDeckPage() {
           object-fit: cover;
         }
 
-        .classroom-testimonial {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 40px;
+        .classroom-feedback-section {
+          margin-bottom: 40px;
+        }
+
+        .classroom-feedback-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 25px;
+        }
+
+        .classroom-feedback-card {
+          padding: 25px;
           background: var(--bg-secondary);
-          border-left: 6px solid var(--accent-secondary);
+          border-left: 4px solid var(--accent-secondary);
           border-radius: 12px;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          display: flex;
+          flex-direction: column;
         }
 
-        .classroom-testimonial blockquote {
-          font-family: 'Playfair Display', Georgia, serif;
-          font-size: 28px;
-          line-height: 1.5;
-          color: var(--text-accent);
-          margin-bottom: 25px;
-          font-style: italic;
+        .classroom-feedback-card.featured {
+          grid-column: span 3;
+          border-left-width: 6px;
         }
 
-        .classroom-testimonial cite {
+        .classroom-feedback-card blockquote {
           font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--text-primary);
+          margin-bottom: 15px;
+          font-style: italic;
+          flex: 1;
+        }
+
+        .classroom-feedback-card.featured blockquote {
           font-size: 18px;
+        }
+
+        .classroom-feedback-card cite {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 14px;
           color: var(--accent-secondary);
           font-style: normal;
           font-weight: 600;
@@ -943,10 +961,17 @@ export default function PitchDeckPage() {
           font-weight: 600;
         }
 
-        @media (max-width: 1024px) {
-          .classroom-main {
-            grid-template-columns: 1fr;
-            gap: 40px;
+        @media (max-width: 1200px) {
+          .classroom-photos {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .classroom-feedback-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .classroom-feedback-card.featured {
+            grid-column: span 2;
           }
         }
 
@@ -963,8 +988,17 @@ export default function PitchDeckPage() {
             font-size: 18px !important;
           }
 
-          .classroom-testimonial blockquote {
-            font-size: 22px !important;
+          .classroom-photos {
+            grid-template-columns: 1fr;
+            gap: 15px;
+          }
+
+          .classroom-feedback-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .classroom-feedback-card.featured {
+            grid-column: span 1;
           }
         }
 
@@ -1841,9 +1875,8 @@ export default function PitchDeckPage() {
               </p>
             </div>
 
-            {/* Main Content: Photos + Testimonial */}
-            <div className="classroom-main">
-              {/* Photo Grid */}
+            {/* Photos Section */}
+            <div className="classroom-photos-section">
               <div className="classroom-photos">
                 <div className="classroom-photo-wrapper">
                   <img
@@ -1874,13 +1907,42 @@ export default function PitchDeckPage() {
                   />
                 </div>
               </div>
+            </div>
 
-              {/* Testimonial Card */}
-              <div className="classroom-testimonial">
-                <blockquote>
-                  &quot;Great app, helps me learn English faster.&quot;
-                </blockquote>
-                <cite>— Adult ESL Student, INX Academy</cite>
+            {/* Student Feedback Section */}
+            <div className="classroom-feedback-section">
+              <div className="classroom-feedback-grid">
+                {/* Featured Feedback - Wuthering Heights */}
+                <div className="classroom-feedback-card featured">
+                  <blockquote>
+                    &quot;It&apos;s such a great idea that people of different levels can actually get into a classic book and really understand what it&apos;s about. The fact that you can enjoy amazing literature no matter your level - that&apos;s just awesome. I can&apos;t wait to see more books added! My favorite book is Wuthering Heights, I&apos;ll be really looking forward to that one. And I&apos;m sure a lot of people would be thrilled if Harry Potter appeared in your collection too. I love the idea. Thank you so much, I&apos;ll definitely be using it!&quot;
+                  </blockquote>
+                  <cite>— Adult ESL Student, INX Academy</cite>
+                </div>
+
+                {/* Short Feedback 1 */}
+                <div className="classroom-feedback-card">
+                  <blockquote>
+                    &quot;Great app, helps me learn English faster.&quot;
+                  </blockquote>
+                  <cite>— ESL Student</cite>
+                </div>
+
+                {/* Short Feedback 2 */}
+                <div className="classroom-feedback-card">
+                  <blockquote>
+                    &quot;Good and need more books about many different topics. Add more books!&quot;
+                  </blockquote>
+                  <cite>— ESL Student</cite>
+                </div>
+
+                {/* Feature Request */}
+                <div className="classroom-feedback-card">
+                  <blockquote>
+                    &quot;I would add the feature that when you click on the words in bold on each language level, a small window with the meaning of these words will appear so that you won&apos;t need to use translator in another app. It would be a lot more convenient.&quot;
+                  </blockquote>
+                  <cite>— ESL Student</cite>
+                </div>
               </div>
             </div>
 
