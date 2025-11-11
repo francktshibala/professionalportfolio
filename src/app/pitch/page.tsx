@@ -489,8 +489,8 @@ export default function PitchDeckPage() {
 
         .team-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 60px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 50px;
           margin-top: 40px;
         }
 
@@ -1688,6 +1688,22 @@ export default function PitchDeckPage() {
                 <p className="team-title">Product Testing Lead</p>
                 <p className="team-bio">
                   Ensuring quality and user experience across all BookBridge features and platforms
+                </p>
+              </div>
+
+              {/* Jason Moyes */}
+              <div className="team-member">
+                <div className="team-photo-wrapper">
+                  <img
+                    src="/team/jason-moyes.jpg"
+                    alt="Jason Moyes"
+                    className="team-photo"
+                  />
+                </div>
+                <h3 className="team-name">Jason Moyes</h3>
+                <p className="team-title">Strategic Advisor</p>
+                <p className="team-bio">
+                  Network connector facilitating key partnerships and investor introductions. Instrumental in securing Tranont meeting and providing strategic guidance on mission-aligned funding opportunities.
                 </p>
               </div>
             </div>
