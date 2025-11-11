@@ -476,7 +476,100 @@ export default function PitchDeckPage() {
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        /* Slide 4: The Solution Styles */
+        /* Slide 4: The Team Styles */
+        .slide-team {
+          background: var(--bg-secondary);
+          padding: 80px 40px;
+        }
+
+        .team-container {
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+
+        .team-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 60px;
+          margin-top: 40px;
+        }
+
+        .team-member {
+          text-align: center;
+          padding: 40px 30px;
+          background: var(--bg-primary);
+          border-radius: 16px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .team-photo-wrapper {
+          width: 180px;
+          height: 180px;
+          margin: 0 auto 30px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 5px solid var(--accent-primary);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-photo {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .team-name {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: 28px;
+          font-weight: 700;
+          color: var(--text-accent);
+          margin-bottom: 10px;
+        }
+
+        .team-title {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--accent-secondary);
+          margin-bottom: 20px;
+        }
+
+        .team-bio {
+          font-family: 'Source Serif Pro', Georgia, serif;
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--text-secondary);
+        }
+
+        @media (max-width: 1024px) {
+          .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .team-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .slide-team {
+            padding: 60px 20px;
+          }
+
+          .team-container h2 {
+            font-size: 36px !important;
+          }
+        }
+
+        /* Slide 5: The Solution Styles */
         .slide-solution {
           background: var(--bg-primary);
         }
@@ -1378,7 +1471,66 @@ export default function PitchDeckPage() {
           </div>
         </div>
 
-        {/* Slide 4: The Solution */}
+        {/* Slide 4: The Team */}
+        <div className="slide slide-team">
+          <div className="team-container">
+            <h2 style={{ fontSize: '48px', fontWeight: 'bold', textAlign: 'center', marginBottom: '60px', color: 'var(--text-accent)' }}>
+              The Team
+            </h2>
+
+            <div className="team-grid">
+              {/* Franck Tshibala */}
+              <div className="team-member">
+                <div className="team-photo-wrapper">
+                  <img
+                    src="/team/franck-tshibala.jpg"
+                    alt="Franck Tshibala"
+                    className="team-photo"
+                  />
+                </div>
+                <h3 className="team-name">Franck Tshibala</h3>
+                <p className="team-title">Founder & CEO</p>
+                <p className="team-bio">
+                  BYU-Idaho CS Student | Church Employee | Building AI-powered reading solutions for 1.5B ESL learners globally
+                </p>
+              </div>
+
+              {/* Nolan Schmalenberger */}
+              <div className="team-member">
+                <div className="team-photo-wrapper">
+                  <img
+                    src="/team/nolan-schmalenberger.jpg"
+                    alt="Nolan Schmalenberger"
+                    className="team-photo"
+                  />
+                </div>
+                <h3 className="team-name">Nolan Schmalenberger</h3>
+                <p className="team-title">Marketing & Teacher Partnerships Lead</p>
+                <p className="team-bio">
+                  Driving institutional adoption and building relationships with schools and educators worldwide
+                </p>
+              </div>
+
+              {/* Daniel Adetaba */}
+              <div className="team-member">
+                <div className="team-photo-wrapper">
+                  <img
+                    src="/team/daniel-adetaba.jpg"
+                    alt="Daniel Adetaba"
+                    className="team-photo"
+                  />
+                </div>
+                <h3 className="team-name">Daniel Adetaba</h3>
+                <p className="team-title">Product Testing Lead</p>
+                <p className="team-bio">
+                  Ensuring quality and user experience across all BookBridge features and platforms
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 5: The Solution */}
         <div className="slide slide-solution">
           <div className="solution-container">
             <h2 style={{ fontSize: '40px' }}>BookBridge</h2>
