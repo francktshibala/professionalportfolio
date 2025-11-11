@@ -509,8 +509,8 @@ export default function PitchDeckPage() {
         }
 
         .team-photo-wrapper {
-          width: 180px;
-          height: 180px;
+          width: 220px;
+          height: 220px;
           margin: 0 auto 30px;
           border-radius: 50%;
           overflow: hidden;
@@ -522,6 +522,7 @@ export default function PitchDeckPage() {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: center 15%;
         }
 
         .team-name {
