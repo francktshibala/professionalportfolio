@@ -819,11 +819,12 @@ export default function PitchDeckPage() {
         .traction-stats {
           display: flex;
           justify-content: center;
-          gap: 60px;
+          gap: 40px;
           margin-top: 30px;
           padding: 25px;
           background: var(--bg-primary);
           border-radius: 12px;
+          flex-wrap: wrap;
         }
 
         .stat {
@@ -1856,12 +1857,20 @@ export default function PitchDeckPage() {
 
             <div className="traction-stats">
               <div className="stat">
-                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>59</div>
+                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>73</div>
                 <div className="stat-label">Active Users</div>
               </div>
               <div className="stat">
-                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>43</div>
-                <div className="stat-label">Cities</div>
+                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>72</div>
+                <div className="stat-label">New Users</div>
+              </div>
+              <div className="stat">
+                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>2m 35s</div>
+                <div className="stat-label">Avg. Engagement</div>
+              </div>
+              <div className="stat">
+                <div className="stat-number" style={{ fontSize: '48px', fontWeight: 700 }}>2.3K</div>
+                <div className="stat-label">User Events</div>
               </div>
             </div>
           </div>
