@@ -8,6 +8,7 @@
 ### English Pages
 - **Homepage:** https://portfolio-4u8c.vercel.app/
 - **About Page (Franck's Story):** https://portfolio-4u8c.vercel.app/about
+- **Resume Page (Software Engineer Portfolio):** https://portfolio-4u8c.vercel.app/resume
 - **Support Needs:** https://portfolio-4u8c.vercel.app/support-needs
 - **Admin Dashboard:** https://portfolio-4u8c.vercel.app/admin
 
@@ -77,6 +78,46 @@
 - **Typography:** Playfair Display (headings) + Source Serif Pro (body)
 - **Features:** Support needs breakdown, how to help categories, CTA buttons
 - **Accessible via:** "Ways to Help" button on About page
+
+### Resume Page - Software Engineer Portfolio (CREATED 2025-11-22):
+**File:** `/src/app/resume/page.tsx`
+**Live URL:** https://portfolio-4u8c.vercel.app/resume
+
+**Purpose:** Professional software engineer portfolio targeting potential employers (separate from BookBridge founder About page)
+
+**Design:**
+- Single-column layout with sections
+- Hero section with Oxford blue background
+- Profile photo: `/franck.jpg` (180x180px circular)
+- Name: "Francois Tshibala"
+- Headline: "Full-Stack Software Engineer | Building Solutions That Matter"
+- Subtitle: "React, TypeScript, Node.js | Passionate About Education Technology"
+
+**Sections (6):**
+1. **Hero**: Photo, name, headline, subtitle
+2. **My Journey**: Congo/library story focused on software engineering path
+3. **Technical Expertise**: Frontend, Backend, AI Integration, Architecture skills + approach philosophy
+4. **Featured Work**: BookBridge project with metrics (259 users, 12,000+ events, technical achievements)
+5. **Professional Background**: Leadership experience, BYU-Idaho studies
+6. **Let's Connect**: Job-seeking goals, Email/LinkedIn/GitHub buttons
+
+**Style:**
+- Neo-Classic academic design (matching other pages)
+- Colors: Oxford blue (#002147), Bronze (#CD7F32), parchment (#F4F1EB)
+- Typography: Playfair Display (headings) + Source Serif Pro (body)
+- Bronze bullet points for lists
+- Responsive (stacks on mobile)
+
+**Contact Links:**
+- Email: `francois.tshibala@example.com` (placeholder - update with real email)
+- LinkedIn: https://www.linkedin.com/in/francois-tshibala-556486233/
+- GitHub: `https://github.com/francoistshibala` (placeholder - update with real GitHub)
+
+**Target Audience:** Potential employers, recruiters, hiring managers
+
+**When Making Changes:**
+- **To update the Resume page:** Edit `/src/app/resume/page.tsx`
+- **Do NOT confuse with:** `/src/app/about/page.tsx` (BookBridge founder page for investors/supporters)
 
 ## FRENCH PAGES FOR FRANCOPHONE AUDIENCE
 
