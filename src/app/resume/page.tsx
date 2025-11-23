@@ -215,6 +215,17 @@ export default function ResumePage() {
           margin-bottom: 20px;
         }
 
+        .project-meta a {
+          color: var(--accent-secondary);
+          text-decoration: underline;
+          font-weight: 600;
+          transition: color 0.3s ease;
+        }
+
+        .project-meta a:hover {
+          color: #B8722D;
+        }
+
         .project-description {
           font-family: 'Source Serif Pro', Georgia, serif;
           font-size: 1.05rem;
@@ -435,7 +446,7 @@ export default function ResumePage() {
           <h2 className="section-heading">Featured Work</h2>
 
           <h3 className="project-title">BookBridge - AI-Powered Reading Platform</h3>
-          <p className="project-meta">Live at bookbridge.app | 259 active users | 12,000+ tracked events</p>
+          <p className="project-meta">Live at <a href="https://bookbridge.app/" target="_blank" rel="noopener noreferrer">bookbridge.app</a> | 259 active users | 12,000+ tracked events</p>
 
           <p className="project-description">
             Built a production web application that demonstrates:
