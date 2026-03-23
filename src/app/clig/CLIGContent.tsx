@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 type Language = 'fr' | 'en';
 
@@ -475,43 +474,6 @@ export default function CLIGContent() {
 
   const t = content[lang];
 
-  // Updated chart data with correct values from user
-  const wealthData = [
-    { year: 1, model1: 174, model2: 174, model3: 177 },
-    { year: 2, model1: 355, model2: 377, model3: 425 },
-    { year: 3, model1: 574, model2: 743, model3: 742 },
-    { year: 4, model1: 789, model2: 1179, model3: 1178 },
-    { year: 5, model1: 1013, model2: 1731, model3: 1731 },
-    { year: 6, model1: 1329, model2: 2494, model3: 2494 },
-    { year: 7, model1: 1595, model2: 3434, model3: 3434 },
-    { year: 8, model1: 1990, model2: 4575, model3: 4575 },
-    { year: 9, model1: 2305, model2: 5939, model3: 5939 },
-    { year: 10, model1: 2790, model2: 7030, model3: 7030 },
-    { year: 11, model1: 3160, model2: 8176, model3: 8176 },
-    { year: 12, model1: 3747, model2: 9381, model3: 9381 },
-    { year: 13, model1: 4398, model2: 10645, model3: 10645 },
-    { year: 14, model1: 4884, model2: 11973, model3: 11973 },
-    { year: 15, model1: 5660, model2: 13367, model3: 13367 }
-  ];
-
-  const homesData = [
-    { year: 1, model1: 0, model2: 0, model3: 1 },
-    { year: 2, model1: 0, model2: 0, model3: 3 },
-    { year: 3, model1: 1, model2: 1, model3: 4 },
-    { year: 4, model1: 1, model2: 3, model3: 6 },
-    { year: 5, model1: 1, model2: 4, model3: 8 },
-    { year: 6, model1: 2, model2: 6, model3: 11 },
-    { year: 7, model1: 2, model2: 8, model3: 14 },
-    { year: 8, model1: 3, model2: 11, model3: 17 },
-    { year: 9, model1: 3, model2: 14, model3: 20 },
-    { year: 10, model1: 4, model2: 17, model3: 20 },
-    { year: 11, model1: 4, model2: 20, model3: 20 },
-    { year: 12, model1: 5, model2: 20, model3: 20 },
-    { year: 13, model1: 6, model2: 20, model3: 20 },
-    { year: 14, model1: 6, model2: 20, model3: 20 },
-    { year: 15, model1: 7, model2: 20, model3: 20 }
-  ];
-
   // Model colors
   const modelColors = ['#3b82f6', '#9333ea', '#10b981']; // Blue, Purple, Green
 
@@ -626,8 +588,12 @@ export default function CLIGContent() {
                       <div className="font-bold text-blue-700 text-base md:text-lg">{model.breakdown.multiple}</div>
                     </div>
                   </div>
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   {(model.breakdown as any).debtNote && (
-                    <div className="mt-3 text-xs md:text-sm text-orange-700 italic">{(model.breakdown as any).debtNote}</div>
+                    <div className="mt-3 text-xs md:text-sm text-orange-700 italic">
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                      {(model.breakdown as any).debtNote}
+                    </div>
                   )}
                 </div>
 
@@ -642,8 +608,10 @@ export default function CLIGContent() {
                   <div className="text-xl md:text-3xl font-bold" style={{ color: modelColors[idx] }}>
                     {model.perMember} {lang === 'fr' ? 'par membre' : 'per member'}
                   </div>
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   {(model as any).legalWarning && (
                     <div className="mt-3 md:mt-4 text-xs md:text-sm text-red-700 font-semibold">
+                      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                       ⚠️ {(model as any).legalWarning}
                     </div>
                   )}
@@ -757,38 +725,328 @@ export default function CLIGContent() {
         </div>
       </section>
 
-      {/* Section 6 - Numbers Comparison */}
+      {/* Section 6 - Detailed Acquisition Tables */}
       <section className="py-12 md:py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.comparison.title}</h2>
+        <div className="max-w-6xl mx-auto space-y-12">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-navy-900" style={{ color: '#0f172a' }}>
+            {lang === 'fr' ? 'Les chiffres comparés' : 'The Numbers Side by Side'}
+          </h2>
 
-          {/* Comparison Table - Scrollable on Mobile */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8 md:mb-12">
+          {/* Model 1 Table - Amber */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="bg-gradient-to-r from-amber-500 to-amber-600 px-4 md:px-6 py-4">
+              <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                {lang === 'fr' ? 'Modèle 1 — Comptant 500$/personne' : 'Model 1 — Cash $500/person'}
+              </h3>
+              <p className="text-amber-100 text-sm">
+                {lang === 'fr' ? '$7,500/mois total · 15 membres' : '$7,500/month total · 15 members'}
+              </p>
+            </div>
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[600px]">
-                <thead>
+              <table className="w-full min-w-[800px]">
+                <thead className="bg-gray-800 text-white">
                   <tr>
-                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base bg-gray-700"></th>
-                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base" style={{ backgroundColor: modelColors[0] }}>{t.comparison.table.headers[1]}</th>
-                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base" style={{ backgroundColor: modelColors[1] }}>{t.comparison.table.headers[2]}</th>
-                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base" style={{ backgroundColor: modelColors[2] }}>{t.comparison.table.headers[3]}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Maison #' : 'House #'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Contributions' : 'Contributions'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Revenus locatifs' : 'Rental Income'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Entrée totale' : 'Total Inflow'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Mois requis' : 'Months to Save'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Temps écoulé' : 'Time So Far'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Actifs' : 'Assets'}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {t.comparison.table.rows.map((row, idx) => (
-                    <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                      <td className="px-3 md:px-4 py-2 md:py-3 font-semibold text-gray-800 text-xs md:text-base">{row.label}</td>
-                      {row.values.map((value, vIdx) => {
-                        const shouldHighlight = row.highlight && row.highlight[vIdx];
-                        const isDanger = shouldHighlight === 'danger';
-                        const isPositive = shouldHighlight === true;
+                  {[
+                    { house: 1, contrib: 7500, rental: 0, months: 61, cumul: 61, assets: 500000 },
+                    { house: 2, contrib: 7500, rental: 2500, months: 47, cumul: 108, assets: 1000000 },
+                    { house: 3, contrib: 7500, rental: 5000, months: 38, cumul: 146, assets: 1500000 },
+                    { house: 4, contrib: 7500, rental: 7500, months: 32, cumul: 178, assets: 2000000 }
+                  ].map((row, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                      <td className="px-3 py-3">
+                        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm" style={{ backgroundColor: '#f59e0b' }}>
+                          {row.house}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3 text-sm">${row.contrib.toLocaleString()}</td>
+                      <td className="px-3 py-3 text-sm font-bold" style={{ color: row.rental > 0 ? '#10b981' : '#9ca3af' }}>
+                        {row.rental > 0 ? `+$${row.rental.toLocaleString()}` : '—'}
+                      </td>
+                      <td className="px-3 py-3 text-sm font-bold">${(row.contrib + row.rental).toLocaleString()}</td>
+                      <td className="px-3 py-3 text-sm">{row.months} {lang === 'fr' ? 'mois' : 'months'}</td>
+                      <td className="px-3 py-3 text-sm">{row.cumul} mo ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
+                      <td className="px-3 py-3 text-sm font-semibold">${row.assets.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot className="bg-amber-100 border-t-2 border-amber-500">
+                  <tr>
+                    <td colSpan={7} className="px-3 py-4">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Temps total' : 'Total time'}</div>
+                          <div className="font-bold text-gray-900">178 {lang === 'fr' ? 'mois — 14,8 ans pour 4 maisons' : 'months — 14.8 years to 4 homes'}</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Richesse totale' : 'Total wealth'}</div>
+                          <div className="font-bold text-gray-900">$3,100,000</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Part par membre' : 'Per member'}</div>
+                          <div className="font-bold text-gray-900">$208,000</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Multiple' : 'Multiple'}</div>
+                          <div className="font-bold text-gray-900">2.30x</div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
+              <p className="text-xs text-gray-600 italic">
+                {lang === 'fr'
+                  ? 'À ce rythme, la maison 5 nécessiterait le mois 210 — au-delà de l\'horizon de 15 ans.'
+                  : 'At this pace, house 5 would require month 210 — beyond the 15-year horizon.'}
+              </p>
+            </div>
+          </div>
 
+          {/* Model 2 Table - Purple */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="bg-gradient-to-r from-purple-500 to-purple-600 px-4 md:px-6 py-4">
+              <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                {lang === 'fr' ? 'Modèle 2 — Comptant 750$/personne' : 'Model 2 — Cash $750/person'}
+              </h3>
+              <p className="text-purple-100 text-sm">
+                {lang === 'fr' ? '$11,250/mois total · 15 membres' : '$11,250/month total · 15 members'}
+              </p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[800px]">
+                <thead className="bg-gray-800 text-white">
+                  <tr>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Maison #' : 'House #'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Contributions' : 'Contributions'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Revenus locatifs' : 'Rental Income'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Entrée totale' : 'Total Inflow'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Mois requis' : 'Months to Save'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Temps écoulé' : 'Time So Far'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Actifs' : 'Assets'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { house: 1, contrib: 11250, rental: 0, months: 42, cumul: 42, assets: 500000 },
+                    { house: 2, contrib: 11250, rental: 2500, months: 35, cumul: 77, assets: 1000000 },
+                    { house: 3, contrib: 11250, rental: 5000, months: 30, cumul: 107, assets: 1500000 },
+                    { house: 4, contrib: 11250, rental: 7500, months: 26, cumul: 133, assets: 2000000 },
+                    { house: 5, contrib: 11250, rental: 10000, months: 23, cumul: 156, assets: 2500000 },
+                    { house: 6, contrib: 11250, rental: 12500, months: 21, cumul: 177, assets: 3000000 }
+                  ].map((row, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                      <td className="px-3 py-3">
+                        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm" style={{ backgroundColor: '#9333ea' }}>
+                          {row.house}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3 text-sm">${row.contrib.toLocaleString()}</td>
+                      <td className="px-3 py-3 text-sm font-bold" style={{ color: row.rental > 0 ? '#10b981' : '#9ca3af' }}>
+                        {row.rental > 0 ? `+$${row.rental.toLocaleString()}` : '—'}
+                      </td>
+                      <td className="px-3 py-3 text-sm font-bold">${(row.contrib + row.rental).toLocaleString()}</td>
+                      <td className="px-3 py-3 text-sm">{row.months} {lang === 'fr' ? 'mois' : 'months'}</td>
+                      <td className="px-3 py-3 text-sm">{row.cumul} mo ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
+                      <td className="px-3 py-3 text-sm font-semibold">${row.assets.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot className="bg-purple-100 border-t-2 border-purple-500">
+                  <tr>
+                    <td colSpan={7} className="px-3 py-4">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Temps total' : 'Total time'}</div>
+                          <div className="font-bold text-gray-900">177 {lang === 'fr' ? 'mois — 14,8 ans pour 6 maisons' : 'months — 14.8 years to 6 homes'}</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Richesse totale' : 'Total wealth'}</div>
+                          <div className="font-bold text-gray-900">$4,700,000</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Part par membre' : 'Per member'}</div>
+                          <div className="font-bold text-gray-900">$315,000</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Multiple' : 'Multiple'}</div>
+                          <div className="font-bold text-gray-900">2.30x</div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+          {/* Model 3 Table - Green */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            {/* Warning Box */}
+            <div className="bg-orange-100 border-l-4 border-orange-500 px-4 py-3">
+              <p className="text-sm text-orange-900">
+                <strong>{lang === 'fr' ? 'Note importante :' : 'Important note:'}</strong>{' '}
+                {lang === 'fr'
+                  ? 'Ce modèle suppose que des membres individuels qualifiés assument personnellement chaque prêt. La LLC ne peut pas être emprunteuse directe sur les prêts FHA/VA.'
+                  : 'This model assumes individual qualified members personally assume each loan. The LLC cannot be a direct borrower on FHA/VA loans.'}
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-r from-green-500 to-green-600 px-4 md:px-6 py-4">
+              <h3 className="text-lg md:text-xl font-bold text-white mb-1">
+                {lang === 'fr' ? 'Modèle 3 — Prêt assumable 2.75%' : 'Model 3 — Assumable Loan 2.75%'}
+              </h3>
+              <p className="text-green-100 text-sm">
+                {lang === 'fr' ? '$7,500/mois total · 15 membres · Écart de capital $120,000' : '$7,500/month total · 15 members · $120,000 equity gap'}
+              </p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[900px]">
+                <thead className="bg-gray-800 text-white">
+                  <tr>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Maison #' : 'House #'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Contributions' : 'Contributions'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">
+                      {lang === 'fr' ? 'Flux net / maison' : 'Net flow / home'}
+                      <div className="text-[10px] font-normal mt-1 text-gray-300">
+                        {lang === 'fr' ? '$3,000 - $625 - $1,551 = $824' : '$3,000 - $625 - $1,551 = $824'}
+                      </div>
+                    </th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Entrée totale' : 'Total Inflow'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Mois requis' : 'Months to Save'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Temps écoulé' : 'Time So Far'}</th>
+                    <th className="px-3 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Actifs' : 'Assets'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { house: 1, contrib: 7500, flow: 0, months: 16, cumul: 16, assets: 500000 },
+                    { house: 2, contrib: 7500, flow: 824, months: 14, cumul: 30, assets: 1000000 },
+                    { house: 3, contrib: 7500, flow: 1648, months: 13, cumul: 43, assets: 1500000 },
+                    { house: 4, contrib: 7500, flow: 2472, months: 12, cumul: 55, assets: 2000000 },
+                    { house: 5, contrib: 7500, flow: 3296, months: 11, cumul: 66, assets: 2500000 },
+                    { house: 6, contrib: 7500, flow: 4120, months: 10, cumul: 76, assets: 3000000 },
+                    { house: 7, contrib: 7500, flow: 4944, months: 9, cumul: 85, assets: 3500000 },
+                    { house: 8, contrib: 7500, flow: 5768, months: 9, cumul: 94, assets: 4000000 },
+                    { house: 9, contrib: 7500, flow: 6592, months: 8, cumul: 102, assets: 4500000 },
+                    { house: 10, contrib: 7500, flow: 7416, months: 8, cumul: 110, assets: 5000000 },
+                    { house: 11, contrib: 7500, flow: 8240, months: 7, cumul: 117, assets: 5500000 },
+                    { house: 12, contrib: 7500, flow: 9064, months: 7, cumul: 124, assets: 6000000 },
+                    { house: 13, contrib: 7500, flow: 9888, months: 7, cumul: 131, assets: 6500000 },
+                    { house: 14, contrib: 7500, flow: 10712, months: 6, cumul: 137, assets: 7000000 },
+                    { house: 15, contrib: 7500, flow: 11536, months: 6, cumul: 143, assets: 7500000 },
+                    { house: 16, contrib: 7500, flow: 12360, months: 6, cumul: 149, assets: 8000000 },
+                    { house: 17, contrib: 7500, flow: 13184, months: 6, cumul: 155, assets: 8500000 },
+                    { house: 18, contrib: 7500, flow: 14008, months: 5, cumul: 160, assets: 9000000 },
+                    { house: 19, contrib: 7500, flow: 14832, months: 5, cumul: 165, assets: 9500000 },
+                    { house: 20, contrib: 7500, flow: 15656, months: 5, cumul: 170, assets: 10000000 }
+                  ].map((row, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                      <td className="px-3 py-3">
+                        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm" style={{ backgroundColor: '#10b981' }}>
+                          {row.house}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3 text-sm">${row.contrib.toLocaleString()}</td>
+                      <td className="px-3 py-3 text-sm font-bold" style={{ color: row.flow > 0 ? '#10b981' : '#9ca3af' }}>
+                        {row.flow > 0 ? `+$${row.flow.toLocaleString()}` : '—'}
+                      </td>
+                      <td className="px-3 py-3 text-sm font-bold">${(row.contrib + row.flow).toLocaleString()}</td>
+                      <td className="px-3 py-3 text-sm">{row.months} {lang === 'fr' ? 'mois' : 'months'}</td>
+                      <td className="px-3 py-3 text-sm">{row.cumul} mo ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
+                      <td className="px-3 py-3 text-sm font-semibold">${row.assets.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot className="bg-green-100 border-t-2 border-green-500">
+                  <tr>
+                    <td colSpan={7} className="px-3 py-4">
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm">
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Temps total' : 'Total time'}</div>
+                          <div className="font-bold text-gray-900">170 {lang === 'fr' ? 'mois — 14,2 ans pour 20 maisons' : 'months — 14.2 years to 20 homes'}</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Richesse totale' : 'Total wealth'}</div>
+                          <div className="font-bold text-gray-900">$16,700,000</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Part par membre' : 'Per member'}</div>
+                          <div className="font-bold text-gray-900">$1,100,000</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Multiple' : 'Multiple'}</div>
+                          <div className="font-bold text-gray-900">12.40x</div>
+                        </div>
+                        <div>
+                          <div className="text-gray-600 text-xs">{lang === 'fr' ? 'Dette du groupe' : 'Group debt'}</div>
+                          <div className="font-bold text-red-700">$5,770,000</div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+          {/* Final Summary Comparison Table */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="bg-gray-800 px-4 md:px-6 py-4">
+              <h3 className="text-lg md:text-xl font-bold text-white">
+                {lang === 'fr' ? 'Comparaison finale' : 'Final Comparison'}
+              </h3>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[700px]">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700"></th>
+                    <th className="px-3 py-3 text-left text-sm font-semibold" style={{ color: '#f59e0b' }}>
+                      {lang === 'fr' ? 'Modèle 1 $500/pers' : 'Model 1 $500/person'}
+                    </th>
+                    <th className="px-3 py-3 text-left text-sm font-semibold" style={{ color: '#9333ea' }}>
+                      {lang === 'fr' ? 'Modèle 2 $750/pers' : 'Model 2 $750/person'}
+                    </th>
+                    <th className="px-3 py-3 text-left text-sm font-semibold" style={{ color: '#10b981' }}>
+                      {lang === 'fr' ? 'Modèle 3 Assumable' : 'Model 3 Assumable'}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { label: lang === 'fr' ? 'Pool mensuel' : 'Monthly pool', values: ['$7,500', '$11,250', '$7,500'] },
+                    { label: lang === 'fr' ? 'Total investi 15 ans' : 'Total invested 15 yrs', values: ['$1,350,000', '$2,025,000', '$1,350,000'] },
+                    { label: lang === 'fr' ? 'Maisons — Année 5' : 'Homes — Year 5', values: ['0', '1', '4'] },
+                    { label: lang === 'fr' ? 'Maisons — Année 10' : 'Homes — Year 10', values: ['2', '3', '12'] },
+                    { label: lang === 'fr' ? 'Maisons — Année 15' : 'Homes — Year 15', values: ['4', '6', '20'] },
+                    { label: lang === 'fr' ? 'Richesse totale' : 'Total wealth', values: ['$3,100,000', '$4,700,000', '$16,700,000'], highlight: [false, false, 'success'] },
+                    { label: lang === 'fr' ? 'Part par membre' : 'Per member share', values: ['$208,000', '$315,000', '$1,100,000'], highlight: [false, false, 'success'] },
+                    { label: lang === 'fr' ? 'Multiple de rendement' : 'Return multiple', values: ['2.3x', '2.3x', '12.4x'], highlight: [false, false, 'success'] },
+                    { label: lang === 'fr' ? 'Dette restante' : 'Remaining debt', values: ['$0', '$0', '$5,770,000'], highlight: ['safe', 'safe', 'danger'] }
+                  ].map((row, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                      <td className="px-3 py-3 font-semibold text-gray-800 text-sm">{row.label}</td>
+                      {row.values.map((value, vIdx) => {
+                        const h = row.highlight ? row.highlight[vIdx] : false;
                         return (
                           <td
                             key={vIdx}
-                            className={`px-3 md:px-4 py-2 md:py-3 text-xs md:text-base font-semibold ${
-                              isDanger ? 'bg-red-100 text-red-900' :
-                              isPositive ? 'bg-green-100 text-green-900' :
+                            className={`px-3 py-3 text-sm font-semibold ${
+                              h === 'success' ? 'bg-green-500 text-white' :
+                              h === 'danger' ? 'bg-red-500 text-white' :
+                              h === 'safe' ? 'bg-green-100 text-green-900' :
                               'text-gray-700'
                             }`}
                           >
@@ -801,49 +1059,6 @@ export default function CLIGContent() {
                 </tbody>
               </table>
             </div>
-          </div>
-
-          {/* Wealth Progression Chart */}
-          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 mb-6 md:mb-8">
-            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-navy-800" style={{ color: '#1e3a5f' }}>
-              {lang === 'fr' ? 'Progression de la richesse totale (en milliers $)' : 'Total Wealth Progression (in thousands $)'}
-            </h3>
-            <ResponsiveContainer width="100%" height={300} className="md:h-[400px]">
-              <LineChart data={wealthData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" label={{ value: lang === 'fr' ? 'Année' : 'Year', position: 'insideBottom', offset: -5 }} tick={{ fontSize: 12 }} />
-                <YAxis label={{ value: lang === 'fr' ? 'Richesse ($k)' : 'Wealth ($k)', angle: -90, position: 'insideLeft' }} tick={{ fontSize: 12 }} />
-                <Tooltip contentStyle={{ fontSize: '12px' }} />
-                <Legend wrapperStyle={{ fontSize: '12px' }} />
-                <Line type="monotone" dataKey="model1" stroke={modelColors[0]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 1 ($500)' : 'Model 1 ($500)'} />
-                <Line type="monotone" dataKey="model2" stroke={modelColors[1]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 2 ($750)' : 'Model 2 ($750)'} />
-                <Line type="monotone" dataKey="model3" stroke={modelColors[2]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 3 (Assumable)' : 'Model 3 (Assumable)'} />
-              </LineChart>
-            </ResponsiveContainer>
-            <p className="text-xs md:text-sm text-gray-600 mt-3 md:mt-4 text-center italic px-2">
-              {lang === 'fr'
-                ? 'Note : Modèle 3 inclut 5,77 M$ de dette à l\'année 15, contrairement aux modèles 1 et 2 (zéro dette)'
-                : 'Note: Model 3 includes $5.77M debt at Year 15, unlike Models 1 and 2 (zero debt)'}
-            </p>
-          </div>
-
-          {/* Homes Owned Chart */}
-          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
-            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-navy-800" style={{ color: '#1e3a5f' }}>
-              {lang === 'fr' ? 'Nombre de maisons possédées par année' : 'Homes Owned Per Year'}
-            </h3>
-            <ResponsiveContainer width="100%" height={280} className="md:h-[350px]">
-              <LineChart data={homesData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" label={{ value: lang === 'fr' ? 'Année' : 'Year', position: 'insideBottom', offset: -5 }} tick={{ fontSize: 12 }} />
-                <YAxis label={{ value: lang === 'fr' ? 'Maisons' : 'Homes', angle: -90, position: 'insideLeft' }} tick={{ fontSize: 12 }} />
-                <Tooltip contentStyle={{ fontSize: '12px' }} />
-                <Legend wrapperStyle={{ fontSize: '12px' }} />
-                <Line type="stepAfter" dataKey="model1" stroke={modelColors[0]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 1' : 'Model 1'} />
-                <Line type="stepAfter" dataKey="model2" stroke={modelColors[1]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 2' : 'Model 2'} />
-                <Line type="stepAfter" dataKey="model3" stroke={modelColors[2]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 3' : 'Model 3'} />
-              </LineChart>
-            </ResponsiveContainer>
           </div>
         </div>
       </section>
