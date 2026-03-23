@@ -620,14 +620,14 @@ export default function CLIGContent() {
                               {row.house}
                             </span>
                           </td>
-                          <td className="px-4 py-3 text-sm">${row.contrib.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">${row.contrib.toLocaleString()}</td>
                           <td className="px-4 py-3 text-sm font-bold text-green-600">
                             {row.rental > 0 ? `+$${row.rental.toLocaleString()}` : '—'}
                           </td>
-                          <td className="px-4 py-3 text-sm font-bold">${(row.contrib + row.rental).toLocaleString()}</td>
-                          <td className="px-4 py-3 text-sm">{row.months}</td>
-                          <td className="px-4 py-3 text-sm">{row.cumul} ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
-                          <td className="px-4 py-3 text-sm font-semibold">${row.assets.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm font-bold text-gray-900">${(row.contrib + row.rental).toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.months}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.cumul} ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
+                          <td className="px-4 py-3 text-sm font-semibold text-gray-900">${row.assets.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -749,14 +749,14 @@ export default function CLIGContent() {
                               {row.house}
                             </span>
                           </td>
-                          <td className="px-4 py-3 text-sm">${row.contrib.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">${row.contrib.toLocaleString()}</td>
                           <td className="px-4 py-3 text-sm font-bold text-green-600">
                             {row.rental > 0 ? `+$${row.rental.toLocaleString()}` : '—'}
                           </td>
-                          <td className="px-4 py-3 text-sm font-bold">${(row.contrib + row.rental).toLocaleString()}</td>
-                          <td className="px-4 py-3 text-sm">{row.months}</td>
-                          <td className="px-4 py-3 text-sm">{row.cumul} ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
-                          <td className="px-4 py-3 text-sm font-semibold">${row.assets.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm font-bold text-gray-900">${(row.contrib + row.rental).toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.months}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.cumul} ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
+                          <td className="px-4 py-3 text-sm font-semibold text-gray-900">${row.assets.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -883,9 +883,9 @@ export default function CLIGContent() {
                               {row.house}
                             </span>
                           </td>
-                          <td className="px-3 py-3 text-xs">${row.contrib.toLocaleString()}</td>
+                          <td className="px-3 py-3 text-xs text-gray-900 font-medium">${row.contrib.toLocaleString()}</td>
                           <td className="px-3 py-3 text-xs text-green-600 font-bold">+${row.rent.toLocaleString()}</td>
-                          <td className="px-3 py-3 text-xs text-red-600">-${row.payment.toLocaleString()}</td>
+                          <td className="px-3 py-3 text-xs text-red-600 font-medium">-${row.payment.toLocaleString()}</td>
                           <td className="px-3 py-3 text-xs font-bold">
                             {row.house <= 7 ? (
                               <span className="text-green-600">+${(row.contrib + row.rent - row.payment).toLocaleString()}</span>
@@ -895,11 +895,11 @@ export default function CLIGContent() {
                               <span className="text-red-600">-${(row.payment - row.contrib - row.rent).toLocaleString()}</span>
                             )}
                           </td>
-                          <td className="px-3 py-3 text-xs">{row.months !== null ? row.months : '—'}</td>
-                          <td className="px-3 py-3 text-xs">
+                          <td className="px-3 py-3 text-xs text-gray-900 font-medium">{row.months !== null ? row.months : '—'}</td>
+                          <td className="px-3 py-3 text-xs text-gray-900 font-medium">
                             {row.cumul !== null ? `${row.cumul} (${(row.cumul / 12).toFixed(1)} ${lang === 'fr' ? 'ans' : 'yrs'})` : '—'}
                           </td>
-                          <td className="px-3 py-3 text-xs font-semibold">${row.assets.toLocaleString()}</td>
+                          <td className="px-3 py-3 text-xs font-semibold text-gray-900">${row.assets.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
