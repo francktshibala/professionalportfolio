@@ -99,11 +99,17 @@ export default function CLIGContent() {
             'Économies massives de taux'
           ],
           cons: [
-            'Les LLC ne peuvent légalement assumer les prêts FHA/VA',
-            'Exige qu\'un membre vive dans la propriété comme résidence principale',
-            'Approbation bancaire nécessaire individuellement',
-            'Taux de succès proche de zéro pour la structure LLC',
-            'L\'écart de capital nécessite encore des liquidités importantes'
+            'Une LLC ne peut légalement pas assumer un prêt FHA ou VA — le prêt doit être au nom d\'une personne individuelle, pas d\'une entreprise',
+            'L\'emprunteur doit vivre dans la maison comme résidence principale — le groupe ne peut pas louer les deux unités à des locataires si aucun membre n\'y vit',
+            '"Une personne par maison" manque de membres — le modèle nécessite 20 maisons mais le groupe n\'a que 15 membres, et tous ne se qualifieront pas',
+            'Chaque personne ne peut avoir qu\'une seule résidence principale — le même membre ne peut pas être utilisé pour deux maisons simultanément',
+            'Tous les membres ne se qualifieront pas — chaque personne a besoin d\'un score de crédit de 580–620+, de revenus stables depuis 2+ ans, et d\'un ratio dette/revenu inférieur à 43%',
+            'Les cartes vertes en attente sont un signal de risque — les prêteurs peuvent rejeter les membres dont le statut d\'immigration n\'est pas encore permanent',
+            'Le crédit personnel du membre est en jeu — si un locataire arrête de payer et que le groupe ne peut pas couvrir l\'hypothèque, le score de crédit personnel de ce membre est endommagé',
+            'Le membre ne peut pas facilement quitter le groupe — son nom reste sur l\'hypothèque jusqu\'au refinancement, qui nécessite une nouvelle approbation bancaire au taux actuel de 7%',
+            'Trouver 20 vendeurs avec des prêts assumables à moins de 3% dans le comté de Salt Lake n\'est pas réaliste comme plan à long terme',
+            'Chaque assumption prend 45–90 jours et la probabilité de succès combinée pour notre situation exacte est inférieure à 5%',
+            'Les vendeurs de prêts VA refusent souvent les assumptions car le vétéran perd ses droits VA lorsqu\'un non-vétéran assume le prêt'
           ],
           totalWealth: '16,7 M$',
           perMember: '1,1 M$',
@@ -114,6 +120,36 @@ export default function CLIGContent() {
             total: '1 100 000 $',
             multiple: '12,40',
             debtNote: 'Inclut part proportionnelle de 5,77 M$ de dette du groupe'
+          }
+        },
+        recommended: {
+          name: 'Modèle Recommandé — Stratégie Pont ADU',
+          explanation: 'Économiser 90 000 $ en 12 mois puis acheter une maison avec suite au sous-sol en utilisant un acompte de 20 %. Les deux unités génèrent des revenus locatifs immédiatement. Le flux de trésorerie net réinvesti dans le pool accélère chaque achat suivant. Utilise un prêt conventionnel au nom de la LLC — pas de barrières juridiques, pas d\'exigence de résidence principale.',
+          pros: [
+            'Première maison achetée au mois 12 — 4 ans plus tôt que le modèle 1',
+            'La LLC peut emprunter directement — aucune responsabilité individuelle des membres',
+            'Aucune exigence d\'occupation par le propriétaire — les deux unités louées librement',
+            'Fonctionne pour tous les statuts d\'immigration — prêts d\'investissement conventionnels disponibles pour la LLC',
+            '16 maisons à l\'année 15 contre 4 dans le modèle 1 et 6 dans le modèle 2',
+            '447 K$ par membre contre 208 K$ (modèle 1) et 315 K$ (modèle 2)',
+            'Aucune dépendance aux prêts assumables rares',
+            'Chaque maison génère 1 562 $/mois de flux de trésorerie net qui accélère le prochain achat'
+          ],
+          cons: [
+            'Comporte une dette hypothécaire — environ 4 800 000 $ restants à l\'année 15',
+            'Paiement hypothécaire mensuel de 2 263 $ par maison doit être couvert même pendant une vacance',
+            'Nécessite un acompte de 20 % — 90 000 $ — avant le premier achat',
+            'Le taux de prêt d\'investissement conventionnel est de 7 % — plus élevé que le modèle assumable',
+            'Moins de richesse totale que le modèle 3 sur papier — mais le modèle 3 n\'est pas réalistement accessible'
+          ],
+          totalWealth: '6,7 M$',
+          perMember: '447 K$',
+          breakdown: {
+            realEstate: '410 000 $',
+            cash: '37 000 $',
+            total: '447 000 $',
+            multiple: '2,98',
+            debtNote: 'Inclut part proportionnelle de 4,8 M$ de dette du groupe'
           }
         }
       },
@@ -328,11 +364,17 @@ export default function CLIGContent() {
             'Massive rate savings'
           ],
           cons: [
-            'LLCs cannot legally assume FHA/VA loans',
-            'Requires member to live in property as primary residence',
-            'Bank approval needed individually',
-            'Near-zero success rate for LLC structure',
-            'Equity gap still requires significant cash'
+            'An LLC cannot legally assume an FHA or VA loan — the loan must be in an individual person\'s name, not a company',
+            'The borrower must live in the house as their primary residence — the group cannot rent both units to tenants while no member lives there',
+            '"One person per house" runs out of people — the model needs 20 houses but the group only has 15 members, and not all will qualify',
+            'Each person can only have one primary residence — the same member cannot be used for two houses simultaneously',
+            'Not every member will qualify — each person needs 580–620+ credit score, income stable for 2+ years, and debt-to-income under 43% — the bank evaluates each person individually, not the group',
+            'Pending green cards are a risk flag — lenders may reject members whose immigration status is not yet permanent',
+            'The member\'s personal credit is on the line — if a tenant stops paying rent and the group cannot cover the mortgage, that individual member\'s personal credit score is damaged',
+            'The member cannot easily exit the group — their name stays on the mortgage until the loan is refinanced, which requires a new bank approval at today\'s 7% rate',
+            'Finding 20 sellers with sub-3% assumable loans in Salt Lake County is not realistic as a long-term plan — these loans are rare and sell fast',
+            'Each assumption takes 45–90 days and the combined success probability for our exact situation is under 5%',
+            'VA loan sellers often refuse assumptions because the veteran loses their VA benefits entitlement when a non-veteran assumes the loan'
           ],
           totalWealth: '$16.7M',
           perMember: '$1.1M',
@@ -343,6 +385,36 @@ export default function CLIGContent() {
             total: '$1,100,000',
             multiple: '12.40',
             debtNote: 'Includes proportional share of $5.77M group debt'
+          }
+        },
+        recommended: {
+          name: 'Recommended Model — ADU Bridge Strategy',
+          explanation: 'Save $90,000 in 12 months then buy a house with basement suite using a 20% down payment. Both units generate rental income immediately. Net cash flow reinvested into the pool accelerates every subsequent purchase. Uses a conventional loan in the LLC\'s name — no legal barriers, no primary residence requirement.',
+          pros: [
+            'First house bought in month 12 — 4 years earlier than Model 1',
+            'LLC can borrow directly — no individual member liability',
+            'No owner-occupancy requirement — both units rented freely',
+            'Works for all immigration statuses — conventional investment loans available to LLC',
+            '16 houses by year 15 vs 4 in Model 1 and 6 in Model 2',
+            '$447K per member vs $208K (Model 1) and $315K (Model 2)',
+            'No dependency on rare assumable loans',
+            'Each house generates $1,562/month net cash flow that accelerates the next purchase'
+          ],
+          cons: [
+            'Carries mortgage debt — approximately $4,800,000 remaining at year 15',
+            'Monthly mortgage payment of $2,263 per house must be covered even during vacancy',
+            'Requires 20% down payment — $90,000 — before first purchase',
+            'Conventional investment loan rate is 7% — higher than assumable model',
+            'Less total wealth than Model 3 on paper — but Model 3 is not realistically accessible'
+          ],
+          totalWealth: '$6.7M',
+          perMember: '$447K',
+          breakdown: {
+            realEstate: '$410,000',
+            cash: '$37,000',
+            total: '$447,000',
+            multiple: '2.98',
+            debtNote: 'Includes proportional share of $4.8M group debt'
           }
         }
       },
@@ -948,6 +1020,161 @@ export default function CLIGContent() {
                 </div>
               </div>
             </div>
+
+            {/* Recommended Model - Orange/Gold */}
+            <div className="bg-white rounded-xl shadow-2xl overflow-hidden border-4 relative" style={{ borderColor: '#F97316' }}>
+              {/* RECOMMANDÉ badge */}
+              <div className="absolute top-6 right-6 bg-orange-500 text-white px-4 py-2 rounded-full text-xs font-bold uppercase shadow-lg z-10">
+                {lang === 'fr' ? '⭐ RECOMMANDÉ' : '⭐ RECOMMENDED'}
+              </div>
+
+              {/* Header bar */}
+              <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-5">
+                <div className="flex flex-wrap items-center justify-between gap-3 pr-24">
+                  <h3 className="text-xl md:text-2xl font-bold text-white">{t.models.recommended.name}</h3>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold">$500/person</span>
+                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold">{lang === 'fr' ? 'Prêt conventionnel' : 'Conventional loan'}</span>
+                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold">{lang === 'fr' ? 'Maison avec sous-sol' : 'House with basement'}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 md:p-8">
+                {/* Description */}
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">{t.models.recommended.explanation}</p>
+
+                {/* Stats row */}
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="bg-orange-50 rounded-lg p-4 text-center border-2 border-orange-200">
+                    <div className="text-xs font-semibold text-orange-700 mb-1">YEAR 15</div>
+                    <div className="text-2xl md:text-3xl font-black text-orange-600">{t.models.recommended.totalWealth}</div>
+                  </div>
+                  <div className="bg-orange-50 rounded-lg p-4 text-center border-2 border-orange-200">
+                    <div className="text-xs font-semibold text-orange-700 mb-1">PER MEMBER</div>
+                    <div className="text-2xl md:text-3xl font-black text-orange-600">{t.models.recommended.perMember}</div>
+                  </div>
+                  <div className="bg-orange-50 rounded-lg p-4 text-center border-2 border-orange-200">
+                    <div className="text-xs font-semibold text-orange-700 mb-1">MULTIPLE</div>
+                    <div className="text-2xl md:text-3xl font-black text-orange-600">{t.models.recommended.breakdown.multiple}x</div>
+                  </div>
+                </div>
+
+                {/* Pros and Cons */}
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div className="bg-green-50 rounded-lg p-5 border-2 border-green-200">
+                    <h4 className="font-bold text-green-800 mb-3 text-base">{lang === 'fr' ? 'Avantages' : 'Pros'}</h4>
+                    <ul className="space-y-2">
+                      {t.models.recommended.pros.map((pro, i) => (
+                        <li key={i} className="text-sm text-gray-700 flex items-start">
+                          <span className="text-green-600 mr-2 font-bold">✓</span>
+                          <span>{pro}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="bg-red-50 rounded-lg p-5 border-2 border-red-200">
+                    <h4 className="font-bold text-red-800 mb-3 text-base">{lang === 'fr' ? 'Inconvénients' : 'Cons'}</h4>
+                    <ul className="space-y-2">
+                      {t.models.recommended.cons.map((con, i) => (
+                        <li key={i} className="text-sm text-gray-700 flex items-start">
+                          <span className="text-red-600 mr-2 font-bold">✗</span>
+                          <span>{con}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Detailed table */}
+                <div className="overflow-x-auto rounded-lg border-2 border-orange-200">
+                  <table className="w-full min-w-[800px]">
+                    <thead className="bg-gray-800 text-white">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Maison' : 'House'}</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Contributions' : 'Group Contrib.'}</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">
+                          <div>{lang === 'fr' ? 'Flux net' : 'Net Cash Flow'}</div>
+                          <div className="text-[10px] font-normal text-gray-300 mt-1">
+                            {lang === 'fr' ? 'Loyer $4,450 − Hypothèque $2,263 − Charges $625 = $1,562' : 'Rent $4,450 − Mortgage $2,263 − Expenses $625 = $1,562'}
+                          </div>
+                        </th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Total' : 'Total Inflow'}</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Mois' : 'Months'}</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Cumul' : 'Cumulative'}</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Actifs' : 'Assets'}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { house: 1, contrib: 7500, netCash: 0, months: 12, cumul: 12, assets: 430000 },
+                        { house: 2, contrib: 7500, netCash: 1562, months: 10, cumul: 22, assets: 860000 },
+                        { house: 3, contrib: 7500, netCash: 3124, months: 9, cumul: 31, assets: 1290000 },
+                        { house: 4, contrib: 7500, netCash: 4686, months: 8, cumul: 40, assets: 1720000 },
+                        { house: 5, contrib: 7500, netCash: 6248, months: 7, cumul: 47, assets: 2150000 },
+                        { house: 6, contrib: 7500, netCash: 7810, months: 6, cumul: 53, assets: 2580000 },
+                        { house: 7, contrib: 7500, netCash: 9372, months: 6, cumul: 59, assets: 3010000 },
+                        { house: 8, contrib: 7500, netCash: 10934, months: 5, cumul: 64, assets: 3440000 },
+                        { house: 9, contrib: 7500, netCash: 12496, months: 5, cumul: 69, assets: 3870000 },
+                        { house: 10, contrib: 7500, netCash: 14058, months: 5, cumul: 74, assets: 4300000 },
+                        { house: 11, contrib: 7500, netCash: 15620, months: 4, cumul: 78, assets: 4730000 },
+                        { house: 12, contrib: 7500, netCash: 17182, months: 4, cumul: 82, assets: 5160000 },
+                        { house: 13, contrib: 7500, netCash: 18744, months: 4, cumul: 86, assets: 5590000 },
+                        { house: 14, contrib: 7500, netCash: 20306, months: 4, cumul: 90, assets: 6020000 },
+                        { house: 15, contrib: 7500, netCash: 21868, months: 3, cumul: 93, assets: 6450000 },
+                        { house: 16, contrib: 7500, netCash: 23430, months: 3, cumul: 96, assets: 6880000 }
+                      ].map((row, i) => (
+                        <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                          <td className="px-4 py-3">
+                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold text-sm">
+                              {row.house}
+                            </span>
+                          </td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">${row.contrib.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm font-bold text-green-600">
+                            {row.netCash > 0 ? `+$${row.netCash.toLocaleString()}` : '—'}
+                          </td>
+                          <td className="px-4 py-3 text-sm font-bold text-gray-900">${(row.contrib + row.netCash).toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.months}</td>
+                          <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.cumul} ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
+                          <td className="px-4 py-3 text-sm font-semibold text-gray-900">${row.assets.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                    <tfoot className="bg-orange-100 border-t-4 border-orange-500">
+                      <tr>
+                        <td colSpan={7} className="px-4 py-5">
+                          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                            <div>
+                              <div className="text-xs text-gray-600 mb-1">{lang === 'fr' ? 'Temps total' : 'Total time'}</div>
+                              <div className="font-bold text-gray-900">96 {lang === 'fr' ? 'mois' : 'months'}</div>
+                              <div className="text-xs text-gray-600">8.0 {lang === 'fr' ? 'années' : 'years'}</div>
+                            </div>
+                            <div>
+                              <div className="text-xs text-gray-600 mb-1">{lang === 'fr' ? 'Maisons' : 'Homes'}</div>
+                              <div className="font-bold text-gray-900">16</div>
+                            </div>
+                            <div>
+                              <div className="text-xs text-gray-600 mb-1">{lang === 'fr' ? 'Richesse année 15' : 'Wealth Year 15'}</div>
+                              <div className="font-bold text-orange-600">$6,700,000</div>
+                            </div>
+                            <div>
+                              <div className="text-xs text-gray-600 mb-1">{lang === 'fr' ? 'Par membre' : 'Per member'}</div>
+                              <div className="font-bold text-orange-600">$447,000</div>
+                              <div className="text-xs text-gray-600">$500 → $2.98</div>
+                            </div>
+                            <div>
+                              <div className="text-xs text-gray-600 mb-1">{lang === 'fr' ? 'Dette restante' : 'Remaining debt'}</div>
+                              <div className="font-bold text-red-600">$4,800,000</div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1070,7 +1297,7 @@ export default function CLIGContent() {
               </h3>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[700px]">
+              <table className="w-full min-w-[900px]">
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="px-3 py-3 text-left text-sm font-semibold text-gray-700"></th>
@@ -1083,19 +1310,28 @@ export default function CLIGContent() {
                     <th className="px-3 py-3 text-left text-sm font-semibold" style={{ color: '#10b981' }}>
                       {lang === 'fr' ? 'Modèle 3 Assumable' : 'Model 3 Assumable'}
                     </th>
+                    <th className="px-3 py-3 text-left text-sm font-semibold bg-orange-50" style={{ color: '#F97316' }}>
+                      <div className="flex items-center gap-2">
+                        <span>⭐</span>
+                        <span>{lang === 'fr' ? 'Recommandé ADU' : 'Recommended ADU'}</span>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { label: lang === 'fr' ? 'Pool mensuel' : 'Monthly pool', values: ['$7,500', '$11,250', '$7,500'] },
-                    { label: lang === 'fr' ? 'Total investi 15 ans' : 'Total invested 15 yrs', values: ['$1,350,000', '$2,025,000', '$1,350,000'] },
-                    { label: lang === 'fr' ? 'Maisons — Année 5' : 'Homes — Year 5', values: ['0', '1', '4'] },
-                    { label: lang === 'fr' ? 'Maisons — Année 10' : 'Homes — Year 10', values: ['2', '3', '12'] },
-                    { label: lang === 'fr' ? 'Maisons — Année 15' : 'Homes — Year 15', values: ['4', '6', '20'] },
-                    { label: lang === 'fr' ? 'Richesse totale' : 'Total wealth', values: ['$3,100,000', '$4,700,000', '$16,700,000'], highlight: [false, false, 'success'] },
-                    { label: lang === 'fr' ? 'Part par membre' : 'Per member share', values: ['$208,000', '$315,000', '$1,100,000'], highlight: [false, false, 'success'] },
-                    { label: lang === 'fr' ? 'Multiple de rendement' : 'Return multiple', values: ['2.3x', '2.3x', '12.4x'], highlight: [false, false, 'success'] },
-                    { label: lang === 'fr' ? 'Dette restante' : 'Remaining debt', values: ['$0', '$0', '$5,770,000'], highlight: ['safe', 'safe', 'danger'] }
+                    { label: lang === 'fr' ? 'Pool mensuel' : 'Monthly pool', values: ['$7,500', '$11,250', '$7,500', '$7,500'] },
+                    { label: lang === 'fr' ? 'Total investi 15 ans' : 'Total invested 15 yrs', values: ['$1,350,000', '$2,025,000', '$1,350,000', '$1,350,000'] },
+                    { label: lang === 'fr' ? 'Maisons — Année 5' : 'Homes — Year 5', values: ['0', '1', '4', '5'] },
+                    { label: lang === 'fr' ? 'Maisons — Année 10' : 'Homes — Year 10', values: ['2', '3', '12', '11'] },
+                    { label: lang === 'fr' ? 'Maisons — Année 15' : 'Homes — Year 15', values: ['4', '6', '20', '16'] },
+                    { label: lang === 'fr' ? 'Richesse totale' : 'Total wealth', values: ['$3,100,000', '$4,700,000', '$16,700,000', '$6,700,000'], highlight: [false, false, 'success', 'recommended'] },
+                    { label: lang === 'fr' ? 'Part par membre' : 'Per member share', values: ['$208,000', '$315,000', '$1,100,000', '$447,000'], highlight: [false, false, 'success', 'recommended'] },
+                    { label: lang === 'fr' ? 'Multiple de rendement' : 'Return multiple', values: ['2.3x', '2.3x', '12.4x', '2.98x'], highlight: [false, false, 'success', 'recommended'] },
+                    { label: lang === 'fr' ? 'Dette restante' : 'Remaining debt', values: ['$0', '$0', '$5,770,000', '$4,800,000'], highlight: ['safe', 'safe', 'danger', 'warning'] },
+                    { label: lang === 'fr' ? 'LLC peut emprunter directement' : 'LLC can borrow directly', values: ['✓', '✓', '✗', '✓'], highlight: [false, false, 'llcNo', 'llcYes'] },
+                    { label: lang === 'fr' ? 'Fonctionne pour tous les statuts d\'immigration' : 'Works for all immigration statuses', values: ['✓', '✓', '✗', '✓'], highlight: [false, false, 'llcNo', 'llcYes'] },
+                    { label: lang === 'fr' ? 'Réaliste pour notre groupe' : 'Realistic for our group', values: ['✓', '✓', '✗', '✓'], highlight: [false, false, 'llcNo', 'llcYes'] }
                   ].map((row, idx) => (
                     <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                       <td className="px-3 py-3 font-semibold text-gray-800 text-sm">{row.label}</td>
@@ -1108,6 +1344,10 @@ export default function CLIGContent() {
                               h === 'success' ? 'bg-green-500 text-white' :
                               h === 'danger' ? 'bg-red-500 text-white' :
                               h === 'safe' ? 'bg-green-100 text-green-900' :
+                              h === 'recommended' ? 'bg-orange-50 text-orange-600' :
+                              h === 'warning' ? 'bg-orange-50 text-orange-700' :
+                              h === 'llcNo' ? 'bg-red-100 text-red-700' :
+                              h === 'llcYes' ? 'bg-green-100 text-green-700' :
                               'text-gray-700'
                             }`}
                           >
