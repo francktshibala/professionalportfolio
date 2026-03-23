@@ -1088,7 +1088,7 @@ export default function CLIGContent() {
 
                 {/* Detailed table */}
                 <div className="overflow-x-auto rounded-lg border-2 border-orange-200">
-                  <table className="w-full min-w-[800px]">
+                  <table className="w-full min-w-[950px]">
                     <thead className="bg-gray-800 text-white">
                       <tr>
                         <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Maison' : 'House'}</th>
@@ -1103,26 +1103,32 @@ export default function CLIGContent() {
                         <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Mois' : 'Months'}</th>
                         <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Cumul' : 'Cumulative'}</th>
                         <th className="px-4 py-3 text-left text-xs font-semibold uppercase">{lang === 'fr' ? 'Actifs' : 'Assets'}</th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold uppercase">
+                          <div>{lang === 'fr' ? 'Dette du groupe' : 'Group Debt'}</div>
+                          <div className="text-[10px] font-normal text-gray-300 mt-1 italic">
+                            {lang === 'fr' ? 'Solde total des prêts restants sur toutes les propriétés au moment de l\'achat' : 'Total remaining loan balance across all properties at time of purchase'}
+                          </div>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       {[
-                        { house: 1, contrib: 7500, netCash: 0, months: 12, cumul: 12, assets: 430000 },
-                        { house: 2, contrib: 7500, netCash: 1562, months: 10, cumul: 22, assets: 860000 },
-                        { house: 3, contrib: 7500, netCash: 3124, months: 9, cumul: 31, assets: 1290000 },
-                        { house: 4, contrib: 7500, netCash: 4686, months: 8, cumul: 40, assets: 1720000 },
-                        { house: 5, contrib: 7500, netCash: 6248, months: 7, cumul: 47, assets: 2150000 },
-                        { house: 6, contrib: 7500, netCash: 7810, months: 6, cumul: 53, assets: 2580000 },
-                        { house: 7, contrib: 7500, netCash: 9372, months: 6, cumul: 59, assets: 3010000 },
-                        { house: 8, contrib: 7500, netCash: 10934, months: 5, cumul: 64, assets: 3440000 },
-                        { house: 9, contrib: 7500, netCash: 12496, months: 5, cumul: 69, assets: 3870000 },
-                        { house: 10, contrib: 7500, netCash: 14058, months: 5, cumul: 74, assets: 4300000 },
-                        { house: 11, contrib: 7500, netCash: 15620, months: 4, cumul: 78, assets: 4730000 },
-                        { house: 12, contrib: 7500, netCash: 17182, months: 4, cumul: 82, assets: 5160000 },
-                        { house: 13, contrib: 7500, netCash: 18744, months: 4, cumul: 86, assets: 5590000 },
-                        { house: 14, contrib: 7500, netCash: 20306, months: 4, cumul: 90, assets: 6020000 },
-                        { house: 15, contrib: 7500, netCash: 21868, months: 3, cumul: 93, assets: 6450000 },
-                        { house: 16, contrib: 7500, netCash: 23430, months: 3, cumul: 96, assets: 6880000 }
+                        { house: 1, contrib: 7500, netCash: 0, months: 12, cumul: 12, assets: 430000, debt: 340000 },
+                        { house: 2, contrib: 7500, netCash: 1562, months: 10, cumul: 22, assets: 860000, debt: 677000 },
+                        { house: 3, contrib: 7500, netCash: 3124, months: 9, cumul: 31, assets: 1290000, debt: 1011000 },
+                        { house: 4, contrib: 7500, netCash: 4686, months: 8, cumul: 40, assets: 1720000, debt: 1342000 },
+                        { house: 5, contrib: 7500, netCash: 6248, months: 7, cumul: 47, assets: 2150000, debt: 1673000 },
+                        { house: 6, contrib: 7500, netCash: 7810, months: 6, cumul: 53, assets: 2580000, debt: 2004000 },
+                        { house: 7, contrib: 7500, netCash: 9372, months: 6, cumul: 59, assets: 3010000, debt: 2332000 },
+                        { house: 8, contrib: 7500, netCash: 10934, months: 5, cumul: 64, assets: 3440000, debt: 2661000 },
+                        { house: 9, contrib: 7500, netCash: 12496, months: 5, cumul: 69, assets: 3870000, debt: 2988000 },
+                        { house: 10, contrib: 7500, netCash: 14058, months: 5, cumul: 74, assets: 4300000, debt: 3314000 },
+                        { house: 11, contrib: 7500, netCash: 15620, months: 4, cumul: 78, assets: 4730000, debt: 3641000 },
+                        { house: 12, contrib: 7500, netCash: 17182, months: 4, cumul: 82, assets: 5160000, debt: 3967000 },
+                        { house: 13, contrib: 7500, netCash: 18744, months: 4, cumul: 86, assets: 5590000, debt: 4292000 },
+                        { house: 14, contrib: 7500, netCash: 20306, months: 4, cumul: 90, assets: 6020000, debt: 4615000 },
+                        { house: 15, contrib: 7500, netCash: 21868, months: 3, cumul: 93, assets: 6450000, debt: 4942000 },
+                        { house: 16, contrib: 7500, netCash: 23430, months: 3, cumul: 96, assets: 6880000, debt: 5267000 }
                       ].map((row, i) => (
                         <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                           <td className="px-4 py-3">
@@ -1138,12 +1144,13 @@ export default function CLIGContent() {
                           <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.months}</td>
                           <td className="px-4 py-3 text-sm text-gray-900 font-medium">{row.cumul} ({(row.cumul / 12).toFixed(1)} {lang === 'fr' ? 'ans' : 'yrs'})</td>
                           <td className="px-4 py-3 text-sm font-semibold text-gray-900">${row.assets.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-sm font-semibold text-red-600">${row.debt.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
                     <tfoot className="bg-orange-100 border-t-4 border-orange-500">
                       <tr>
-                        <td colSpan={7} className="px-4 py-5">
+                        <td colSpan={8} className="px-4 py-5">
                           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                             <div>
                               <div className="text-xs text-gray-600 mb-1">{lang === 'fr' ? 'Temps total' : 'Total time'}</div>
@@ -1166,6 +1173,11 @@ export default function CLIGContent() {
                             <div>
                               <div className="text-xs text-gray-600 mb-1">{lang === 'fr' ? 'Dette restante' : 'Remaining debt'}</div>
                               <div className="font-bold text-red-600">$4,800,000</div>
+                              <div className="text-[10px] text-gray-600 mt-1 leading-tight">
+                                {lang === 'fr'
+                                  ? '$5,267,000 au dernier achat → réduit à $4,800,000 à l\'année 15 grâce aux paiements continus'
+                                  : '$5,267,000 at last purchase → reduced to $4,800,000 by Year 15 through ongoing payments'}
+                              </div>
                             </div>
                           </div>
                         </td>
