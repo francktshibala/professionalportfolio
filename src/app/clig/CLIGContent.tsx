@@ -55,7 +55,7 @@ export default function CLIGContent() {
             'Fonctionne pour tous les statuts d\'immigration'
           ],
           cons: [
-            'Très lent — seulement 7 maisons en 15 ans',
+            'Très lent — seulement 4 maisons en 15 ans',
             'L\'inflation peut dépasser l\'épargne',
             'Revenus locatifs limités au début'
           ],
@@ -77,7 +77,7 @@ export default function CLIGContent() {
           ],
           cons: [
             'Un engagement mensuel plus élevé peut ne pas être réaliste pour tous les membres',
-            'Seulement 20 maisons en 15 ans',
+            'Seulement 6 maisons en 15 ans',
             'Multiple de rendement identique au modèle 1'
           ],
           totalWealth: '4,7 M$',
@@ -320,7 +320,7 @@ export default function CLIGContent() {
             'Works for all immigration statuses'
           ],
           cons: [
-            'Very slow — only 7 homes in 15 years',
+            'Very slow — only 4 homes in 15 years',
             'Inflation may outpace savings',
             'Limited rental income early on'
           ],
@@ -342,7 +342,7 @@ export default function CLIGContent() {
           ],
           cons: [
             'Higher monthly commitment may not be realistic for all members',
-            'Only 20 homes in 15 years',
+            'Only 6 homes in 15 years',
             'Return multiple identical to Model 1'
           ],
           totalWealth: '$4.7M',
