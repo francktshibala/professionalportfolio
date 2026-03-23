@@ -4,6 +4,8 @@ import { getAllBlogPosts } from '@/lib/blog';
 import { DisplayProject } from '@/types';
 import { BlogPost } from '@/types/blog';
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { ProjectService } from '@/lib/services/projects'
 import { getRateLimitKey, isRateLimited } from '@/lib/api-utils'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     // Rate limiting for public endpoint

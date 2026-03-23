@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ContactService } from '@/lib/services/contact'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     const apiKey = request.headers.get('x-api-key')
