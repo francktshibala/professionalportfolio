@@ -18,7 +18,12 @@ export default function CLIGContent() {
         title: 'Collective Investment Legacy Group',
         subtitle: 'Analyse Stratégique',
         description: 'Une présentation de recherche bilingue pour notre groupe d\'investissement de 15 membres. Début mai 2026.',
-        intro: 'Nous sommes 15 membres qui construisons une richesse à long terme grâce à l\'immobilier en Utah. Avant de nous engager dans une stratégie, nous avons mené une recherche structurée en utilisant trois outils d\'IA indépendants pour trouver la meilleure voie à suivre pour notre situation spécifique — réfugiés, contributions variables, minimum de 500 $ par personne par mois.'
+        intro: 'Nous sommes 15 membres qui construisons une richesse à long terme grâce à l\'immobilier en Utah. Avant de nous engager dans une stratégie, nous avons mené une recherche structurée en utilisant trois outils d\'IA indépendants pour trouver la meilleure voie à suivre pour notre situation spécifique — réfugiés, contributions variables, minimum de 500 $ par personne par mois.',
+        stats: {
+          members: '15 Membres',
+          monthly: '7 500 $/mois',
+          horizon: 'Horizon 15 ans'
+        }
       },
       research: {
         title: 'Comment la recherche a été faite',
@@ -42,6 +47,7 @@ export default function CLIGContent() {
       },
       models: {
         title: 'Les Trois Modèles',
+        perMemberTitle: 'Ce que vous valez à l\'année 15',
         model1: {
           name: 'Modèle 1 — Comptant uniquement à 500 $/personne/mois',
           explanation: 'Chaque membre contribue 500 $/mois. Pool total = 7 500 $/mois. Nous économisons jusqu\'à ce que nous ayons le prix d\'achat complet, puis nous achetons en espèces. Jamais de dette.',
@@ -50,11 +56,18 @@ export default function CLIGContent() {
             'Fonctionne pour tous les statuts d\'immigration'
           ],
           cons: [
-            'Très lent — seulement 4 maisons en 15 ans',
+            'Très lent — seulement 7 maisons en 15 ans',
             'L\'inflation peut dépasser l\'épargne',
             'Revenus locatifs limités au début'
           ],
-          keyNumber: '3,1 M$ de richesse totale à l\'année 15 — 208 K$ par membre'
+          totalWealth: '3,1 M$',
+          perMember: '208 K$',
+          breakdown: {
+            realEstate: '185 000 $',
+            cash: '23 000 $',
+            total: '208 000 $',
+            multiple: '2,30'
+          }
         },
         model2: {
           name: 'Modèle 2 — Comptant uniquement à 750 $/personne/mois',
@@ -65,10 +78,17 @@ export default function CLIGContent() {
           ],
           cons: [
             'Un engagement mensuel plus élevé peut ne pas être réaliste pour tous les membres',
-            'Seulement 6 maisons en 15 ans',
+            'Seulement 20 maisons en 15 ans',
             'Multiple de rendement identique au modèle 1'
           ],
-          keyNumber: '4,7 M$ de richesse totale à l\'année 15 — 315 K$ par membre'
+          totalWealth: '4,7 M$',
+          perMember: '315 K$',
+          breakdown: {
+            realEstate: '274 000 $',
+            cash: '41 000 $',
+            total: '315 000 $',
+            multiple: '2,30'
+          }
         },
         model3: {
           name: 'Modèle 3 — Stratégie de prêt assumable',
@@ -86,7 +106,16 @@ export default function CLIGContent() {
             'Taux de succès proche de zéro pour la structure LLC',
             'L\'écart de capital nécessite encore des liquidités importantes'
           ],
-          keyNumber: '16,7 M$ de richesse totale à l\'année 15 — 1,1 M$ par membre — mais fait face à de graves obstacles juridiques pour l\'utilisation LLC'
+          totalWealth: '16,7 M$',
+          perMember: '1,1 M$',
+          legalWarning: 'Obstacles juridiques graves pour utilisation LLC',
+          breakdown: {
+            realEstate: '1 040 000 $',
+            cash: '60 000 $',
+            total: '1 100 000 $',
+            multiple: '12,40',
+            debtNote: 'Inclut part proportionnelle de 5,77 M$ de dette du groupe'
+          }
         }
       },
       assumptionCheck: {
@@ -137,6 +166,7 @@ export default function CLIGContent() {
             'Total projeté brut : 3 900 $ - 5 000 $/mois'
           ]
         },
+        warningTitle: '⚠️ ATTENTION JURIDIQUE CRITIQUE',
         warning: 'La plupart des juridictions du comté de Salt Lake exigent l\'occupation par le propriétaire. Cela signifie que le groupe ne peut pas légalement louer les deux unités à des locataires tiers alors qu\'aucun membre n\'y vit. C\'est une contrainte critique pour une LLC d\'investissement. Le groupe devrait consulter un avocat immobilier de l\'Utah avant d\'acheter une propriété ADU.',
         snowball: {
           title: 'Impact boule de neige',
@@ -156,11 +186,11 @@ export default function CLIGContent() {
             { label: 'Total investi (15 ans)', values: ['1 350 000 $', '2 025 000 $', '1 350 000 $'] },
             { label: 'Maisons à l\'année 5', values: ['0', '1', '4'] },
             { label: 'Maisons à l\'année 10', values: ['2', '3', '12'] },
-            { label: 'Maisons à l\'année 15', values: ['4', '6', '20'] },
-            { label: 'Richesse totale année 15', values: ['3,1 M$', '4,7 M$', '16,7 M$'] },
-            { label: 'Part par membre', values: ['208 K$', '315 K$', '1,1 M$'] },
-            { label: 'Multiple de rendement', values: ['2,3x', '2,3x', '12,4x'] },
-            { label: 'Dette à l\'année 15', values: ['0 $', '0 $', '5,77 M$'] }
+            { label: 'Maisons à l\'année 15', values: ['7', '20', '20'], highlight: [false, false, true] },
+            { label: 'Richesse totale année 15', values: ['3,1 M$', '4,7 M$', '16,7 M$'], highlight: [false, false, true] },
+            { label: 'Part par membre', values: ['208 K$', '315 K$', '1,1 M$'], highlight: [false, false, true] },
+            { label: 'Multiple de rendement', values: ['2,3x', '2,3x', '12,4x'], highlight: [false, false, true] },
+            { label: 'Dette à l\'année 15', values: ['0 $', '0 $', '5,77 M$'], highlight: [true, true, 'danger'] }
           ]
         }
       },
@@ -168,20 +198,32 @@ export default function CLIGContent() {
         title: 'Notre recommandation',
         phases: [
           {
-            title: 'Phase 1 — Construire les fondations (Mois 1-12)',
-            description: 'Épargner en groupe en utilisant le modèle en espèces. Former la LLC correctement, ouvrir un compte bancaire d\'entreprise, construire l\'historique de crédit, identifier un gestionnaire immobilier. Objectif : atteindre 90 K$ dans le pool.'
+            number: '01',
+            title: 'Phase 1 — Construire les fondations',
+            subtitle: 'Mois 1-12',
+            description: 'Épargner en groupe en utilisant le modèle en espèces. Former la LLC correctement, ouvrir un compte bancaire d\'entreprise, construire l\'historique de crédit, identifier un gestionnaire immobilier. Objectif : atteindre 90 K$ dans le pool.',
+            icon: '💰'
           },
           {
-            title: 'Phase 2 — Premier achat en utilisant la stratégie pont',
-            description: 'Utiliser 90 K$ comme acompte de 20 % sur une propriété de 400 K$ à 450 K$ avec une suite au sous-sol. Les deux unités génèrent des revenus locatifs immédiatement. Cela permet au groupe d\'entrer dans l\'immobilier 3-4 ans plus tôt que d\'attendre 500 K$ en espèces.'
+            number: '02',
+            title: 'Phase 2 — Premier achat',
+            subtitle: 'Stratégie pont',
+            description: 'Utiliser 90 K$ comme acompte de 20 % sur une propriété de 400 K$ à 450 K$ avec une suite au sous-sol. Les deux unités génèrent des revenus locatifs immédiatement. Cela permet au groupe d\'entrer dans l\'immobilier 3-4 ans plus tôt que d\'attendre 500 K$ en espèces.',
+            icon: '🏠'
           },
           {
-            title: 'Phase 3 — Effet boule de neige avec les propriétés ADU',
-            description: 'Les revenus locatifs des deux unités plus les contributions continues accélèrent l\'achat suivant. Cibler les maisons avec des suites au sous-sol — plus de revenus par dollar dépensé.'
+            number: '03',
+            title: 'Phase 3 — Effet boule de neige',
+            subtitle: 'Propriétés ADU',
+            description: 'Les revenus locatifs des deux unités plus les contributions continues accélèrent l\'achat suivant. Cibler les maisons avec des suites au sous-sol — plus de revenus par dollar dépensé.',
+            icon: '📈'
           },
           {
-            title: 'Phase 4 — Prêts assumables comme opportunité uniquement',
-            description: 'Si un membre avec un bon crédit et un EAD valide trouve un prêt assumable à moins de 3 % ET est prêt à vivre dans la propriété — poursuivez-le. Ne jamais compter dessus comme un plan.'
+            number: '04',
+            title: 'Phase 4 — Opportunités',
+            subtitle: 'Prêts assumables',
+            description: 'Si un membre avec un bon crédit et un EAD valide trouve un prêt assumable à moins de 3 % ET est prêt à vivre dans la propriété — poursuivez-le. Ne jamais compter dessus comme un plan.',
+            icon: '🎯'
           }
         ],
         callout: 'La différence entre 500 $ et 1 000 $ par mois par membre est significative. Les membres qui peuvent contribuer davantage accélèrent le groupe sans changer la stratégie. Chaque dollar au-dessus de 500 $ est de la vitesse gratuite.'
@@ -205,7 +247,12 @@ export default function CLIGContent() {
         title: 'Collective Investment Legacy Group',
         subtitle: 'Strategic Analysis',
         description: 'A bilingual research presentation for our 15-member investment group. Starting May 2026.',
-        intro: 'We are 15 members building long-term wealth through real estate in Utah. Before committing to a strategy we ran structured research using three independent AI tools to find the best path forward for our specific situation — refugees, variable contributions, $500 minimum per person per month.'
+        intro: 'We are 15 members building long-term wealth through real estate in Utah. Before committing to a strategy we ran structured research using three independent AI tools to find the best path forward for our specific situation — refugees, variable contributions, $500 minimum per person per month.',
+        stats: {
+          members: '15 Members',
+          monthly: '$7,500/month',
+          horizon: '15-Year Horizon'
+        }
       },
       research: {
         title: 'How the Research Was Done',
@@ -229,6 +276,7 @@ export default function CLIGContent() {
       },
       models: {
         title: 'The Three Models',
+        perMemberTitle: 'What you are worth at Year 15',
         model1: {
           name: 'Model 1 — Cash Only at $500/person/month',
           explanation: 'Every member contributes $500/month. Total pool = $7,500/month. We save until we have full purchase price then buy in cash. No debt ever.',
@@ -237,11 +285,18 @@ export default function CLIGContent() {
             'Works for all immigration statuses'
           ],
           cons: [
-            'Very slow — only 4 homes in 15 years',
+            'Very slow — only 7 homes in 15 years',
             'Inflation may outpace savings',
             'Limited rental income early on'
           ],
-          keyNumber: '$3.1M total wealth at Year 15 — $208K per member'
+          totalWealth: '$3.1M',
+          perMember: '$208K',
+          breakdown: {
+            realEstate: '$185,000',
+            cash: '$23,000',
+            total: '$208,000',
+            multiple: '2.30'
+          }
         },
         model2: {
           name: 'Model 2 — Cash Only at $750/person/month',
@@ -252,10 +307,17 @@ export default function CLIGContent() {
           ],
           cons: [
             'Higher monthly commitment may not be realistic for all members',
-            'Only 6 homes in 15 years',
+            'Only 20 homes in 15 years',
             'Return multiple identical to Model 1'
           ],
-          keyNumber: '$4.7M total wealth at Year 15 — $315K per member'
+          totalWealth: '$4.7M',
+          perMember: '$315K',
+          breakdown: {
+            realEstate: '$274,000',
+            cash: '$41,000',
+            total: '$315,000',
+            multiple: '2.30'
+          }
         },
         model3: {
           name: 'Model 3 — Assumable Loan Strategy',
@@ -273,7 +335,16 @@ export default function CLIGContent() {
             'Near-zero success rate for LLC structure',
             'Equity gap still requires significant cash'
           ],
-          keyNumber: '$16.7M total wealth at Year 15 — $1.1M per member — but faces severe legal barriers for LLC use'
+          totalWealth: '$16.7M',
+          perMember: '$1.1M',
+          legalWarning: 'Severe legal barriers for LLC use',
+          breakdown: {
+            realEstate: '$1,040,000',
+            cash: '$60,000',
+            total: '$1,100,000',
+            multiple: '12.40',
+            debtNote: 'Includes proportional share of $5.77M group debt'
+          }
         }
       },
       assumptionCheck: {
@@ -324,6 +395,7 @@ export default function CLIGContent() {
             'Total projected gross: $3,900–$5,000/month'
           ]
         },
+        warningTitle: '⚠️ CRITICAL LEGAL WARNING',
         warning: 'Most Salt Lake County jurisdictions require owner-occupancy. This means the group cannot legally rent both units to third-party tenants while no member lives there. This is a critical constraint for an investment LLC. The group should consult a Utah real estate attorney before purchasing an ADU property.',
         snowball: {
           title: 'Snowball impact',
@@ -343,11 +415,11 @@ export default function CLIGContent() {
             { label: 'Total invested (15 yrs)', values: ['$1,350,000', '$2,025,000', '$1,350,000'] },
             { label: 'Homes at Year 5', values: ['0', '1', '4'] },
             { label: 'Homes at Year 10', values: ['2', '3', '12'] },
-            { label: 'Homes at Year 15', values: ['4', '6', '20'] },
-            { label: 'Total wealth Year 15', values: ['$3.1M', '$4.7M', '$16.7M'] },
-            { label: 'Per member share', values: ['$208K', '$315K', '$1.1M'] },
-            { label: 'Return multiple', values: ['2.3x', '2.3x', '12.4x'] },
-            { label: 'Debt at Year 15', values: ['$0', '$0', '$5.77M'] }
+            { label: 'Homes at Year 15', values: ['7', '20', '20'], highlight: [false, false, true] },
+            { label: 'Total wealth Year 15', values: ['$3.1M', '$4.7M', '$16.7M'], highlight: [false, false, true] },
+            { label: 'Per member share', values: ['$208K', '$315K', '$1.1M'], highlight: [false, false, true] },
+            { label: 'Return multiple', values: ['2.3x', '2.3x', '12.4x'], highlight: [false, false, true] },
+            { label: 'Debt at Year 15', values: ['$0', '$0', '$5.77M'], highlight: [true, true, 'danger'] }
           ]
         }
       },
@@ -355,20 +427,32 @@ export default function CLIGContent() {
         title: 'Our Recommendation',
         phases: [
           {
-            title: 'Phase 1 — Build the Foundation (Months 1–12)',
-            description: 'Save as a group using the cash model. Form the LLC properly, open business bank account, build credit history, identify a property manager. Target: reach $90K in the pool.'
+            number: '01',
+            title: 'Phase 1 — Build the Foundation',
+            subtitle: 'Months 1–12',
+            description: 'Save as a group using the cash model. Form the LLC properly, open business bank account, build credit history, identify a property manager. Target: reach $90K in the pool.',
+            icon: '💰'
           },
           {
-            title: 'Phase 2 — First Purchase Using Bridge Strategy',
-            description: 'Use $90K as a 20% down payment on a $400K–$450K property with a basement suite. Both units generate rental income immediately. This gets the group into real estate 3–4 years earlier than waiting for $500K cash.'
+            number: '02',
+            title: 'Phase 2 — First Purchase',
+            subtitle: 'Bridge Strategy',
+            description: 'Use $90K as a 20% down payment on a $400K–$450K property with a basement suite. Both units generate rental income immediately. This gets the group into real estate 3–4 years earlier than waiting for $500K cash.',
+            icon: '🏠'
           },
           {
-            title: 'Phase 3 — Snowball with ADU Properties',
-            description: 'Rental income from both units plus continued contributions accelerates the next purchase. Target homes with basement suites — more income per dollar spent.'
+            number: '03',
+            title: 'Phase 3 — Snowball Effect',
+            subtitle: 'ADU Properties',
+            description: 'Rental income from both units plus continued contributions accelerates the next purchase. Target homes with basement suites — more income per dollar spent.',
+            icon: '📈'
           },
           {
-            title: 'Phase 4 — Assumption Loans as Opportunity Only',
-            description: 'If a member with strong credit and valid EAD finds an assumable sub-3% loan AND is willing to live in the property — pursue it. Never depend on it as a plan.'
+            number: '04',
+            title: 'Phase 4 — Opportunities',
+            subtitle: 'Assumable Loans',
+            description: 'If a member with strong credit and valid EAD finds an assumable sub-3% loan AND is willing to live in the property — pursue it. Never depend on it as a plan.',
+            icon: '🎯'
           }
         ],
         callout: 'The difference between $500 and $1,000 per month per member is significant. Members who can contribute more accelerate the group without changing the strategy. Every dollar above $500 is free speed.'
@@ -391,76 +475,95 @@ export default function CLIGContent() {
 
   const t = content[lang];
 
-  // Chart data
+  // Updated chart data with correct values from user
   const wealthData = [
-    { year: 1, model1: 174, model2: 174, model3: 174 },
-    { year: 2, model1: 355, model2: 377, model3: 377 },
-    { year: 3, model1: 574, model2: 743, model3: 743 },
-    { year: 4, model1: 789, model2: 1180, model3: 1180 },
-    { year: 5, model1: 1010, model2: 1730, model3: 1730 },
-    { year: 6, model1: 1330, model2: 2490, model3: 2490 },
-    { year: 7, model1: 1600, model2: 3430, model3: 3430 },
-    { year: 8, model1: 1990, model2: 4580, model3: 4580 },
-    { year: 9, model1: 2310, model2: 5940, model3: 5940 },
+    { year: 1, model1: 174, model2: 174, model3: 177 },
+    { year: 2, model1: 355, model2: 377, model3: 425 },
+    { year: 3, model1: 574, model2: 743, model3: 742 },
+    { year: 4, model1: 789, model2: 1179, model3: 1178 },
+    { year: 5, model1: 1013, model2: 1731, model3: 1731 },
+    { year: 6, model1: 1329, model2: 2494, model3: 2494 },
+    { year: 7, model1: 1595, model2: 3434, model3: 3434 },
+    { year: 8, model1: 1990, model2: 4575, model3: 4575 },
+    { year: 9, model1: 2305, model2: 5939, model3: 5939 },
     { year: 10, model1: 2790, model2: 7030, model3: 7030 },
-    { year: 11, model1: 3160, model2: 8180, model3: 8180 },
-    { year: 12, model1: 3750, model2: 9380, model3: 9380 },
-    { year: 13, model1: 4400, model2: 10650, model3: 10650 },
-    { year: 14, model1: 4880, model2: 11970, model3: 11970 },
-    { year: 15, model1: 5660, model2: 13370, model3: 13370 }
+    { year: 11, model1: 3160, model2: 8176, model3: 8176 },
+    { year: 12, model1: 3747, model2: 9381, model3: 9381 },
+    { year: 13, model1: 4398, model2: 10645, model3: 10645 },
+    { year: 14, model1: 4884, model2: 11973, model3: 11973 },
+    { year: 15, model1: 5660, model2: 13367, model3: 13367 }
   ];
 
   const homesData = [
-    { year: 1, model1: 0, model2: 1, model3: 1 },
-    { year: 2, model1: 0, model2: 1, model3: 3 },
-    { year: 3, model1: 1, model2: 3, model3: 4 },
-    { year: 4, model1: 1, model2: 4, model3: 6 },
-    { year: 5, model1: 1, model2: 6, model3: 8 },
-    { year: 6, model1: 2, model2: 8, model3: 11 },
-    { year: 7, model1: 2, model2: 11, model3: 14 },
-    { year: 8, model1: 2, model2: 14, model3: 17 },
-    { year: 9, model1: 3, model2: 17, model3: 20 },
-    { year: 10, model1: 4, model2: 20, model3: 20 },
+    { year: 1, model1: 0, model2: 0, model3: 1 },
+    { year: 2, model1: 0, model2: 0, model3: 3 },
+    { year: 3, model1: 1, model2: 1, model3: 4 },
+    { year: 4, model1: 1, model2: 3, model3: 6 },
+    { year: 5, model1: 1, model2: 4, model3: 8 },
+    { year: 6, model1: 2, model2: 6, model3: 11 },
+    { year: 7, model1: 2, model2: 8, model3: 14 },
+    { year: 8, model1: 3, model2: 11, model3: 17 },
+    { year: 9, model1: 3, model2: 14, model3: 20 },
+    { year: 10, model1: 4, model2: 17, model3: 20 },
     { year: 11, model1: 4, model2: 20, model3: 20 },
-    { year: 12, model1: 4, model2: 20, model3: 20 },
-    { year: 13, model1: 5, model2: 20, model3: 20 },
+    { year: 12, model1: 5, model2: 20, model3: 20 },
+    { year: 13, model1: 6, model2: 20, model3: 20 },
     { year: 14, model1: 6, model2: 20, model3: 20 },
     { year: 15, model1: 7, model2: 20, model3: 20 }
   ];
+
+  // Model colors
+  const modelColors = ['#3b82f6', '#9333ea', '#10b981']; // Blue, Purple, Green
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Language Toggle */}
       <button
         onClick={toggleLanguage}
-        className="fixed top-6 right-6 z-50 bg-navy-800 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-navy-700 transition-colors font-semibold"
+        className="fixed top-4 right-4 md:top-6 md:right-6 z-50 bg-navy-800 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-navy-700 transition-colors font-semibold text-sm md:text-base"
         style={{ backgroundColor: '#1e3a5f' }}
       >
         {lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR'}
       </button>
 
       {/* Section 1 - Hero */}
-      <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-navy-900 to-navy-800" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)' }}>
+      <section className="pt-20 pb-12 md:pb-16 px-4 bg-gradient-to-br from-navy-900 to-navy-800" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)' }}>
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">{t.hero.title}</h1>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-blue-200">{t.hero.subtitle}</h2>
-          <p className="text-lg md:text-xl mb-8 text-blue-100">{t.hero.description}</p>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-left">
-            <p className="text-base md:text-lg leading-relaxed">{t.hero.intro}</p>
+          <h1 className="text-3xl md:text-5xl font-bold mb-3">{t.hero.title}</h1>
+          <h2 className="text-xl md:text-3xl font-semibold mb-6 text-blue-200">{t.hero.subtitle}</h2>
+          <p className="text-base md:text-xl mb-8 text-blue-100">{t.hero.description}</p>
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-left mb-8">
+            <p className="text-sm md:text-lg leading-relaxed">{t.hero.intro}</p>
+          </div>
+
+          {/* Hero Stats Bar */}
+          <div className="grid grid-cols-3 gap-2 md:gap-6 bg-white/20 backdrop-blur-md rounded-xl p-4 md:p-6">
+            <div className="text-center">
+              <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">{t.hero.stats.members.split(' ')[0]}</div>
+              <div className="text-xs md:text-sm text-blue-200">{t.hero.stats.members.split(' ').slice(1).join(' ')}</div>
+            </div>
+            <div className="text-center border-x border-white/30">
+              <div className="text-xl md:text-4xl font-bold mb-1 md:mb-2">{t.hero.stats.monthly.split('/')[0]}</div>
+              <div className="text-xs md:text-sm text-blue-200">/{t.hero.stats.monthly.split('/')[1]}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">{t.hero.stats.horizon.split(' ')[0]}</div>
+              <div className="text-xs md:text-sm text-blue-200">{t.hero.stats.horizon.split(' ').slice(1).join(' ')}</div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Section 2 - Research Methodology */}
-      <section className="py-16 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.research.title}</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.research.title}</h2>
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6">
             {t.research.tools.map((tool, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow">
-                <h3 className="text-xl font-bold mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{tool.name}</h3>
-                <p className="text-sm font-semibold text-blue-600 mb-3">{tool.role}</p>
-                <p className="text-gray-700 text-sm leading-relaxed">{tool.task}</p>
+              <div key={idx} className="bg-white rounded-xl shadow-md p-4 md:p-6 hover:shadow-xl transition-shadow">
+                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{tool.name}</h3>
+                <p className="text-xs md:text-sm font-semibold text-blue-600 mb-2 md:mb-3">{tool.role}</p>
+                <p className="text-gray-700 text-xs md:text-sm leading-relaxed">{tool.task}</p>
               </div>
             ))}
           </div>
@@ -468,33 +571,33 @@ export default function CLIGContent() {
       </section>
 
       {/* Section 3 - Three Models */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-12 md:py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.models.title}</h2>
-          <div className="space-y-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.models.title}</h2>
+          <div className="space-y-6 md:space-y-8">
             {[t.models.model1, t.models.model2, t.models.model3].map((model, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow border-l-4" style={{ borderLeftColor: idx === 0 ? '#10b981' : idx === 1 ? '#3b82f6' : '#f59e0b' }}>
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-navy-800" style={{ color: '#1e3a5f' }}>{model.name}</h3>
-                <p className="text-gray-700 mb-4 leading-relaxed">{model.explanation}</p>
+              <div key={idx} className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl shadow-lg p-4 md:p-6 hover:shadow-2xl transition-shadow border-l-8" style={{ borderLeftColor: modelColors[idx] }}>
+                <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4 text-navy-800" style={{ color: '#1e3a5f' }}>{model.name}</h3>
+                <p className="text-gray-700 mb-4 md:mb-6 leading-relaxed text-sm md:text-base">{model.explanation}</p>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                <div className="grid md:grid-cols-2 gap-4 mb-6">
                   <div>
-                    <h4 className="font-semibold text-green-700 mb-2">{lang === 'fr' ? 'Avantages :' : 'Pros:'}</h4>
+                    <h4 className="font-semibold text-green-700 mb-2 text-sm md:text-base">{lang === 'fr' ? 'Avantages :' : 'Pros:'}</h4>
                     <ul className="space-y-1">
                       {model.pros.map((pro, i) => (
-                        <li key={i} className="text-sm text-gray-700 flex items-start">
-                          <span className="text-green-500 mr-2">✓</span>
+                        <li key={i} className="text-xs md:text-sm text-gray-700 flex items-start">
+                          <span className="text-green-500 mr-2 flex-shrink-0">✓</span>
                           <span>{pro}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-red-700 mb-2">{lang === 'fr' ? 'Inconvénients :' : 'Cons:'}</h4>
+                    <h4 className="font-semibold text-red-700 mb-2 text-sm md:text-base">{lang === 'fr' ? 'Inconvénients :' : 'Cons:'}</h4>
                     <ul className="space-y-1">
                       {model.cons.map((con, i) => (
-                        <li key={i} className="text-sm text-gray-700 flex items-start">
-                          <span className="text-red-500 mr-2">✗</span>
+                        <li key={i} className="text-xs md:text-sm text-gray-700 flex items-start">
+                          <span className="text-red-500 mr-2 flex-shrink-0">✗</span>
                           <span>{con}</span>
                         </li>
                       ))}
@@ -502,8 +605,48 @@ export default function CLIGContent() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-4 border-2" style={{ borderColor: idx === 0 ? '#10b981' : idx === 1 ? '#3b82f6' : '#f59e0b' }}>
-                  <p className="font-bold text-lg" style={{ color: idx === 0 ? '#10b981' : idx === 1 ? '#3b82f6' : '#f59e0b' }}>{model.keyNumber}</p>
+                {/* Per Member Value Breakdown */}
+                <div className="bg-white rounded-lg p-4 md:p-6 mb-4 md:mb-6 border border-gray-200">
+                  <h4 className="font-bold mb-3 md:mb-4 text-sm md:text-base" style={{ color: modelColors[idx] }}>{t.models.perMemberTitle}</h4>
+                  <div className="grid grid-cols-2 gap-2 md:gap-4 text-xs md:text-sm">
+                    <div>
+                      <div className="text-gray-600">{lang === 'fr' ? 'Votre part immobilier :' : 'Your share of real estate:'}</div>
+                      <div className="font-bold text-gray-900">{model.breakdown.realEstate}</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-600">{lang === 'fr' ? 'Votre part cash :' : 'Your share of cash:'}</div>
+                      <div className="font-bold text-gray-900">{model.breakdown.cash}</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-600">{lang === 'fr' ? 'Valeur personnelle totale :' : 'Total personal value:'}</div>
+                      <div className="font-bold text-green-700 text-base md:text-lg">{model.breakdown.total}</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-600">{lang === 'fr' ? 'Chaque $ investi devint :' : 'Every $ you put in became:'}</div>
+                      <div className="font-bold text-blue-700 text-base md:text-lg">{model.breakdown.multiple}</div>
+                    </div>
+                  </div>
+                  {(model.breakdown as any).debtNote && (
+                    <div className="mt-3 text-xs md:text-sm text-orange-700 italic">{(model.breakdown as any).debtNote}</div>
+                  )}
+                </div>
+
+                {/* Key Numbers - Large and Bold */}
+                <div className="rounded-lg p-4 md:p-6 text-center shadow-inner" style={{ backgroundColor: modelColors[idx] + '15', borderWidth: '3px', borderStyle: 'solid', borderColor: modelColors[idx] }}>
+                  <div className="text-xs md:text-sm font-semibold mb-2" style={{ color: modelColors[idx] }}>
+                    {lang === 'fr' ? 'RICHESSE TOTALE ANNÉE 15' : 'TOTAL WEALTH YEAR 15'}
+                  </div>
+                  <div className="text-3xl md:text-5xl font-black mb-2 md:mb-4" style={{ color: modelColors[idx] }}>
+                    {model.totalWealth}
+                  </div>
+                  <div className="text-xl md:text-3xl font-bold" style={{ color: modelColors[idx] }}>
+                    {model.perMember} {lang === 'fr' ? 'par membre' : 'per member'}
+                  </div>
+                  {(model as any).legalWarning && (
+                    <div className="mt-3 md:mt-4 text-xs md:text-sm text-red-700 font-semibold">
+                      ⚠️ {(model as any).legalWarning}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -512,63 +655,63 @@ export default function CLIGContent() {
       </section>
 
       {/* Section 4 - Assumption Loan Reality Check */}
-      <section className="py-16 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-navy-900" style={{ color: '#0f172a' }}>{t.assumptionCheck.title}</h2>
-          <p className="text-center text-gray-700 mb-8">{t.assumptionCheck.intro}</p>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-navy-900" style={{ color: '#0f172a' }}>{t.assumptionCheck.title}</h2>
+          <p className="text-center text-gray-700 mb-6 md:mb-8 text-sm md:text-base px-2">{t.assumptionCheck.intro}</p>
 
-          <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-            <h3 className="text-xl font-bold mb-4 text-green-700">{lang === 'fr' ? 'Où les deux étaient d\'accord :' : 'Where both agreed:'}</h3>
-            <ul className="space-y-3">
+          <div className="bg-white rounded-xl shadow-md p-4 md:p-6 mb-4 md:mb-6">
+            <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-green-700">{lang === 'fr' ? 'Où les deux étaient d\'accord :' : 'Where both agreed:'}</h3>
+            <ul className="space-y-2 md:space-y-3">
               {t.assumptionCheck.agreements.map((item, idx) => (
-                <li key={idx} className="flex items-start text-gray-700">
-                  <span className="text-green-500 mr-3 text-xl">✓</span>
+                <li key={idx} className="flex items-start text-gray-700 text-xs md:text-base">
+                  <span className="text-green-500 mr-2 md:mr-3 text-lg md:text-xl flex-shrink-0">✓</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="bg-yellow-50 rounded-xl shadow-md p-6 mb-6 border-2 border-yellow-300">
-            <h3 className="text-xl font-bold mb-4 text-yellow-800">{t.assumptionCheck.disagreements.title}</h3>
-            <div className="space-y-3 text-gray-700">
+          <div className="bg-yellow-50 rounded-xl shadow-md p-4 md:p-6 mb-4 md:mb-6 border-2 border-yellow-300">
+            <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-yellow-800">{t.assumptionCheck.disagreements.title}</h3>
+            <div className="space-y-2 md:space-y-3 text-gray-700 text-xs md:text-base">
               <p><strong>Copilot:</strong> {t.assumptionCheck.disagreements.copilot}</p>
               <p><strong>Gemini:</strong> {t.assumptionCheck.disagreements.gemini}</p>
               <p className="font-semibold text-yellow-900">{t.assumptionCheck.disagreements.conclusion}</p>
             </div>
           </div>
 
-          <div className="bg-red-50 rounded-xl shadow-md p-6 border-2 border-red-300">
-            <p className="text-gray-800 font-semibold leading-relaxed">{t.assumptionCheck.bottomLine}</p>
+          <div className="bg-red-50 rounded-xl shadow-md p-4 md:p-6 border-2 border-red-300">
+            <p className="text-gray-800 font-semibold leading-relaxed text-xs md:text-base">{t.assumptionCheck.bottomLine}</p>
           </div>
         </div>
       </section>
 
       {/* Section 5 - Duplex/ADU Strategy */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-12 md:py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-navy-900" style={{ color: '#0f172a' }}>{t.duplex.title}</h2>
-          <p className="text-center text-gray-700 mb-8 text-lg">{t.duplex.intro}</p>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-navy-900" style={{ color: '#0f172a' }}>{t.duplex.title}</h2>
+          <p className="text-center text-gray-700 mb-6 md:mb-8 text-sm md:text-lg px-2">{t.duplex.intro}</p>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-blue-50 rounded-xl p-6 shadow-md">
-              <h3 className="text-lg font-bold mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{t.duplex.acquisition.title}</h3>
-              <ul className="space-y-2">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6">
+            <div className="bg-blue-50 rounded-xl p-4 md:p-6 shadow-md">
+              <h3 className="text-base md:text-lg font-bold mb-2 md:mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{t.duplex.acquisition.title}</h3>
+              <ul className="space-y-1 md:space-y-2">
                 {t.duplex.acquisition.items.map((item, idx) => (
-                  <li key={idx} className="text-gray-700 text-sm flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                  <li key={idx} className="text-gray-700 text-xs md:text-sm flex items-start">
+                    <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-blue-50 rounded-xl p-6 shadow-md">
-              <h3 className="text-lg font-bold mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{t.duplex.income.title}</h3>
-              <ul className="space-y-2">
+            <div className="bg-blue-50 rounded-xl p-4 md:p-6 shadow-md">
+              <h3 className="text-base md:text-lg font-bold mb-2 md:mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{t.duplex.income.title}</h3>
+              <ul className="space-y-1 md:space-y-2">
                 {t.duplex.income.items.map((item, idx) => (
-                  <li key={idx} className="text-gray-700 text-sm flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
+                  <li key={idx} className="text-gray-700 text-xs md:text-sm flex items-start">
+                    <span className="text-blue-500 mr-2 flex-shrink-0">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -576,29 +719,36 @@ export default function CLIGContent() {
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-xl p-6 shadow-md mb-6">
-            <h3 className="text-lg font-bold mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{t.duplex.legal.title}</h3>
-            <ul className="space-y-2">
+          <div className="bg-gray-50 rounded-xl p-4 md:p-6 shadow-md mb-6">
+            <h3 className="text-base md:text-lg font-bold mb-2 md:mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{t.duplex.legal.title}</h3>
+            <ul className="space-y-1 md:space-y-2">
               {t.duplex.legal.items.map((item, idx) => (
-                <li key={idx} className="text-gray-700 text-sm flex items-start">
-                  <span className="text-amber-500 mr-2">⚠</span>
+                <li key={idx} className="text-gray-700 text-xs md:text-sm flex items-start">
+                  <span className="text-amber-500 mr-2 flex-shrink-0 text-base">⚠</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="bg-red-50 rounded-xl p-6 shadow-md border-2 border-red-300 mb-6">
-            <h3 className="text-lg font-bold mb-3 text-red-800">{lang === 'fr' ? 'Note juridique importante' : 'Important legal note'}</h3>
-            <p className="text-gray-800 leading-relaxed">{t.duplex.warning}</p>
+          {/* CRITICAL WARNING - Highly Visible */}
+          <div className="bg-gradient-to-r from-red-100 to-orange-100 rounded-xl p-6 md:p-8 shadow-2xl border-4 border-red-500 mb-6 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-600 via-orange-600 to-red-600"></div>
+            <div className="flex items-start gap-3 md:gap-4">
+              <div className="text-4xl md:text-6xl flex-shrink-0">⚠️</div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-black mb-3 md:mb-4 text-red-900">{t.duplex.warningTitle}</h3>
+                <p className="text-gray-900 font-semibold leading-relaxed text-sm md:text-base">{t.duplex.warning}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="bg-green-50 rounded-xl p-6 shadow-md">
-            <h3 className="text-lg font-bold mb-3 text-green-800">{t.duplex.snowball.title}</h3>
-            <ul className="space-y-2">
+          <div className="bg-green-50 rounded-xl p-4 md:p-6 shadow-md">
+            <h3 className="text-base md:text-lg font-bold mb-2 md:mb-3 text-green-800">{t.duplex.snowball.title}</h3>
+            <ul className="space-y-1 md:space-y-2">
               {t.duplex.snowball.items.map((item, idx) => (
-                <li key={idx} className="text-gray-700 text-sm flex items-start">
-                  <span className="text-green-500 mr-2">→</span>
+                <li key={idx} className="text-gray-700 text-xs md:text-sm flex items-start">
+                  <span className="text-green-500 mr-2 flex-shrink-0">→</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -608,28 +758,44 @@ export default function CLIGContent() {
       </section>
 
       {/* Section 6 - Numbers Comparison */}
-      <section className="py-16 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.comparison.title}</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.comparison.title}</h2>
 
-          {/* Comparison Table */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+          {/* Comparison Table - Scrollable on Mobile */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8 md:mb-12">
             <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-navy-800" style={{ backgroundColor: '#1e3a5f' }}>
+              <table className="w-full min-w-[600px]">
+                <thead>
                   <tr>
-                    {t.comparison.table.headers.map((header, idx) => (
-                      <th key={idx} className="px-4 py-3 text-left text-white font-semibold text-sm md:text-base">{header}</th>
-                    ))}
+                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base bg-gray-700"></th>
+                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base" style={{ backgroundColor: modelColors[0] }}>{t.comparison.table.headers[1]}</th>
+                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base" style={{ backgroundColor: modelColors[1] }}>{t.comparison.table.headers[2]}</th>
+                    <th className="px-3 md:px-4 py-3 text-left text-white font-semibold text-xs md:text-base" style={{ backgroundColor: modelColors[2] }}>{t.comparison.table.headers[3]}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {t.comparison.table.rows.map((row, idx) => (
                     <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                      <td className="px-4 py-3 font-semibold text-gray-800 text-sm md:text-base">{row.label}</td>
-                      {row.values.map((value, vIdx) => (
-                        <td key={vIdx} className="px-4 py-3 text-gray-700 text-sm md:text-base">{value}</td>
-                      ))}
+                      <td className="px-3 md:px-4 py-2 md:py-3 font-semibold text-gray-800 text-xs md:text-base">{row.label}</td>
+                      {row.values.map((value, vIdx) => {
+                        const shouldHighlight = row.highlight && row.highlight[vIdx];
+                        const isDanger = shouldHighlight === 'danger';
+                        const isPositive = shouldHighlight === true;
+
+                        return (
+                          <td
+                            key={vIdx}
+                            className={`px-3 md:px-4 py-2 md:py-3 text-xs md:text-base font-semibold ${
+                              isDanger ? 'bg-red-100 text-red-900' :
+                              isPositive ? 'bg-green-100 text-green-900' :
+                              'text-gray-700'
+                            }`}
+                          >
+                            {value}
+                          </td>
+                        );
+                      })}
                     </tr>
                   ))}
                 </tbody>
@@ -638,23 +804,23 @@ export default function CLIGContent() {
           </div>
 
           {/* Wealth Progression Chart */}
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h3 className="text-xl font-bold mb-6 text-center text-navy-800" style={{ color: '#1e3a5f' }}>
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 mb-6 md:mb-8">
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-navy-800" style={{ color: '#1e3a5f' }}>
               {lang === 'fr' ? 'Progression de la richesse totale (en milliers $)' : 'Total Wealth Progression (in thousands $)'}
             </h3>
-            <ResponsiveContainer width="100%" height={400}>
+            <ResponsiveContainer width="100%" height={300} className="md:h-[400px]">
               <LineChart data={wealthData}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" label={{ value: lang === 'fr' ? 'Année' : 'Year', position: 'insideBottom', offset: -5 }} />
-                <YAxis label={{ value: lang === 'fr' ? 'Richesse ($k)' : 'Wealth ($k)', angle: -90, position: 'insideLeft' }} />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="model1" stroke="#10b981" strokeWidth={2} name={lang === 'fr' ? 'Modèle 1 ($500)' : 'Model 1 ($500)'} />
-                <Line type="monotone" dataKey="model2" stroke="#3b82f6" strokeWidth={2} name={lang === 'fr' ? 'Modèle 2 ($750)' : 'Model 2 ($750)'} />
-                <Line type="monotone" dataKey="model3" stroke="#f59e0b" strokeWidth={2} name={lang === 'fr' ? 'Modèle 3 (Assumable)' : 'Model 3 (Assumable)'} />
+                <XAxis dataKey="year" label={{ value: lang === 'fr' ? 'Année' : 'Year', position: 'insideBottom', offset: -5 }} tick={{ fontSize: 12 }} />
+                <YAxis label={{ value: lang === 'fr' ? 'Richesse ($k)' : 'Wealth ($k)', angle: -90, position: 'insideLeft' }} tick={{ fontSize: 12 }} />
+                <Tooltip contentStyle={{ fontSize: '12px' }} />
+                <Legend wrapperStyle={{ fontSize: '12px' }} />
+                <Line type="monotone" dataKey="model1" stroke={modelColors[0]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 1 ($500)' : 'Model 1 ($500)'} />
+                <Line type="monotone" dataKey="model2" stroke={modelColors[1]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 2 ($750)' : 'Model 2 ($750)'} />
+                <Line type="monotone" dataKey="model3" stroke={modelColors[2]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 3 (Assumable)' : 'Model 3 (Assumable)'} />
               </LineChart>
             </ResponsiveContainer>
-            <p className="text-sm text-gray-600 mt-4 text-center italic">
+            <p className="text-xs md:text-sm text-gray-600 mt-3 md:mt-4 text-center italic px-2">
               {lang === 'fr'
                 ? 'Note : Modèle 3 inclut 5,77 M$ de dette à l\'année 15, contrairement aux modèles 1 et 2 (zéro dette)'
                 : 'Note: Model 3 includes $5.77M debt at Year 15, unlike Models 1 and 2 (zero debt)'}
@@ -662,59 +828,93 @@ export default function CLIGContent() {
           </div>
 
           {/* Homes Owned Chart */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h3 className="text-xl font-bold mb-6 text-center text-navy-800" style={{ color: '#1e3a5f' }}>
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center text-navy-800" style={{ color: '#1e3a5f' }}>
               {lang === 'fr' ? 'Nombre de maisons possédées par année' : 'Homes Owned Per Year'}
             </h3>
-            <ResponsiveContainer width="100%" height={350}>
+            <ResponsiveContainer width="100%" height={280} className="md:h-[350px]">
               <LineChart data={homesData}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" label={{ value: lang === 'fr' ? 'Année' : 'Year', position: 'insideBottom', offset: -5 }} />
-                <YAxis label={{ value: lang === 'fr' ? 'Maisons' : 'Homes', angle: -90, position: 'insideLeft' }} />
-                <Tooltip />
-                <Legend />
-                <Line type="stepAfter" dataKey="model1" stroke="#10b981" strokeWidth={2} name={lang === 'fr' ? 'Modèle 1' : 'Model 1'} />
-                <Line type="stepAfter" dataKey="model2" stroke="#3b82f6" strokeWidth={2} name={lang === 'fr' ? 'Modèle 2' : 'Model 2'} />
-                <Line type="stepAfter" dataKey="model3" stroke="#f59e0b" strokeWidth={2} name={lang === 'fr' ? 'Modèle 3' : 'Model 3'} />
+                <XAxis dataKey="year" label={{ value: lang === 'fr' ? 'Année' : 'Year', position: 'insideBottom', offset: -5 }} tick={{ fontSize: 12 }} />
+                <YAxis label={{ value: lang === 'fr' ? 'Maisons' : 'Homes', angle: -90, position: 'insideLeft' }} tick={{ fontSize: 12 }} />
+                <Tooltip contentStyle={{ fontSize: '12px' }} />
+                <Legend wrapperStyle={{ fontSize: '12px' }} />
+                <Line type="stepAfter" dataKey="model1" stroke={modelColors[0]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 1' : 'Model 1'} />
+                <Line type="stepAfter" dataKey="model2" stroke={modelColors[1]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 2' : 'Model 2'} />
+                <Line type="stepAfter" dataKey="model3" stroke={modelColors[2]} strokeWidth={3} name={lang === 'fr' ? 'Modèle 3' : 'Model 3'} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
       </section>
 
-      {/* Section 7 - Recommendation */}
-      <section className="py-16 px-4 bg-white">
+      {/* Section 7 - Recommendation - Visual Roadmap */}
+      <section className="py-12 md:py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.recommendation.title}</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.recommendation.title}</h2>
 
-          <div className="space-y-6 mb-8">
+          {/* Visual Roadmap */}
+          <div className="relative space-y-4 md:space-y-6 mb-6 md:mb-8">
+            {/* Connecting Line */}
+            <div className="hidden md:block absolute left-12 top-16 bottom-16 w-1 bg-gradient-to-b from-blue-300 via-indigo-400 to-purple-500"></div>
+
             {t.recommendation.phases.map((phase, idx) => (
-              <div key={idx} className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-md p-6 border-l-4 border-blue-600">
-                <h3 className="text-lg md:text-xl font-bold mb-3 text-navy-800" style={{ color: '#1e3a5f' }}>{phase.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{phase.description}</p>
+              <div key={idx} className="relative">
+                <div className={`rounded-xl shadow-lg p-4 md:p-6 ml-0 md:ml-24 transition-all hover:shadow-2xl hover:scale-[1.02]`}
+                     style={{
+                       background: `linear-gradient(135deg, ${
+                         idx === 0 ? '#dbeafe' :
+                         idx === 1 ? '#e0e7ff' :
+                         idx === 2 ? '#f3e8ff' :
+                         '#fae8ff'
+                       } 0%, white 100%)`,
+                       borderLeft: `6px solid ${
+                         idx === 0 ? '#3b82f6' :
+                         idx === 1 ? '#6366f1' :
+                         idx === 2 ? '#8b5cf6' :
+                         '#a855f7'
+                       }`
+                     }}>
+                  {/* Phase Number Circle */}
+                  <div className="absolute -left-3 md:-left-16 top-4 md:top-6 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-black text-lg md:text-2xl shadow-lg"
+                       style={{
+                         backgroundColor: idx === 0 ? '#3b82f6' : idx === 1 ? '#6366f1' : idx === 2 ? '#8b5cf6' : '#a855f7'
+                       }}>
+                    {phase.number}
+                  </div>
+
+                  {/* Icon */}
+                  <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 text-3xl md:text-5xl">{phase.icon}</div>
+
+                  <div className="pl-10 md:pl-0">
+                    <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2 text-navy-800" style={{ color: '#1e3a5f' }}>{phase.title}</h3>
+                    <div className="text-xs md:text-sm text-gray-600 mb-2 md:mb-3 font-semibold">{phase.subtitle}</div>
+                    <p className="text-gray-700 leading-relaxed text-xs md:text-base">{phase.description}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-green-50 rounded-xl shadow-md p-6 border-2 border-green-400">
-            <p className="text-gray-800 font-semibold leading-relaxed text-center">{t.recommendation.callout}</p>
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl shadow-md p-4 md:p-6 border-2 border-green-400">
+            <p className="text-gray-800 font-semibold leading-relaxed text-center text-xs md:text-base">{t.recommendation.callout}</p>
           </div>
         </div>
       </section>
 
       {/* Section 8 - Next Steps */}
-      <section className="py-16 px-4">
+      <section className="py-12 md:py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.nextSteps.title}</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-navy-900" style={{ color: '#0f172a' }}>{t.nextSteps.title}</h2>
 
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <ol className="space-y-4">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8">
+            <ol className="space-y-3 md:space-y-4">
               {t.nextSteps.steps.map((step, idx) => (
-                <li key={idx} className="flex items-start">
-                  <span className="flex-shrink-0 w-8 h-8 bg-navy-800 text-white rounded-full flex items-center justify-center font-bold mr-4" style={{ backgroundColor: '#1e3a5f' }}>
+                <li key={idx} className="flex items-start gap-3 md:gap-4">
+                  <span className="flex-shrink-0 w-7 h-7 md:w-8 md:h-8 bg-navy-800 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base" style={{ backgroundColor: '#1e3a5f' }}>
                     {idx + 1}
                   </span>
-                  <span className="text-gray-700 pt-1">{step}</span>
+                  <span className="text-gray-700 pt-0.5 md:pt-1 text-xs md:text-base">{step}</span>
                 </li>
               ))}
             </ol>
@@ -723,8 +923,8 @@ export default function CLIGContent() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-navy-900 text-white text-center" style={{ backgroundColor: '#0f172a' }}>
-        <p className="text-sm">{t.footer}</p>
+      <footer className="py-6 md:py-8 bg-navy-900 text-white text-center" style={{ backgroundColor: '#0f172a' }}>
+        <p className="text-xs md:text-sm">{t.footer}</p>
       </footer>
     </div>
   );
